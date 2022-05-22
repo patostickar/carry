@@ -1,0 +1,4 @@
+Acá agregamos funciones que puedan ser extraídas de la lógica de las rutas:
+
++ Para poder reutilizarlas
++ Para evitar tener muchas líneas de código
