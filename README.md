@@ -14,10 +14,11 @@ CARRY® car rental platform
 - npm >=8
 
 ### Installing
-
-- Initialize a local database with the name of carry
+- Clone this repository and checkout to development
 - Install ESLint, Error Lens & Prettier for VS Code
+- Initialize a local database with the name of carry
 - npm i /admin /api /client
+- Before editing, create and checkout to a new branch
 
 ### Executing program
 
