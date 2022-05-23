@@ -1,13 +1,13 @@
 const { DataTypes, UUIDV4 } = require("sequelize");
 
 module.exports = (sequelize) => {
-  // defino el modelo
   sequelize.define(
     "customer",
     {
-      customer_id: {
+      id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
+        primaryKey: true,
       },
       email: {
         type: DataTypes.STRING,
@@ -61,3 +61,4 @@ module.exports = (sequelize) => {
     { timestamps: true }
   );
 }
+/* name modified from customer_id to id */
