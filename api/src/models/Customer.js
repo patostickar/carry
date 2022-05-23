@@ -6,11 +6,11 @@ module.exports = (sequelize) => {
     "customer",
     {
       customer_id: {
-        type: UUID,
+        type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
       },
       email: {
-        type: String,
+        type: DataTypes.STRING,
         required: true,
         unique: true,
         validate: {
@@ -18,22 +18,22 @@ module.exports = (sequelize) => {
         },
       },
       first_name: {
-        type: String,
+        type: DataTypes.STRING,
         required: true,
       },
       last_name: {
-        type: String,
+        type: DataTypes.STRING,
       },
       city: {
-        type: String,
+        type: DataTypes.STRING,
         required: true,
       },
       street: {
-        type: String,
+        type: DataTypes.STRING,
         required: true,
       },
       phone: {
-        type: String,
+        type: DataTypes.STRING,
         required: true,
       },
       /* QUESTIONS 
@@ -41,11 +41,11 @@ module.exports = (sequelize) => {
       state_name
       is necessary??*/
       postal_code: {
-        type: String,
+        type: DataTypes.STRING,
         required: true,
       },
       password: {
-        type: String,
+        type: DataTypes.STRING,
         required: true,
       },
       /* CHANGES:
@@ -54,16 +54,16 @@ module.exports = (sequelize) => {
       isBanned => name modified
          */
       isAdmin: {
-        type: Boolean,
-        default: false,
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
       },
       isPremium: {
-        type: Boolean,
-        default: false,
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
       },
       isBanned: {
-        type: Boolean,
-        default: false,
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
       },
     },
     { timestamps: true }
