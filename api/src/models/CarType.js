@@ -1,8 +1,8 @@
-const { DataTypes } = require("sequelize");
+const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
   sequelize.define(
-    "cartype",
+    'cartype',
     {
       id: {
         type: DataTypes.UUID,
@@ -21,7 +21,7 @@ module.exports = (sequelize) => {
       class_name: {
         type: DataTypes.STRING,
       },
-      transmition: {
+      transmission: {
         type: DataTypes.STRING,
       },
       mpg: {
@@ -40,7 +40,7 @@ module.exports = (sequelize) => {
         type: DataTypes.BOOLEAN,
         defaultValue: true,
       },
-      targe_suitcase: {
+      large_suitcase: {
         type: DataTypes.INTEGER,
       },
       small_suitcase: {
