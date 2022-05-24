@@ -1,4 +1,4 @@
-const { DataTypes, UUIDV4 } = require("sequelize");
+const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define(
@@ -48,4 +48,4 @@ User.create({username: 'username', geometry: point }); */
   );
 };
 
-/* telephone: name modified to "phone"*/
+// telephone: name modified to "phone"
