@@ -1,4 +1,4 @@
-const { DataTypes, UUIDV4 } = require("sequelize");
+const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define(
@@ -44,7 +44,7 @@ User.create({username: 'username', geometry: point }); */
         type: DataTypes.BOOLEAN,
       },
     },
-    { timestamps: true }
+    { timestamps: false }
   );
 };
 

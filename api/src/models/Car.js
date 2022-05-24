@@ -1,4 +1,4 @@
-const { DataTypes, UUIDV4 } = require("sequelize");
+const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define(
@@ -16,7 +16,7 @@ module.exports = (sequelize) => {
         type: DataTypes.DATEONLY,
       },
     },
-    { timestamps: true }
+    { timestamps: false }
   );
 };
 

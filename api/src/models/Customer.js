@@ -1,4 +1,4 @@
-const { DataTypes, UUIDV4 } = require("sequelize");
+const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define(
@@ -58,7 +58,7 @@ module.exports = (sequelize) => {
         defaultValue: false,
       },
     },
-    { timestamps: true }
+    { timestamps: false }
   );
 }
 /* name modified from customer_id to id */
