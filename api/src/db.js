@@ -67,10 +67,33 @@ sequelize.models = Object.fromEntries(capsEntries);
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
 // eslint-disable-next-line no-empty-pattern
-const {Car, Booking,CarType,Customer,Location } = sequelize.models;
+const {Car, Booking,Cartype,Customer,Location } = sequelize.models;
 
 // Aca vendrian las relaciones
+//CUSTOMER : BOOKING => ONE TO MANY
+Customer.hasMany(Booking);
+Booking.belongsTo(Customer);
+//expecting for foreign key in Booking?
 
+//LOCATION : BOOKING => ONE TO MANY
+Location.hasMany(Booking);
+Booking.belongsTo(Location);
+//expecting for foreign key in Booking?
+
+//BOOKING : CAR => ONE TO ONE
+Car.hasOne(Booking)
+Booking.belongsTo(Car)
+//expecting for fk or create Booking foreign key "booking_car"?
+
+//LOCATION : CAR => ONE TO MANY
+Location.hasMany(Car);
+Car.belongsTo(Location);
+//expecting for foreign key in Car?
+
+//CAR : CARTYPE => ONE TO MANY
+Cartype.hasMany(Car);
+Car.belongsTo(Cartype);
+//expecting for foreign key in Car?
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize, // para importart la conexión { conn } = require('./db.js');

@@ -25,7 +25,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
       },
       geo: {
-        type: DataTypes.GEOMETRY("POINT"),
+        type: DataTypes.INTEGER,
       },
       /*       
 const point = { type: 'Point', coordinates: [-76.984722, 39.807222]}; // GeoJson format: [lng, lat]
