@@ -1,9 +1,8 @@
-const { DataTypes  } = require("sequelize");
-
+const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
   sequelize.define(
-    "customer",
+    'customer',
     {
       id: {
         type: DataTypes.UUID,
@@ -26,11 +25,11 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         required: true,
       },
-      city: {
+      street: {
         type: DataTypes.STRING,
         required: true,
       },
-      street: {
+      city: {
         type: DataTypes.STRING,
         required: true,
       },
@@ -61,5 +60,5 @@ module.exports = (sequelize) => {
     },
     { timestamps: false }
   );
-}
+};
 /* name modified from customer_id to id */
