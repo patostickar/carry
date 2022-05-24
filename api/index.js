@@ -27,6 +27,7 @@ conn
       airport_location: l.airport_location,
     }));
 
+   
     const customers = data.customers.map((c) => ({
       email: c.email,
       first_name: c.first_name,
@@ -35,6 +36,7 @@ conn
       city: c.city,
       postal_code: c.postcal_code,
       phone: c.phone,
+      password: c.password,
     }));
 
     const carTypes = data.car_types.map((c) => ({
