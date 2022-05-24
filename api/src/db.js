@@ -67,7 +67,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
 // eslint-disable-next-line no-empty-pattern
-const {} = sequelize.models;
+const {Car, Booking,CarType,Customer,Location } = sequelize.models;
 
 // Aca vendrian las relaciones
 
