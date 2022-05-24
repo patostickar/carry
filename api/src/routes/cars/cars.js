@@ -12,12 +12,15 @@ router.get('/',(req, res, next) => {
     }
   })
   ;
-router.post('/',(req,res)=>{
+router.post('/',(req,res,next)=>{
   const{locationid,carTypeid}=req.body
+  console.log(carTypeid,locationid)
   try {
       createCar(locationid,carTypeid)
+      res.send(200)
   } catch (error) {
-    next(error);
+      console.log(error)
+    // next(error);
   }
 
 

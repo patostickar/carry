@@ -9,6 +9,7 @@
       "state_name": "Delaware",
       "postcal_code": "11388",
       "phone": "990.762.8799",
+      "password": "pass",
       "premium": true
     },
     {
@@ -20,6 +21,7 @@
       "state_name": "Texas",
       "postcal_code": "85401",
       "phone": "(894)094-2158x8977",
+      "password": "pass",
       "premium": false
     },
     {
@@ -31,6 +33,7 @@
       "state_name": "Delaware",
       "postcal_code": "11388",
       "phone": "990.762.8799",
+      "password": "pass",
       "premium": true
     },
     {
@@ -42,6 +45,7 @@
       "state_name": "Texas",
       "postcal_code": "85401",
       "phone": "(894)094-2158x8977",
+      "password": "pass",
       "premium": false
     },
     {
@@ -53,6 +57,7 @@
       "state_name": "Delaware",
       "postcal_code": "11388",
       "phone": "990.762.8799",
+      "password": "pass",
       "premium": true
     },
     {
@@ -64,6 +69,7 @@
       "state_name": "Delaware",
       "postcal_code": "11388",
       "phone": "990.762.8799",
+      "password": "pass",
       "premium": false
     },
     {
@@ -75,6 +81,7 @@
       "state_name": "Delaware",
       "postcal_code": "11388",
       "phone": "990.762.8799",
+      "password": "pass",
       "premium": true
     },
     {
@@ -86,6 +93,7 @@
       "state_name": "Delaware",
       "postcal_code": "11388",
       "phone": "990.762.8799",
+      "password": "pass",
       "premium": false
     },
     {
@@ -97,6 +105,7 @@
       "state_name": "Delaware",
       "postcal_code": "11388",
       "phone": "990.762.8799",
+      "password": "pass",
       "premium": true
     },
     {
@@ -108,6 +117,7 @@
       "state_name": "Delaware",
       "postcal_code": "11388",
       "phone": "990.762.8799",
+      "password": "pass",
       "premium": false
     }
   ],

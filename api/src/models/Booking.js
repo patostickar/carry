@@ -11,11 +11,11 @@ module.exports = (sequelize) => {
       },
       pickup_date: {
         type: DataTypes.DATEONLY,
-        required: true,
+        allowNull: false,
       },
       return_date: {
         type: DataTypes.DATEONLY,
-        required: true,
+        allowNull: false,
       },
       base_rate: {
         type: DataTypes.INTEGER,
