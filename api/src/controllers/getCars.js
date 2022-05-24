@@ -1,12 +1,7 @@
-const { getCarsApi } = require('../services/getCars');
+// const { getCarsApi } = require('../services/getCars');
+const {Car} = require("../db")
 
-module.exports.getCars = async (req, res, next) => {
-  try {
-    const cars = await getCarsApi();
-    if (!cars.length) return res.send('no cars ☹️');
-   console.log(cars)
-    res.status(200).json({msg:'Successfull test', cars});
-  } catch (error) {
-    next(error);
+module.exports.getCars = async ()=>{
+   const cars = await Car.findAll()
+   return cars
   }
-};
