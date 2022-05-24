@@ -5,9 +5,9 @@ module.exports = (sequelize) => {
     "booking",
     {
       id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
-        autoIcrement: true,
       },
       pickup_date: {
         type: DataTypes.DATEONLY,
@@ -15,16 +15,6 @@ module.exports = (sequelize) => {
       },
       return_date: {
         type: DataTypes.DATEONLY,
-        required: true,
-      },
-      pickup_location: {
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4,
-        required: true,
-      },
-      return_location: {
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4,
         required: true,
       },
       base_rate: {
@@ -43,18 +33,11 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
       },
     },
-    { timestamps: true }
+    { timestamps: false }
   );
 };
 
 /*      
-=> booking_id:
-name modified to "id"
-attributes added
-        id: {
-        autoIcrement: true,
-        unique: true, 
 => customer_id wasn't added
 => booking_id wasn't added
-=> dropoff_location: name modified to "return_location"
         */

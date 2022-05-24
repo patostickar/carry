@@ -44,7 +44,7 @@ User.create({username: 'username', geometry: point }); */
         type: DataTypes.BOOLEAN,
       },
     },
-    { timestamps: true }
+    { timestamps: false }
   );
 };
 

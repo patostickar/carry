@@ -16,7 +16,7 @@ module.exports = (sequelize) => {
         type: DataTypes.DATEONLY,
       },
     },
-    { timestamps: true }
+    { timestamps: false }
   );
 };
 

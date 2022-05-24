@@ -1,5 +1,6 @@
 const { DataTypes  } = require("sequelize");
 
+
 module.exports = (sequelize) => {
   sequelize.define(
     "customer",
@@ -58,7 +59,7 @@ module.exports = (sequelize) => {
         defaultValue: false,
       },
     },
-    { timestamps: true }
+    { timestamps: false }
   );
 }
 /* name modified from customer_id to id */
