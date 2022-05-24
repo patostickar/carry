@@ -12,7 +12,7 @@ router.get('/',(req, res, next) => {
     }
   })
   ;
-router.post('/',(req,res)=>{
+router.post('/',(req,res,next)=>{
   const{locationid,carTypeid}=req.body
   try {
       createCar(locationid,carTypeid)
