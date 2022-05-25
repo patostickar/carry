@@ -16,13 +16,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Provider store={store}>
       {/* <PersistGate loading={null} persistor={persistor}> */}
       <CssBaseline />
-      <App />
+      
       {/* </PersistGate> */}
       <Auth0Provider
         domain={REACT_APP_AUTH0_DOMAIN}
         clientId={REACT_APP_AUTH0_CLIENT_ID}
         redirectUri={window.location.origin}
-      ></Auth0Provider>
+      ><App /></Auth0Provider>
     </Provider>
   </React.StrictMode>
 );
