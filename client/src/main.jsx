@@ -17,8 +17,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       {/* <PersistGate loading={null} persistor={persistor}> */
       }
       <CssBaseline />
-      
-
       {/* </PersistGate> */}
       <Auth0Provider
         domain={REACT_APP_AUTH0_DOMAIN}
