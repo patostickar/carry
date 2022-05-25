@@ -1,6 +1,14 @@
 import { TextField, Autocomplete } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { setPickupLocation, setDroppOffLocation } from '../redux/searchBar.js';
+import {
+  setPickupLocation,
+  setDroppOffLocation,
+  setPickupTime,
+  setDroppOffTime,
+} from '../redux/searchBar.js';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
@@ -12,17 +20,23 @@ export default function SearchBar() {
     <>
       <Location type='pickUp' />
       <Location type='dropOff' />
+      <LocalizationProvider dateAdapter={AdapterDateFns}>
+        <BasicDatePicker type='pickUp' />
+        <BasicDatePicker type='dropOff' />
+      </LocalizationProvider>
     </>
   );
 }
-// Para poder implementar búsqueda no sólo por nombre, sino también por ciudad getOptionLabel tiene: name, city, state.
+// Para poder implementar búsqueda no sólo por nombre, sino también por ciudad, getOptionLabel tiene: name, city, state.
 // Para poder hacer eso, options contiene el array entero de objetos, sino podría ser sólo un array filtrado de locations.name
 
-// Veremos después qué pasa con la persistencia de datos, porque así como está no le envío data de redux al autocmplete
-// Sino la otra es quitar la opcion de que por detrás estoy pudiendo buscar ciudad y estado y va a ser todo más sencillo
 function Location({ type }) {
   const dispatch = useDispatch();
-  const pickup = useSelector((state) => state.pickup_location);
+
+  // const pickup =
+  //   type === 'pickUp'
+  //     ? useSelector((state) => state.searchBar.pickup_location)
+  //     : useSelector((state) => state.searchBar.dropoff_location);
 
   function handleDispatch(newValue) {
     type === 'pickUp'
@@ -57,15 +71,21 @@ function Location({ type }) {
           />
         </>
       )}
-      value={pickup}
       onChange={(event, newValue) => {
         handleDispatch(newValue);
       }}
-      isOptionEqualToValue={(option, value) => {
-        return option.name === value.name;
-      }}
-      //   forcePopupIcon={true}
-      //   popupIcon={<DirectionsCarIcon />}
+      // La propiedad value={pickup} debería contener el valor actual que viene de redux (en nuestro caso: name)
+      // Esta necesita coincidir con los valores de options, que como le estoy pasando un objeto, no va a encontrar en options el vlaor name
+      // Para eso se usa isOptionEqualToValue, para hacer la comparación manual
+      // Por algún motivo, si bien la comparación arroja true, en la página aparece undefined undefined undefined
+      // De todos modos, quitando value e isOptionEqualToValue, hace que funcione todo bien
+
+      // value={pickup}
+      // isOptionEqualToValue={(option, value) => {
+      //   value = new RegExp(value);
+      //   return value.test(option.name);
+      // }}
+
       // En el dropdown aparecen name, ciudad y state, pero en renderOption se ocultan.
       // Si comento esta parte podría verlo
       renderOption={(props, option, { inputValue }) => {
@@ -90,6 +110,33 @@ function Location({ type }) {
         );
       }}
     />
+  );
+}
+
+function BasicDatePicker({ type }) {
+  const dispatch = useDispatch();
+  const date =
+    type === 'pickUp'
+      ? useSelector((state) => state.searchBar.pickup_date)
+      : useSelector((state) => state.searchBar.dropoff_date);
+
+  function handleDispatch(newValue) {
+    type === 'pickUp'
+      ? dispatch(setPickupTime(newValue.getTime() || null))
+      : dispatch(setDroppOffTime(newValue.getTime() || null));
+  }
+
+  return (
+    <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <DatePicker
+        label='Basic example'
+        value={date}
+        onChange={(newValue) => {
+          handleDispatch(newValue);
+        }}
+        renderInput={(params) => <TextField {...params} />}
+      />
+    </LocalizationProvider>
   );
 }
 
