@@ -4,23 +4,25 @@ import { Booking} from './components/Booking.jsx'
 
 import './App.css';
 
+import SearchList from './pages/searchList/SearchList';
 
-export default function App() {
-  
+function App() {
+
  
-  
-
   return (
     <>
     <BrowserRouter>
-    <Routes>
-    <Route path='*' element={<Home />}></Route>
-    <Route path='/home' element={<Home />}></Route>
-    
-    </Routes>
+      <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path='/home' element={<Home />}></Route>
+      <Route path='/booking' element={<Booking />}></Route>
+      <Route path="/searchResult" element={<SearchList />} />
+      </Routes>
     </BrowserRouter>
     </>
-      
-    
+
+
   );
 }
+
+export default App;
