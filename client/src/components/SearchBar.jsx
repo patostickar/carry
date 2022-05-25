@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { TextField, Autocomplete } from '@mui/material';
 import { useDispatch } from 'react-redux';
-import { setPickupLocation } from '../redux/searchBar.js';
+import { setPickupLocation, setDroppOffLocation } from '../redux/searchBar.js';
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
 
@@ -9,8 +9,8 @@ import match from 'autosuggest-highlight/match';
 export default function SearchBar() {
   return (
     <>
-      <Location />
-      <Location />
+      <Location type='pickUp' />
+      <Location type='dropOff' />
     </>
   );
 }
@@ -22,9 +22,16 @@ export default function SearchBar() {
 
 // Veremos después qué pasa con la persistencia de datos, porque así como está no le envío data de redux al autocmplete
 // Sino la otra es quitar la opcion de que por detrás estoy pudiendo buscar ciudad y estado y va a ser todo más sencillo
-function Location() {
+function Location({ type }) {
   const [value, setValue] = useState(null);
   const dispatch = useDispatch();
+
+  function handleDispatch(newValue) {
+    type === 'pickUp'
+      ? dispatch(setPickupLocation(newValue?.name || null))
+      : dispatch(setDroppOffLocation(newValue?.name || null));
+  }
+
   console.log(value);
   return (
     <Autocomplete
@@ -41,7 +48,7 @@ function Location() {
       value={value}
       onChange={(event, newValue) => {
         setValue(newValue);
-        dispatch(setPickupLocation(newValue?.name || null));
+        handleDispatch(newValue);
       }}
       // En el dropdown aparecen name, ciudad y state, pero en renderOption se ocultan.
       // Si comento esta parte podría verlo

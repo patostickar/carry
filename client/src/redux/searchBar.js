@@ -14,10 +14,13 @@ export const searchBar = createSlice({
     setPickupLocation: (state, action) => {
       state.pickup_location = action.payload;
     },
+    setDroppOffLocation: (state, action) => {
+      state.dropoff_location = action.payload;
+    },
   },
 });
 
-export const { setPickupLocation } = searchBar.actions;
+export const { setPickupLocation, setDroppOffLocation } = searchBar.actions;
 
 // The function below is called a thunk and allows us to perform async logic. It
 // can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
