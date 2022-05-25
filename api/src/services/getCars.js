@@ -36,6 +36,7 @@ const getCarsDB = async (id)=>{
      if(pickupDate){ await carfound.update({pickup_date: pickupDate })}
      if(returnDate){ await carfound.update({return_date: returnDate })}
      if(!returnDate && !pickupDate){return "debe ingresar al menos un dato"}
+     return "fechas actualizadas"
   }
   const updateCarLocation = async (id,locationid)=>{
     const carfound = await Car.findOne({where: { id}})
@@ -43,6 +44,7 @@ const getCarsDB = async (id)=>{
     if(!carfound) return("auto no encontrado")
     if(!locationFound) return "no se encontro el lugar"
     carfound.setLocation(locationFound);
+    return "localizacion actualizada"
  
  }
 
