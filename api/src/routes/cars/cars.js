@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const router = Router();
 
-const { createCar , getCars } = require('../../controllers/car');
+const { createCar , getCars, updateCar } = require('../../controllers/car');
 
 
 router.get('/',async(req, res, next) => {
@@ -25,12 +25,20 @@ router.post('/',async (req,res,next)=>{
 
 
 });
-router.put('/',(req,res)=>{
+router.patch('/:id',async(req,res,next)=>{
+  const {pickupDate,returnDate} = req.body
+  const {id} = req.params
+  try {
+    updateCar(pickupDate,returnDate,id)
+    res.sendStatus(200)
+    
+  } catch (error) {
+    next(error)
+  }
+  
 
 });
-router.patch('/',(req,res)=>{
 
-});
 
 
 module.exports = router;
