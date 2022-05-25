@@ -28,18 +28,27 @@ const getCars = async ()=>{
     return carmap
    }
 
-const updateCar = async (pickupDate,returnDate,id)=>{
+const updateDate = async (id,pickupDate,returnDate)=>{
   const carfound = await Car.findOne({where: { id : id}})
   if(!carfound){return("auto no encontrado")}
    if(pickupDate){ await carfound.update({pickup_date: pickupDate })}
    if(returnDate){ await carfound.update({return_date: returnDate })}
    if(!returnDate && !pickupDate){return "debe ingresar al menos un dato"}
 }
+const updateLocation = async (id,locationid)=>{
+   const carfound = await Car.findOne({where: { id : id}})
+   const locationFound =  await Location.findOne({where: { id: locationid }})
+   if(!carfound) return("auto no encontrado")
+   if(!locationFound) return "no se encontro el lugar"
+   carfound.setLocation(locationFound);
+
+}
 
 module.exports = {
     getCars,
     createCar,
-    updateCar
+    updateDate,
+    updateLocation
 }
  
  
