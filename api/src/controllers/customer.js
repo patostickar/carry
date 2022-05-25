@@ -1,10 +1,22 @@
 const { Op } = require("sequelize")
 const {Customer} = require("../db")
 
-const getCustomers = async ()=>{
-    const response = await Customer.findAll()
-    const dataDB=response.map?.((res)=>res.dataValues)
-    return dataDB
+const getCustomers = async (req, res, next)=>{
+    try {
+   
+        const response = await Customer.findAll()
+        const data=response.map?.((res)=>res.dataValues)
+        res.send(data)
+
+} catch (error) {
+    if (error.response) {
+        res.status(error.response.status).send({msg: error.response.status});
+      } else if (error.request) {
+        next(error.request);
+      } else {
+        next(error);
+      }
+}
    }
 
 
@@ -35,34 +47,49 @@ const postCustomer= async (req,res,next)=>{
 }
 
 
-const getCustomerById=async(id)=>{
+const getCustomerById=async ( req,res,next)=>{
    try {
-       const {dataValues}=await Customer.findByPk(id)
-       return dataValues
-   } catch (error) {
-       if (error.status===404) {
-           return 'Customer not found by id'
+    const {id}=req.params
+    if (id) {
+        const data= await Customer.findByPk(id)
+        data? res.status(200).send(data):res.send({msg:'Customer not found by id'})
+    } else{
+        res.send({msg:'Customer not found'})
+    }
+} catch (error) {
+    if (error.response) {
+        res.status(error.response.status).send({msg: error.response.status});
+      } else if (error.request) {
+        next(error.request);
+      } else {
+        next(error);
       }
-   }
+}
 }
 
-const putCustomer=async (id,req)=>{
-
+const putCustomer=async (req,res,next)=>{
+try {
     const {email,first_name,last_name,street,city,phone,postal_code,password,isAdmin,isPremium,isBanned}=req.body
-   
-    try {
-        const customer=await Customer.findOne({where:{id}})
-          if (customer) {
-        return   await customer.update({
-            email,first_name,last_name,street,city,phone,postal_code,password,isAdmin,isPremium,isBanned
-            })
-           
-        }
-       
-    } catch (error) {
-        if (error.status===404) {
-            return 'Customer not found by id'
-       }
+    const {id}=req.params
+    if (id) {
+        const data= await  Customer.findOne({where:{id}})
+        if (data) {
+         await data.update({
+          email,first_name,last_name,street,city,phone,postal_code,password,isAdmin,isPremium,isBanned
+          }) 
+      }
+        data? res.status(200).send({msg:'Customer edited',data}):res.send({msg:'Customer not found'})
+    } else{
+        res.send({msg:'Customer not found'})
+    } 
+} catch (error) {
+    if (error.response) {
+        res.status(error.response.status).send({msg: error.response.status});
+      } else if (error.request) {
+        next(error.request);
+      } else {
+        next(error);
+      }
 }
 }
 

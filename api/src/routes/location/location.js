@@ -2,52 +2,13 @@ const { Router } = require('express');
 const router = Router();
 
 
-const {getLocations,postLocations, getLocationByName, getLocationById}= require('../../controllers/location')
+const {getLocations,postLocations, getLocationById}= require('../../controllers/location')
 
 
-router.get('/',async (req, res, next) => {
-    try {
-          const {name}=req.query
-          if (name) {
-              const data=await getLocationByName(name.toLocaleLowerCase())
-           data? res.status(200).send(data) : res.send({msg:'Location not found by name'})
-          } else{
-            const data= await getLocations()
-            res.send(data)
-          }
+router.get('/',getLocations)
 
-      
-    } catch (error) {
-        if (error.response) {
-            res.status(error.response.status).send({msg: error.response.status});
-          } else if (error.request) {
-            next(error.request);
-          } else {
-            next(error);
-          }
-    }
-  })
+router.get('/:id',getLocationById)
 
-router.get('/:id', async ( req,res,next)=>{
-    try {
-        const {id}=req.params
-        if (id) {
-            const data=await getLocationById(id)
-            data? res.status(200).send(data):res.send({msg:'Location not found by id'})
-        } 
-    } catch (error) {
-        if (error.response) {
-            res.status(error.response.status).send({msg: error.response.status});
-          } else if (error.request) {
-            next(error.request);
-          } else {
-            next(error);
-          }
-    }
-   
-})
+router.post('/', postLocations)
 
-router.post('/', async (req,res,next)=>{
-    return await postLocations(req,res,next)
-})
 module.exports = router;
