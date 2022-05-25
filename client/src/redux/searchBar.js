@@ -1,10 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit';
-
+import axios from 'axios';
 const initialState = {
   pickup_location: null,
   dropoff_location: null,
   pickup_date: null,
   dropoff_date: null,
+  locations: [],
+};
+
+export const fetchAllLocations = () => async (dispatch) => {
+  try {
+    await axios
+      .get('http://localhost:3001/locations')
+      .then((res) => dispatch(setLocationList(res.data)));
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const searchBar = createSlice({
@@ -23,6 +34,9 @@ export const searchBar = createSlice({
     setDroppOffTime: (state, action) => {
       state.dropoff_date = action.payload;
     },
+    setLocationList: (state, { payload }) => {
+      state.locations = payload;
+    },
   },
 });
 
@@ -31,6 +45,7 @@ export const {
   setDroppOffLocation,
   setPickupTime,
   setDroppOffTime,
+  setLocationList,
 } = searchBar.actions;
 
 // The function below is called a thunk and allows us to perform async logic. It
