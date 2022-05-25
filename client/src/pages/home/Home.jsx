@@ -1,9 +1,12 @@
-import React from "react";
-import "../styles/Home.module.css";
+import React from 'react';
+import SearchBar from '../../components/SearchBar';
+import '../styles/Home.module.css';
 
 const Home = () => {
-  return <div>
-    {/*
+  return (
+    <div>
+      <SearchBar />
+      {/*
     navbar
 
     header
@@ -14,7 +17,8 @@ const Home = () => {
 
     
      */}
-  </div>;
+    </div>
+  );
 };
 
 export default Home;
