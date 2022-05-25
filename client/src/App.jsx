@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Booking } from './components/Booking.jsx';
-import Home from './pages/home/Home';
-import SearchList from './pages/searchList/SearchList';
+import Home from './pages/Home';
+import SearchList from './pages/SearchList';
 import './App.css';
 
 function App() {
