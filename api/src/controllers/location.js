@@ -2,10 +2,33 @@ const { Op } = require("sequelize")
 const {Location} = require("../db")
 
 
-const getLocations = async ()=>{
-    const response = await Location.findAll()
-    const dataDB=response.map?.((res)=>res.dataValues)
-    return dataDB
+const getLocations = async (req, res, next)=>{
+    try {
+        const {name}=req.query
+        if (name) {
+            const {dataValues}=await Location.findOne({
+                where:{
+                    name:{
+                       [Op.iLike]:`${name}`
+                    },
+                }
+            })
+            dataValues? res.status(200).send(dataValues) : res.send({msg:'Location not found by name'})
+        } else{
+          const data= await Location.findAll()
+          const dataDB=data.map?.((res)=>res.dataValues)
+          res.send(dataDB)
+        }
+
+  } catch (error) {
+      if (error.response) {
+          res.status(error.response.status).send({msg: error.response.status});
+        } else if (error.request) {
+          next(error.request);
+        } else {
+          next(error);
+        }
+  }
    }
     
 const postLocations= async (req,res,next)=>{
@@ -41,34 +64,25 @@ const postLocations= async (req,res,next)=>{
             next(error);
           }
     } 
+
+    
 }
 
-const getLocationByName=async (name)=>{
-     try {
-         const {dataValues}=await Location.findOne({
-             where:{
-                 name:{
-                    [Op.iLike]:`${name}`
-                 },
-             }
-         })
-         return dataValues
-     } catch (error) {
-        if (error.status===404) {
-            return 'Location not found by name'
-       }
-     }
-
-}
-
-const getLocationById=async(id)=>{
+const getLocationById=async(req,res,next)=>{
     try {
-        const {dataValues}=await Location.findByPk(id)
-        return dataValues
+        const {id}=req.params
+        if (id) {
+            const {dataValues}=await Location.findByPk(id)
+            dataValues? res.status(200).send(dataValues):res.send({msg:'Location not found by id'})
+        }
     } catch (error) {
-        if (error.status===404) {
-            return 'Location not found by id'
-       }
+        if (error.response) {
+            res.status(error.response.status).send({msg: error.response.status});
+          } else if (error.request) {
+            next(error.request);
+          } else {
+            next(error);
+          }
     }
 }
 
@@ -77,6 +91,5 @@ const getLocationById=async(id)=>{
    module.exports={
     getLocations,
     postLocations,
-    getLocationByName,
     getLocationById
    }

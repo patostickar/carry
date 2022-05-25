@@ -1,36 +1,42 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import counterReducer from './counterSlice';
+import searchBarReducer from './searchBar';
 
-import {
-  persistStore,
-  persistReducer,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-} from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+// import {
+//   persistStore,
+//   persistReducer,
+//   FLUSH,
+//   REHYDRATE,
+//   PAUSE,
+//   PERSIST,
+//   PURGE,
+//   REGISTER,
+// } from 'redux-persist';
+// import storage from 'redux-persist/lib/storage';
 
-const persistConfig = {
-  key: 'root',
-  version: 1,
-  storage,
-};
+// const persistConfig = {
+//   key: 'root',
+//   version: 1,
+//   storage,
+// };
 
-const rootReducer = combineReducers({ counter: counterReducer });
+const rootReducer = combineReducers({ searchBar: searchBarReducer });
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
-
-export const store = configureStore({
-  reducer: persistedReducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
-    }),
+const store = configureStore({
+  reducer: rootReducer,
 });
 
-export const persistor = persistStore(store);
+export { store };
+
+// const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+// export const store = configureStore({
+//   reducer: persistedReducer,
+//   middleware: (getDefaultMiddleware) =>
+//     getDefaultMiddleware({
+//       serializableCheck: {
+//         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+//       },
+//     }),
+// });
+
+// export const persistor = persistStore(store);
