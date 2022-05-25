@@ -1,8 +1,8 @@
-const { DataTypes } = require("sequelize");
+const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
   sequelize.define(
-    "location",
+    'location',
     {
       id: {
         type: DataTypes.UUID,
@@ -25,7 +25,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
       },
       geo: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
       },
       /*       
 const point = { type: 'Point', coordinates: [-76.984722, 39.807222]}; // GeoJson format: [lng, lat]

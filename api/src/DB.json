@@ -1,7 +1,6 @@
 {
   "customers": [
     {
-      "customer_id": "0",
       "email": "amya.keeling@gmail.com",
       "first_name": "Barton",
       "last_name": "Moen",
@@ -10,10 +9,10 @@
       "state_name": "Delaware",
       "postcal_code": "11388",
       "phone": "990.762.8799",
+      "password": "pass",
       "premium": true
     },
     {
-      "customer_id": "1",
       "email": "elisha81@strosinrice.com",
       "first_name": "Kailyn",
       "last_name": "Daugherty",
@@ -22,10 +21,10 @@
       "state_name": "Texas",
       "postcal_code": "85401",
       "phone": "(894)094-2158x8977",
+      "password": "pass",
       "premium": false
     },
     {
-      "customer_id": "2",
       "email": "dosg@gmail.com",
       "first_name": "Barton",
       "last_name": "Moen",
@@ -34,10 +33,10 @@
       "state_name": "Delaware",
       "postcal_code": "11388",
       "phone": "990.762.8799",
+      "password": "pass",
       "premium": true
     },
     {
-      "customer_id": "3",
       "email": "tres@strosinrice.com",
       "first_name": "Kailyn",
       "last_name": "Daugherty",
@@ -46,10 +45,10 @@
       "state_name": "Texas",
       "postcal_code": "85401",
       "phone": "(894)094-2158x8977",
+      "password": "pass",
       "premium": false
     },
     {
-      "customer_id": "4",
       "email": "cuatro@gmail.com",
       "first_name": "Barton",
       "last_name": "Moen",
@@ -58,10 +57,10 @@
       "state_name": "Delaware",
       "postcal_code": "11388",
       "phone": "990.762.8799",
+      "password": "pass",
       "premium": true
     },
     {
-      "customer_id": "5",
       "email": "cinco@gmail.com",
       "first_name": "Barton",
       "last_name": "Moen",
@@ -70,10 +69,10 @@
       "state_name": "Delaware",
       "postcal_code": "11388",
       "phone": "990.762.8799",
+      "password": "pass",
       "premium": false
     },
     {
-      "customer_id": "6",
       "email": "seis@gmail.com",
       "first_name": "Barton",
       "last_name": "Moen",
@@ -82,10 +81,10 @@
       "state_name": "Delaware",
       "postcal_code": "11388",
       "phone": "990.762.8799",
+      "password": "pass",
       "premium": true
     },
     {
-      "customer_id": "7",
       "email": "siete@gmail.com",
       "first_name": "Barton",
       "last_name": "Moen",
@@ -94,10 +93,10 @@
       "state_name": "Delaware",
       "postcal_code": "11388",
       "phone": "990.762.8799",
+      "password": "pass",
       "premium": false
     },
     {
-      "customer_id": "8",
       "email": "ocho@gmail.com",
       "first_name": "Barton",
       "last_name": "Moen",
@@ -106,10 +105,10 @@
       "state_name": "Delaware",
       "postcal_code": "11388",
       "phone": "990.762.8799",
+      "password": "pass",
       "premium": true
     },
     {
-      "customer_id": "9",
       "email": "nueve@gmail.com",
       "first_name": "Barton",
       "last_name": "Moen",
@@ -118,12 +117,12 @@
       "state_name": "Delaware",
       "postcal_code": "11388",
       "phone": "990.762.8799",
+      "password": "pass",
       "premium": false
     }
   ],
   "locations": [
     {
-      "location_id": "0",
       "name": "Agencia La Mona",
       "street": "Huiliches 1021",
       "city": "Córdoba",
@@ -136,7 +135,6 @@
       "airport_location": false
     },
     {
-      "location_id": "1",
       "name": "Ministro Pistarini International Airport",
       "street": "AU Tte. Gral. Pablo Riccheri Km 33",
       "city": "Ezeiza",
@@ -149,7 +147,6 @@
       "airport_location": true
     },
     {
-      "location_id": "2",
       "name": "Palermo Cars",
       "street": "Humboldt 1897",
       "city": "Buenos Aires City",
@@ -162,7 +159,6 @@
       "airport_location": false
     },
     {
-      "location_id": "3",
       "name": "Aeroparque Internacional Jorge Newbery",
       "street": "Av. Costanera Rafael Obligado s/n",
       "city": "Buenos Aires City",
@@ -175,7 +171,6 @@
       "airport_location": true
     },
     {
-      "location_id": "4",
       "name": "Santiago Cars",
       "street": "Av Roca Sur 488",
       "city": "Santiago del Estero",
@@ -188,7 +183,6 @@
       "airport_location": false
     },
     {
-      "location_id": "5",
       "name": "Aeropuerto Internacional El Plumerillo - Mendoza",
       "street": "Acceso A Aeropuerto Internacional Gabrielli F. J.",
       "city": "Las Heras",
@@ -201,7 +195,6 @@
       "airport_location": true
     },
     {
-      "location_id": "6",
       "name": "Corrientes Cars",
       "street": "Hipólito Yrigoyen 2002",
       "city": "Corrientes",
@@ -214,7 +207,6 @@
       "airport_location": false
     },
     {
-      "location_id": "7",
       "name": "Ushuaia Airport",
       "street": "Roque Sánchez Galdeano",
       "city": "Ushuaia",
@@ -227,7 +219,6 @@
       "airport_location": true
     },
     {
-      "location_id": "8",
       "name": "Santa Fe Cars",
       "street": "Av Aristóbulo del Valle 6273",
       "city": "Santa Fe",
@@ -240,7 +231,6 @@
       "airport_location": false
     },
     {
-      "location_id": "9",
       "name": "Aeropuerto Internacional de Bariloche Tte. Luis Candelaria",
       "street": "RP80 S/N",
       "city": "San Carlos de Bariloche",
@@ -255,7 +245,6 @@
   ],
   "car_types": [
     {
-      "car_type_id": 0,
       "make": "Ford",
       "model": "Fiesta",
       "vehicle_class_code": "A",
@@ -270,7 +259,6 @@
       "small_suitcase": "1"
     },
     {
-      "car_type_id": 1,
       "make": "Kia",
       "model": "Rio",
       "vehicle_class_code": "A",
@@ -285,7 +273,6 @@
       "small_suitcase": "1"
     },
     {
-      "car_type_id": 2,
       "make": "Toyota",
       "model": "Corolla",
       "vehicle_class_code": "B",
@@ -300,7 +287,6 @@
       "small_suitcase": "2"
     },
     {
-      "car_type_id": 3,
       "make": "Volkswagen",
       "model": "Jetta",
       "vehicle_class_code": "B",
@@ -315,7 +301,6 @@
       "small_suitcase": "2"
     },
     {
-      "car_type_id": 4,
       "make": "Toyota",
       "model": "Camry",
       "vehicle_class_code": "C",
@@ -330,7 +315,6 @@
       "small_suitcase": "2"
     },
     {
-      "car_type_id": 5,
       "make": "Volkswagen",
       "model": "Passat",
       "vehicle_class_code": "C",
@@ -345,7 +329,6 @@
       "small_suitcase": "2"
     },
     {
-      "car_type_id": 6,
       "make": "Chrysler",
       "model": "300",
       "vehicle_class_code": "D",
@@ -360,7 +343,6 @@
       "small_suitcase": "2"
     },
     {
-      "car_type_id": 7,
       "make": "Ford",
       "model": "Mustang Convertible",
       "vehicle_class_code": "E",
@@ -375,7 +357,6 @@
       "small_suitcase": "1"
     },
     {
-      "car_type_id": 8,
       "make": "Chrysler",
       "model": "Voyager",
       "vehicle_class_code": "F",
@@ -390,7 +371,6 @@
       "small_suitcase": "2"
     },
     {
-      "car_type_id": 9,
       "make": "Ford",
       "model": "Edge",
       "vehicle_class_code": "G",
