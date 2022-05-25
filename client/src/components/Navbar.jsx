@@ -16,7 +16,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import Logout from "@mui/icons-material/Logout";
 import { useAuth0 } from "@auth0/auth0-react";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.webp";
 
 export const Navbar = () => {
   const [selectedItem, setSelectedItem] = useState(0);
