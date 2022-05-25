@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { TextField, Autocomplete } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -14,7 +15,7 @@ import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import InputAdornment from '@mui/material/InputAdornment';
-import { useEffect } from 'react';
+import CircularProgress from '@mui/material/CircularProgress';
 
 // Se puede busar por nombre, ciudad o estado
 export default function SearchBar() {
@@ -33,14 +34,43 @@ export default function SearchBar() {
 // Para poder hacer eso, options contiene el array entero de objetos, sino podría ser sólo un array filtrado de locations.name
 
 function Location({ type }) {
+  const { locations } = useSelector((state) => state.searchBar);
   const dispatch = useDispatch();
+  const [open, setOpen] = useState(false);
+  const loading = open && Object.keys(locations).length === 0;
+
+  useEffect(() => {
+    let active = true;
+
+    if (!loading) {
+      return undefined;
+    }
+
+    (async () => {
+      if (active) {
+        dispatch(fetchAllLocations());
+      }
+    })();
+
+    return () => {
+      active = false;
+    };
+  }, [loading]);
+
+  // useEffect(() => {
+  //   if (!open) {
+  //     setOptions([]);
+  //   }
+  // }, [open]);
+
+  // useEffect(() => {
+  //   dispatch(fetchAllLocations());
+  // }, [dispatch]);
 
   // const pickup =
   //   type === 'pickUp'
   //     ? useSelector((state) => state.searchBar.pickup_location)
   //     : useSelector((state) => state.searchBar.dropoff_location);
-
-  const { locations } = useSelector((state) => state.searchBar);
 
   function handleDispatch(newValue) {
     type === 'pickUp'
@@ -48,14 +78,18 @@ function Location({ type }) {
       : dispatch(setDroppOffLocation(newValue?.name || null));
   }
 
-  useEffect(() => {
-    dispatch(fetchAllLocations());
-  }, [dispatch]);
-
   return (
     <Autocomplete
       id='pickup_location'
       sx={{ width: 300 }}
+      open={open}
+      onOpen={() => {
+        setOpen(true);
+      }}
+      onClose={() => {
+        setOpen(false);
+      }}
+      loading={loading}
       clearOnEscape
       options={locations}
       getOptionLabel={(option) =>
@@ -74,7 +108,14 @@ function Location({ type }) {
                   <DirectionsCarIcon />
                 </InputAdornment>
               ),
-              endAdornment: null,
+              endAdornment: (
+                <>
+                  {loading ? (
+                    <CircularProgress color='inherit' size={20} />
+                  ) : null}
+                  {params.InputProps.endAdornment}
+                </>
+              ),
             }}
           />
         </>
