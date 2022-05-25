@@ -26,6 +26,7 @@ router.post('/',async (req,res,next)=>{
 
 });
 router.patch('/:id',async(req,res,next)=>{
+  // funciona para enviar 1 o 2 datos el dato que no se asigna se envia como null
   const {pickupDate,returnDate} = req.body
   const {id} = req.params
   try {
