@@ -1,9 +1,10 @@
-import { useState } from 'react';
 import { TextField, Autocomplete } from '@mui/material';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setPickupLocation, setDroppOffLocation } from '../redux/searchBar.js';
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
+import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
+import InputAdornment from '@mui/material/InputAdornment';
 
 // Se puede busar por nombre, ciudad o estado
 export default function SearchBar() {
@@ -16,15 +17,12 @@ export default function SearchBar() {
 }
 // Para poder implementar búsqueda no sólo por nombre, sino también por ciudad getOptionLabel tiene: name, city, state.
 // Para poder hacer eso, options contiene el array entero de objetos, sino podría ser sólo un array filtrado de locations.name
-// options y value siempre tiene que coincidir el typeof, entonces value no puede ser value.name (un string), tiene que seguir siendo objet
-// Para no enviar un objeto entero al estado de redux, tengo que mantener un estado local para evitar los errores de Autocomplete,
-// y enviar a Redux el nombre
 
 // Veremos después qué pasa con la persistencia de datos, porque así como está no le envío data de redux al autocmplete
 // Sino la otra es quitar la opcion de que por detrás estoy pudiendo buscar ciudad y estado y va a ser todo más sencillo
 function Location({ type }) {
-  const [value, setValue] = useState(null);
   const dispatch = useDispatch();
+  const pickup = useSelector((state) => state.pickup_location);
 
   function handleDispatch(newValue) {
     type === 'pickUp'
@@ -32,7 +30,6 @@ function Location({ type }) {
       : dispatch(setDroppOffLocation(newValue?.name || null));
   }
 
-  console.log(value);
   return (
     <Autocomplete
       id='pickup_location'
@@ -43,13 +40,32 @@ function Location({ type }) {
         `${option.name} ${option.city} ${option.state_name}`
       }
       renderInput={(params) => (
-        <TextField {...params} label='Pick-up location' margin='normal' />
+        <>
+          <TextField
+            {...params}
+            label='Pick-up location'
+            margin='normal'
+            InputProps={{
+              ...params.InputProps,
+              startAdornment: (
+                <InputAdornment position='start'>
+                  <DirectionsCarIcon />
+                </InputAdornment>
+              ),
+              endAdornment: null,
+            }}
+          />
+        </>
       )}
-      value={value}
+      value={pickup}
       onChange={(event, newValue) => {
-        setValue(newValue);
         handleDispatch(newValue);
       }}
+      isOptionEqualToValue={(option, value) => {
+        return option.name === value.name;
+      }}
+      //   forcePopupIcon={true}
+      //   popupIcon={<DirectionsCarIcon />}
       // En el dropdown aparecen name, ciudad y state, pero en renderOption se ocultan.
       // Si comento esta parte podría verlo
       renderOption={(props, option, { inputValue }) => {
