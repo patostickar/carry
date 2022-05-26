@@ -1,6 +1,8 @@
 const server = require('./src/app.js');
 const fs = require('fs');
 const { conn, Location, Customer, Cartype } = require('./src/db.js');
+const { DBcreateCar } = require('./src/services/getCars.js');
+
 const { PORT } = process.env;
 
 conn
@@ -27,7 +29,6 @@ conn
       airport_location: l.airport_location,
     }));
 
-   
     const customers = data.customers.map((c) => ({
       email: c.email,
       first_name: c.first_name,
@@ -53,12 +54,25 @@ conn
       large_suitcase: c.large_suitcase,
       small_suitcase: c.small_suitcase,
     }));
-
+    
     await Promise.all([
       Location.bulkCreate(locations),
       Customer.bulkCreate(customers),
       Cartype.bulkCreate(carTypes),
     ]);
+    
+    const location = await Location.findOne({where:{name: "Agencia La Mona"}})
+    const cartype = await Cartype.findOne({where:{make: "Ford"}})    
+    const location1 = await Location.findOne({where:{name: "Ministro Pistarini International Airport"}})
+    const cartype1 = await Cartype.findOne({where:{make: "Chrysler"}})    
+    const location2 = await Location.findOne({where:{name: "Palermo Cars"}})
+    const cartype2 = await Cartype.findOne({where:{make: "Volkswagen"}})    
+
+   await DBcreateCar(location.id, cartype.id)
+   await DBcreateCar(location1.id, cartype1.id)
+   await DBcreateCar(location2.id, cartype2.id)
+
+
 
     console.log('Locations, Customers and CarTypes have been saved');
   })

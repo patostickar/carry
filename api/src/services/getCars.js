@@ -24,7 +24,6 @@ const getCarsDB = async (id)=>{
     const car = await Car.create();
     const locationFound =  await Location.findOne({where: { id: locationid }})
     const carTypeFound =   await Cartype.findOne({ where: { id: carTypeid }})
-    console.log(locationFound,carTypeFound);
     if(carTypeFound){car.setCartype(carTypeFound)}
     if(locationFound){car.setLocation(locationFound);}
     if (!carTypeFound && !locationFound) return "no se encontro ninguno"
