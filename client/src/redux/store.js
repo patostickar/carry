@@ -22,7 +22,7 @@ import carsResultsReducer from './carsResults';
 
 const rootReducer = combineReducers({
   searchBar: searchBarReducer,
-  cars: carsResultsReducer,
+  carsResults: carsResultsReducer,
 });
 
 const store = configureStore({

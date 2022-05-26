@@ -6,8 +6,8 @@ const initialState = {
   filters: [],
 };
 
-export const carResults = createSlice({
-  name: 'carResults',
+export const carsResults = createSlice({
+  name: 'carsResults',
   initialState,
   reducers: {
     setCarTypes: (state, action) => {
@@ -19,13 +19,13 @@ export const carResults = createSlice({
 export const fetchCarTypes = () => async (dispatch) => {
   try {
     await axios
-      .get('http://localhost:3001/cartype')
+      .get('http://localhost:3001/cartype/count')
       .then((res) => dispatch(setCarTypes(res.data)));
   } catch (error) {
     console.log(error);
   }
 };
 
-export const { setCarTypes } = carResults.actions;
+export const { setCarTypes } = carsResults.actions;
 
-export default carResults.reducer;
+export default carsResults.reducer;

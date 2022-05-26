@@ -2,12 +2,12 @@ import './styles/SearchList.modules.css';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCarTypes } from '../redux/carsResults.js';
-import LeftContainer from '../components/SearchList/leftContainer';
-import CarDetailCard from '../components/SearchList/carDetailCard';
-import CarTypeTopFilter from '../components/SearchList/carTypeTopFilter';
+import LeftContainer from '../components/SearchResults/leftContainer';
+import CarDetailCard from '../components/SearchResults/carDetailCard';
+import CarTypeTopFilter from '../components/SearchResults/carTypeTopFilter';
 
 export const SearchList = () => {
-  // const { carTypes, filters } = useSelector((state) => state.carResults);
+  const { carTypes, filters } = useSelector((state) => state.carsResults);
   const dispatch = useDispatch();
 
   useEffect(() => {
