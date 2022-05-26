@@ -3,15 +3,16 @@ const { Car, Location, Cartype } = require("../db");
 
 const getCarsDB = async (id)=>{
   let cars
-  if(id){return await Car.findOne({where: { id: id }})}
-  else {cars = await Car.findAll()
+  if(id){return await Car.findOne({where: { id: id },include: [Cartype,Location]})}
+  else {cars = await Car.findAll({ include: [Cartype,Location]})
+    console.log(cars)
     const carmap = cars.map( car =>{
        return {
           id: car.id,
           pickup_date:car.pickup_date,
           return_date: car.return_date,
-          locationId: car.locationId,
-          cartypeId: car.cartypeId
+          location: car.location,
+          cartype : car.cartype
        }
     })
     return carmap
@@ -22,10 +23,9 @@ const getCarsDB = async (id)=>{
     const car = await Car.create();
     const locationFound =  await Location.findOne({where: { id: locationid }})
     const carTypeFound =   await Cartype.findOne({ where: { id: carTypeid }})
-    if(carTypeFound && locationFound){
-      car.setLocation(locationFound);
-      car.setCartype(carTypeFound);
-      return "todo ok"}
+    console.log(locationFound,carTypeFound);
+    if(carTypeFound){car.setCartype(carTypeFound)}
+    if(locationFound){car.setLocation(locationFound);}
     if (!carTypeFound && !locationFound) return "no se encontro ninguno"
     if (!locationFound) return "no se encontro el lugar"
     if (!carTypeFound) return "no se encontro el tipo de auto"
