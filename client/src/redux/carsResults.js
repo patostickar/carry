@@ -16,10 +16,10 @@ export const carsResults = createSlice({
   },
 });
 
-export const fetchCarTypes = () => async (dispatch) => {
+export const fetchCarTypes = (pickupLocation) => async (dispatch) => {
   try {
     await axios
-      .get('http://localhost:3001/cartype/count')
+      .get(`http://localhost:3001/cartype/count/${pickupLocation}`)
       .then((res) => dispatch(setCarTypes(res.data)));
   } catch (error) {
     console.log(error);

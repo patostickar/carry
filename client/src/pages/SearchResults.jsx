@@ -8,10 +8,13 @@ import CarTypeTopFilter from '../components/SearchResults/carTypeTopFilter';
 
 export const SearchList = () => {
   const { carTypes, filters } = useSelector((state) => state.carsResults);
+  const { pickupLocation } = useSelector((state) => state.searchBar);
+
+  console.log(pickupLocation);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchCarTypes());
+    dispatch(fetchCarTypes(pickupLocation));
   }, []);
 
   return (
