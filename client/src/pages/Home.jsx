@@ -1,8 +1,8 @@
 import React from 'react';
-import SearchBar from '../components/SearchBar';
-import {Navbar} from '../components/Navbar';
-import PopularLocations from '../components/PopularLocations';
+import SearchBar from '../components/SearchBar/SearchBar';
+import { Navbar } from '../components/Navbar';
 import './styles/Home.module.css';
+import PopularLocations from "../components/PopularLocations"
 
 const Home = () => {
   return (
