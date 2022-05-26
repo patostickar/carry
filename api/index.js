@@ -69,8 +69,12 @@ conn
     const cartype2 = await Cartype.findOne({where:{make: "Volkswagen"}})    
 
    await DBcreateCar(location.id, cartype.id)
-   await DBcreateCar(location1.id, cartype1.id)
-   await DBcreateCar(location2.id, cartype2.id)
+   await DBcreateCar(location.id, cartype.id)
+   await DBcreateCar(location.id, cartype.id)
+   await DBcreateCar(location.id, cartype1.id)
+   await DBcreateCar(location.id, cartype1.id)
+   await DBcreateCar(location.id, cartype2.id)
+   await DBcreateCar(location.id, cartype2.id)
 
 
 
