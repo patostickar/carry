@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchBar from '../components/SearchBar';
 import {Navbar} from '../components/Navbar';
+import PopularLocations from '../components/PopularLocations';
 import './styles/Home.module.css';
 
 const Home = () => {
@@ -8,6 +9,7 @@ const Home = () => {
     <div>
       <Navbar />
       <SearchBar />
+      <PopularLocations />
       {/*
     navbar
 
