@@ -1,0 +1,23 @@
+.container div  {
+    
+    width: fit-content;
+}
+
+.container h1{
+    margin-left: 8%;
+    font-size: 23px;
+    color: #262626;
+}
+
+
+
+.card {
+  margin-left: 7%;
+  display: inline-block;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 0px;
+  background-color: #fff;
+  color: #262626; 
+  padding: 16px;
+}

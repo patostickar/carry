@@ -1,46 +1,59 @@
-import { TextField, Autocomplete } from '@mui/material';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { TextField, Autocomplete } from '@mui/material';
 import {
   setPickupLocation,
   setDroppOffLocation,
-  setPickupTime,
-  setDroppOffTime,
   fetchAllLocations,
-} from '../redux/searchBar.js';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+} from '../../redux/searchBar.js';
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import InputAdornment from '@mui/material/InputAdornment';
-import { useEffect } from 'react';
+import CircularProgress from '@mui/material/CircularProgress';
+import '../styles/SearchBar.modules.css';
 
-// Se puede busar por nombre, ciudad o estado
-export default function SearchBar() {
-  return (
-    <>
-      <Location type='pickUp' />
-      <Location type='dropOff' />
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <BasicDatePicker type='pickUp' />
-        <BasicDatePicker type='dropOff' />
-      </LocalizationProvider>
-    </>
-  );
-}
 // Para poder implementar búsqueda no sólo por nombre, sino también por ciudad, getOptionLabel tiene: name, city, state.
 // Para poder hacer eso, options contiene el array entero de objetos, sino podría ser sólo un array filtrado de locations.name
-
-function Location({ type }) {
+export default function Location({ type }) {
+  const { locations } = useSelector((state) => state.searchBar);
   const dispatch = useDispatch();
+  const [open, setOpen] = useState(false);
+  const loading = open && Object.keys(locations).length === 0;
+
+  useEffect(() => {
+    let active = true;
+
+    if (!loading) {
+      return undefined;
+    }
+
+    (async () => {
+      if (active) {
+        dispatch(fetchAllLocations());
+
+      }
+    })();
+
+    return () => {
+      active = false;
+    };
+  }, [loading]);
+
+  // useEffect(() => {
+  //   if (!open) {
+  //     setOptions([]);
+  //   }
+  // }, [open]);
+
+  // useEffect(() => {
+  //   dispatch(fetchAllLocations());
+  // }, [dispatch]);
 
   // const pickup =
   //   type === 'pickUp'
   //     ? useSelector((state) => state.searchBar.pickup_location)
   //     : useSelector((state) => state.searchBar.dropoff_location);
-
-  const { locations } = useSelector((state) => state.searchBar);
 
   function handleDispatch(newValue) {
     type === 'pickUp'
@@ -48,14 +61,19 @@ function Location({ type }) {
       : dispatch(setDroppOffLocation(newValue?.name || null));
   }
 
-  useEffect(() => {
-    dispatch(fetchAllLocations());
-  }, [dispatch]);
-
   return (
     <Autocomplete
+      className='headerSearchInput'
       id='pickup_location'
       sx={{ width: 300 }}
+      open={open}
+      onOpen={() => {
+        setOpen(true);
+      }}
+      onClose={() => {
+        setOpen(false);
+      }}
+      loading={loading}
       clearOnEscape
       options={locations}
       getOptionLabel={(option) =>
@@ -74,7 +92,14 @@ function Location({ type }) {
                   <DirectionsCarIcon />
                 </InputAdornment>
               ),
-              endAdornment: null,
+              endAdornment: (
+                <>
+                  {loading ? (
+                    <CircularProgress color='inherit' size={20} />
+                  ) : null}
+                  {params.InputProps.endAdornment}
+                </>
+              ),
             }}
           />
         </>
@@ -118,32 +143,5 @@ function Location({ type }) {
         );
       }}
     />
-  );
-}
-
-function BasicDatePicker({ type }) {
-  const dispatch = useDispatch();
-  const date =
-    type === 'pickUp'
-      ? useSelector((state) => state.searchBar.pickup_date)
-      : useSelector((state) => state.searchBar.dropoff_date);
-
-  function handleDispatch(newValue) {
-    type === 'pickUp'
-      ? dispatch(setPickupTime(newValue.getTime() || null))
-      : dispatch(setDroppOffTime(newValue.getTime() || null));
-  }
-
-  return (
-    <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <DatePicker
-        label='Basic example'
-        value={date}
-        onChange={(newValue) => {
-          handleDispatch(newValue);
-        }}
-        renderInput={(params) => <TextField {...params} />}
-      />
-    </LocalizationProvider>
   );
 }
