@@ -17,6 +17,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import Logout from "@mui/icons-material/Logout";
 import { useAuth0 } from "@auth0/auth0-react";
+import { Link } from 'react-router-dom';
 import logo from "../assets/logo.webp";
 
 export const Navbar = () => {
@@ -49,28 +50,23 @@ export const Navbar = () => {
         <Box component="img" sx={{ height: 64 }} alt="Your logo." src={logo} />
         
         <Tabs value={selectedItem} onChange={handleChange} aria-label="wrapped label tabs example">
-        <Tab value={0} label="HOME" />
-        <Tab value={1} label="BOOKING" />
-        <Tab value= {2} label="LOCATIONS" />
-      </Tabs>
+        <Tab value={0} label="INICIO"  />
+        <Tab value={1} label="NOSOTROS" to='/home/about' component={Link}/>
+        </Tabs>
       
       
         
         
       {!isAuthenticated ? (
         
-      <Grid sx={{ marginLeft: "auto" }}>
+      <Grid sx={{ marginLeft: "auto" }} 
+      onClick={loginWithRedirect}
+      variant="contained">
         <Button variant="contained" >
-          REGISTER
+          REGISTRO / INGRESAR
         </Button>
       
-          <Button
-            onClick={loginWithRedirect}
-            variant="contained"
-            sx={{ marginLeft: "10px" }}
-          >
-            LOGIN
-          </Button>
+          
           </Grid>
         ) : (
             <>            
@@ -134,15 +130,12 @@ export const Navbar = () => {
           <MenuItem>
             <Avatar src={user?.picture}/> {user?.name}
           </MenuItem>
-          <MenuItem>
-            <Avatar /> My account
-          </MenuItem>
           <Divider />
           <MenuItem onClick={logout}>
             <ListItemIcon>
               <Logout fontSize="small" />
             </ListItemIcon>
-            Logout
+            Salir
           </MenuItem>
         </Menu>
       </Toolbar>
