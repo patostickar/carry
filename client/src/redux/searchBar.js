@@ -3,8 +3,8 @@ import axios from 'axios';
 const initialState = {
   pickup_location: null,
   dropoff_location: null,
-  pickup_date: null,
-  dropoff_date: null,
+  pickupDate: null,
+  dropoffDate: null,
   locations: [],
 };
 
@@ -29,10 +29,10 @@ export const searchBar = createSlice({
       state.dropoff_location = action.payload;
     },
     setPickupTime: (state, action) => {
-      state.pickup_date = action.payload;
+      state.pickupDate = action.payload;
     },
     setDroppOffTime: (state, action) => {
-      state.dropoff_date = action.payload;
+      state.dropoffDate = action.payload;
     },
     setLocationList: (state, { payload }) => {
       state.locations = payload;
