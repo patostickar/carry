@@ -2,9 +2,9 @@
 const { Car, Location, Cartype } = require("../db");
 
 const getCarsDB = async (id)=>{
-  let cars
+ 
   if(id){return await Car.findOne({where: { id: id }})}
-  else {cars = await Car.findAll()
+  else {const cars = await Car.findAll()
     const carmap = cars.map( car =>{
        return {
           id: car.id,
