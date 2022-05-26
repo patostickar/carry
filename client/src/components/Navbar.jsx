@@ -23,8 +23,8 @@ export const Navbar = () => {
   const [selectedItem, setSelectedItem] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-   
-  const { isAuthenticated, user, loginWithRedirect, logout } =  useAuth0();
+
+  const { isAuthenticated, user, loginWithRedirect, logout } = useAuth0();
 
   const handleClick = (e) => {
     setAnchorEl(e.currentTarget);
@@ -35,51 +35,44 @@ export const Navbar = () => {
   };
 
   const handleChange = (event, newValue) => {
-      console.log(newValue);
+    console.log(newValue);
     setSelectedItem(newValue);
   };
 
- 
-
   return (
-    
     <AppBar position="sticky" color="default">
       <Toolbar>
-      
         <Box component="img" sx={{ height: 64 }} alt="Your logo." src={logo} />
-        
-        <Tabs value={selectedItem} onChange={handleChange} aria-label="wrapped label tabs example">
-        <Tab value={0} label="HOME" />
-        <Tab value={1} label="BOOKING" />
-        <Tab value= {2} label="LOCATIONS" />
-      </Tabs>
-      
-      
-        
-        
-      {!isAuthenticated ? (
-        
-      <Grid sx={{ marginLeft: "auto" }}>
-        <Button variant="contained" >
-          REGISTER
-        </Button>
-      
-          <Button
-            onClick={loginWithRedirect}
-            variant="contained"
-            sx={{ marginLeft: "10px" }}
-          >
-            LOGIN
-          </Button>
+
+        <Tabs
+          value={selectedItem}
+          onChange={handleChange}
+          aria-label="wrapped label tabs example"
+        >
+          <Tab value={0} label="HOME" />
+          <Tab value={1} label="BOOKING" />
+          <Tab value={2} label="LOCATIONS" />
+        </Tabs>
+
+        {!isAuthenticated ? (
+          <Grid sx={{ marginLeft: "auto" }}>
+            <Button variant="contained">REGISTER</Button>
+
+            <Button
+              onClick={loginWithRedirect}
+              variant="contained"
+              sx={{ marginLeft: "10px" }}
+            >
+              LOGIN
+            </Button>
           </Grid>
         ) : (
-            <>            
+          <>
             <Avatar
               alt="Remy Sharp"
               sx={{ marginLeft: "auto" }}
               src={user?.picture}
             />
-            
 
             <Tooltip title="Account settings">
               <MenuIcon
@@ -91,9 +84,7 @@ export const Navbar = () => {
                 aria-expanded={open ? "true" : undefined}
               />
             </Tooltip>
-            </>
-            
-          
+          </>
         )}
 
         <Menu
@@ -132,7 +123,7 @@ export const Navbar = () => {
           anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
         >
           <MenuItem>
-            <Avatar src={user?.picture}/> {user?.name}
+            <Avatar src={user?.picture} /> {user?.name}
           </MenuItem>
           <MenuItem>
             <Avatar /> My account
@@ -149,4 +140,3 @@ export const Navbar = () => {
     </AppBar>
   );
 };
-
