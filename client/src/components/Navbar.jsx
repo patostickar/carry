@@ -20,12 +20,14 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.webp";
 
+
 export const Navbar = () => {
   const [selectedItem, setSelectedItem] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
+  const open = Boolean(anchorEl); 
+  const { isAuthenticated, user, loginWithRedirect, logout, isLoading } =  useAuth0();
+  console.log(isAuthenticated);
 
-  const { isAuthenticated, user, loginWithRedirect, logout } = useAuth0();
 
   const handleClick = (e) => {
     setAnchorEl(e.currentTarget);
@@ -53,14 +55,15 @@ export const Navbar = () => {
           <Tab value={0} label="INICIO" />
           <Tab value={1} label="NOSOTROS" to="/about" component={Link} />
         </Tabs>
+      {!isAuthenticated&&!isLoading? (
+        
+      <Grid sx={{ marginLeft: "auto" }} 
+      onClick={loginWithRedirect}
+      variant="contained">
+        <Button variant="contained" >
+          REGISTRO / INGRESAR
+        </Button>
 
-        {!isAuthenticated ? (
-          <Grid
-            sx={{ marginLeft: "auto" }}
-            onClick={loginWithRedirect}
-            variant="contained"
-          >
-            <Button variant="contained">REGISTRO / INGRESAR</Button>
           </Grid>
         ) : (
           <>
