@@ -11,6 +11,7 @@ import match from 'autosuggest-highlight/match';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import InputAdornment from '@mui/material/InputAdornment';
 import CircularProgress from '@mui/material/CircularProgress';
+import '../styles/SearchBar.modules.css';
 
 // Para poder implementar búsqueda no sólo por nombre, sino también por ciudad, getOptionLabel tiene: name, city, state.
 // Para poder hacer eso, options contiene el array entero de objetos, sino podría ser sólo un array filtrado de locations.name
@@ -61,6 +62,7 @@ export default function Location({ type }) {
 
   return (
     <Autocomplete
+      className='headerSearchInput'
       id='pickup_location'
       sx={{ width: 300 }}
       open={open}

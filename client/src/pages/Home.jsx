@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchBar from '../components/SearcBhar/SearchBar';
+import SearchBar from '../components/SearchBar/SearchBar';
 import { Navbar } from '../components/Navbar';
 import './styles/Home.module.css';
 
