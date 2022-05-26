@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { TextField, Autocomplete } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
+import { TextField, Autocomplete } from '@mui/material';
 import {
   setPickupLocation,
   setDroppOffLocation,
@@ -31,6 +31,7 @@ export default function Location({ type }) {
     (async () => {
       if (active) {
         dispatch(fetchAllLocations());
+
       }
     })();
 

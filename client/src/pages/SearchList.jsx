@@ -1,8 +1,25 @@
-import React from 'react';
+
 import SearchItem from '../components/searchItem/SearchItem';
 import './styles/SearchList.modules.css';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAllcars } from '../redux/cars.js';
+
+
 
 export const SearchList = () => {
+  const { cars } = useSelector((state) => state.cars);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAllcars())
+  }, []);
+  
+
+  
+
+
+
   return (
     <div>
       <div className='searchSummary'>DATE EDIT</div>
