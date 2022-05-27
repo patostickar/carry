@@ -1,64 +1,62 @@
-.searchbar{
-        display: flex;
-        justify-content: center;
-        position: relative;
-        background-color: lightgray;
-    
+.searchbar {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  background-color: lightgray;
 }
-.headerContainer{
-    width: 100%;
-    max-width: 1024px;
-    margin: 20px 0 100px 0 ;
-}
-
-.inputRadioContainer{
-    display: flex;
-    gap: 10px;
+.headerContainer {
+  width: 100%;
+  max-width: 1024px;
+  margin: 20px 0 100px 0;
 }
 
-.headerSearch{
-    height: 80px;
-    background-color: var(--white);
-    border: 3px solid #febb02;
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 10px;
-    border-radius: .5rem;
-    position: absolute;
-    bottom: -40px;
-    width: 100%;
-    max-width: 1024px;
+.inputRadioContainer {
+  display: flex;
+  gap: 10px;
 }
 
-.headerSearchItem{
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.headerSearch {
+  height: 80px;
+  background-color: var(--white);
+  border: 3px solid #febb02;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10px;
+  border-radius: 0.5rem;
+  position: absolute;
+  bottom: -40px;
+  width: 100%;
+  max-width: 1024px;
 }
 
-
-.headerSearchInput{
-    border: none;
-    outline: none;
+.headerSearchItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.headerSearchText{
-    align-content: center;
-    color: #333333;
-    cursor: pointer;
+.headerSearchInput {
+  border: none;
+  outline: none;
 }
 
-.headerSearchDate{
-    position: absolute;
-    top: 80px;
-    z-index: 2;
+.headerSearchText {
+  align-content: center;
+  color: #333333;
+  cursor: pointer;
 }
 
-.headerButton{
-    background-color: var(--bluebtn);
-    color: var(--white);
-    font-weight: 500;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
+.headerSearchDate {
+  position: absolute;
+  top: 80px;
+  z-index: 2;
+}
+
+.headerButton {
+  background-color: var(--bluebtn);
+  color: var(--white);
+  font-weight: 500;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
 }

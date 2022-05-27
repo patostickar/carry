@@ -39,12 +39,14 @@ export default function SearchBar() {
           </div>
         </div>
 
+
         <div className="headerSearch">
           <div className="headerSearchItem">
             <Location type="pickUp" />
           </div>
           <div className="headerSearchItem">
             <Location type="dropOff" />
+
           </div>
           <Calendar />
           <div className="headerSearchItem">

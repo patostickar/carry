@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
+
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import styles from "./styles/Profile.module.css";
@@ -6,13 +7,15 @@ import JSONPretty from "react-json-pretty";
 import "react-json-pretty/themes/monikai.css";
 import { TabTitle } from "./GeneralFuntions/GeneralFuntions";
 
+
 const Profile = () => {
-  TabTitle("Perfil - Carry");
+  TabTitle('Perfil - Carry');
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
   console.log(user);
   return (
     <div>
       {isAuthenticated ? (
+
         <div className={styles.back}>
           <div className={styles.card} data-state="#about">
             <div className={styles.cardHeader}>
@@ -32,6 +35,7 @@ const Profile = () => {
                   <p className={styles.cardDesc}>
                     <JSONPretty data={user} />
                   </p>
+
                 </div>
               </div>
             </div>
