@@ -1,4 +1,3 @@
-import { Navbar } from '../components/Navbar';
 import SearchBar from '../components/SearchBar/SearchBar';
 import PopularLocations from '../components/PopularLocations';
 import FAQ from '../components/FAQ';
@@ -10,11 +9,10 @@ const Home = () => {
   TabTitle('Inicio - Carry');
   return (
     <div>
-      <Navbar />
       <SearchBar />
       <PopularLocations />
-      <Footer />
       <FAQ />
+      <Footer />
     </div>
   );
 };
