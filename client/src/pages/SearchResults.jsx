@@ -16,6 +16,13 @@ export const SearchList = () => {
   const { pickupLocation } = useSelector((state) => state.searchBar);
   const dispatch = useDispatch();
 
+  const categories = [];
+  for (const category in carCategory) {
+    if (carCategory[category]) {
+      categories.push(category);
+    }
+  }
+
   useEffect(() => {
     dispatch(fetchCarTypes(pickupLocation));
   }, []);
@@ -46,8 +53,8 @@ export const SearchList = () => {
                   return fourPlusSeats ? carType.seats >= 4 : true;
                 })
                 .filter((carType) =>
-                  carCategory.length
-                    ? carCategory.includes(carType.class_name.toLowerCase())
+                  categories.length
+                    ? categories.includes(carType.class_name.toLowerCase())
                     : true
                 )
                 .map((carType) => (

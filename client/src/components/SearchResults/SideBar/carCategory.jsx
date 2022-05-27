@@ -1,38 +1,20 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import FormLabel from '@mui/material/FormLabel';
 import FormControl from '@mui/material/FormControl';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import {
-  setCarCategory,
-  clearCarCategory,
-} from '../../../redux/carsResults.js';
+import { setCarCategory } from '../../../redux/carsResults.js';
 
 export default function CarCategory() {
-  const [state, setState] = useState({
-    small: false,
-    medium: false,
-    large: false,
-    premium: false,
-    convertible: false,
-    minivan: false,
-    suv: false,
-  });
-
+  const { small, medium, large, premium, convertible, minivan, suv } =
+    useSelector((state) => state.carsResults.filters.carCategory);
   const dispatch = useDispatch();
 
   const handleChange = (event) => {
     const { checked, name } = event.target;
-    setState({
-      ...state,
-      [name]: checked,
-    });
-    checked ? dispatch(setCarCategory(name)) : dispatch(clearCarCategory(name));
+    dispatch(setCarCategory({ name, checked }));
   };
-
-  const { small, medium, large, premium, convertible, minivan, suv } = state;
 
   return (
     <FormControl sx={{ m: 3 }} component='fieldset' variant='standard'>

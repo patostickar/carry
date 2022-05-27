@@ -7,7 +7,15 @@ const initialState = {
     transmission: null,
     airConditioning: null,
     fourPlusSeats: null,
-    carCategory: [],
+    carCategory: {
+      small: false,
+      medium: false,
+      large: false,
+      premium: false,
+      convertible: false,
+      minivan: false,
+      suv: false,
+    },
   },
 };
 
@@ -28,15 +36,9 @@ export const carsResults = createSlice({
       state.filters.fourPlusSeats = action.payload;
     },
     setCarCategory: (state, action) => {
-      state.filters.carCategory.push(action.payload);
-    },
-    clearCarCategory: (state, action) => {
-      state.filters.carCategory = state.filters.carCategory.filter(
-        (category) => {
-          console.log(category, action.payload);
-          return category !== action.payload;
-        }
-      );
+      const { name, checked } = action.payload;
+      console.log(name, checked);
+      state.filters.carCategory[name] = checked;
     },
     clearAllFilters: (state, _action) => {
       state.filters = {
@@ -65,7 +67,6 @@ export const {
   setCarTypes,
   setTransmission,
   setCarCategory,
-  clearCarCategory,
   setAirConditioning,
   setFourPlusSeats,
 } = carsResults.actions;
