@@ -3,6 +3,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
+import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
+import InputAdornment from '@mui/material/InputAdornment';
 
 import bsas from '../assets/buenosAires.jpg';
 import styles from './styles/PopularLocations.module.css';
@@ -27,6 +29,16 @@ export default function PopLocationCard({ cityName }) {
             </Typography>
             <Typography variant='body2' color='text.secondary'>
               Alquiler de coches en multiples puntos de recogida
+            </Typography>
+            <Typography variant='body2' color='text.secondary'>
+              <DirectionsCarIcon
+                sx={{
+                  mr: '0.5em',
+                  ml: '0.5em',
+                  mt: '1em',
+                }}
+              />
+              Desde $ 4.500 por día
             </Typography>
           </CardContent>
         </CardActionArea>
