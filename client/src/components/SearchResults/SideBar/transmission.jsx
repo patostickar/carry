@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import FormLabel from '@mui/material/FormLabel';
 import FormControl from '@mui/material/FormControl';
 import FormGroup from '@mui/material/FormGroup';
@@ -8,23 +7,16 @@ import Checkbox from '@mui/material/Checkbox';
 import { setTransmission } from '../../../redux/carsResults.js';
 
 export default function Transmission() {
-  const [state, setState] = useState({
-    manual: false,
-    automatic: false,
-  });
+  const { manual, automatic } = useSelector(
+    (state) => state.carsResults.filters.transmission
+  );
 
   const dispatch = useDispatch();
 
-  const handleChange = (event) => {
-    const { checked, name } = event.target;
-    setState({
-      ...state,
-      [name]: checked,
-    });
-    checked ? dispatch(setTransmission(name)) : dispatch(setTransmission(null));
+  const handleTransmission = (event) => {
+    const { name, checked } = event.target;
+    dispatch(setTransmission({ name, checked }));
   };
-
-  const { manual, automatic } = state;
 
   return (
     <FormControl sx={{ m: 3 }} component='fieldset' variant='standard'>
@@ -34,7 +26,7 @@ export default function Transmission() {
           control={
             <Checkbox
               checked={manual}
-              onChange={handleChange}
+              onChange={handleTransmission}
               disabled={automatic}
               name='manual'
             />
@@ -45,7 +37,7 @@ export default function Transmission() {
           control={
             <Checkbox
               checked={automatic}
-              onChange={handleChange}
+              onChange={handleTransmission}
               disabled={manual}
               name='automatic'
             />

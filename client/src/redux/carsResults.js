@@ -4,7 +4,10 @@ import axios from 'axios';
 const initialState = {
   carTypes: [],
   filters: {
-    transmission: null,
+    transmission: {
+      manual: false,
+      automatic: false,
+    },
     airConditioning: false,
     fourPlusSeats: false,
     carCategory: {
@@ -27,7 +30,8 @@ export const carsResults = createSlice({
       state.carTypes = action.payload;
     },
     setTransmission: (state, action) => {
-      state.filters.transmission = action.payload;
+      const { name, checked } = action.payload;
+      state.filters.transmission[name] = checked;
     },
     setAirConditioning: (state, action) => {
       state.filters.airConditioning = action.payload;

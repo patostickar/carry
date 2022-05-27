@@ -16,6 +16,13 @@ function ListResult() {
       categories.push(category);
     }
   }
+
+  const transmissionOptions = [];
+  for (const option in transmission) {
+    if (transmission[option]) {
+      transmissionOptions.push(option);
+    }
+  }
   return (
     <div className='listResult'>
       <Steps />
@@ -26,8 +33,8 @@ function ListResult() {
       <AnimatePresence>
         {carTypes
           .filter((carType) =>
-            transmission
-              ? carType.transmission.toLowerCase() === transmission
+            transmissionOptions.length
+              ? transmissionOptions.includes(carType.transmission.toLowerCase())
               : true
           )
           .filter((carType) =>
