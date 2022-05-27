@@ -10,7 +10,7 @@ import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import InputAdornment from '@mui/material/InputAdornment';
-import CircularProgress from '@mui/material/CircularProgress';
+
 import '../styles/SearchBar.modules.css';
 
 // Para poder implementar búsqueda no sólo por nombre, sino también por ciudad, getOptionLabel tiene: name, city, state.
@@ -25,15 +25,8 @@ export default function Location({ type }) {
   useEffect(() => {
     let active = true;
 
-    if (!loading) {
-      return undefined;
-    }
-
-    (async () => {
-      if (active) {
-        dispatch(fetchAllLocations());
-      }
-    })();
+    dispatch(fetchAllLocations());
+  
 
     return () => {
       active = false;
@@ -50,13 +43,13 @@ export default function Location({ type }) {
   //   dispatch(fetchAllLocations());
   // }, [dispatch]);
 
-  // const pickup =
-  //   type === 'pickUp'
-  //     ? useSelector((state) => state.searchBar.pickup_location)
-  //     : useSelector((state) => state.searchBar.dropoff_location);
+  const pickup =
+    type === 'pickUp'
+      ? useSelector((state) => state.searchBar.pickup_location)
+      : useSelector((state) => state.searchBar.dropoff_location);
 
   function handleDispatch(newValue) {
-    type === 'Pick-up'
+    type === 'pickUp'
       ? dispatch(setPickupLocation(newValue?.id || null))
       : dispatch(setDroppOffLocation(newValue?.id || null));
   }
@@ -73,14 +66,16 @@ export default function Location({ type }) {
       onClose={() => {
         setOpen(false);
       }}
-      loading={loading}
       clearOnEscape
       options={locations}
       getOptionLabel={(option) =>
-        `${option.name} ${option.city} ${option.state_name}`
+        `${option.name}, ${option.city}, ${option.state_name}`
       }
       renderInput={(params) => (
         <>
+        <div style={{display:"none"}}>
+        {params.inputProps.value = params.inputProps.value.split(",")[0]}
+        </div>
           <TextField
             {...params}
             label={`${type}`}
@@ -91,15 +86,7 @@ export default function Location({ type }) {
                 <InputAdornment position='start'>
                   <DirectionsCarIcon />
                 </InputAdornment>
-              ),
-              endAdornment: (
-                <>
-                  {loading ? (
-                    <CircularProgress color='inherit' size={20} />
-                  ) : null}
-                  {params.InputProps.endAdornment}
-                </>
-              ),
+              )
             }}
           />
         </>
@@ -113,11 +100,11 @@ export default function Location({ type }) {
       // Por algún motivo, si bien la comparación arroja true, en la página aparece undefined undefined undefined
       // De todos modos, quitando value e isOptionEqualToValue, hace que funcione todo bien
 
-      // value={pickup}
-      // isOptionEqualToValue={(option, value) => {
-      //   value = new RegExp(value);
-      //   return value.test(option.name);
-      // }}
+      value={pickup}
+      isOptionEqualToValue={(option, value) => {
+        value = new RegExp(value);
+        return value.test(option.name);
+      }}
 
       // En el dropdown aparecen name, ciudad y state, pero en renderOption se ocultan.
       // Si comento esta parte podría verlo
