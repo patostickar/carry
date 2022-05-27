@@ -1,4 +1,22 @@
-.container div  {
+.cardsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.container {
+  padding-top: 3.5em;
+}
+.card {
+  padding: 1em;
+}
+
+h1 {
+  font-size: 2em;
+  color: #262626;
+  text-align: center;
+}
+
+/* .container div  {
     padding-top: 5%;
     width: fit-content;
     
@@ -10,8 +28,7 @@
     margin-left: 14%;
     font-size: 23px;
     color: #262626;
-}
-
+  }
 
 
 .card {
@@ -23,4 +40,4 @@
   background-color: #fff;
   color: #262626; 
   padding: 16px;
-}
+} */

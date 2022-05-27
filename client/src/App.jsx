@@ -1,17 +1,10 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Booking } from './components/Booking.jsx';
+import { Navbar } from './components/Navbar';
 import Home from './pages/Home';
-
-import SearchResults from './pages/SearchResults';
+import About from './components/About.jsx';
 import Profile from './components/Profile.jsx';
-// import { Navbar } from './components/Navbar';
-import About    from './components/About'
-
-
-
-
-
-
+import SearchResults from './pages/SearchResults';
 import './App.css';
 
 function App() {
@@ -21,7 +14,6 @@ function App() {
         <Navbar />
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/about' element={<About />} />
           <Route path='/home' element={<Home />} />
           <Route path='/about' element={<About />} />
           <Route path='/booking' element={<Booking />} />
