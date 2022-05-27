@@ -1,14 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from "react";
-import { useAuth0 } from "@auth0/auth0-react";
-import styles from "./styles/Profile.module.css";
-import JSONPretty from "react-json-pretty";
-import "react-json-pretty/themes/monikai.css";
-import { Navbar } from "./Navbar";
-import { TabTitle } from "./GeneralFuntions/GeneralFuntions";
+import React from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
+import styles from './styles/Profile.module.css';
+import JSONPretty from 'react-json-pretty';
+import 'react-json-pretty/themes/monikai.css';
+import { Navbar } from './Navbar';
+import { TabTitle } from './GeneralFuntions/GeneralFuntions';
 
 const Profile = () => {
-  TabTitle("Perfil - Carry");
+  TabTitle('Perfil - Carry');
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
   console.log(user);
   // return <pre>{JSON.stringify(user, null, 2)}</pre>;
@@ -18,7 +18,7 @@ const Profile = () => {
         <>
           <Navbar />
           <div className={styles.back}>
-            <div className={styles.card} data-state="#about">
+            <div className={styles.card} data-state='#about'>
               <div className={styles.cardHeader}>
                 <div className={styles.cardCover}></div>
                 <img
@@ -32,7 +32,7 @@ const Profile = () => {
               <div className={styles.cardMain}>
                 <div
                   className={(styles.cardSection, styles.isActive)}
-                  id="about"
+                  id='about'
                 >
                   <div className={styles.cardContent}>
                     <div className={styles.cardSubtitle}>Data</div>
