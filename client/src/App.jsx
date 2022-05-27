@@ -2,9 +2,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Booking } from './components/Booking.jsx';
 import { Navbar } from './components/Navbar';
 import Home from './pages/Home';
-import About from './components/About';
-import SearchResults from './pages/SearchResults';
+import { Navbar } from './components/Navbar';
+import About from './components/About.jsx';
 import Profile from './components/Profile.jsx';
+import SearchResults from './pages/SearchResults';
 import './App.css';
 
 function App() {
