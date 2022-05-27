@@ -5,6 +5,9 @@ const initialState = {
   carTypes: [],
   filters: {
     transmission: null,
+    airConditioning: null,
+    fourPlusSeats: null,
+    carCategory: [],
   },
 };
 
@@ -17,6 +20,31 @@ export const carsResults = createSlice({
     },
     setTransmission: (state, action) => {
       state.filters.transmission = action.payload;
+    },
+    setAirConditioning: (state, action) => {
+      state.filters.airConditioning = action.payload;
+    },
+    setFourPlusSeats: (state, action) => {
+      state.filters.fourPlusSeats = action.payload;
+    },
+    setCarCategory: (state, action) => {
+      state.filters.carCategory.push(action.payload);
+    },
+    clearCarCategory: (state, action) => {
+      state.filters.carCategory = state.filters.carCategory.filter(
+        (category) => {
+          console.log(category, action.payload);
+          return category !== action.payload;
+        }
+      );
+    },
+    clearAllFilters: (state, _action) => {
+      state.filters = {
+        transmission: null,
+        airConditioning: null,
+        fourPlusSeats: null,
+        carCategory: [],
+      };
     },
   },
 });
@@ -33,6 +61,13 @@ export const fetchCarTypes = (pickupLocation) => async (dispatch) => {
   }
 };
 
-export const { setCarTypes, setTransmission } = carsResults.actions;
+export const {
+  setCarTypes,
+  setTransmission,
+  setCarCategory,
+  clearCarCategory,
+  setAirConditioning,
+  setFourPlusSeats,
+} = carsResults.actions;
 
 export default carsResults.reducer;
