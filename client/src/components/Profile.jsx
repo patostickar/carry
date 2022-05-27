@@ -1,8 +1,10 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import styles from './styles/Profile.module.css';
 import JSONPretty from 'react-json-pretty';
 import 'react-json-pretty/themes/monikai.css';
+import { Navbar } from './Navbar';
 import { TabTitle } from './GeneralFuntions/GeneralFuntions';
 
 const Profile = () => {
@@ -14,6 +16,7 @@ const Profile = () => {
     <div>
       {isAuthenticated ? (
         <>
+          <Navbar />
           <div className={styles.back}>
             <div className={styles.card} data-state='#about'>
               <div className={styles.cardHeader}>
@@ -44,6 +47,7 @@ const Profile = () => {
         </>
       ) : (
         <>
+          <Navbar />
           <div className={styles.container}>
             <h1>Bienvenido!</h1>
             <p>Registrate para poder acceder a tu perfil</p>

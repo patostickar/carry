@@ -9,6 +9,7 @@ import Patricio from '../assets/Patricio.jpg';
 import styles from './styles/About.module.css';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import { Navbar } from '../components/NavBar';
 import { TabTitle } from '../components/GeneralFuntions/GeneralFuntions';
 
 function About() {
@@ -16,6 +17,7 @@ function About() {
 
   return (
     <div>
+      <Navbar />
       <div className={styles.main}>
         <div className={styles.profile_card}>
           <div className={styles.img}>

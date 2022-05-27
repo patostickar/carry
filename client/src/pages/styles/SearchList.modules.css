@@ -15,7 +15,6 @@
   gap: 20px;
 }
 
-
 .googleMap {
   flex: 1;
   height: 150px;
@@ -59,12 +58,11 @@
   font-weight: bold;
   color: #333333;
 }
-.inputItem{
+.inputItem {
   display: flex;
   gap: 5px;
 }
 .inputItem > input {
-  
 }
 .inputItem > span {
   font-size: 14px;
@@ -75,26 +73,24 @@
   flex: 3;
 }
 
-
-
-.carCategoryFilter>ul{
+.carTypeTopFilter > ul {
   display: flex;
   flex-direction: row;
   gap: 10px;
   text-decoration: none;
+  list-style: none;
 }
 
-.categoryMiniCard{
-  background-color: #FFFFFF;
+.categoryMiniCard {
+  background-color: #ffffff;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   width: 60px;
   height: auto;
   border-radius: 5px;
-
 }
-.categoryMiniCard>img{
+.categoryMiniCard > img {
   width: 100%;
   object-fit: cover;
 }

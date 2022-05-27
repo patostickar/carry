@@ -2,21 +2,9 @@
 const { Car, Location, Cartype } = require("../db");
 
 const getCarsDB = async (id)=>{
-  let cars
   if(id){return await Car.findOne({where: { id: id },include: [Cartype,Location]})}
-  else {cars = await Car.findAll({ include: [Cartype,Location]})
-    console.log(cars)
+  else {return  await Car.findAll({ include: [Cartype,Location]})
 
-    const carmap = cars.map( car =>{
-       return {
-          id: car.id,
-          pickup_date:car.pickup_date,
-          return_date: car.return_date,
-          location: car.location,
-          cartype : car.cartype
-       }
-    })
-    return carmap
   }
  
    }
