@@ -1,10 +1,9 @@
-const { getCarsDB, DBcreateCar, updateDate, updateCarLocation } = require("../services/getCars");
+const { getCarsDB, DBcreateCar, updateDate, updateCarLocation } = require("../services/CarService");
 
 const getCars = async (req, res, next) => {
   const {id} = req.params
    try {
     const data = await getCarsDB(id);
-    console.log(data)
     if(!id){ data.length ? res.send(data):res.send({msg:"no se encontraron autos"})}
     else{data ? res.send(data):res.send({msg:"no se encontraron autos"})}
    } catch (error) {

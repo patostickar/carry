@@ -21,6 +21,7 @@ export default function Location({ type }) {
   const [open, setOpen] = useState(false);
   const loading = open && Object.keys(locations).length === 0;
 
+
   useEffect(() => {
     let active = true;
 

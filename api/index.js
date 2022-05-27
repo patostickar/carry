@@ -1,7 +1,7 @@
 const server = require('./src/app.js');
 const fs = require('fs');
 const { conn, Location, Customer, Cartype } = require('./src/db.js');
-const { DBcreateCar } = require('./src/services/getCars.js');
+const { DBcreateCar } = require('./src/services/CarService');
 
 const { PORT } = process.env;
 
