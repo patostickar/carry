@@ -6,13 +6,17 @@ const { Cartype, Car } = require('../../db.js');
 router.get('/', getType);
 router.get('/count/:locationId', async (req, res, next) => {
   const { locationId } = req.params;
-  const count = await Car.count({
-    attributes: ['cartypeId'],
-    where: { locationId },
-    group: 'cartypeId',
-  });
+  try {
+    const count = await Car.count({
+      attributes: ['cartypeId'],
+      where: { locationId },
+      group: 'cartypeId',
+    });
 
-  res.send(count);
+    res.send(count);
+  } catch (err) {
+    console.log(err);
+  }
 });
 router.get('/:id', getType);
 

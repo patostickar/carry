@@ -10,7 +10,6 @@ export const SearchList = () => {
   const { carTypes, filters } = useSelector((state) => state.carsResults);
   const { pickupLocation } = useSelector((state) => state.searchBar);
 
-  console.log(pickupLocation);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -28,7 +27,17 @@ export const SearchList = () => {
               <h1>Bogotá: 65 cars available</h1>
             </div>
             <CarTypeTopFilter />
-            <CarDetailCard />
+            {carTypes
+              .filter((carType) =>
+                filters.length
+                  ? filters.every((filter) =>
+                      carType[filter.key].includes(filter.value)
+                    )
+                  : true
+              )
+              .map((carType) => (
+                <CarDetailCard cartype={carType} key={carType.id} />
+              ))}
           </div>
         </div>
       </div>

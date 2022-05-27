@@ -1,15 +1,22 @@
 import React from 'react';
 import '../styles/SearchItem.modules.css';
 
-export const carDetailCard = () => {
+export const carDetailCard = (props) => {
+  const {
+    make,
+    model,
+    transmission,
+    mpg,
+    img,
+    seats,
+    large_suitcase: largeSuitcase,
+    small_suitcase: smallSuitcase,
+  } = props.cartype;
+
   return (
     <div className='searchItem'>
       <div className='imageContainer'>
-        <img
-          src='https://cdn2.rcstatic.com/images/car_images/web/chevrolet/spark_lrg.jpg'
-          alt=''
-          className='siImg'
-        />
+        <img src={img} alt='' className='siImg' />
       </div>
 
       <div className='siDesc'>
@@ -18,16 +25,16 @@ export const carDetailCard = () => {
         </div>
         <div className='siTitle'>
           <h3>
-            Chevrolet Spark <span>or similar small car</span>{' '}
+            {`${make} ${model}`} <span>or similar small car</span>{' '}
           </h3>
         </div>
 
         <div className='siCarDesc'>
-          <span className=''>5 Seats</span>
-          <span className=''>Manual</span>
-          <span className=''>1 Large bag</span>
-          <span className=''>1 Small bag</span>
-          <span className=''>Unlimited Mileage</span>
+          <span className=''>{seats} Seats</span>
+          <span className=''>{transmission}</span>
+          <span className=''>{largeSuitcase} Large bag</span>
+          <span className=''>{smallSuitcase} Small bag</span>
+          <span className=''>{mpg} mpg</span>
         </div>
 
         <div className='siLocation'>
