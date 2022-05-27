@@ -4,7 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
-import bsas from '../assets/BuenosAires.webp';
+import bsas from '../assets/buenosAires.jpg';
 import styles from './styles/PopularLocations.module.css';
 
 // import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
