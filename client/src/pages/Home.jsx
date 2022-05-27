@@ -4,6 +4,7 @@ import { Navbar } from "../components/Navbar";
 import "./styles/Home.module.css";
 import PopularLocations from "../components/PopularLocations";
 import { TabTitle } from "../components/GeneralFuntions/GeneralFuntions";
+import Testimonials from "../components/Testimonials";
 
 const Home = () => {
   TabTitle("Inicio - Carry");
@@ -12,6 +13,7 @@ const Home = () => {
       <Navbar />
       <SearchBar />
       <PopularLocations />
+      <Testimonials />
       {/*
     navbar
 
