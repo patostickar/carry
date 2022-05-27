@@ -1,7 +1,6 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import searchBarReducer from './searchBar';
-import carsReducer from './cars';
-
+import carsResultsReducer from './carsResults';
 
 // import {
 //   persistStore,
@@ -21,7 +20,10 @@ import carsReducer from './cars';
 //   storage,
 // };
 
-const rootReducer = combineReducers({ searchBar: searchBarReducer,cars: carsReducer});
+const rootReducer = combineReducers({
+  searchBar: searchBarReducer,
+  carsResults: carsResultsReducer,
+});
 
 const store = configureStore({
   reducer: rootReducer,

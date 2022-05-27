@@ -31,7 +31,6 @@ export default function Location({ type }) {
     (async () => {
       if (active) {
         dispatch(fetchAllLocations());
-
       }
     })();
 
@@ -56,9 +55,9 @@ export default function Location({ type }) {
   //     : useSelector((state) => state.searchBar.dropoff_location);
 
   function handleDispatch(newValue) {
-    type === 'pickUp'
-      ? dispatch(setPickupLocation(newValue?.name || null))
-      : dispatch(setDroppOffLocation(newValue?.name || null));
+    type === 'Pick-up'
+      ? dispatch(setPickupLocation(newValue?.id || null))
+      : dispatch(setDroppOffLocation(newValue?.id || null));
   }
 
   return (
@@ -83,7 +82,7 @@ export default function Location({ type }) {
         <>
           <TextField
             {...params}
-            label='Pick-up location'
+            label={`${type}`}
             margin='normal'
             InputProps={{
               ...params.InputProps,
