@@ -10,7 +10,11 @@ import styles from "./styles/About.module.css";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { Navbar } from "../components/NavBar";
+import { TabTitle } from "../components/GeneralFuntions/GeneralFuntions";
+
 function About() {
+  TabTitle("Nosotros - Carry");
+
   return (
     <div>
       <Navbar />

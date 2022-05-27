@@ -5,8 +5,10 @@ import styles from "./styles/Profile.module.css";
 import JSONPretty from "react-json-pretty";
 import "react-json-pretty/themes/monikai.css";
 import { Navbar } from "./Navbar";
+import { TabTitle } from "./GeneralFuntions/GeneralFuntions";
 
 const Profile = () => {
+  TabTitle("Perfil - Carry");
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
   console.log(user);
   // return <pre>{JSON.stringify(user, null, 2)}</pre>;
