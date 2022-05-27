@@ -5,8 +5,8 @@ const initialState = {
   carTypes: [],
   filters: {
     transmission: null,
-    airConditioning: null,
-    fourPlusSeats: null,
+    airConditioning: false,
+    fourPlusSeats: false,
     carCategory: {
       small: false,
       medium: false,
@@ -40,20 +40,7 @@ export const carsResults = createSlice({
       state.filters.carCategory[name] = checked;
     },
     clearAllFilters: (state, _action) => {
-      state.filters = {
-        transmission: null,
-        airConditioning: null,
-        fourPlusSeats: null,
-        carCategory: {
-          small: false,
-          medium: false,
-          large: false,
-          premium: false,
-          convertible: false,
-          minivan: false,
-          suv: false,
-        },
-      };
+      state.filters = initialState.filters;
     },
   },
 });

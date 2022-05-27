@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import FormLabel from '@mui/material/FormLabel';
 import FormControl from '@mui/material/FormControl';
 import FormGroup from '@mui/material/FormGroup';
@@ -11,26 +10,37 @@ import {
 } from '../../../redux/carsResults.js';
 
 export default function CarSpecs() {
-  const [aircon, setAircon] = useState(false);
-  const [seats, setSeats] = useState(false);
+  const { airConditioning, fourPlusSeats } = useSelector(
+    (state) => state.carsResults.filters
+  );
 
   const dispatch = useDispatch();
 
   const handleAircon = (event) => {
     const { checked } = event.target;
-    setAircon(checked);
-    checked
-      ? dispatch(setAirConditioning(checked))
-      : dispatch(setAirConditioning(null));
+    dispatch(setAirConditioning(checked));
   };
 
-  const handleDoors = (event) => {
+  const handleSeats = (event) => {
     const { checked } = event.target;
-    setSeats(checked);
-    checked
-      ? dispatch(setFourPlusSeats(checked))
-      : dispatch(setFourPlusSeats(null));
+    dispatch(setFourPlusSeats(checked));
   };
+
+  // const handleAircon = (event) => {
+  //   const { checked } = event.target;
+  //   setAircon(checked);
+  //   checked
+  //     ? dispatch(setAirConditioning(checked))
+  //     : dispatch(setAirConditioning(null));
+  // };
+
+  // const handleDoors = (event) => {
+  //   const { checked } = event.target;
+  //   setSeats(checked);
+  //   checked
+  //     ? dispatch(setFourPlusSeats(checked))
+  //     : dispatch(setFourPlusSeats(null));
+  // };
 
   return (
     <FormControl sx={{ m: 3 }} component='fieldset' variant='standard'>
@@ -39,10 +49,10 @@ export default function CarSpecs() {
         <FormControlLabel
           control={
             <Checkbox
-              checked={aircon}
+              checked={airConditioning}
               onChange={handleAircon}
               disabled={false}
-              name='aircon'
+              name='airConditioning'
             />
           }
           label='Air Conditioning'
@@ -50,13 +60,13 @@ export default function CarSpecs() {
         <FormControlLabel
           control={
             <Checkbox
-              checked={seats}
-              onChange={handleDoors}
+              checked={fourPlusSeats}
+              onChange={handleSeats}
               disabled={false}
-              name='seats'
+              name='fourPlusSeats'
             />
           }
-          label='4+ seats'
+          label='4+ fourPlusSeats'
         />
       </FormGroup>
     </FormControl>
