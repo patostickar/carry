@@ -21,7 +21,6 @@ export default function Location({ type }) {
   const [open, setOpen] = useState(false);
   const loading = open && Object.keys(locations).length === 0;
 
-
   useEffect(() => {
     let active = true;
 
@@ -50,13 +49,13 @@ export default function Location({ type }) {
   //   dispatch(fetchAllLocations());
   // }, [dispatch]);
 
-  // const pickup =
-  //   type === 'pickUp'
-  //     ? useSelector((state) => state.searchBar.pickup_location)
-  //     : useSelector((state) => state.searchBar.dropoff_location);
+  const pickup =
+    type === 'pickUp'
+      ? useSelector((state) => state.searchBar.pickup_location)
+      : useSelector((state) => state.searchBar.dropoff_location);
 
   function handleDispatch(newValue) {
-    type === 'Pick-up'
+    type === 'pickUp'
       ? dispatch(setPickupLocation(newValue?.id || null))
       : dispatch(setDroppOffLocation(newValue?.id || null));
   }
@@ -113,35 +112,34 @@ export default function Location({ type }) {
       // Por algún motivo, si bien la comparación arroja true, en la página aparece undefined undefined undefined
       // De todos modos, quitando value e isOptionEqualToValue, hace que funcione todo bien
 
-      // value={pickup}
-      // isOptionEqualToValue={(option, value) => {
-      //   value = new RegExp(value);
-      //   return value.test(option.name);
-      // }}
-
+      value={pickup}
+      isOptionEqualToValue={(option, value) => {
+        value = new RegExp(value);
+        return value.test(option.name);
+      }}
       // En el dropdown aparecen name, ciudad y state, pero en renderOption se ocultan.
       // Si comento esta parte podría verlo
-      renderOption={(props, option, { inputValue }) => {
-        const matches = match(option.name, inputValue);
-        const parts = parse(option.name, matches);
+      // renderOption={(props, option, { inputValue }) => {
+      //   const matches = match(option.name, inputValue);
+      //   const parts = parse(option.name, matches);
 
-        return (
-          <li {...props}>
-            <div>
-              {parts.map((part, index) => (
-                <span
-                  key={index}
-                  style={{
-                    fontWeight: part.highlight ? 700 : 400,
-                  }}
-                >
-                  {part.text}
-                </span>
-              ))}
-            </div>
-          </li>
-        );
-      }}
+      //   return (
+      //     <li {...props}>
+      //       <div>
+      //         {parts.map((part, index) => (
+      //           <span
+      //             key={index}
+      //             style={{
+      //               fontWeight: part.highlight ? 700 : 400,
+      //             }}
+      //           >
+      //             {part.text}
+      //           </span>
+      //         ))}
+      //       </div>
+      //     </li>
+      //   );
+      // }}
     />
   );
 }
