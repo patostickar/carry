@@ -9,7 +9,6 @@ import Patricio from "../assets/Patricio.jpg";
 import styles from "./styles/About.module.css";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import { Navbar } from "../components/NavBar";
 import { TabTitle } from "../components/GeneralFuntions/GeneralFuntions";
 
 function About() {
@@ -17,7 +16,7 @@ function About() {
 
   return (
     <div>
-      <Navbar />
+      <h1 className={styles.team}>#TeamCarry</h1>
       <div className={styles.main}>
         <div className={styles.profile_card}>
           <div className={styles.img}>
@@ -54,7 +53,7 @@ function About() {
             <p>Frontend Developer</p>
             <div className={styles.social_links}>
               <a
-                href="https://www.linkedin.com/in/byroncorrea/"
+                href="https://www.linkedin.com/in/pstickar/"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -80,7 +79,7 @@ function About() {
             <p>Frontend Developer</p>
             <div className={styles.social_links}>
               <a
-                href="https://www.linkedin.com/in/byroncorrea/"
+                href="https://www.linkedin.com/in/cesargaleanotorres/"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -184,7 +183,7 @@ function About() {
             <p>Frontend Developer</p>
             <div className={styles.social_links}>
               <a
-                href="https://www.linkedin.com/in/byroncorrea/"
+                href="https://www.linkedin.com/in/samuel-ricardo-centeno-21a4aa214"
                 target="_blank"
                 rel="noreferrer"
               >
