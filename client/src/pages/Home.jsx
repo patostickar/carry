@@ -1,8 +1,9 @@
 import React from 'react';
 import SearchBar from '../components/SearchBar/SearchBar';
-import './styles/Home.module.css';
 import PopularLocations from '../components/PopularLocations';
+import FAQ from '../components/FAQ';
 import { TabTitle } from '../components/GeneralFuntions/GeneralFuntions';
+import './styles/Home.module.css';
 
 const Home = () => {
   TabTitle('Inicio - Carry');
@@ -10,6 +11,7 @@ const Home = () => {
     <div>
       <SearchBar />
       <PopularLocations />
+      <FAQ />
     </div>
   );
 };

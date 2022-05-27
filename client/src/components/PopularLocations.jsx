@@ -7,9 +7,12 @@ export default function PopularLocations() {
     <div className={styles.container}>
       <h1>Popular locations</h1>
       <div className={styles.cardsContainer}>
-        <PopLocationCard />
-        <PopLocationCard />
-        <PopLocationCard />
+        <PopLocationCard cityName={'Buenos Aires'} />
+        <PopLocationCard cityName={'Buenos Aires'} />
+        <PopLocationCard cityName={'Buenos Aires'} />
+        <PopLocationCard cityName={'Buenos Aires'} />
+        <PopLocationCard cityName={'Buenos Aires'} />
+        <PopLocationCard cityName={'Buenos Aires'} />
       </div>
     </div>
   );

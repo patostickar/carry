@@ -1,16 +1,16 @@
-import React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
+
 import bsas from '../assets/buenosAires.jpg';
 import styles from './styles/PopularLocations.module.css';
 
 // import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 // import styles from '../components/styles/PopLocationCard.module.css';
 
-export default function PopLocationCard() {
+export default function PopLocationCard({ cityName }) {
   return (
     <div className={styles.card}>
       <Card sx={{ maxWidth: 345 }}>
@@ -23,7 +23,7 @@ export default function PopLocationCard() {
           />
           <CardContent>
             <Typography gutterBottom variant='h5' component='div'>
-              Buenos aires
+              {cityName}
             </Typography>
             <Typography variant='body2' color='text.secondary'>
               Alquiler de coches en multiples puntos de recogida
