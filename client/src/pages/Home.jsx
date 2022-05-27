@@ -5,6 +5,7 @@ import { Footer } from '../components/Footer.jsx';
 import { TabTitle } from '../components/GeneralFuntions/GeneralFuntions';
 import './styles/Home.module.css';
 
+
 const Home = () => {
   TabTitle('Inicio - Carry');
   return (

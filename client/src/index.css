@@ -1,10 +1,31 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 :root {
+  /*========== Colors ==========*/
   --blue: #003580;
   --white: #ffffff;
   --bluebtn: #0071c2;
   --dkblue: #00224f;
   --green: #008009;
+
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --first-hue: 224;
+  --sat: 89%;
+  --lig: 60%;
+  --second-hue: 219;
+
+  --first-color: hsl(var(--first-hue), var(--sat), var(--lig));
+  --container-color: hsl(var(--second-hue), 32%, 12%);
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --smaller-font-size: 0.75rem;
+  --text-color-light: hsl(var(--second-hue), 4%, 55%);
+  --h2-font-size: 1.25rem;
+  --normal-font-size: 0.938rem;
+  --small-font-size: 0.813rem;
+
+  /*========== Font weight ==========*/
+  --font-medium: 500;
 }
