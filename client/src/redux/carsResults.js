@@ -37,7 +37,6 @@ export const carsResults = createSlice({
     },
     setCarCategory: (state, action) => {
       const { name, checked } = action.payload;
-      console.log(name, checked);
       state.filters.carCategory[name] = checked;
     },
     clearAllFilters: (state, _action) => {
@@ -45,7 +44,15 @@ export const carsResults = createSlice({
         transmission: null,
         airConditioning: null,
         fourPlusSeats: null,
-        carCategory: [],
+        carCategory: {
+          small: false,
+          medium: false,
+          large: false,
+          premium: false,
+          convertible: false,
+          minivan: false,
+          suv: false,
+        },
       };
     },
   },
@@ -69,6 +76,7 @@ export const {
   setCarCategory,
   setAirConditioning,
   setFourPlusSeats,
+  clearAllFilters,
 } = carsResults.actions;
 
 export default carsResults.reducer;
