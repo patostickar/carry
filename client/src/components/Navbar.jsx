@@ -18,14 +18,15 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Logout from "@mui/icons-material/Logout";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
-import logo from "../assets/logo.webp";
+import logo from "../assets/logo.png";
 
 export const Navbar = () => {
   const [selectedItem, setSelectedItem] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-
-  const { isAuthenticated, user, loginWithRedirect, logout } = useAuth0();
+  const { isAuthenticated, user, loginWithRedirect, logout, isLoading } =
+    useAuth0();
+  console.log(isAuthenticated);
 
   const handleClick = (e) => {
     setAnchorEl(e.currentTarget);
@@ -43,18 +44,24 @@ export const Navbar = () => {
   return (
     <AppBar position="sticky" color="default">
       <Toolbar>
-        <Box component="img" sx={{ height: 64 }} alt="Your logo." src={logo} />
+        <Link to="/home">
+          <Box
+            component="img"
+            sx={{ height: 64 }}
+            alt="Your logo."
+            src={logo}
+          />
+        </Link>
 
         <Tabs
           value={selectedItem}
           onChange={handleChange}
           aria-label="wrapped label tabs example"
         >
-          <Tab value={0} label="INICIO" />
+          <Tab value={0} label="INICIO" to="/home" component={Link} />
           <Tab value={1} label="NOSOTROS" to="/about" component={Link} />
         </Tabs>
-
-        {!isAuthenticated ? (
+        {!isAuthenticated && !isLoading ? (
           <Grid
             sx={{ marginLeft: "auto" }}
             onClick={loginWithRedirect}
