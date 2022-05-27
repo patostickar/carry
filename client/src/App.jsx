@@ -4,7 +4,8 @@ import { Booking } from './components/Booking.jsx';
 import Home from './pages/Home';
 import SearchResults from './pages/SearchResults';
 import Profile from './components/Profile.jsx';
-import { Navbar } from './components/Navbar';
+// import { Navbar } from './components/Navbar';
+import About    from './components/About'
 import './App.css';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Routes>
 
           <Route path='/' element={<Home />} />
+          <Route path='/about' element={<About />} />
           <Route path='/home' element={<Home />} />
           <Route path='/booking' element={<Booking />} />
           <Route path='/profile' element={<Profile />} />
