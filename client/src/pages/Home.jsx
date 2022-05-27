@@ -1,6 +1,7 @@
 
 
 
+
 import React from "react";
 import SearchBar from "../components/SearchBar/SearchBar";
 import { Navbar } from "../components/Navbar";
@@ -10,8 +11,9 @@ import { TabTitle } from "../components/GeneralFuntions/GeneralFuntions";
 // import Footer from "../components/Footer";
 
 
+
 const Home = () => {
-  TabTitle("Inicio - Carry");
+  TabTitle('Inicio - Carry');
   return (
     <div>
       <Navbar />
