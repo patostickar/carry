@@ -31,7 +31,6 @@ export default function Location({ type }) {
     (async () => {
       if (active) {
         dispatch(fetchAllLocations());
-
       }
     })();
 
@@ -57,8 +56,8 @@ export default function Location({ type }) {
 
   function handleDispatch(newValue) {
     type === 'pickUp'
-      ? dispatch(setPickupLocation(newValue?.name || null))
-      : dispatch(setDroppOffLocation(newValue?.name || null));
+      ? dispatch(setPickupLocation(newValue?.id || null))
+      : dispatch(setDroppOffLocation(newValue?.id || null));
   }
 
   return (

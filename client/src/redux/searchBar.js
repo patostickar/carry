@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 const initialState = {
-  pickup_location: null,
-  dropoff_location: null,
+  pickupLocation: null,
+  dropoffLocation: null,
   pickupDate: null,
   dropoffDate: null,
   locations: [],
@@ -23,10 +23,10 @@ export const searchBar = createSlice({
   initialState,
   reducers: {
     setPickupLocation: (state, action) => {
-      state.pickup_location = action.payload;
+      state.pickupLocation = action.payload;
     },
     setDroppOffLocation: (state, action) => {
-      state.dropoff_location = action.payload;
+      state.dropoffLocation = action.payload;
     },
     setPickupTime: (state, action) => {
       state.pickupDate = action.payload;
