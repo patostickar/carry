@@ -1,16 +1,11 @@
-
-
-
-import React from "react";
-import SearchBar from "../components/SearchBar/SearchBar";
-import { Navbar } from "../components/Navbar";
-import "./styles/Home.module.css";
-import PopularLocations from "../components/PopularLocations";
-import { TabTitle } from "../components/GeneralFuntions/GeneralFuntions";
-
+import React from 'react';
+import SearchBar from '../components/SearchBar/SearchBar';
+import './styles/Home.module.css';
+import PopularLocations from '../components/PopularLocations';
+import { TabTitle } from '../components/GeneralFuntions/GeneralFuntions';
 
 const Home = () => {
-  TabTitle("Inicio - Carry");
+  TabTitle('Inicio - Carry');
   return (
     <div>
       <SearchBar />
