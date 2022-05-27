@@ -1,3 +1,4 @@
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Booking } from './components/Booking.jsx';
 import Home from './pages/Home';
@@ -12,11 +13,13 @@ function App() {
       {/* <Navbar /> */}
       <BrowserRouter>
         <Routes>
+
           <Route path='/' element={<Home />} />
           <Route path='/home' element={<Home />} />
           <Route path='/booking' element={<Booking />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/searchResult' element={<SearchResults />} />
+
         </Routes>
       </BrowserRouter>
     </>
