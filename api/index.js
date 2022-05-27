@@ -54,29 +54,64 @@ conn
       large_suitcase: c.large_suitcase,
       small_suitcase: c.small_suitcase,
     }));
-    
+
     await Promise.all([
       Location.bulkCreate(locations),
       Customer.bulkCreate(customers),
       Cartype.bulkCreate(carTypes),
     ]);
-    
-    const location = await Location.findOne({where:{name: "Agencia La Mona"}})
-    const cartype = await Cartype.findOne({where:{make: "Ford"}})    
-    const location1 = await Location.findOne({where:{name: "Ministro Pistarini International Airport"}})
-    const cartype1 = await Cartype.findOne({where:{make: "Chrysler"}})    
-    const location2 = await Location.findOne({where:{name: "Palermo Cars"}})
-    const cartype2 = await Cartype.findOne({where:{make: "Volkswagen"}})    
 
-   await DBcreateCar(location.id, cartype.id)
-   await DBcreateCar(location.id, cartype.id)
-   await DBcreateCar(location.id, cartype.id)
-   await DBcreateCar(location.id, cartype1.id)
-   await DBcreateCar(location.id, cartype1.id)
-   await DBcreateCar(location.id, cartype2.id)
-   await DBcreateCar(location.id, cartype2.id)
+    const location = await Location.findOne({
+      where: { name: 'Agencia La Mona' },
+    });
+    const cartype1 = await Cartype.findOne({
+      where: { make: 'Ford', model: 'Fiesta' },
+    });
+    const cartype2 = await Cartype.findOne({
+      where: { make: 'Kia', model: 'Rio' },
+    });
+    const cartype3 = await Cartype.findOne({
+      where: { make: 'Toyota', model: 'Corolla' },
+    });
+    const cartype4 = await Cartype.findOne({
+      where: { make: 'Volkswagen', model: 'Jetta' },
+    });
+    const cartype5 = await Cartype.findOne({
+      where: { make: 'Toyota', model: 'Camry' },
+    });
+    const cartype6 = await Cartype.findOne({
+      where: { make: 'Volkswagen', model: 'Passat' },
+    });
+    const cartype7 = await Cartype.findOne({
+      where: { make: 'Chrysler', model: '300' },
+    });
+    const cartype8 = await Cartype.findOne({
+      where: { make: 'Ford', model: 'Mustang Convertible' },
+    });
+    const cartype9 = await Cartype.findOne({
+      where: { make: 'Chrysler', model: 'Voyager' },
+    });
+    const cartype10 = await Cartype.findOne({
+      where: { make: 'Ford', model: 'Edge' },
+    });
+    // const location1 = await Location.findOne({where:{name: "Ministro Pistarini International Airport"}})
+    // const cartype1 = await Cartype.findOne({where:{make: "Chrysler"}})
+    // const location2 = await Location.findOne({where:{name: "Palermo Cars"}})
+    // const cartype2 = await Cartype.findOne({where:{make: "Volkswagen"}})
 
-
+    await DBcreateCar(location.id, cartype1.id);
+    await DBcreateCar(location.id, cartype1.id);
+    await DBcreateCar(location.id, cartype1.id);
+    await DBcreateCar(location.id, cartype2.id);
+    await DBcreateCar(location.id, cartype2.id);
+    await DBcreateCar(location.id, cartype3.id);
+    await DBcreateCar(location.id, cartype4.id);
+    await DBcreateCar(location.id, cartype5.id);
+    await DBcreateCar(location.id, cartype6.id);
+    await DBcreateCar(location.id, cartype7.id);
+    await DBcreateCar(location.id, cartype8.id);
+    await DBcreateCar(location.id, cartype9.id);
+    await DBcreateCar(location.id, cartype10.id);
 
     console.log('Locations, Customers and CarTypes have been saved');
   })

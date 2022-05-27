@@ -7,10 +7,9 @@ import { TabTitle } from "../components/GeneralFuntions/GeneralFuntions";
 import Testimonials from "../components/Testimonials";
 
 const Home = () => {
-  TabTitle("Inicio - Carry");
+  TabTitle('Inicio - Carry');
   return (
     <div>
-      <Navbar />
       <SearchBar />
       <PopularLocations />
       <Testimonials />
