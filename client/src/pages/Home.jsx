@@ -3,6 +3,7 @@ import SearchBar from '../components/SearchBar/SearchBar';
 import { Navbar } from '../components/Navbar';
 import './styles/Home.module.css';
 import PopularLocations from "../components/PopularLocations"
+import { Footer } from '../components/Footer.jsx';
 
 const Home = () => {
   return (
@@ -10,6 +11,7 @@ const Home = () => {
       <Navbar />
       <SearchBar />
       <PopularLocations />
+      <Footer />
       {/*
     navbar
 
