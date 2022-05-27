@@ -30,10 +30,10 @@ export const carDetailCard = (props) => {
         </div>
 
         <div className='siCarDesc'>
-          <span className=''>{seats} Seats</span>
-          <span className=''>{transmission}</span>
-          <span className=''>{largeSuitcase} Large bag</span>
-          <span className=''>{smallSuitcase} Small bag</span>
+          <span className=''>{seats} Seats </span>
+          <span className=''>{transmission} </span>
+          <span className=''>{largeSuitcase} Large bag </span>
+          <span className=''>{smallSuitcase} Small bag </span>
           <span className=''>{mpg} mpg</span>
         </div>
 

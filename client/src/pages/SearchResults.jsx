@@ -30,7 +30,9 @@ export const SearchList = () => {
             {carTypes
               .filter((carType) =>
                 filters.length
-                  ? filters.every((filter) =>
+                  ? // con every tiene que pasar todos los filtros
+                    // con some con pasar alguno alcanza (no sirve, porque por ahí tenés un manual sin aire, pero aunque pongas con aire, si está seleccionado manual igual va a aparecer)
+                    filters.some((filter) =>
                       carType[filter.key].includes(filter.value)
                     )
                   : true

@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const initialState = {
   carTypes: [],
-  filters: [{ key: 'transmission', value: 'Manual' }],
+  filters: [],
 };
 
 export const carsResults = createSlice({
@@ -12,6 +12,14 @@ export const carsResults = createSlice({
   reducers: {
     setCarTypes: (state, action) => {
       state.carTypes = action.payload;
+    },
+    setFilters: (state, action) => {
+      state.filters.push(action.payload);
+    },
+    removeFilters: (state, action) => {
+      state.filters = state.filters.filter(
+        (f) => f.value !== action.payload.value
+      );
     },
   },
 });
@@ -28,6 +36,6 @@ export const fetchCarTypes = (pickupLocation) => async (dispatch) => {
   }
 };
 
-export const { setCarTypes, setCarTypesCount } = carsResults.actions;
+export const { setCarTypes, setFilters, removeFilters } = carsResults.actions;
 
 export default carsResults.reducer;
