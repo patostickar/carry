@@ -21,7 +21,6 @@ export default function Location({ type }) {
   const [open, setOpen] = useState(false);
   const loading = open && Object.keys(locations).length === 0;
 
-
   useEffect(() => {
     let active = true;
 
@@ -105,30 +104,29 @@ export default function Location({ type }) {
         value = new RegExp(value);
         return value.test(option.name);
       }}
-
       // En el dropdown aparecen name, ciudad y state, pero en renderOption se ocultan.
       // Si comento esta parte podría verlo
-      renderOption={(props, option, { inputValue }) => {
-        const matches = match(option.name, inputValue);
-        const parts = parse(option.name, matches);
+      // renderOption={(props, option, { inputValue }) => {
+      //   const matches = match(option.name, inputValue);
+      //   const parts = parse(option.name, matches);
 
-        return (
-          <li {...props}>
-            <div>
-              {parts.map((part, index) => (
-                <span
-                  key={index}
-                  style={{
-                    fontWeight: part.highlight ? 700 : 400,
-                  }}
-                >
-                  {part.text}
-                </span>
-              ))}
-            </div>
-          </li>
-        );
-      }}
+      //   return (
+      //     <li {...props}>
+      //       <div>
+      //         {parts.map((part, index) => (
+      //           <span
+      //             key={index}
+      //             style={{
+      //               fontWeight: part.highlight ? 700 : 400,
+      //             }}
+      //           >
+      //             {part.text}
+      //           </span>
+      //         ))}
+      //       </div>
+      //     </li>
+      //   );
+      // }}
     />
   );
 }

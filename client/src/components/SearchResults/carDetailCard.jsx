@@ -26,8 +26,6 @@ export const carDetailCard = (props) => {
     small_suitcase: smallSuitcase,
   } = props.cartype;
 
-  console.log(props.key);
-
   return (
     <motion.div
       initial='hidden'
