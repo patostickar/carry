@@ -7,7 +7,7 @@ import Checkbox from '@mui/material/Checkbox';
 import { setCarCategory } from '../../../redux/carsResults.js';
 
 export default function CarCategory() {
-  const { small, medium, large, premium, convertible, minivan, suv } =
+  const { small, medium, large, premium, convertible, minivan, suvs } =
     useSelector((state) => state.carsResults.filters.carCategory);
   const dispatch = useDispatch();
 
@@ -89,10 +89,10 @@ export default function CarCategory() {
         <FormControlLabel
           control={
             <Checkbox
-              checked={suv}
+              checked={suvs}
               onChange={handleChange}
               disabled={false}
-              name='suv'
+              name='suvs'
             />
           }
           label='SUVs'

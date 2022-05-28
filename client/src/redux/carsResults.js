@@ -17,7 +17,7 @@ const initialState = {
       premium: false,
       convertible: false,
       minivan: false,
-      suv: false,
+      suvs: false,
     },
   },
 };
