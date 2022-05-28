@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import About from './components/About.jsx';
 import Profile from './components/Profile.jsx';
 import SearchResults from './pages/SearchResults';
+import SideBar from './components/SearchResults/SideBar/SideBar';
 import './App.css';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path='/booking' element={<Booking />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/searchResult' element={<SearchResults />} />
+          <Route path='/material' element={<SideBar />} />
         </Routes>
       </BrowserRouter>
     </>

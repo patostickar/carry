@@ -3,7 +3,23 @@ import axios from 'axios';
 
 const initialState = {
   carTypes: [],
-  filters: [],
+  filters: {
+    transmission: {
+      manual: false,
+      automatic: false,
+    },
+    airConditioning: false,
+    fourPlusSeats: false,
+    carCategory: {
+      small: false,
+      medium: false,
+      large: false,
+      premium: false,
+      convertible: false,
+      minivan: false,
+      suv: false,
+    },
+  },
 };
 
 export const carsResults = createSlice({
@@ -13,13 +29,22 @@ export const carsResults = createSlice({
     setCarTypes: (state, action) => {
       state.carTypes = action.payload;
     },
-    setFilters: (state, action) => {
-      state.filters.push(action.payload);
+    setTransmission: (state, action) => {
+      const { name, checked } = action.payload;
+      state.filters.transmission[name] = checked;
     },
-    removeFilters: (state, action) => {
-      state.filters = state.filters.filter(
-        (f) => f.value !== action.payload.value
-      );
+    setAirConditioning: (state, action) => {
+      state.filters.airConditioning = action.payload;
+    },
+    setFourPlusSeats: (state, action) => {
+      state.filters.fourPlusSeats = action.payload;
+    },
+    setCarCategory: (state, action) => {
+      const { name, checked } = action.payload;
+      state.filters.carCategory[name] = checked;
+    },
+    clearAllFilters: (state, _action) => {
+      state.filters = initialState.filters;
     },
   },
 });
@@ -36,6 +61,13 @@ export const fetchCarTypes = (pickupLocation) => async (dispatch) => {
   }
 };
 
-export const { setCarTypes, setFilters, removeFilters } = carsResults.actions;
+export const {
+  setCarTypes,
+  setTransmission,
+  setCarCategory,
+  setAirConditioning,
+  setFourPlusSeats,
+  clearAllFilters,
+} = carsResults.actions;
 
 export default carsResults.reducer;
