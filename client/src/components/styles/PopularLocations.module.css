@@ -4,40 +4,14 @@
   justify-content: center;
 }
 .container {
-  padding-top: 3.5em;
+  padding-top: 3rem;
 }
 .card {
   padding: 1em;
 }
 
-h1 {
-  font-size: 2em;
-  color: #262626;
+.section__title {
+  font-size: var(--h2-font-size);
+  color: #1976d2;
   text-align: center;
 }
-
-/* .container div  {
-    padding-top: 5%;
-    width: fit-content;
-    
-}
-
-.container h1{
-  
-    padding-top: 6%;
-    margin-left: 14%;
-    font-size: 23px;
-    color: #262626;
-  }
-
-
-.card {
-  margin-left: 13%;
-  display: inline-block;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin-bottom: 0px;
-  background-color: #fff;
-  color: #262626; 
-  padding: 16px;
-} */
