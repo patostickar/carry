@@ -42,12 +42,12 @@ export const Navbar = () => {
   };
 
   return (
-    <AppBar position="sticky" color="default">
+    <AppBar position="sticky" color="transparent">
       <Toolbar>
         <Link to="/home">
           <Box
             component="img"
-            sx={{ height: 64 }}
+            sx={{ height: 80, width: 90, marginRight: "1.5rem" }}
             alt="Your logo."
             src={logo}
           />

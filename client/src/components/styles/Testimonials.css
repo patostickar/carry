@@ -1,5 +1,5 @@
 .section {
-  padding: 4.5rem 0 1rem;
+  padding-top: 3rem;
 }
 
 .section__subtitle {
@@ -23,10 +23,13 @@
 }
 
 .testimonial__card {
-  background-color: rgba(0, 0, 0, 0.153);
+  background-color: white;
   padding: 1.25rem 1.5rem;
+  border: solid;
+  border-color: hsla(var(--second-hue), 48%, 8%, 0.01);
   border-radius: 1.5rem;
   margin-bottom: 3rem;
+  box-shadow: 6px 5px 3px 6px hsla(var(--second-hue), 48%, 8%, 0.04);
 }
 
 .testimonial__img {
@@ -37,8 +40,8 @@
 
 .testimonial__name {
   font-size: var(--normal-font-size);
-  font-weight: var(--font-medium);
   margin-bottom: 0.25rem;
+  color: #1976d297;
 }
 
 .testimonial__description {

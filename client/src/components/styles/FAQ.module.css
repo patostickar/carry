@@ -1,9 +1,41 @@
 .container {
   display: flex;
   justify-content: center;
-  padding-top: 2em;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  box-shadow: 10px 10px 2px 8px hsla(var(--second-hue), 48%, 8%, 0.03);
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 6rem;
+  border: solid;
+  border-color: hsla(var(--second-hue), 48%, 8%, 0.02);
+  margin-left: 8rem;
+  margin-right: 8rem;
+  border-radius: 1.5rem;
 }
 
 .accordions {
-  max-width: 1110px;
+  width: 60%;
+}
+
+.section__subtitle {
+  color: var(--body-color);
+}
+
+.section__description {
+  color: #000000ba;
+  font-size: var(--small-font-size);
+}
+
+.section__title {
+  font-size: var(--h2-font-size);
+  color: #1976d2;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+@media screen and (min-width: 992px) {
+  .accordions {
+    width: 50%;
+  }
 }
