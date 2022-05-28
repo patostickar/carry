@@ -10,7 +10,7 @@ import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import InputAdornment from '@mui/material/InputAdornment';
-import CircularProgress from '@mui/material/CircularProgress';
+
 import '../styles/SearchBar.modules.css';
 
 // Para poder implementar búsqueda no sólo por nombre, sino también por ciudad, getOptionLabel tiene: name, city, state.
@@ -24,15 +24,8 @@ export default function Location({ type }) {
   useEffect(() => {
     let active = true;
 
-    if (!loading) {
-      return undefined;
-    }
-
-    (async () => {
-      if (active) {
-        dispatch(fetchAllLocations());
-      }
-    })();
+    dispatch(fetchAllLocations());
+  
 
     return () => {
       active = false;
@@ -72,14 +65,16 @@ export default function Location({ type }) {
       onClose={() => {
         setOpen(false);
       }}
-      loading={loading}
       clearOnEscape
       options={locations}
       getOptionLabel={(option) =>
-        `${option.name} ${option.city} ${option.state_name}`
+        `${option.name}, ${option.city}, ${option.state_name}`
       }
       renderInput={(params) => (
         <>
+        <div style={{display:"none"}}>
+        {params.inputProps.value = params.inputProps.value.split(",")[0]}
+        </div>
           <TextField
             {...params}
             label={`${type}`}
@@ -90,15 +85,7 @@ export default function Location({ type }) {
                 <InputAdornment position='start'>
                   <DirectionsCarIcon />
                 </InputAdornment>
-              ),
-              endAdornment: (
-                <>
-                  {loading ? (
-                    <CircularProgress color='inherit' size={20} />
-                  ) : null}
-                  {params.InputProps.endAdornment}
-                </>
-              ),
+              )
             }}
           />
         </>

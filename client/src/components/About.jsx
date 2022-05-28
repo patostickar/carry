@@ -1,9 +1,8 @@
-
 import React from "react";
 import Byron from "../assets/Byron.png";
 import Juan from "../assets/Juan.png";
 import Cesar from "../assets/Cesar.jpg";
-import Franco from "../assets/Franco.png";
+import Franco from "../assets/Franco.jpg";
 import Luis from "../assets/Luis.jpg";
 import Sam from "../assets/Sam.png";
 import Patricio from "../assets/Patricio.jpg";
@@ -12,9 +11,8 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { TabTitle } from "../components/GeneralFuntions/GeneralFuntions";
 
-
 function About() {
-  TabTitle('Nosotros - Carry');
+  TabTitle("Nosotros - Carry");
 
   return (
     <div>
@@ -30,16 +28,16 @@ function About() {
             <p>Frontend Developer</p>
             <div className={styles.social_links}>
               <a
-                href='https://www.linkedin.com/in/byroncorrea/'
-                target='_blank'
-                rel='noreferrer'
+                href="https://www.linkedin.com/in/byroncorrea/"
+                target="_blank"
+                rel="noreferrer"
               >
                 <LinkedInIcon />
               </a>
               <a
-                href='https://github.com/ByronCorrea'
-                target='_blank'
-                rel='noreferrer'
+                href="https://github.com/ByronCorrea"
+                target="_blank"
+                rel="noreferrer"
               >
                 <GitHubIcon />
               </a>
@@ -56,18 +54,16 @@ function About() {
             <p>Frontend Developer</p>
             <div className={styles.social_links}>
               <a
-
                 href="https://www.linkedin.com/in/pstickar/"
                 target="_blank"
                 rel="noreferrer"
-
               >
                 <LinkedInIcon />
               </a>
               <a
-                href='https://github.com/patostickar'
-                target='_blank'
-                rel='noreferrer'
+                href="https://github.com/patostickar"
+                target="_blank"
+                rel="noreferrer"
               >
                 <GitHubIcon />
               </a>
@@ -87,14 +83,13 @@ function About() {
                 href="https://www.linkedin.com/in/cesargaleanotorres/"
                 target="_blank"
                 rel="noreferrer"
-
               >
                 <LinkedInIcon />
               </a>
               <a
-                href='https://github.com/cesargaleano'
-                target='_blank'
-                rel='noreferrer'
+                href="https://github.com/cesargaleano"
+                target="_blank"
+                rel="noreferrer"
               >
                 <GitHubIcon />
               </a>
@@ -111,16 +106,16 @@ function About() {
             <p>Frontend Developer</p>
             <div className={styles.social_links}>
               <a
-                href='https://www.linkedin.com/in/byroncorrea/'
-                target='_blank'
-                rel='noreferrer'
+                href="https://www.linkedin.com/in/franco-garc%C3%ADa-040320199/"
+                target="_blank"
+                rel="noreferrer"
               >
                 <LinkedInIcon />
               </a>
               <a
-                href='https://github.com/Dakkai'
-                target='_blank'
-                rel='noreferrer'
+                href="https://github.com/Dakkai"
+                target="_blank"
+                rel="noreferrer"
               >
                 <GitHubIcon />
               </a>
@@ -137,16 +132,16 @@ function About() {
             <p>Frontend Developer</p>
             <div className={styles.social_links}>
               <a
-                href='https://www.linkedin.com/in/byroncorrea/'
-                target='_blank'
-                rel='noreferrer'
+                href="https://www.linkedin.com/in/byroncorrea/"
+                target="_blank"
+                rel="noreferrer"
               >
                 <LinkedInIcon />
               </a>
               <a
-                href='https://github.com/luleheco22'
-                target='_blank'
-                rel='noreferrer'
+                href="https://github.com/luleheco22"
+                target="_blank"
+                rel="noreferrer"
               >
                 <GitHubIcon />
               </a>
@@ -163,16 +158,16 @@ function About() {
             <p>Frontend Developer</p>
             <div className={styles.social_links}>
               <a
-                href='https://www.linkedin.com/in/byroncorrea/'
-                target='_blank'
-                rel='noreferrer'
+                href="https://www.linkedin.com/in/byroncorrea/"
+                target="_blank"
+                rel="noreferrer"
               >
                 <LinkedInIcon />
               </a>
               <a
-                href='https://github.com/JuanParraIV'
-                target='_blank'
-                rel='noreferrer'
+                href="https://github.com/JuanParraIV"
+                target="_blank"
+                rel="noreferrer"
               >
                 <GitHubIcon />
               </a>
@@ -189,18 +184,16 @@ function About() {
             <p>Frontend Developer</p>
             <div className={styles.social_links}>
               <a
-
                 href="https://www.linkedin.com/in/samuel-ricardo-centeno-21a4aa214"
                 target="_blank"
                 rel="noreferrer"
-
               >
                 <LinkedInIcon />
               </a>
               <a
-                href='https://github.com/harshtiger'
-                target='_blank'
-                rel='noreferrer'
+                href="https://github.com/harshtiger"
+                target="_blank"
+                rel="noreferrer"
               >
                 <GitHubIcon />
               </a>
