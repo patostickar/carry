@@ -8,9 +8,7 @@ export default function SearchBarJumbo() {
   return (
     <div className={styles.searchBarJumbo}>
       <div className={styles.headerContainer}>
-        <h1 className={styles.headerTitle}>
-          Alquiler de autos para cualquier tipo de viaje
-        </h1>
+        <h1>Alquiler de autos para cualquier tipo de viaje</h1>
         <p className={styles.headerDesc}>
           Compara ofertas de las mayores empresas de alquiler de autos
         </p>
