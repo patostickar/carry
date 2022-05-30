@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import CarCategory from './carCategory';
+import styles from './styles/TopBar.module.css';
 
 export default function TopBar() {
   const { carTypes } = useSelector((state) => state.carsResults);
@@ -8,7 +9,7 @@ export default function TopBar() {
     ...new Map(carTypes.map((item) => [item.class_name, item])).values(),
   ];
   return (
-    <div className='carTypeTopFilter'>
+    <div className={styles.carTypeTopFilter}>
       <ul>
         {types.map((carType) => (
           <CarCategory

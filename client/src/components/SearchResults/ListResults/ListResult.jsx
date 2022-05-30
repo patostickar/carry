@@ -1,8 +1,9 @@
-import Steps from '../steps';
-import CarDetailCard from '../carDetailCard';
+import Steps from './steps';
+import CarDetailCard from './carDetailCard';
 import CarTypeTopFilter from '../TopBar/TopBar';
 import { useSelector } from 'react-redux';
 import { AnimatePresence } from 'framer-motion';
+import './styles/ListResult.module.css';
 
 function ListResult() {
   const {

@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCarTypes } from '../redux/carsResults.js';
+import SearchBar from '../components/SearchBar/SearchBar';
 import SideBar from '../components/SearchResults/SideBar/SideBar';
-import ListResult from '../components/SearchResults/ListResult/ListResult.jsx';
-import './styles/SearchList.modules.css';
+import ListResult from '../components/SearchResults/ListResults/ListResult.jsx';
+import styles from './styles/SearchResults.module.css';
 
 export const SearchList = () => {
   const { pickupLocation } = useSelector((state) => state.searchBar);
@@ -15,9 +16,9 @@ export const SearchList = () => {
 
   return (
     <div>
-      <div className='searchSummary'>DATE EDIT</div>
-      <div className='listContainer'>
-        <div className='listWrapper'>
+      <SearchBar />
+      <div className={styles.listContainer}>
+        <div className={styles.listWrapper}>
           <SideBar />
           <ListResult />
         </div>

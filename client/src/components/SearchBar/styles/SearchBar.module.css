@@ -1,0 +1,24 @@
+.headerSearch {
+  height: 80px;
+  background-color: var(--white);
+  border: 3px solid #febb02;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10px;
+  border-radius: 0.5rem;
+}
+
+.headerSearchItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.headerButton {
+  background-color: var(--bluebtn);
+  color: var(--white);
+  font-weight: 500;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}

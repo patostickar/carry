@@ -1,16 +1,15 @@
-import SearchBar from "../components/SearchBar/SearchBar";
-import PopularLocations from "../components/PopularLocations";
-import FAQ from "../components/FAQ";
-import { Footer } from "../components/Footer.jsx";
-import { TabTitle } from "../components/GeneralFuntions/GeneralFuntions";
-import "./styles/Home.module.css";
-import Testimonials from "../components/Testimonials";
+import SearchBarJumbo from '../components/SearchBarJumbo';
+import PopularLocations from '../components/PopularLocations';
+import Testimonials from '../components/Testimonials';
+import FAQ from '../components/FAQ';
+import Footer from '../components/Footer.jsx';
+import { TabTitle } from '../components/GeneralFuntions/GeneralFuntions';
 
 const Home = () => {
-  TabTitle("Inicio - Carry");
+  TabTitle('Inicio - Carry');
   return (
     <div>
-      <SearchBar />
+      <SearchBarJumbo />
       <PopularLocations />
       <Testimonials />
       <FAQ />

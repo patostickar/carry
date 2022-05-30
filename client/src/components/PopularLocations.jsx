@@ -1,6 +1,6 @@
+import { useSelector } from 'react-redux';
 import PopLocationCard from './PopLocationCard';
 import styles from './styles/PopularLocations.module.css';
-import { useSelector } from 'react-redux';
 
 export default function PopularLocations() {
   const { locations } = useSelector((state) => state.searchBar);

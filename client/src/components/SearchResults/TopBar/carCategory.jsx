@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { setOneCarCategory } from '../../../redux/carsResults.js';
+import styles from './styles/carCategory.module.css';
 
 export default function carCategory({ category, img }) {
   const dispatch = useDispatch();
@@ -12,7 +13,7 @@ export default function carCategory({ category, img }) {
   return (
     <li>
       <button
-        className='categoryMiniCard'
+        className={styles.categoryMiniCard}
         onClick={handleClick}
         name={category}
       >

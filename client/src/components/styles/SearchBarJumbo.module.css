@@ -1,0 +1,22 @@
+.searchBarJumbo {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  background-color: lightgray;
+}
+.headerContainer {
+  width: 100%;
+  max-width: 1024px;
+  margin: 20px 0 100px 0;
+}
+.inputRadioContainer {
+  display: flex;
+  gap: 10px;
+}
+
+.searchBarPosition {
+  position: absolute;
+  bottom: -40px;
+  width: 100%;
+  max-width: 1024px;
+}

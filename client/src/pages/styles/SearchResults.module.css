@@ -1,7 +1,3 @@
-.searchSummary {
-  display: flex;
-  justify-content: center;
-}
 .listContainer {
   display: flex;
   justify-content: center;
@@ -67,30 +63,4 @@
 .inputItem > span {
   font-size: 14px;
   color: #262626;
-}
-
-.listResult {
-  flex: 3;
-}
-
-.carTypeTopFilter > ul {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  text-decoration: none;
-  list-style: none;
-}
-
-.categoryMiniCard {
-  background-color: #ffffff;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 60px;
-  height: auto;
-  border-radius: 5px;
-}
-.categoryMiniCard > img {
-  width: 100%;
-  object-fit: cover;
 }
