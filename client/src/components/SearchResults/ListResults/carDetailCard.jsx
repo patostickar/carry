@@ -34,7 +34,7 @@ export const carDetailCard = (props) => {
       variants={variants}
       layoutId={id}
     >
-      <div className={styles.searchItem}>
+      <div className={styles.carCard}>
         <div className={styles.imageContainer}>
           <img src={img} alt='' className={styles.siImg} />
         </div>
