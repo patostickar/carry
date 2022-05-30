@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { setCarCategory } from '../../../redux/carsResults.js';
+import { setOneCarCategory } from '../../../redux/carsResults.js';
 
 export default function carCategory({ category, img }) {
   const dispatch = useDispatch();
@@ -7,7 +7,7 @@ export default function carCategory({ category, img }) {
   const handleClick = (event) => {
     let { name } = event.currentTarget;
     name = name.toLowerCase();
-    dispatch(setCarCategory({ name, checked: true }));
+    dispatch(setOneCarCategory({ name }));
   };
   return (
     <li>
