@@ -23,13 +23,13 @@ export default function Location({ type }) {
 
   const location =
     type === 'Pick-up'
-      ? useSelector((state) => state.searchBar.pickup_location)
-      : useSelector((state) => state.searchBar.dropoff_location);
+      ? useSelector((state) => state.searchBar.pickupLocation)
+      : useSelector((state) => state.searchBar.dropoffLocation);
 
   function handleDispatch(newValue) {
     type === 'Pick-up'
-      ? dispatch(setPickupLocation(newValue?.id || null))
-      : dispatch(setDroppOffLocation(newValue?.id || null));
+      ? dispatch(setPickupLocation(newValue || null))
+      : dispatch(setDroppOffLocation(newValue || null));
   }
 
   return (
@@ -45,18 +45,26 @@ export default function Location({ type }) {
         setOpen(false);
       }}
       clearOnEscape
+      /*
+      One thing about getOptionLabel is it doesn’t change the input value. 
+      It only alters the label which we see in the list. 
+      The input value is still the whole individual object. 
+      This fact needs to etch in your mind because knowing this would avoid 60% of errors.
+      */
       options={locations}
       getOptionLabel={(option) =>
         `${option.name}, ${option.city}, ${option.state_name}`
       }
-      renderInput={(params) => (
-        <>
-          <div style={{ display: 'none' }}>
-            {(params.inputProps.value = params.inputProps.value.split(',')[0])}
-          </div>
+      value={location}
+      onChange={(event, newValue) => {
+        handleDispatch(newValue);
+      }}
+      renderInput={(params) => {
+        params.inputProps.value = params.inputProps.value.split(',')[0];
+        return (
           <TextField
             {...params}
-            label={`${type}`}
+            label={type}
             margin='normal'
             InputProps={{
               ...params.InputProps,
@@ -67,15 +75,7 @@ export default function Location({ type }) {
               ),
             }}
           />
-        </>
-      )}
-      onChange={(event, newValue) => {
-        handleDispatch(newValue);
-      }}
-      value={location}
-      isOptionEqualToValue={(option, value) => {
-        value = new RegExp(value);
-        return value.test(option.name);
+        );
       }}
       renderOption={(props, option, { inputValue }) => {
         const matches = match(option.name, inputValue);
