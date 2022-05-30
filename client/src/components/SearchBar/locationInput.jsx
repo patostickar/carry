@@ -22,12 +22,12 @@ export default function Location({ type }) {
   }, []);
 
   const location =
-    type === 'pickUp'
+    type === 'Pick-up'
       ? useSelector((state) => state.searchBar.pickup_location)
       : useSelector((state) => state.searchBar.dropoff_location);
 
   function handleDispatch(newValue) {
-    type === 'pickUp'
+    type === 'Pick-up'
       ? dispatch(setPickupLocation(newValue?.id || null))
       : dispatch(setDroppOffLocation(newValue?.id || null));
   }

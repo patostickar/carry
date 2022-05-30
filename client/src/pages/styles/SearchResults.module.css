@@ -1,5 +1,20 @@
+.searchResultsContainer {
+  padding-top: 2em;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.searchBarPosition {
+  position: relative;
+  max-width: 1024px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .listContainer {
   display: flex;
+  column-gap: 3em;
   justify-content: center;
   margin-top: 20px;
 }
@@ -9,58 +24,4 @@
   max-width: 1024px;
   display: flex;
   gap: 20px;
-}
-
-.googleMap {
-  flex: 1;
-  height: 150px;
-  border: 1px solid lightgray;
-  margin-bottom: 15px;
-}
-
-.listFilter {
-  flex: 1;
-  padding: 15px;
-  border: 1px solid lightgray;
-  border-radius: 5px;
-  top: 10px;
-  height: max-content;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
-}
-
-.filterTitle {
-  display: flex;
-  justify-content: space-between;
-}
-
-.lsTitle {
-  font-size: 20px;
-  color: #333333;
-  margin-bottom: 10;
-}
-.lsItem {
-  padding: 10px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  margin-bottom: 10px;
-  border-top: 1px solid gray;
-}
-.lsItem > label {
-  font-size: 16px;
-  font-weight: bold;
-  color: #333333;
-}
-.inputItem {
-  display: flex;
-  gap: 5px;
-}
-.inputItem > input {
-}
-.inputItem > span {
-  font-size: 14px;
-  color: #262626;
 }

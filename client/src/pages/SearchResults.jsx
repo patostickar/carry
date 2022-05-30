@@ -15,13 +15,13 @@ export const SearchList = () => {
   }, []);
 
   return (
-    <div>
-      <SearchBar />
+    <div className={styles.searchResultsContainer}>
+      <div className={styles.searchBarPosition}>
+        <SearchBar />
+      </div>
       <div className={styles.listContainer}>
-        <div className={styles.listWrapper}>
-          <SideBar />
-          <ListResult />
-        </div>
+        <SideBar />
+        <ListResult />
       </div>
     </div>
   );

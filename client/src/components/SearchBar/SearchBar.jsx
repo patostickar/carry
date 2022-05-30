@@ -13,10 +13,10 @@ function SearchBar() {
   return (
     <div className={styles.headerSearch}>
       <div className={styles.headerSearchItem}>
-        <Location type='pickUp' />
+        <Location type='Pick-up' />
       </div>
       <div className={styles.headerSearchItem}>
-        <Location type='dropOff' />
+        <Location type='Drop-off' />
       </div>
       <Calendar />
       <div className={styles.headerSearchItem}>
