@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import '../styles/SearchItem.modules.css';
+import styles from './styles/carDetail.module.css';
 
 const variants = {
   hidden: {
@@ -34,22 +34,22 @@ export const carDetailCard = (props) => {
       variants={variants}
       layoutId={id}
     >
-      <div className='searchItem'>
-        <div className='imageContainer'>
-          <img src={img} alt='' className='siImg' />
+      <div className={styles.carCard}>
+        <div className={styles.imageContainer}>
+          <img src={img} alt='' className={styles.siImg} />
         </div>
 
-        <div className='siDesc'>
-          <div className='siRating'>
+        <div className={styles.siDesc}>
+          <div className={styles.siRating}>
             <span>Top Pick</span>
           </div>
-          <div className='siTitle'>
+          <div className={styles.siTitle}>
             <h3>
               {`${make} ${model}`} <span>or similar small car</span>{' '}
             </h3>
           </div>
 
-          <div className='siCarDesc'>
+          <div className={styles.siCarDesc}>
             <span className=''>{seats} Seats </span>
             <span className=''>{transmission} </span>
             <span className=''>{largeSuitcase} Large bag </span>
@@ -57,17 +57,17 @@ export const carDetailCard = (props) => {
             <span className=''>{mpg} mpg</span>
           </div>
 
-          <div className='siLocation'>
-            <span className='siFeatures'>Location</span>
+          <div className={styles.siLocation}>
+            <span className={styles.siFeatures}>Location</span>
           </div>
         </div>
-        <div className='siDetails'>
-          <div className='siDetailTexts'>
-            <span className='siDaysxPrice'>Price for 3 days:</span>
-            <span className='siPrice'> US$112.07</span>
-            <span className='siAmendments'>free amendments</span>
+        <div className={styles.siDetails}>
+          <div className={styles.siDetailTexts}>
+            <span className={styles.siDaysxPrice}>Price for 3 days:</span>
+            <span className={styles.siPrice}> US$112.07</span>
+            <span className={styles.siAmendments}>free amendments</span>
 
-            <button className='siCheckButton'>View deal</button>
+            <button className={styles.siCheckButton}>View deal</button>
           </div>
         </div>
       </div>

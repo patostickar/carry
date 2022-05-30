@@ -1,0 +1,15 @@
+.categoryMiniCard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100px;
+  height: auto;
+  background: none;
+  border: 1px solid #e7e7e7;
+  padding: 1em;
+  font: inherit;
+  cursor: pointer;
+}
+.categoryMiniCard > img {
+  width: 80px;
+}

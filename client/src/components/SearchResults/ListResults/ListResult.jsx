@@ -1,8 +1,9 @@
-import Steps from '../steps';
-import CarDetailCard from '../carDetailCard';
-import CarTypeTopFilter from '../TopBar/TopBar';
+import Steps from './steps';
+import CarDetailCard from './carDetailCard';
+import CarCategoryTopBar from '../TopBar/CarCategoryTopBar';
 import { useSelector } from 'react-redux';
 import { AnimatePresence } from 'framer-motion';
+import styles from './styles/ListResult.module.css';
 
 function ListResult() {
   const {
@@ -24,12 +25,12 @@ function ListResult() {
     }
   }
   return (
-    <div className='listResult'>
-      <Steps />
-      <div className='listTitle'>
-        <h1>Bogotá: 65 cars available</h1>
+    <div className={styles.listResult}>
+      <div className={styles.listTitle}>
+        <h1>Bogotá: 65 autos disponibles</h1>
       </div>
-      <CarTypeTopFilter />
+      <Steps />
+      <CarCategoryTopBar />
       <AnimatePresence>
         {carTypes
           .filter((carType) =>

@@ -8,12 +8,12 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 export default function BasicDatePicker({ type }) {
   const dispatch = useDispatch();
   const date =
-    type === 'pickUp'
+    type === 'Pick-up'
       ? useSelector((state) => state.searchBar.pickup_date)
       : useSelector((state) => state.searchBar.dropoff_date);
 
   function handleDispatch(newValue) {
-    type === 'pickUp'
+    type === 'Pick-up'
       ? dispatch(setPickupTime(newValue.getTime() || null))
       : dispatch(setDroppOffTime(newValue.getTime() || null));
   }

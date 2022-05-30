@@ -3,9 +3,9 @@
   src: url(./fonts/Exo2.0-Medium.otf);
 }
 .main {
-  width: 100%;
-  height: 50vh;
   display: flex;
+  padding: 5em;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }
