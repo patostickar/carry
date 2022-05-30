@@ -1,0 +1,27 @@
+.searchResultsContainer {
+  padding-top: 2em;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.searchBarPosition {
+  position: relative;
+  max-width: 1024px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.listContainer {
+  display: flex;
+  column-gap: 3em;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.listWrapper {
+  width: 100%;
+  max-width: 1024px;
+  display: flex;
+  gap: 20px;
+}

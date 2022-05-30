@@ -1,60 +1,31 @@
-import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import {
-  decrement,
-  increment,
-  incrementByAmount,
-  incrementAsync,
-  selectCount,
-} from './redux/counterSlice';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Booking } from './components/Booking.jsx';
+import { Navbar } from './components/Navbar';
+import Home from './pages/Home';
+import About from './components/About.jsx';
+import Profile from './components/Profile.jsx';
+import SearchResults from './pages/SearchResults';
+import Footer from './components/Footer';
+
 import './App.css';
 
-export default function App() {
-  const count = useSelector(selectCount);
-  const dispatch = useDispatch();
-  const [incrementAmount, setIncrementAmount] = useState('2');
-
+function App() {
   return (
-    <div>
-      <div className='row'>
-        <button
-          className='button'
-          aria-label='Increment value'
-          onClick={() => dispatch(increment())}
-        >
-          +
-        </button>
-        <span className='value'>{count}</span>
-        <button
-          className='button'
-          aria-label='Decrement value'
-          onClick={() => dispatch(decrement())}
-        >
-          -
-        </button>
-      </div>
-      <div className='row'>
-        <input
-          className='textbox'
-          aria-label='Set increment amount'
-          value={incrementAmount}
-          onChange={(e) => setIncrementAmount(e.target.value)}
-        />
-        <button
-          className='button'
-          onClick={() =>
-            dispatch(incrementByAmount(Number(incrementAmount) || 0))
-          }
-        >
-          Add Amount
-        </button>
-        <button
-          className={`button asyncButton`}
-          onClick={() => dispatch(incrementAsync(Number(incrementAmount) || 0))}
-        >
-          Add Async
-        </button>
-      </div>
-    </div>
+    <>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/home' element={<Home />} />
+          <Route path='/about' element={<About />} />
+          <Route path='/booking' element={<Booking />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/searchResult' element={<SearchResults />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </>
   );
 }
+
+export default App;
