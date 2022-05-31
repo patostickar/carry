@@ -3,8 +3,9 @@ import axios from 'axios';
 const initialState = {
   pickupLocation: null,
   dropoffLocation: null,
-  pickupDate: null,
-  dropoffDate: null,
+  sameLocation: true,
+  pickupDate: new Date().getTime(),
+  dropoffDate: new Date().getTime(),
   locations: [],
 };
 
@@ -24,9 +25,17 @@ export const searchBar = createSlice({
   reducers: {
     setPickupLocation: (state, action) => {
       state.pickupLocation = action.payload;
+      if (state.sameLocation) state.dropoffLocation = state.pickupLocation;
     },
     setDroppOffLocation: (state, action) => {
       state.dropoffLocation = action.payload;
+    },
+    setSameLocation: (state, action) => {
+      state.sameLocation = action.payload;
+      state.dropoffLocation = state.pickupLocation;
+    },
+    setDate: (state, action) => {
+      state.date = action.payload;
     },
     setPickupTime: (state, action) => {
       state.pickupDate = action.payload;
@@ -43,6 +52,8 @@ export const searchBar = createSlice({
 export const {
   setPickupLocation,
   setDroppOffLocation,
+  setSameLocation,
+  setDate,
   setPickupTime,
   setDroppOffTime,
   setLocationList,
