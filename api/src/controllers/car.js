@@ -1,4 +1,4 @@
-const { getCarsDB, DBcreateCar, updateDate, updateCarLocation } = require("../services/CarService");
+const { getCarsDB, DBcreateCar, updateCarLocation } = require("../services/CarService");
 
 const getCars = async (req, res, next) => {
   const {id} = req.params
@@ -22,18 +22,18 @@ const createCar = async (req, res, next) => {
   }
 }
 
-const updateCarDate = async (req, res, next) => {
-   // funciona para enviar 1 o 2 datos el dato que no se asigna se envia como null
-   const { pickupDate, returnDate } = req.body;
-   const { id } = req.params;
-   try {
-     const response = await updateDate(id, pickupDate, returnDate);
+// const updateCarDate = async (req, res, next) => {
+//    // funciona para enviar 1 o 2 datos el dato que no se asigna se envia como null
+//    const { pickupDate, returnDate } = req.body;
+//    const { id } = req.params;
+//    try {
+//      const response = await updateDate(id, pickupDate, returnDate);
      
-     res.send({msg : response});
-   } catch (error) {
-     next(error);
-   }
- }
+//      res.send({msg : response});
+//    } catch (error) {
+//      next(error);
+//    }
+//  }
 
 const updateLocation = async (req, res, next) => {
    const { locationid } = req.body;
@@ -50,7 +50,6 @@ const updateLocation = async (req, res, next) => {
 module.exports = {
     getCars,
     createCar,
-    updateCarDate,
     updateLocation
 }
  
