@@ -26,7 +26,6 @@ export const Navbar = () => {
   const open = Boolean(anchorEl);
   const { isAuthenticated, user, loginWithRedirect, logout, isLoading } =
     useAuth0();
-  console.log(isAuthenticated);
 
   const handleClick = (e) => {
     setAnchorEl(e.currentTarget);

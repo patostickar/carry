@@ -6,6 +6,10 @@ import About from './components/About.jsx';
 import Profile from './components/Profile.jsx';
 import SearchResults from './pages/SearchResults';
 import Footer from './components/Footer';
+import AdminPanel from './pages/AdminPanel.jsx';
+import CarCreate from './components/CarCreateForm/CarCreate.jsx';
+import CarTypeCreate from './components/CarCreateForm/CarTypeCreate.jsx';
+import LocationCreate from './components/CarCreateForm/LocationCreate.jsx';
 
 import './App.css';
 
@@ -21,6 +25,10 @@ function App() {
           <Route path='/booking' element={<Booking />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/searchResult' element={<SearchResults />} />
+          <Route path='/adminPanel' element={<AdminPanel/>} />
+          <Route path='/carcreate' element={<CarCreate />} />
+          <Route path='/cartypecreate' element={<CarTypeCreate />} />
+          <Route path='/locationcreate' element={<LocationCreate />} />
         </Routes>
         <Footer />
       </BrowserRouter>

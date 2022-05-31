@@ -17,21 +17,13 @@ module.exports = (sequelize) => {
         type: DataTypes.DATEONLY,
         allowNull: false,
       },
-      base_rate: {
-        type: DataTypes.INTEGER,
-      },
-      taxes_fees_total: {
-        type: DataTypes.INTEGER,
-      },
-      insurance_total: {
-        type: DataTypes.INTEGER,
-      },
-      discount_total: {
-        type: DataTypes.INTEGER,
-      },
       reservation_total: {
         type: DataTypes.INTEGER,
+        allowNull: false
       },
+      Status: {
+        type : DataTypes.STRING
+      }
     },
     { timestamps: false }
   );
