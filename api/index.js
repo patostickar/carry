@@ -21,7 +21,7 @@ conn
       street: l.street,
       city: l.city,
       state_name: l.state_name,
-      postal_code: l.postcal_code,
+      postal_code: l.postal_code,
       geo: l.geo,
       phone: l.telephone,
       time_open: l.time_open,
@@ -53,6 +53,7 @@ conn
       air_conditioning: c.air_conditioned,
       large_suitcase: c.large_suitcase,
       small_suitcase: c.small_suitcase,
+      Price: c.Price
     }));
 
     await Promise.all([
