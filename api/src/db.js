@@ -78,7 +78,7 @@ Booking.belongsTo(Customer);
 
 //  LOCATION : BOOKING => ONE TO MANY
 Location.hasMany(Booking);
-Booking.belongsTo(Location, { as: 'pickupt_location' });
+Booking.belongsTo(Location, { as: 'pickup_location' });
 Location.hasMany(Booking);
 Booking.belongsTo(Location, { as: 'dropoff_location' });
 //  expecting for foreign key in Booking?
