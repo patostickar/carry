@@ -1,34 +1,58 @@
+import { useSelector, useDispatch } from 'react-redux';
+import { setSameLocation } from '../redux/searchBar.js';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
 import SearchBar from './SearchBar/SearchBar';
-import 'react-date-range/dist/styles.css'; // main style file
-import 'react-date-range/dist/theme/default.css'; // theme css file
+import { useTypewriter } from 'react-simple-typewriter';
 import styles from './styles/SearchBarJumbo.module.css';
 
-// Se puede busar por nombre, ciudad o estado
 export default function SearchBarJumbo() {
+  const sameLocation = useSelector((state) => state.searchBar.sameLocation);
+  const dispatch = useDispatch();
+
+  const handleChange = (event) => {
+    const sameLocation = event.target.value === 'true';
+    dispatch(setSameLocation(sameLocation));
+  };
+
+  const { text } = useTypewriter({
+    words: ['en familia', 'con amigos', 'de negocios', 'a toda la Argentina'],
+    loop: 0,
+  });
+
   return (
     <div className={styles.searchBarJumbo}>
       <div className={styles.headerContainer}>
-        <h1>Alquiler de autos para cualquier tipo de viaje</h1>
+        <h1>
+          Alquiler de autos para viajes <span>{text}</span>
+        </h1>
         <p className={styles.headerDesc}>
-          Compara ofertas de las mayores empresas de alquiler de autos
+          Conocé la gran flota que tenemos para ofrecerte. Autos de primera gama
+          para que tu viaje tenga el confort y seguridad que necesitas.
         </p>
 
-        <div className={styles.inputRadioContainer}>
-          <div className={styles.headerInputRadio}>
-            <input
-              type='radio'
-              name='Return to same location'
-              id='radio1'
-              selected
+        <FormControl>
+          <RadioGroup
+            row
+            aria-labelledby='demo-controlled-radio-buttons-group'
+            name='controlled-radio-buttons-group'
+            value={sameLocation}
+            onChange={handleChange}
+          >
+            <FormControlLabel
+              value='true'
+              control={<Radio />}
+              label='Devolver en el mismo lugar'
             />
-            <label htmlFor='radio1'>Devolver en la misma ubicacion</label>
-          </div>
-
-          <div className={styles.headerInputRadio}>
-            <input type='radio' name='Return to same location' id='radio2' />
-            <label htmlFor='radio2'>Devolver en una ubicacion diferente</label>
-          </div>
-        </div>
+            <FormControlLabel
+              value='false'
+              control={<Radio />}
+              label='Devolver en otro lugar'
+            />
+          </RadioGroup>
+        </FormControl>
         <div className={styles.searchBarPosition}>
           <SearchBar />
         </div>
