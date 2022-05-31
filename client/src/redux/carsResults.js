@@ -57,11 +57,15 @@ export const carsResults = createSlice({
 
 export const fetchCarTypes = (pickupLocation) => async (dispatch) => {
   try {
-    await axios
-      // .get(`http://localhost:3001/cartype/count/${pickupLocation}`)
-      // .then((res) => dispatch(setCarTypes(res.data)));
-      .get(`http://localhost:3001/cartype`)
-      .then((res) => dispatch(setCarTypes(res.data)));
+    dispatch(setCarTypes([]));
+    // temporal para pruebas
+    if (pickupLocation)
+      await axios
+        // .get(`http://localhost:3001/cartype/count/${pickupLocation}`)
+        // .then((res) => dispatch(setCarTypes(res.data)));
+        .get(`http://localhost:3001/cartype`)
+        .then((res) => dispatch(setCarTypes(res.data)));
+    console.log('fetched car types');
   } catch (error) {
     console.log(error);
   }
