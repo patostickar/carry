@@ -1,6 +1,7 @@
 import Steps from './steps';
 import CarDetailCard from './carDetailCard';
 import CarCategoryTopBar from '../TopBar/CarCategoryTopBar';
+import LinearIndeterminate from '../../GeneralFuntions/LinearIndeterminate';
 import { useSelector } from 'react-redux';
 import { AnimatePresence } from 'framer-motion';
 import styles from './styles/ListResult.module.css';
@@ -32,26 +33,32 @@ function ListResult() {
       <Steps />
       <CarCategoryTopBar />
       <AnimatePresence>
-        {carTypes
-          .filter((carType) =>
-            transmissionOptions.length
-              ? transmissionOptions.includes(carType.transmission.toLowerCase())
-              : true
-          )
-          .filter((carType) =>
-            airConditioning ? carType.air_conditioning : true
-          )
-          .filter((carType) => {
-            return fourPlusSeats ? carType.seats >= 4 : true;
-          })
-          .filter((carType) =>
-            categories.length
-              ? categories.includes(carType.class_name.toLowerCase())
-              : true
-          )
-          .map((carType) => (
-            <CarDetailCard cartype={carType} key={carType.id} />
-          ))}
+        {!carTypes.length ? (
+          <LinearIndeterminate />
+        ) : (
+          carTypes
+            .filter((carType) =>
+              transmissionOptions.length
+                ? transmissionOptions.includes(
+                    carType.transmission.toLowerCase()
+                  )
+                : true
+            )
+            .filter((carType) =>
+              airConditioning ? carType.air_conditioning : true
+            )
+            .filter((carType) => {
+              return fourPlusSeats ? carType.seats >= 4 : true;
+            })
+            .filter((carType) =>
+              categories.length
+                ? categories.includes(carType.class_name.toLowerCase())
+                : true
+            )
+            .map((carType) => (
+              <CarDetailCard cartype={carType} key={carType.id} />
+            ))
+        )}
       </AnimatePresence>
     </div>
   );

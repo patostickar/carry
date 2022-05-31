@@ -15,7 +15,7 @@ export default function PopularLocations() {
   return (
     <div className={styles.container}>
       <div className='section__title'>
-        <h2>Popular locations</h2>
+        <h2>Destinos populares</h2>
       </div>
       <div className={styles.cardsContainer}>
         <PopLocationCard
