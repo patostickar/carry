@@ -12,8 +12,10 @@ import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import InputAdornment from '@mui/material/InputAdornment';
 import './styles/locationInput.module.css';
 
-export default function Location({ type }) {
-  const { locations } = useSelector((state) => state.searchBar);
+export default function Location({ type, sameLocation }) {
+  const { locations, pickupLocation, dropoffLocation } = useSelector(
+    (state) => state.searchBar
+  );
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
 
@@ -21,10 +23,7 @@ export default function Location({ type }) {
     dispatch(fetchAllLocations());
   }, []);
 
-  const location =
-    type === 'Pick-up'
-      ? useSelector((state) => state.searchBar.pickupLocation)
-      : useSelector((state) => state.searchBar.dropoffLocation);
+  const location = type === 'Pick-up' ? pickupLocation : dropoffLocation;
 
   function handleDispatch(newValue) {
     type === 'Pick-up'
@@ -34,6 +33,7 @@ export default function Location({ type }) {
 
   return (
     <Autocomplete
+      disabled={sameLocation}
       className='headerSearchInput'
       id='pickup_location'
       sx={{ width: 300 }}
