@@ -1,3 +1,6 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchAllLocations } from './redux/searchBar.js';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Booking } from './components/Booking.jsx';
 import { Navbar } from './components/Navbar';
@@ -14,6 +17,12 @@ import LocationCreate from './components/CarCreateForm/LocationCreate.jsx';
 import './App.css';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAllLocations());
+  }, []);
+
   return (
     <>
       <BrowserRouter>
@@ -25,7 +34,7 @@ function App() {
           <Route path='/booking' element={<Booking />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/searchResult' element={<SearchResults />} />
-          <Route path='/adminPanel' element={<AdminPanel/>} />
+          <Route path='/adminPanel' element={<AdminPanel />} />
           <Route path='/carcreate' element={<CarCreate />} />
           <Route path='/cartypecreate' element={<CarTypeCreate />} />
           <Route path='/locationcreate' element={<LocationCreate />} />

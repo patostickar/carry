@@ -4,6 +4,7 @@ const initialState = {
   pickupLocation: null,
   dropoffLocation: null,
   sameLocation: true,
+  popLocation: '',
   pickupDate: new Date().getTime(),
   dropoffDate: new Date().getTime(),
   locations: [],
@@ -34,6 +35,9 @@ export const searchBar = createSlice({
       state.sameLocation = action.payload;
       state.dropoffLocation = state.pickupLocation;
     },
+    setPopLocation: (state, action) => {
+      state.popLocation = action.payload;
+    },
     setDate: (state, action) => {
       state.date = action.payload;
     },
@@ -53,6 +57,7 @@ export const {
   setPickupLocation,
   setDroppOffLocation,
   setSameLocation,
+  setPopLocation,
   setDate,
   setPickupTime,
   setDroppOffTime,
