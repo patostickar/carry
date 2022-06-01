@@ -12,7 +12,7 @@ import {
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import styles from './styles/PopularLocations.module.css';
 
-export default function PopLocationCard({ cityName, image, pickPoints }) {
+export default function PopLocationCard({ cityName, img, agencies }) {
   const dispatch = useDispatch();
 
   function handleDispatch() {
@@ -26,7 +26,7 @@ export default function PopLocationCard({ cityName, image, pickPoints }) {
           <CardMedia
             component='img'
             height='140'
-            image={image}
+            image={img}
             alt='green iguana'
           />
           <CardContent>
@@ -34,7 +34,8 @@ export default function PopLocationCard({ cityName, image, pickPoints }) {
               {cityName}
             </Typography>
             <Typography variant='body2' color='text.secondary'>
-              Alquiler de vehiculos en {pickPoints} agencias
+              Alquiler de vehiculos en {agencies}{' '}
+              {agencies === 1 ? 'agencia' : 'agencias'}
             </Typography>
             <Typography variant='body2' color='text.secondary'>
               <DirectionsCarIcon

@@ -133,46 +133,46 @@
       "time_open": "07:00:00",
       "time_close": "23:00:00",
       "airport_location": false,
-      "img": "https://d2r9epyceweg5n.cloudfront.net/stores/001/684/028/products/combo-fernet-con-coca-cola-2-25l1-dbcfd1ac70cfd66caa16251522081676-1024-1024.jpg"
+      "img": "https://lp-cms-production.imgix.net/2019-06/4ac1cc884e3a68d4860576c1622c8ade-cordoba.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800"
     },
     {
       "name": "Ministro Pistarini International Airport",
       "street": "AU Tte. Gral. Pablo Riccheri Km 33",
       "city": "Ezeiza",
-      "state_name": "Buenos Aires Province",
+      "state_name": "Buenos Aires",
       "postal_code": "B1802",
       "geo": "[-34.8150, -58.5348]",
       "telephone": "04949454866",
       "time_open": "05:00:00",
       "time_close": "00:00:00",
       "airport_location": true,
-      "img": "https://aeropuertoezeiza.net/sites/default/files/inline-images/eze.jpg"
+      "img": "https://media.a24.com/p/70e908153e0a7eeced7a12b50d0a1d06/adjuntos/296/imagenes/008/012/0008012235/1200x900/smart/desde-cuando-es-autonoma-la-ciudad-buenos-aires.jpeg"
     },
     {
       "name": "Palermo Cars",
       "street": "Humboldt 1897",
       "city": "Buenos Aires City",
-      "state_name": "Buenos Aires City",
+      "state_name": "Buenos Aires",
       "postal_code": "C1425FWB",
       "geo": "[-34.583477, -58.433671]",
       "telephone": "011 4776-6197",
       "time_open": "07:00:00",
       "time_close": "23:00:00",
       "airport_location": false,
-      "img": "https://www.carlosdeory.com/wp-content/uploads/2019/03/51786078_2304279259856762_3882873206636152083_n.jpg"
+      "img": "https://media.a24.com/p/70e908153e0a7eeced7a12b50d0a1d06/adjuntos/296/imagenes/008/012/0008012235/1200x900/smart/desde-cuando-es-autonoma-la-ciudad-buenos-aires.jpeg"
     },
     {
       "name": "Aeroparque Internacional Jorge Newbery",
       "street": "Av. Costanera Rafael Obligado s/n",
       "city": "Buenos Aires City",
-      "state_name": "Buenos Aires City",
+      "state_name": "Buenos Aires",
       "postal_code": "C1425",
       "geo": "[-34.5580, -58.4170]",
       "telephone": "011 5480-6111",
       "time_open": "05:00:00",
       "time_close": "00:00:00",
       "airport_location": true,
-      "img": "https://www.americasquarterly.org/wp-content/uploads/2016/10/Argentina_Top.jpg"
+      "img": "https://media.a24.com/p/70e908153e0a7eeced7a12b50d0a1d06/adjuntos/296/imagenes/008/012/0008012235/1200x900/smart/desde-cuando-es-autonoma-la-ciudad-buenos-aires.jpeg"
     },
     {
       "name": "Santiago Cars",
@@ -185,7 +185,7 @@
       "time_open": "07:00:00",
       "time_close": "23:00:00",
       "airport_location": false,
-      "img": "https://www.americasquarterly.org/wp-content/uploads/2016/10/Argentina_Top.jpg"
+      "img": "https://pbs.twimg.com/profile_images/565228140310851584/vR9kvoI3_400x400.jpeg"
     },
     {
       "name": "Aeropuerto Internacional El Plumerillo - Mendoza",
@@ -198,7 +198,7 @@
       "time_open": "05:00:00",
       "time_close": "00:00:00",
       "airport_location": true,
-      "img": "https://aeropuertosdelmundo.com.ar/fotos/mdz-aeropuerto.jpg"
+      "img": "https://www.catadelvino.com/uploads/281201514034197247s.jpg"
     },
     {
       "name": "Corrientes Cars",
@@ -211,7 +211,7 @@
       "time_open": "07:00:00",
       "time_close": "23:00:00",
       "airport_location": false,
-      "img": "https://blog.personal.com.py/wp-content/uploads/2018/03/costanera-de-corrientes-argentina1.jpg"
+      "img": "https://live.staticflickr.com/2849/10658548264_3997f6ed5d_b.jpg"
     },
     {
       "name": "Ushuaia Airport",
@@ -224,7 +224,7 @@
       "time_open": "05:00:00",
       "time_close": "00:00:00",
       "airport_location": true,
-      "img": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Ushuaia_Airport_Aerial_Image.jpg"
+      "img": "https://upload.wikimedia.org/wikipedia/commons/7/71/Les_Eclaireurs_Lighthouse.jpg"
     },
     {
       "name": "Santa Fe Cars",
@@ -237,7 +237,7 @@
       "time_open": "07:00:00",
       "time_close": "23:00:00",
       "airport_location": false,
-      "img": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Santa_Fe%2C_Argentina_2019_%28letras%29.jpg"
+      "img": "https://images.adsttc.com/media/images/5ff3/eb9e/63c0/17cd/f900/031a/medium_jpg/Federico_Pad%C3%ADn_-_Rosario.jpg"
     },
     {
       "name": "Aeropuerto Internacional de Bariloche Tte. Luis Candelaria",
@@ -250,7 +250,7 @@
       "time_open": "05:00:00",
       "time_close": "00:00:00",
       "airport_location": true,
-      "img": "https://i0.wp.com/barilocheparabrasileiros.com.br/wp-content/uploads/2022/02/transfer.jpg"
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Hotel_Llao_Llao%2C_Bariloche.jpg/1200px-Hotel_Llao_Llao%2C_Bariloche.jpg"
     }
   ],
   "car_types": [
