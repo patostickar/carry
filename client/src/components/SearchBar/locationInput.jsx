@@ -47,7 +47,7 @@ export default function Location({ type, sameLocation, popLocation }) {
     // Para evitar eso, seteo el valor al de pickup
     // No es la mejor manera, pero funciona
     if (route.pathname === '/searchResult' && type === 'Retiro') {
-      setInput(pickupLocation.name);
+      setInput(pickupLocation?.name || '');
     }
     return () => {
       dispatch(setPopLocation(''));
