@@ -1,11 +1,12 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { clearAllFilters } from '../../../redux/carsResults.js';
 import Box from '@mui/material/Box';
+import BasicModal from '../../BasicModal';
 import Transmission from './transmission';
 import CarCategory from './carCategory';
 import CarSpecs from './carSpecs';
 import Divider from '@mui/material/Divider';
-import MapView  from '../../LocationsMap/MapView';
+import MapView from '../../LocationsMap/MapView';
 import styles from './styles/SideBar.module.css';
 
 function SideBar() {
@@ -19,7 +20,9 @@ function SideBar() {
       }}
     >
       <div className={styles.googleMap}>
-        <MapView />
+        <BasicModal text='Ver Mapa'>
+          <MapView />
+        </BasicModal>
       </div>
       <h2>Filter</h2>
       <button onClick={() => dispatch(clearAllFilters())}>

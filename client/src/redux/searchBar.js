@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { add } from 'date-fns';
 import axios from 'axios';
 const initialState = {
   pickupLocation: null,
@@ -6,7 +7,9 @@ const initialState = {
   sameLocation: true,
   popLocation: '',
   pickupDate: new Date().getTime(),
-  dropoffDate: new Date().getTime(),
+  dropoffDate: add(new Date(), {
+    days: 1,
+  }).getTime(),
   locations: [],
 };
 

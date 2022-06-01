@@ -6,12 +6,22 @@ import Calendar from './calendar';
 import styles from './styles/SearchBar.module.css';
 
 function SearchBar() {
-  const { sameLocation, popLocation } = useSelector((state) => state.searchBar);
-  const { pickupLocation } = useSelector((state) => state.searchBar);
+  const { sameLocation, popLocation, pickupDate, dropoffDate } = useSelector(
+    (state) => state.searchBar
+  );
+  const { pickupLocation, dropoffLocation } = useSelector(
+    (state) => state.searchBar
+  );
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSearch = () => {
+    if (!(pickupLocation && dropoffLocation)) {
+      return alert('Por favor complete los campos de búsqueda');
+    }
+    if (dropoffDate - pickupDate < 86400000) {
+      return alert('El alquiler mínimo es de 24 hs');
+    }
     dispatch(fetchCarTypes(pickupLocation));
     navigate('/searchResult');
   };
