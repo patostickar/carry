@@ -132,7 +132,8 @@
       "telephone": "0351 461-1369",
       "time_open": "07:00:00",
       "time_close": "23:00:00",
-      "airport_location": false
+      "airport_location": false,
+      "img": "https://d2r9epyceweg5n.cloudfront.net/stores/001/684/028/products/combo-fernet-con-coca-cola-2-25l1-dbcfd1ac70cfd66caa16251522081676-1024-1024.jpg"
     },
     {
       "name": "Ministro Pistarini International Airport",
@@ -144,7 +145,8 @@
       "telephone": "04949454866",
       "time_open": "05:00:00",
       "time_close": "00:00:00",
-      "airport_location": true
+      "airport_location": true,
+      "img": "https://aeropuertoezeiza.net/sites/default/files/inline-images/eze.jpg"
     },
     {
       "name": "Palermo Cars",
@@ -156,7 +158,8 @@
       "telephone": "011 4776-6197",
       "time_open": "07:00:00",
       "time_close": "23:00:00",
-      "airport_location": false
+      "airport_location": false,
+      "img": "https://www.carlosdeory.com/wp-content/uploads/2019/03/51786078_2304279259856762_3882873206636152083_n.jpg"
     },
     {
       "name": "Aeroparque Internacional Jorge Newbery",
@@ -168,7 +171,8 @@
       "telephone": "011 5480-6111",
       "time_open": "05:00:00",
       "time_close": "00:00:00",
-      "airport_location": true
+      "airport_location": true,
+      "img": "https://www.americasquarterly.org/wp-content/uploads/2016/10/Argentina_Top.jpg"
     },
     {
       "name": "Santiago Cars",
@@ -180,7 +184,8 @@
       "telephone": "03854 22-3663",
       "time_open": "07:00:00",
       "time_close": "23:00:00",
-      "airport_location": false
+      "airport_location": false,
+      "img": "https://www.americasquarterly.org/wp-content/uploads/2016/10/Argentina_Top.jpg"
     },
     {
       "name": "Aeropuerto Internacional El Plumerillo - Mendoza",
@@ -192,7 +197,8 @@
       "telephone": "866.118.4798x14335",
       "time_open": "05:00:00",
       "time_close": "00:00:00",
-      "airport_location": true
+      "airport_location": true,
+      "img": "https://aeropuertosdelmundo.com.ar/fotos/mdz-aeropuerto.jpg"
     },
     {
       "name": "Corrientes Cars",
@@ -204,7 +210,8 @@
       "telephone": "0379 426-9970",
       "time_open": "07:00:00",
       "time_close": "23:00:00",
-      "airport_location": false
+      "airport_location": false,
+      "img": "https://blog.personal.com.py/wp-content/uploads/2018/03/costanera-de-corrientes-argentina1.jpg"
     },
     {
       "name": "Ushuaia Airport",
@@ -216,7 +223,8 @@
       "telephone": "02901 43-1232",
       "time_open": "05:00:00",
       "time_close": "00:00:00",
-      "airport_location": true
+      "airport_location": true,
+      "img": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Ushuaia_Airport_Aerial_Image.jpg"
     },
     {
       "name": "Santa Fe Cars",
@@ -228,7 +236,8 @@
       "telephone": "0342 460-9888",
       "time_open": "07:00:00",
       "time_close": "23:00:00",
-      "airport_location": false
+      "airport_location": false,
+      "img": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Santa_Fe%2C_Argentina_2019_%28letras%29.jpg"
     },
     {
       "name": "Aeropuerto Internacional de Bariloche Tte. Luis Candelaria",
@@ -240,7 +249,8 @@
       "telephone": "0294 440-5016",
       "time_open": "05:00:00",
       "time_close": "00:00:00",
-      "airport_location": true
+      "airport_location": true,
+      "img": "https://i0.wp.com/barilocheparabrasileiros.com.br/wp-content/uploads/2022/02/transfer.jpg"
     }
   ],
   "car_types": [
