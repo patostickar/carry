@@ -56,6 +56,9 @@ export default function Location({ type, sameLocation }) {
         `${option.name}, ${option.city}, ${option.state_name}`
       }
       value={location}
+      isOptionEqualToValue={(option, value) => {
+        return option.name === value.name;
+      }}
       onChange={(event, newValue) => {
         handleDispatch(newValue);
       }}
