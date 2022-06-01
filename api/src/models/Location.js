@@ -30,7 +30,7 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       geo: {
-        type: DataTypes.STRING,
+        type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: false,
         unique: true,
       },
