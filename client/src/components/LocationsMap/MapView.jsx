@@ -8,7 +8,8 @@ import { useSelector } from "react-redux";
 
 function MapFunction(props){
   const map = useMap()
-  props.actual?.geo && map.flyTo(props.actual.geo)
+  props.actual?.geo && map.flyTo(props.actual.geo,15)
+  // map.setZoom(10)
 }
 
 export default  function MapView() {
