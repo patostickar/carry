@@ -1,8 +1,8 @@
 import { Pagination, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import Testimonial1 from '../assets/testimonial1.png';
-import Testimonial2 from '../assets/testimonial2.png';
-import Testimonial3 from '../assets/testimonial3.png';
+import Testimonial1 from '../../assets/testimonial1.png';
+import Testimonial2 from '../../assets/testimonial2.png';
+import Testimonial3 from '../../assets/testimonial3.png';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import './styles/Testimonials.css';

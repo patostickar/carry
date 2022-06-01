@@ -6,7 +6,7 @@ import Calendar from './calendar';
 import styles from './styles/SearchBar.module.css';
 
 function SearchBar() {
-  const { sameLocation } = useSelector((state) => state.searchBar);
+  const { sameLocation, popLocation } = useSelector((state) => state.searchBar);
   const { pickupLocation } = useSelector((state) => state.searchBar);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -19,10 +19,10 @@ function SearchBar() {
   return (
     <div className={styles.headerSearch}>
       <div className={styles.headerSearchItem}>
-        <Location type='Pick-up' />
+        <Location type='Retiro' popLocation={popLocation} />
       </div>
       <div className={styles.headerSearchItem}>
-        <Location type='Drop-off' sameLocation={sameLocation} />
+        <Location type='Entrega' sameLocation={sameLocation} />
       </div>
       <Calendar />
       <div className={styles.headerSearchItem}>

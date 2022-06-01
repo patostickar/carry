@@ -1,12 +1,24 @@
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { Button, CardActionArea, CardActions } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { setPopLocation } from '../../redux/searchBar.js';
+import {
+  Button,
+  CardActionArea,
+  CardActions,
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+} from '@mui/material';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import styles from './styles/PopularLocations.module.css';
 
-export default function PopLocationCard({ cityName, image, pickPoints }) {
+export default function PopLocationCard({ cityName, img, agencies }) {
+  const dispatch = useDispatch();
+
+  function handleDispatch() {
+    dispatch(setPopLocation(cityName));
+  }
+
   return (
     <div className={styles.card}>
       <Card sx={{ maxWidth: 345 }}>
@@ -14,7 +26,7 @@ export default function PopLocationCard({ cityName, image, pickPoints }) {
           <CardMedia
             component='img'
             height='140'
-            image={image}
+            image={img}
             alt='green iguana'
           />
           <CardContent>
@@ -22,7 +34,8 @@ export default function PopLocationCard({ cityName, image, pickPoints }) {
               {cityName}
             </Typography>
             <Typography variant='body2' color='text.secondary'>
-              Alquiler de vehiculos en {pickPoints} agencias
+              Alquiler de vehiculos en {agencies}{' '}
+              {agencies === 1 ? 'agencia' : 'agencias'}
             </Typography>
             <Typography variant='body2' color='text.secondary'>
               <DirectionsCarIcon
@@ -37,7 +50,7 @@ export default function PopLocationCard({ cityName, image, pickPoints }) {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size='small' color='primary'>
+          <Button size='small' color='primary' onClick={handleDispatch}>
             Elegir
           </Button>
         </CardActions>
