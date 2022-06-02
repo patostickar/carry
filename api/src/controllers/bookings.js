@@ -1,13 +1,13 @@
+const { createBooking } = require('../services/bookings/createBooking');
+const { getBookings } = require('../services/bookings/getBookings');
 const {
-  createBooking,
-  getBookingsDB,
-  searchBooking,
-} = require('../services/bookingServices.js');
+  getCustomerBookings,
+} = require('../services/bookings/getCustomerBookings');
 
-const getBookings = async (req, res, next) => {
+module.exports.getBookings = async (req, res, next) => {
   const { id } = req.params;
   try {
-    const data = await getBookingsDB(id);
+    const data = await getBookings(id);
     data ? res.send(data) : res.send({ msg: 'booking not found' });
   } catch (error) {
     if (error.response) {
@@ -20,7 +20,7 @@ const getBookings = async (req, res, next) => {
   }
 };
 
-const createBookingDB = async (req, res, next) => {
+module.exports.createBookingDB = async (req, res, next) => {
   try {
     //  const {carid}=req.body
 
@@ -37,11 +37,11 @@ const createBookingDB = async (req, res, next) => {
   }
 };
 
-const getCustomersBookings = async (req, res, next) => {
+module.exports.getCustomersBookings = async (req, res, next) => {
   const { id } = req.params;
   try {
-    const BookingByCustomer = await searchBooking(id);
-    res.status(200).send(BookingByCustomer);
+    const bookingByCustomer = await getCustomerBookings(id);
+    res.status(200).send(bookingByCustomer);
   } catch (error) {
     if (error.response) {
       res.status(error.response.status).send({ msg: error.response.status });
@@ -51,10 +51,4 @@ const getCustomersBookings = async (req, res, next) => {
       next(error);
     }
   }
-};
-
-module.exports = {
-  createBookingDB,
-  getBookings,
-  getCustomersBookings,
 };

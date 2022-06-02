@@ -1,7 +1,7 @@
 const server = require('./src/app.js');
 const fs = require('fs');
 const { conn, Location, Customer, Cartype } = require('./src/db.js');
-const { DBcreateCar } = require('./src/services/CarService');
+const { createCar } = require('./src/services/cars/createCar');
 
 const { PORT } = process.env;
 
@@ -101,19 +101,19 @@ conn
     // const location2 = await Location.findOne({where:{name: "Palermo Cars"}})
     // const cartype2 = await Cartype.findOne({where:{make: "Volkswagen"}})
 
-    await DBcreateCar(location.id, cartype1.id);
-    await DBcreateCar(location.id, cartype1.id);
-    await DBcreateCar(location.id, cartype1.id);
-    await DBcreateCar(location.id, cartype2.id);
-    await DBcreateCar(location.id, cartype2.id);
-    await DBcreateCar(location.id, cartype3.id);
-    await DBcreateCar(location.id, cartype4.id);
-    await DBcreateCar(location.id, cartype5.id);
-    await DBcreateCar(location.id, cartype6.id);
-    await DBcreateCar(location.id, cartype7.id);
-    await DBcreateCar(location.id, cartype8.id);
-    await DBcreateCar(location.id, cartype9.id);
-    await DBcreateCar(location.id, cartype10.id);
+    await createCar(location.id, cartype1.id);
+    await createCar(location.id, cartype1.id);
+    await createCar(location.id, cartype1.id);
+    await createCar(location.id, cartype2.id);
+    await createCar(location.id, cartype2.id);
+    await createCar(location.id, cartype3.id);
+    await createCar(location.id, cartype4.id);
+    await createCar(location.id, cartype5.id);
+    await createCar(location.id, cartype6.id);
+    await createCar(location.id, cartype7.id);
+    await createCar(location.id, cartype8.id);
+    await createCar(location.id, cartype9.id);
+    await createCar(location.id, cartype10.id);
 
     console.log('Locations, Customers and CarTypes have been saved');
   })

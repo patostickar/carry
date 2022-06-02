@@ -1,24 +1,14 @@
-const { Booking, Car, Location, Customer } = require('../db');
+const { Booking, Car, Location, Customer } = require('../../db');
 
-const getBookingsDB = async (id) => {
-  if (id) {
-    return await Booking.findOne({
-      where: { id },
-    });
-  } else {
-    return await Booking.findAll();
-  }
-};
-
-const createBooking = async (req) => {
+module.exports.createBooking = async (req) => {
   const {
     carid,
     customerid,
     locationStart,
     locationEnd,
-    return_date,
-    pickup_date,
-    reservation_total,
+    returnDate,
+    pickupDate,
+    reservationTotal,
     Status,
   } = req.body;
   if (
@@ -26,12 +16,12 @@ const createBooking = async (req) => {
     customerid &&
     locationStart &&
     locationEnd &&
-    return_date &&
-    pickup_date &&
-    reservation_total &&
+    returnDate &&
+    pickupDate &&
+    reservationTotal &&
     Status
   ) {
-    if (pickup_date === return_date || return_date < pickup_date) {
+    if (pickupDate === returnDate || returnDate < pickupDate) {
       return 'Deben ser diferentes fechas para generar la reserva y la fecha de retorno no puede ser menor a la fecha inicio ';
     }
 
@@ -44,12 +34,12 @@ const createBooking = async (req) => {
     const [booking, created] = await Booking.findOrCreate({
       where: {
         carId: carid,
-        pickup_date,
-        return_date,
+        pickupDate,
+        returnDate,
       },
       defaults: {
         Status,
-        reservation_total,
+        reservationTotal,
         locationId: dataValues.locationId,
       },
     });
@@ -83,23 +73,4 @@ const createBooking = async (req) => {
   } else {
     return 'Incomplete data';
   }
-};
-
-const searchBooking = async (id) => {
-  const data = await Booking.findAll({
-    where: {
-      customerId: id,
-    },
-  });
-  if (data.length > 0) {
-    return { bookings: data };
-  } else {
-    return { bookings: 'No hay reservas para este cliente' };
-  }
-};
-
-module.exports = {
-  getBookingsDB,
-  createBooking,
-  searchBooking,
 };

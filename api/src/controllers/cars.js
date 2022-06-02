@@ -1,8 +1,6 @@
-const {
-  getCarById,
-  DBcreateCar,
-  updateCarLocation,
-} = require('../services/CarService');
+const { getCarById } = require('../services/cars/getCarById');
+const { createCar } = require('../services/cars/createCar');
+const { updateCarLocation } = require('../services/cars/updateCarLocation');
 
 module.exports.getCarById = async (req, res, next) => {
   const { id } = req.params;
@@ -23,7 +21,7 @@ module.exports.getCarById = async (req, res, next) => {
 module.exports.createCar = async (req, res, next) => {
   const { locationid, carTypeid } = req.body;
   try {
-    await DBcreateCar(locationid, carTypeid);
+    await createCar(locationid, carTypeid);
     res.status(200).send({ msg: 'auto creado' });
   } catch (error) {
     console.log(error);

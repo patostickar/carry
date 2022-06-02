@@ -1,10 +1,11 @@
-const { getTypeDB, cartypecount } = require('../services/cartypeService');
+const { getCarType } = require('../services/cartypes/getCarType');
+const { carTypeCount } = require('../services/cartypes/carTypeCount');
 const { Cartype } = require('../db');
 
 const getType = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const data = await getTypeDB(id);
+    const data = await getCarType(id);
     res.send(data);
   } catch (error) {
     next(error);
@@ -64,7 +65,7 @@ const createCartype = async (req, res, next) => {
 const GetTypeConunt = async (req, res, next) => {
   const { locationId } = req.params;
   try {
-    const count = await cartypecount(locationId);
+    const count = await carTypeCount(locationId);
     res.send(count);
   } catch (err) {
     next(err);
