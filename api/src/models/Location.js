@@ -11,44 +11,47 @@ module.exports = (sequelize) => {
       },
       name: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       street: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       city: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       state_name: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       postal_code: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       geo: {
-        type: DataTypes.STRING,
+        type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: false,
         unique: true,
       },
       phone: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       time_open: {
         type: DataTypes.TIME,
-        allowNull: false
+        allowNull: false,
       },
       time_close: {
         type: DataTypes.TIME,
-        allowNull: false
+        allowNull: false,
       },
       airport_location: {
         type: DataTypes.BOOLEAN,
-        allowNull: false
+        allowNull: false,
+      },
+      img: {
+        type: DataTypes.STRING,
       },
     },
     { timestamps: false }

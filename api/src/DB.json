@@ -128,47 +128,51 @@
       "city": "Córdoba",
       "state_name": "Córdoba",
       "postal_code": "X5016",
-      "geo": "[-31.423717, -64.180855]",
+      "geo": ["-31.423717", "-64.180855"],
       "telephone": "0351 461-1369",
       "time_open": "07:00:00",
       "time_close": "23:00:00",
-      "airport_location": false
+      "airport_location": false,
+      "img": "https://lp-cms-production.imgix.net/2019-06/4ac1cc884e3a68d4860576c1622c8ade-cordoba.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800"
     },
     {
       "name": "Ministro Pistarini International Airport",
       "street": "AU Tte. Gral. Pablo Riccheri Km 33",
       "city": "Ezeiza",
-      "state_name": "Buenos Aires Province",
+      "state_name": "Buenos Aires",
       "postal_code": "B1802",
-      "geo": "[-34.8150, -58.5348]",
+      "geo": ["-34.8150", "-58.5348"],
       "telephone": "04949454866",
       "time_open": "05:00:00",
       "time_close": "00:00:00",
-      "airport_location": true
+      "airport_location": true,
+      "img": "https://media.a24.com/p/70e908153e0a7eeced7a12b50d0a1d06/adjuntos/296/imagenes/008/012/0008012235/1200x900/smart/desde-cuando-es-autonoma-la-ciudad-buenos-aires.jpeg"
     },
     {
       "name": "Palermo Cars",
       "street": "Humboldt 1897",
       "city": "Buenos Aires City",
-      "state_name": "Buenos Aires City",
+      "state_name": "Buenos Aires",
       "postal_code": "C1425FWB",
-      "geo": "[-34.583477, -58.433671]",
+      "geo": ["-34.583477", "-58.433671"],
       "telephone": "011 4776-6197",
       "time_open": "07:00:00",
       "time_close": "23:00:00",
-      "airport_location": false
+      "airport_location": false,
+      "img": "https://media.a24.com/p/70e908153e0a7eeced7a12b50d0a1d06/adjuntos/296/imagenes/008/012/0008012235/1200x900/smart/desde-cuando-es-autonoma-la-ciudad-buenos-aires.jpeg"
     },
     {
       "name": "Aeroparque Internacional Jorge Newbery",
       "street": "Av. Costanera Rafael Obligado s/n",
       "city": "Buenos Aires City",
-      "state_name": "Buenos Aires City",
+      "state_name": "Buenos Aires",
       "postal_code": "C1425",
-      "geo": "[-34.5580, -58.4170]",
+      "geo": ["-34.5580","-58.4170"],
       "telephone": "011 5480-6111",
       "time_open": "05:00:00",
       "time_close": "00:00:00",
-      "airport_location": true
+      "airport_location": true,
+      "img": "https://media.a24.com/p/70e908153e0a7eeced7a12b50d0a1d06/adjuntos/296/imagenes/008/012/0008012235/1200x900/smart/desde-cuando-es-autonoma-la-ciudad-buenos-aires.jpeg"
     },
     {
       "name": "Santiago Cars",
@@ -176,11 +180,12 @@
       "city": "Santiago del Estero",
       "state_name": "Santiago del Estero",
       "postal_code": "G4200",
-      "geo": "[-27.783843,-64.257496]",
+      "geo": ["-27.783843","-64.257496"],
       "telephone": "03854 22-3663",
       "time_open": "07:00:00",
       "time_close": "23:00:00",
-      "airport_location": false
+      "airport_location": false,
+      "img": "https://pbs.twimg.com/profile_images/565228140310851584/vR9kvoI3_400x400.jpeg"
     },
     {
       "name": "Aeropuerto Internacional El Plumerillo - Mendoza",
@@ -188,11 +193,12 @@
       "city": "Las Heras",
       "state_name": "Mendoza",
       "postal_code": "5541",
-      "geo": "[-32.8277 ,-68.7984]",
+      "geo": ["-32.8277" ,"-68.7984"],
       "telephone": "866.118.4798x14335",
       "time_open": "05:00:00",
       "time_close": "00:00:00",
-      "airport_location": true
+      "airport_location": true,
+      "img": "https://www.catadelvino.com/uploads/281201514034197247s.jpg"
     },
     {
       "name": "Corrientes Cars",
@@ -200,11 +206,12 @@
       "city": "Corrientes",
       "state_name": "Corrientes",
       "postal_code": "3400",
-      "geo": "[-27.469872, -58.825407]",
+      "geo": ["-27.469872", "-58.825407"],
       "telephone": "0379 426-9970",
       "time_open": "07:00:00",
       "time_close": "23:00:00",
-      "airport_location": false
+      "airport_location": false,
+      "img": "https://live.staticflickr.com/2849/10658548264_3997f6ed5d_b.jpg"
     },
     {
       "name": "Ushuaia Airport",
@@ -212,11 +219,12 @@
       "city": "Ushuaia",
       "state_name": "Tierra del Fuego",
       "postal_code": "V9401",
-      "geo": "[-54.8396 , -68.3122]",
+      "geo": ["-54.8396 ", "-68.3122"],
       "telephone": "02901 43-1232",
       "time_open": "05:00:00",
       "time_close": "00:00:00",
-      "airport_location": true
+      "airport_location": true,
+      "img": "https://upload.wikimedia.org/wikipedia/commons/7/71/Les_Eclaireurs_Lighthouse.jpg"
     },
     {
       "name": "Santa Fe Cars",
@@ -224,11 +232,12 @@
       "city": "Santa Fe",
       "state_name": "Santa Fe",
       "postal_code": "S3000",
-      "geo": "[-31.6113, -60.695011]",
+      "geo": ["-31.6113", "-60.695011"],
       "telephone": "0342 460-9888",
       "time_open": "07:00:00",
       "time_close": "23:00:00",
-      "airport_location": false
+      "airport_location": false,
+      "img": "https://images.adsttc.com/media/images/5ff3/eb9e/63c0/17cd/f900/031a/medium_jpg/Federico_Pad%C3%ADn_-_Rosario.jpg"
     },
     {
       "name": "Aeropuerto Internacional de Bariloche Tte. Luis Candelaria",
@@ -236,11 +245,12 @@
       "city": "San Carlos de Bariloche",
       "state_name": "Río Negro",
       "postal_code": "8400",
-      "geo": "[-41.1335, -71.3103]",
+      "geo": ["-41.1335", "-71.3103"],
       "telephone": "0294 440-5016",
       "time_open": "05:00:00",
       "time_close": "00:00:00",
-      "airport_location": true
+      "airport_location": true,
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Hotel_Llao_Llao%2C_Bariloche.jpg/1200px-Hotel_Llao_Llao%2C_Bariloche.jpg"
     }
   ],
   "car_types": [

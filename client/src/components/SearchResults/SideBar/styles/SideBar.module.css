@@ -2,6 +2,7 @@
   height: 150px;
   border: 1px solid lightgray;
   margin-bottom: 15px;
+<<<<<<< HEAD
   background-image: url("../../../../assets/miniMap.png");
 }
 
@@ -18,4 +19,6 @@
 
 .siCheckButton:hover {
   background-color: #1976d2;
+=======
+>>>>>>> development
 }

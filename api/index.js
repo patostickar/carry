@@ -27,6 +27,7 @@ conn
       time_open: l.time_open,
       time_close: l.time_close,
       airport_location: l.airport_location,
+      img: l.img,
     }));
 
     const customers = data.customers.map((c) => ({
@@ -53,7 +54,7 @@ conn
       air_conditioning: c.air_conditioned,
       large_suitcase: c.large_suitcase,
       small_suitcase: c.small_suitcase,
-      Price: c.Price
+      Price: c.Price,
     }));
 
     await Promise.all([

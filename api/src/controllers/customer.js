@@ -76,7 +76,7 @@ try {
         if (data) {
          await data.update({
           email,first_name,last_name,street,city,phone,postal_code,password,isAdmin,isPremium,isBanned
-          }) 
+          })
       }
         data? res.status(200).send({msg:'Customer edited',data}):res.send({msg:'Customer not found'})
     } else{

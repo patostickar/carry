@@ -1,10 +1,10 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { setSameLocation } from '../redux/searchBar.js';
+import { setSameLocation } from '../../redux/searchBar.js';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
-import SearchBar from './SearchBar/SearchBar';
+import SearchBar from '../SearchBar/SearchBar';
 import { useTypewriter } from 'react-simple-typewriter';
 import styles from './styles/SearchBarJumbo.module.css';
 
