@@ -1,12 +1,14 @@
-import { useDispatch } from "react-redux";
-import { clearAllFilters } from "../../../redux/carsResults.js";
-import Box from "@mui/material/Box";
-import Transmission from "./transmission";
-import CarCategory from "./carCategory";
-import CarSpecs from "./carSpecs";
-import Divider from "@mui/material/Divider";
-import MapView from "../../LocationsMap/MapView";
-import styles from "./styles/SideBar.module.css";
+import { useDispatch } from 'react-redux';
+import { clearAllFilters } from '../../../redux/carsResults.js';
+import Box from '@mui/material/Box';
+import BasicModal from '../../BasicModal';
+import Transmission from './transmission';
+import CarCategory from './carCategory';
+import CarSpecs from './carSpecs';
+import CarMake from './carMake';
+import Divider from '@mui/material/Divider';
+import MapView from '../../LocationsMap/MapView';
+import styles from './styles/SideBar.module.css';
 
 function SideBar() {
   const dispatch = useDispatch();
@@ -14,19 +16,21 @@ function SideBar() {
   return (
     <Box
       sx={{
-        display: "flex",
-        flexDirection: "column",
+        display: 'flex',
+        flexDirection: 'column',
       }}
     >
       <div className={styles.googleMap}>
-        <MapView />
+        <BasicModal text='Ver Mapa'>
+          <MapView />
+        </BasicModal>
       </div>
-      <h2>Filter</h2>
+      <h2>Filtros</h2>
       <button
         className={styles.siCheckButton}
         onClick={() => dispatch(clearAllFilters())}
       >
-        Clear all filters
+        Borrar todos los filtros
       </button>
       <Divider />
       <Transmission />
@@ -34,6 +38,8 @@ function SideBar() {
       <CarSpecs />
       <Divider />
       <CarCategory />
+      {/* <Divider /> */}
+      <CarMake />
     </Box>
   );
 }

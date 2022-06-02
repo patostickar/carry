@@ -46,18 +46,18 @@ export default function Location({ type, sameLocation, popLocation }) {
     // Cuando paso a results, como popLocation === "", me muestra eso en vez del valor elegido
     // Para evitar eso, seteo el valor al de pickup
     // No es la mejor manera, pero funciona
-    if (route.pathname === '/searchResult' && type === 'Pick-up') {
-      setInput(pickupLocation.name);
+    if (route.pathname === '/searchResult' && type === 'Retiro') {
+      setInput(pickupLocation?.name || '');
     }
     return () => {
       dispatch(setPopLocation(''));
     };
   }, [popLocation]);
 
-  const location = type === 'Pick-up' ? pickupLocation : dropoffLocation;
+  const location = type === 'Retiro' ? pickupLocation : dropoffLocation;
 
   function handleDispatch(newValue) {
-    type === 'Pick-up'
+    type === 'Retiro'
       ? dispatch(setPickupLocation(newValue || null))
       : dispatch(setDroppOffLocation(newValue || null));
   }
@@ -76,7 +76,7 @@ export default function Location({ type, sameLocation, popLocation }) {
         setOpen(false);
       }}
       clearOnEscape
-      options={locations}
+      options={[...locations].sort((a, b) => a.name.localeCompare(b.name))}
       // El verdadero texto del input, luego modificado por renderInput
       getOptionLabel={(option) =>
         `${option.name}, ${option.city}, ${option.state_name}`
