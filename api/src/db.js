@@ -67,7 +67,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
 // eslint-disable-next-line no-empty-pattern
-const { Car, Booking, Cartype, Customer, Location } = sequelize.models;
+const { Car, Booking, Cartype, Customer, Location, Review } = sequelize.models;
 
 // Aca vendrian las relaciones
 
@@ -75,6 +75,8 @@ const { Car, Booking, Cartype, Customer, Location } = sequelize.models;
 Customer.hasMany(Booking);
 Booking.belongsTo(Customer);
 //  expecting for foreign key in Booking?
+Customer.hasMany(Review)
+Review.belongsTo(Customer)
 
 //  LOCATION : BOOKING => ONE TO MANY
 Location.hasMany(Booking);
