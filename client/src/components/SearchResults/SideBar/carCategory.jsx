@@ -1,10 +1,10 @@
-import { useDispatch, useSelector } from "react-redux";
-import FormLabel from "@mui/material/FormLabel";
-import FormControl from "@mui/material/FormControl";
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import { setCarCategory } from "../../../redux/carsResults.js";
+import { useDispatch, useSelector } from 'react-redux';
+import FormLabel from '@mui/material/FormLabel';
+import FormControl from '@mui/material/FormControl';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import { setCarCategory } from '../../../redux/carsResults.js';
 
 export default function CarCategory() {
   const { small, medium, large, premium, convertible, minivan, suvs } =
@@ -17,8 +17,8 @@ export default function CarCategory() {
   };
 
   return (
-    <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
-      <FormLabel component="legend">Car Category</FormLabel>
+    <FormControl sx={{ m: 3 }} component='fieldset' variant='standard'>
+      <FormLabel component='legend'>Categoría del vehículo</FormLabel>
       <FormGroup>
         <FormControlLabel
           control={
@@ -26,10 +26,10 @@ export default function CarCategory() {
               checked={small}
               onChange={handleChange}
               disabled={false}
-              name="small"
+              name='small'
             />
           }
-          label="Small"
+          label='Chico'
         />
         <FormControlLabel
           control={
@@ -37,10 +37,10 @@ export default function CarCategory() {
               checked={medium}
               onChange={handleChange}
               disabled={false}
-              name="medium"
+              name='medium'
             />
           }
-          label="Medium"
+          label='Mediano'
         />
         <FormControlLabel
           control={
@@ -48,10 +48,10 @@ export default function CarCategory() {
               checked={large}
               onChange={handleChange}
               disabled={false}
-              name="large"
+              name='large'
             />
           }
-          label="Large"
+          label='Grande'
         />
         <FormControlLabel
           control={
@@ -59,10 +59,10 @@ export default function CarCategory() {
               checked={premium}
               onChange={handleChange}
               disabled={false}
-              name="premium"
+              name='premium'
             />
           }
-          label="Premium"
+          label='Premium'
         />
         <FormControlLabel
           control={
@@ -70,10 +70,10 @@ export default function CarCategory() {
               checked={convertible}
               onChange={handleChange}
               disabled={false}
-              name="convertible"
+              name='convertible'
             />
           }
-          label="Convertible"
+          label='Convertible'
         />
         <FormControlLabel
           control={
@@ -81,10 +81,10 @@ export default function CarCategory() {
               checked={minivan}
               onChange={handleChange}
               disabled={false}
-              name="minivan"
+              name='minivan'
             />
           }
-          label="Minivan"
+          label='Minivan'
         />
         <FormControlLabel
           control={
@@ -92,10 +92,10 @@ export default function CarCategory() {
               checked={suvs}
               onChange={handleChange}
               disabled={false}
-              name="suvs"
+              name='suvs'
             />
           }
-          label="SUVs"
+          label='SUVs'
         />
       </FormGroup>
     </FormControl>

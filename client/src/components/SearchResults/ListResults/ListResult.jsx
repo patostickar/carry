@@ -37,7 +37,7 @@ function ListResult() {
     <div className={styles.listResult}>
       <div className={styles.listTitle}>
         <h1>
-          {pickupLocation.name}: {carTypes.length} autos disponibles
+          {pickupLocation?.name}: {carTypes.length} autos disponibles
         </h1>
       </div>
       <Steps />

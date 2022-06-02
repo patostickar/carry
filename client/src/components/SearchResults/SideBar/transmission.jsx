@@ -20,7 +20,7 @@ export default function Transmission() {
 
   return (
     <FormControl sx={{ m: 3 }} component='fieldset' variant='standard'>
-      <FormLabel component='legend'>Transmission</FormLabel>
+      <FormLabel component='legend'>Transmisión</FormLabel>
       <FormGroup>
         <FormControlLabel
           control={
@@ -42,7 +42,7 @@ export default function Transmission() {
               name='automatic'
             />
           }
-          label='Automatic'
+          label='Automático'
         />
       </FormGroup>
     </FormControl>

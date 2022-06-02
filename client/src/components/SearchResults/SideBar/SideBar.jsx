@@ -25,12 +25,12 @@ function SideBar() {
           <MapView />
         </BasicModal>
       </div>
-      <h2>Filter</h2>
+      <h2>Filtros</h2>
       <button
         className={styles.siCheckButton}
         onClick={() => dispatch(clearAllFilters())}
       >
-        Clear all filters
+        Borrar todos los filtros
       </button>
       <Divider />
       <Transmission />

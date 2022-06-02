@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCarTypes } from '../../redux/carsResults';
 import { setSameLocation } from '../../redux/searchBar.js';
+import { DAY_MILISECONDS } from '../GeneralFuntions/constants.js';
 import Location from './locationInput';
 import Calendar from './calendar';
 import Radio from '@mui/material/Radio';
@@ -32,7 +33,7 @@ function SearchBar() {
     if (!(pickupLocation && dropoffLocation)) {
       return alert('Por favor complete los campos de búsqueda');
     }
-    if (dropoffDate - pickupDate < 86400000) {
+    if (dropoffDate - pickupDate < DAY_MILISECONDS) {
       return alert('El alquiler mínimo es de 24 hs');
     }
     dispatch(fetchCarTypes(pickupLocation));
