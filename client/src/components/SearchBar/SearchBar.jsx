@@ -7,11 +7,12 @@ import styles from './styles/SearchBar.module.css';
 
 function SearchBar() {
   const {
-    sameLocation,
     pickupDate,
     dropoffDate,
     pickupLocation,
     dropoffLocation,
+    sameLocation,
+    popLocation,
   } = useSelector((state) => state.searchBar);
 
   const dispatch = useDispatch();
@@ -31,7 +32,7 @@ function SearchBar() {
   return (
     <div className={styles.headerSearch}>
       <div className={styles.headerSearchItem}>
-        <Location type='Retiro' />
+        <Location type='Retiro' popLocation={popLocation} />
       </div>
       <div className={styles.headerSearchItem}>
         <Location type='Devolución' sameLocation={sameLocation} />
