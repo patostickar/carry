@@ -47,7 +47,7 @@ export default function Location({ type, sameLocation, popLocation }) {
     // Para evitar eso, seteo el valor al de pickup
     // No es la mejor manera, pero funciona
     if (route.pathname === '/searchResult' && type === 'Retiro') {
-      setInput(pickupLocation.name);
+      setInput(pickupLocation?.name || '');
     }
     return () => {
       dispatch(setPopLocation(''));
@@ -76,7 +76,7 @@ export default function Location({ type, sameLocation, popLocation }) {
         setOpen(false);
       }}
       clearOnEscape
-      options={locations}
+      options={[...locations].sort((a, b) => a.name.localeCompare(b.name))}
       // El verdadero texto del input, luego modificado por renderInput
       getOptionLabel={(option) =>
         `${option.name}, ${option.city}, ${option.state_name}`

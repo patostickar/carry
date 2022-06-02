@@ -1,3 +1,5 @@
+import { useSelector } from 'react-redux';
+import { DAY_MILISECONDS } from '../../GeneralFuntions/constants.js';
 import { motion } from 'framer-motion';
 import styles from './styles/carDetail.module.css';
 
@@ -22,9 +24,15 @@ export const carDetailCard = (props) => {
     mpg,
     img,
     seats,
+    class_name: className,
     large_suitcase: largeSuitcase,
     small_suitcase: smallSuitcase,
+    price,
   } = props.cartype;
+
+  const { pickupDate, dropoffDate } = useSelector((state) => state.searchBar);
+
+  const dateRange = (dropoffDate - pickupDate) / DAY_MILISECONDS;
 
   return (
     <motion.div
@@ -45,29 +53,30 @@ export const carDetailCard = (props) => {
           </div>
           <div className={styles.siTitle}>
             <h3>
-              {`${make} ${model}`} <span>or similar small car</span>{' '}
+              {`${make} ${model}`} <span>o un coche {className} similar</span>{' '}
             </h3>
           </div>
 
           <div className={styles.siCarDesc}>
-            <span className=''>{seats} Seats </span>
-            <span className=''>{transmission} </span>
-            <span className=''>{largeSuitcase} Large bag </span>
-            <span className=''>{smallSuitcase} Small bag </span>
-            <span className=''>{mpg} mpg</span>
+            <span className=''>{seats} Asientos </span>
+            <span className=''>{largeSuitcase} Maleta grande </span>
+            <span className=''>{smallSuitcase} Maleta pequeña </span>
+            <span className=''>{mpg} km/l</span>
           </div>
 
           <div className={styles.siLocation}>
-            <span className={styles.siFeatures}>Location</span>
+            <span className={styles.siFeatures}>{transmission}</span>
           </div>
         </div>
         <div className={styles.siDetails}>
           <div className={styles.siDetailTexts}>
-            <span className={styles.siDaysxPrice}>Price for 3 days:</span>
-            <span className={styles.siPrice}> US$112.07</span>
-            <span className={styles.siAmendments}>free amendments</span>
+            <span className={styles.siDaysxprice}>
+              Precio por {dateRange} {dateRange === 1 ? 'día' : 'días'}:
+            </span>
+            <span className={styles.siprice}>$ {price}</span>
+            <span className={styles.siAmendments}>Cancelación gratuita</span>
 
-            <button className={styles.siCheckButton}>View deal</button>
+            <button className={styles.siCheckButton}>Ver oferta</button>
           </div>
         </div>
       </div>
