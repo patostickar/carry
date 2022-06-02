@@ -11,6 +11,9 @@ function ListResult() {
     carTypes,
     filters: { transmission, carCategory, airConditioning, fourPlusSeats },
   } = useSelector((state) => state.carsResults);
+  
+  
+console.log(carTypes)
 
   const categories = [];
   for (const category in carCategory) {

@@ -11,6 +11,10 @@ function SearchBar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  
+
+
+
   const handleSearch = () => {
     dispatch(fetchCarTypes(pickupLocation));
     navigate('/searchResult');

@@ -13,11 +13,15 @@ const getType =  async (req,res,next) =>{
 };
 const createCartype = async (req,res,next)=>{
   try {
+      // eslint-disable-next-line camelcase
       const {make,model,class_code,class_name,transmission,mpg,img,doors,seats,air_conditioning,large_suitcase,small_suitcase,Price}=req.body
          const [cartype,created]= await Cartype.findOrCreate({
              where:{
+              // eslint-disable-next-line camelcase
               make,model,class_code,class_name,
+              // eslint-disable-next-line camelcase
               transmission,mpg,img,doors,seats,air_conditioning,
+              // eslint-disable-next-line camelcase
               large_suitcase,small_suitcase,Price
              },
            

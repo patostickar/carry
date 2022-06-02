@@ -16,6 +16,10 @@ export default function Location({ type, sameLocation }) {
   const { locations, pickupLocation, dropoffLocation } = useSelector(
     (state) => state.searchBar
   );
+
+  console.log(locations)
+
+  
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
 
