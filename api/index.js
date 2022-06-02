@@ -54,7 +54,7 @@ conn
       air_conditioning: c.air_conditioned,
       large_suitcase: c.large_suitcase,
       small_suitcase: c.small_suitcase,
-      Price: c.Price,
+      price: c.price,
     }));
 
     await Promise.all([
@@ -64,7 +64,7 @@ conn
     ]);
 
     const location = await Location.findOne({
-      where: { name: 'Agencia La Mona' },
+      where: { name: 'Córdoba Cars' },
     });
     const cartype1 = await Cartype.findOne({
       where: { make: 'Ford', model: 'Fiesta' },

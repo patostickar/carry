@@ -24,6 +24,7 @@ export const carDetailCard = (props) => {
     seats,
     large_suitcase: largeSuitcase,
     small_suitcase: smallSuitcase,
+    price,
   } = props.cartype;
 
   return (
@@ -63,8 +64,8 @@ export const carDetailCard = (props) => {
         </div>
         <div className={styles.siDetails}>
           <div className={styles.siDetailTexts}>
-            <span className={styles.siDaysxPrice}>Price for 3 days:</span>
-            <span className={styles.siPrice}> US$112.07</span>
+            <span className={styles.siDaysxprice}>price for 3 days:</span>
+            <span className={styles.siprice}>$ {price}</span>
             <span className={styles.siAmendments}>free amendments</span>
 
             <button className={styles.siCheckButton}>View deal</button>

@@ -94,10 +94,10 @@
   flex-direction: column;
   gap: 5px;
 }
-.siPrice {
+.siprice {
   font-size: 24px;
 }
-.siDaysxPrice {
+.siDaysxprice {
   font-size: 12px;
   color: gray;
 }

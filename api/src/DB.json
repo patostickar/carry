@@ -123,7 +123,7 @@
   ],
   "locations": [
     {
-      "name": "Agencia La Mona",
+      "name": "Córdoba Cars",
       "street": "Huiliches 1021",
       "city": "Córdoba",
       "state_name": "Córdoba",
@@ -167,7 +167,7 @@
       "city": "Buenos Aires City",
       "state_name": "Buenos Aires",
       "postal_code": "C1425",
-      "geo": ["-34.5580","-58.4170"],
+      "geo": ["-34.5580", "-58.4170"],
       "telephone": "011 5480-6111",
       "time_open": "05:00:00",
       "time_close": "00:00:00",
@@ -180,7 +180,7 @@
       "city": "Santiago del Estero",
       "state_name": "Santiago del Estero",
       "postal_code": "G4200",
-      "geo": ["-27.783843","-64.257496"],
+      "geo": ["-27.783843", "-64.257496"],
       "telephone": "03854 22-3663",
       "time_open": "07:00:00",
       "time_close": "23:00:00",
@@ -193,7 +193,7 @@
       "city": "Las Heras",
       "state_name": "Mendoza",
       "postal_code": "5541",
-      "geo": ["-32.8277" ,"-68.7984"],
+      "geo": ["-32.8277", "-68.7984"],
       "telephone": "866.118.4798x14335",
       "time_open": "05:00:00",
       "time_close": "00:00:00",
@@ -267,7 +267,7 @@
       "air_conditioned": false,
       "large_suitcase": "1",
       "small_suitcase": "1",
-      "Price": 100
+      "price": 100
     },
     {
       "make": "Kia",
@@ -282,7 +282,7 @@
       "air_conditioned": false,
       "large_suitcase": "1",
       "small_suitcase": "1",
-      "Price": 100
+      "price": 110
     },
     {
       "make": "Toyota",
@@ -297,7 +297,7 @@
       "air_conditioned": true,
       "large_suitcase": "1",
       "small_suitcase": "2",
-      "Price": 100
+      "price": 120
     },
     {
       "make": "Volkswagen",
@@ -312,7 +312,7 @@
       "air_conditioned": false,
       "large_suitcase": "1",
       "small_suitcase": "2",
-      "Price": 100
+      "price": 130
     },
     {
       "make": "Toyota",
@@ -327,7 +327,7 @@
       "air_conditioned": false,
       "large_suitcase": "2",
       "small_suitcase": "2",
-      "Price": 100
+      "price": 140
     },
     {
       "make": "Volkswagen",
@@ -342,7 +342,7 @@
       "air_conditioned": true,
       "large_suitcase": "2",
       "small_suitcase": "2",
-      "Price": 100
+      "price": 150
     },
     {
       "make": "Chrysler",
@@ -357,7 +357,7 @@
       "air_conditioned": true,
       "large_suitcase": "2",
       "small_suitcase": "2",
-      "Price": 100
+      "price": 160
     },
     {
       "make": "Ford",
@@ -372,7 +372,7 @@
       "air_conditioned": true,
       "large_suitcase": "1",
       "small_suitcase": "1",
-      "Price": 100
+      "price": 170
     },
     {
       "make": "Chrysler",
@@ -387,7 +387,7 @@
       "air_conditioned": true,
       "large_suitcase": "3",
       "small_suitcase": "2",
-      "Price": 100
+      "price": 180
     },
     {
       "make": "Ford",
@@ -402,7 +402,7 @@
       "air_conditioned": true,
       "large_suitcase": "2",
       "small_suitcase": "2",
-      "Price": 100
+      "price": 190
     }
   ],
   "car": [

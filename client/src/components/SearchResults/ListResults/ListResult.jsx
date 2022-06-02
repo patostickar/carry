@@ -1,10 +1,10 @@
-import Steps from "./steps";
-import CarDetailCard from "./carDetailCard";
-import CarCategoryTopBar from "../TopBar/CarCategoryTopBar";
-import LinearIndeterminate from "../../GeneralFuntions/LinearIndeterminate";
-import { useSelector } from "react-redux";
-import { AnimatePresence } from "framer-motion";
-import styles from "./styles/ListResult.module.css";
+import Steps from './steps';
+import CarDetailCard from './carDetailCard';
+import CarCategoryTopBar from '../TopBar/CarCategoryTopBar';
+import LinearIndeterminate from '../../GeneralFuntions/LinearIndeterminate';
+import { useSelector } from 'react-redux';
+import { AnimatePresence } from 'framer-motion';
+import styles from './styles/ListResult.module.css';
 
 function ListResult() {
   const {
@@ -17,6 +17,8 @@ function ListResult() {
       carMakes,
     },
   } = useSelector((state) => state.carsResults);
+
+  const { pickupLocation } = useSelector((state) => state.searchBar);
 
   const categories = [];
   for (const category in carCategory) {
@@ -34,7 +36,9 @@ function ListResult() {
   return (
     <div className={styles.listResult}>
       <div className={styles.listTitle}>
-        <h1>Bogotá: 65 autos disponibles</h1>
+        <h1>
+          {pickupLocation.name}: {carTypes.length} autos disponibles
+        </h1>
       </div>
       <Steps />
       <CarCategoryTopBar />

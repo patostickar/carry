@@ -11,39 +11,39 @@ module.exports = (sequelize) => {
       },
       make: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       model: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       class_code: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       class_name: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       transmission: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       mpg: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       img: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       doors: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
       },
       seats: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
       },
       air_conditioning: {
         type: DataTypes.BOOLEAN,
@@ -51,16 +51,16 @@ module.exports = (sequelize) => {
       },
       large_suitcase: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
       },
       small_suitcase: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
       },
-      Price:{
-        type:DataTypes.INTEGER,
-        allowNull: false
-      }
+      price: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
     },
     { timestamps: false }
   );
