@@ -44,16 +44,16 @@ conn
     const carTypes = data.car_types.map((c) => ({
       make: c.make,
       model: c.model,
-      class_code: c.vehicle_class_code,
-      class_name: c.vehicle_class_name,
+      classCode: c.vehicle_classCode,
+      className: c.vehicle_className,
       transmission: c.vehicle_transmission,
       mpg: c.mpg,
       img: c.image_url,
       doors: c.doors,
       seats: c.seats,
-      air_conditioning: c.air_conditioned,
-      large_suitcase: c.large_suitcase,
-      small_suitcase: c.small_suitcase,
+      airConditioning: c.air_conditioned,
+      largeSuitcase: c.largeSuitcase,
+      smallSuitcase: c.smallSuitcase,
       price: c.price,
     }));
 
