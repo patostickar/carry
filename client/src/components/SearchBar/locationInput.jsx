@@ -46,7 +46,7 @@ export default function Location({ type, sameLocation, popLocation }) {
     // Cuando paso a results, como popLocation === "", me muestra eso en vez del valor elegido
     // Para evitar eso, seteo el valor al de pickup
     // No es la mejor manera, pero funciona
-    if (route.pathname === '/searchResult' && type === 'Retiro') {
+    if (route.pathname === '/searchResult' && type === 'Pick-up') {
       setInput(pickupLocation.name);
     }
     return () => {
@@ -54,10 +54,10 @@ export default function Location({ type, sameLocation, popLocation }) {
     };
   }, [popLocation]);
 
-  const location = type === 'Retiro' ? pickupLocation : dropoffLocation;
+  const location = type === 'Pick-up' ? pickupLocation : dropoffLocation;
 
   function handleDispatch(newValue) {
-    type === 'Retiro'
+    type === 'Pick-up'
       ? dispatch(setPickupLocation(newValue || null))
       : dispatch(setDroppOffLocation(newValue || null));
   }
