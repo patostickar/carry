@@ -1,10 +1,10 @@
-import Steps from './steps';
-import CarDetailCard from './carDetailCard';
-import CarCategoryTopBar from '../TopBar/CarCategoryTopBar';
-import LinearIndeterminate from '../../GeneralFuntions/LinearIndeterminate';
-import { useSelector } from 'react-redux';
-import { AnimatePresence } from 'framer-motion';
-import styles from './styles/ListResult.module.css';
+import Steps from "./steps";
+import CarDetailCard from "./carDetailCard";
+import CarCategoryTopBar from "../TopBar/CarCategoryTopBar";
+import LinearIndeterminate from "../../GeneralFuntions/LinearIndeterminate";
+import { useSelector } from "react-redux";
+import { AnimatePresence } from "framer-motion";
+import styles from "./styles/ListResult.module.css";
 
 function ListResult() {
   const {

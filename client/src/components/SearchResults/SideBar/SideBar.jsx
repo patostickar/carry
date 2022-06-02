@@ -26,8 +26,11 @@ function SideBar() {
         </BasicModal>
       </div>
       <h2>Filter</h2>
-      <button onClick={() => dispatch(clearAllFilters())}>
-        <h4>Clear all filters</h4>
+      <button
+        className={styles.siCheckButton}
+        onClick={() => dispatch(clearAllFilters())}
+      >
+        Clear all filters
       </button>
       <Divider />
       <Transmission />

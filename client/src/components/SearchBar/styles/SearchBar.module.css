@@ -14,11 +14,26 @@
   gap: 10px;
 }
 
-.headerButton {
+/* .headerButton {
   background-color: var(--bluebtn);
   color: var(--white);
   font-weight: 500;
   border: none;
   padding: 10px;
   cursor: pointer;
+} */
+
+.siCheckButton {
+  color: var(--white);
+  border-radius: 5px;
+  padding: 10px 5px;
+  font-size: 15px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  background-color: #1976d2d1;
+}
+
+.siCheckButton:hover {
+  background-color: #1976d2;
 }

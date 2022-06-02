@@ -6,12 +6,14 @@ import Calendar from './calendar';
 import styles from './styles/SearchBar.module.css';
 
 function SearchBar() {
-  const { sameLocation, popLocation, pickupDate, dropoffDate } = useSelector(
-    (state) => state.searchBar
-  );
-  const { pickupLocation, dropoffLocation } = useSelector(
-    (state) => state.searchBar
-  );
+  const {
+    sameLocation,
+    pickupDate,
+    dropoffDate,
+    pickupLocation,
+    dropoffLocation,
+  } = useSelector((state) => state.searchBar);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -29,14 +31,14 @@ function SearchBar() {
   return (
     <div className={styles.headerSearch}>
       <div className={styles.headerSearchItem}>
-        <Location type='Retiro' popLocation={popLocation} />
+        <Location type='Retiro' />
       </div>
       <div className={styles.headerSearchItem}>
-        <Location type='Entrega' sameLocation={sameLocation} />
+        <Location type='Devolución' sameLocation={sameLocation} />
       </div>
       <Calendar />
       <div className={styles.headerSearchItem}>
-        <button className={styles.headerButton} onClick={handleSearch}>
+        <button className={styles.siCheckButton} onClick={handleSearch}>
           Buscar
         </button>
       </div>
