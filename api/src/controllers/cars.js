@@ -1,6 +1,25 @@
+const { getAvailableCars } = require('../services/cars/getAvailableCars');
 const { getCarById } = require('../services/cars/getCarById');
 const { createCar } = require('../services/cars/createCar');
 const { updateCarLocation } = require('../services/cars/updateCarLocation');
+
+module.exports.getAvailableCars = async (req, res, next) => {
+  const { pickUpLocation, pickUpDate, dropOffDate } = req.query;
+
+  if (!pickUpLocation || !pickUpDate || !dropOffDate)
+    return res.status(400).send('Please send all the mandatory information');
+
+  try {
+    const availableCars = await getAvailableCars(
+      pickUpLocation,
+      pickUpDate,
+      dropOffDate
+    );
+    res.send(availableCars);
+  } catch (error) {
+    next(error);
+  }
+};
 
 module.exports.getCarById = async (req, res, next) => {
   const { id } = req.params;
