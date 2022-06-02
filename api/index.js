@@ -1,7 +1,7 @@
 const server = require('./src/app.js');
 const fs = require('fs');
 const { conn, Location, Customer, Cartype } = require('./src/db.js');
-const { DBcreateCar } = require('./src/services/CarService');
+const { createCar } = require('./src/services/cars/createCar');
 
 const { PORT } = process.env;
 
@@ -44,16 +44,16 @@ conn
     const carTypes = data.car_types.map((c) => ({
       make: c.make,
       model: c.model,
-      class_code: c.vehicle_class_code,
-      class_name: c.vehicle_class_name,
+      classCode: c.vehicle_classCode,
+      className: c.vehicle_className,
       transmission: c.vehicle_transmission,
       mpg: c.mpg,
       img: c.image_url,
       doors: c.doors,
       seats: c.seats,
-      air_conditioning: c.air_conditioned,
-      large_suitcase: c.large_suitcase,
-      small_suitcase: c.small_suitcase,
+      airConditioning: c.air_conditioned,
+      largeSuitcase: c.largeSuitcase,
+      smallSuitcase: c.smallSuitcase,
       price: c.price,
     }));
 
@@ -63,8 +63,17 @@ conn
       Cartype.bulkCreate(carTypes),
     ]);
 
-    const location = await Location.findOne({
+    const cordoba = await Location.findOne({
       where: { name: 'Córdoba Cars' },
+    });
+    const palermo = await Location.findOne({
+      where: { name: 'Palermo Cars' },
+    });
+    const santiago = await Location.findOne({
+      where: { name: 'Santiago Cars' },
+    });
+    const corrientes = await Location.findOne({
+      where: { name: 'Corrientes Cars' },
     });
     const cartype1 = await Cartype.findOne({
       where: { make: 'Ford', model: 'Fiesta' },
@@ -101,19 +110,61 @@ conn
     // const location2 = await Location.findOne({where:{name: "Palermo Cars"}})
     // const cartype2 = await Cartype.findOne({where:{make: "Volkswagen"}})
 
-    await DBcreateCar(location.id, cartype1.id);
-    await DBcreateCar(location.id, cartype1.id);
-    await DBcreateCar(location.id, cartype1.id);
-    await DBcreateCar(location.id, cartype2.id);
-    await DBcreateCar(location.id, cartype2.id);
-    await DBcreateCar(location.id, cartype3.id);
-    await DBcreateCar(location.id, cartype4.id);
-    await DBcreateCar(location.id, cartype5.id);
-    await DBcreateCar(location.id, cartype6.id);
-    await DBcreateCar(location.id, cartype7.id);
-    await DBcreateCar(location.id, cartype8.id);
-    await DBcreateCar(location.id, cartype9.id);
-    await DBcreateCar(location.id, cartype10.id);
+    await createCar(cordoba.id, cartype1.id);
+    await createCar(cordoba.id, cartype1.id);
+    await createCar(cordoba.id, cartype1.id);
+    await createCar(cordoba.id, cartype2.id);
+    await createCar(cordoba.id, cartype2.id);
+    await createCar(cordoba.id, cartype3.id);
+    await createCar(cordoba.id, cartype4.id);
+    await createCar(cordoba.id, cartype5.id);
+    await createCar(cordoba.id, cartype6.id);
+    await createCar(cordoba.id, cartype7.id);
+    await createCar(cordoba.id, cartype8.id);
+    await createCar(cordoba.id, cartype9.id);
+    await createCar(cordoba.id, cartype10.id);
+
+    await createCar(palermo.id, cartype1.id);
+    await createCar(palermo.id, cartype1.id);
+    await createCar(palermo.id, cartype1.id);
+    await createCar(palermo.id, cartype2.id);
+    await createCar(palermo.id, cartype2.id);
+    await createCar(palermo.id, cartype3.id);
+    await createCar(palermo.id, cartype4.id);
+    await createCar(palermo.id, cartype5.id);
+    await createCar(palermo.id, cartype6.id);
+    await createCar(palermo.id, cartype7.id);
+    await createCar(palermo.id, cartype8.id);
+    await createCar(palermo.id, cartype9.id);
+    await createCar(palermo.id, cartype10.id);
+
+    await createCar(santiago.id, cartype1.id);
+    await createCar(santiago.id, cartype1.id);
+    await createCar(santiago.id, cartype1.id);
+    await createCar(santiago.id, cartype2.id);
+    await createCar(santiago.id, cartype2.id);
+    await createCar(santiago.id, cartype3.id);
+    await createCar(santiago.id, cartype4.id);
+    await createCar(santiago.id, cartype5.id);
+    await createCar(santiago.id, cartype6.id);
+    await createCar(santiago.id, cartype7.id);
+    await createCar(santiago.id, cartype8.id);
+    await createCar(santiago.id, cartype9.id);
+    await createCar(santiago.id, cartype10.id);
+
+    await createCar(corrientes.id, cartype1.id);
+    await createCar(corrientes.id, cartype1.id);
+    await createCar(corrientes.id, cartype1.id);
+    await createCar(corrientes.id, cartype2.id);
+    await createCar(corrientes.id, cartype2.id);
+    await createCar(corrientes.id, cartype3.id);
+    await createCar(corrientes.id, cartype4.id);
+    await createCar(corrientes.id, cartype5.id);
+    await createCar(corrientes.id, cartype6.id);
+    await createCar(corrientes.id, cartype7.id);
+    await createCar(corrientes.id, cartype8.id);
+    await createCar(corrientes.id, cartype9.id);
+    await createCar(corrientes.id, cartype10.id);
 
     console.log('Locations, Customers and CarTypes have been saved');
   })

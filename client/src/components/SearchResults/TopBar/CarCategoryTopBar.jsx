@@ -6,14 +6,14 @@ export default function TopBar() {
   const { carTypes } = useSelector((state) => state.carsResults);
 
   const types = [
-    ...new Map(carTypes.map((item) => [item.class_name, item])).values(),
+    ...new Map(carTypes.map((item) => [item.className, item])).values(),
   ];
   return (
     <div className={styles.CarCategoryTopBar}>
       <ul>
         {types.map((carType) => (
           <CarCategory
-            category={carType.class_name}
+            category={carType.className}
             img={carType.img}
             key={carType.id}
           />

@@ -17,11 +17,11 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      class_code: {
+      classCode: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      class_name: {
+      className: {
         type: DataTypes.STRING,
         allowNull: false,
       },
@@ -45,15 +45,15 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      air_conditioning: {
+      airConditioning: {
         type: DataTypes.BOOLEAN,
         defaultValue: true,
       },
-      large_suitcase: {
+      largeSuitcase: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      small_suitcase: {
+      smallSuitcase: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },

@@ -69,7 +69,7 @@ export const fetchCarTypes = (pickupLocation) => async (dispatch) => {
     await axios
       // .get(`http://localhost:3001/cartype/count/${pickupLocation}`)
       // .then((res) => dispatch(setCarTypes(res.data)));
-      .get(`http://localhost:3001/cartype`)
+      .get(`http://localhost:3001/cartypes`)
       .then((res) => dispatch(setCarTypes(res.data)));
     console.log('fetched car types');
   } catch (error) {

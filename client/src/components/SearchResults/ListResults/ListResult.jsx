@@ -58,14 +58,14 @@ function ListResult() {
                 : true
             )
             .filter((carType) =>
-              airConditioning ? carType.air_conditioning : true
+              airConditioning ? carType.airConditioning : true
             )
             .filter((carType) => {
               return fourPlusSeats ? carType.seats >= 4 : true;
             })
             .filter((carType) =>
               categories.length
-                ? categories.includes(carType.class_name.toLowerCase())
+                ? categories.includes(carType.className.toLowerCase())
                 : true
             )
             .filter((carType) =>
