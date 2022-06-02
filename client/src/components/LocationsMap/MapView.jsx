@@ -19,12 +19,12 @@ export default  function MapView() {
   
 
   useEffect(() => {
-    setActual(pickupLocation)
-  }, [pickupLocation])
-  useEffect(() => {
     setActual(dropoffLocation)
   }, [dropoffLocation])
   
+  useEffect(() => {
+    setActual(pickupLocation)
+  }, [pickupLocation])
 
 
    const LocationIcon = L.icon({
