@@ -19,6 +19,7 @@ const initialState = {
       minivan: false,
       suvs: false,
     },
+    carMakes: [],
   },
 };
 
@@ -49,6 +50,9 @@ export const carsResults = createSlice({
       oneCarCategory[name] = true;
       state.filters.carCategory = oneCarCategory;
     },
+    setCarMake: (state, action) => {
+      state.filters.carMakes = action.payload;
+    },
     clearAllFilters: (state, _action) => {
       state.filters = initialState.filters;
     },
@@ -72,10 +76,11 @@ export const fetchCarTypes = (pickupLocation) => async (dispatch) => {
 export const {
   setCarTypes,
   setTransmission,
-  setCarCategory,
-  setOneCarCategory,
   setAirConditioning,
   setFourPlusSeats,
+  setCarCategory,
+  setOneCarCategory,
+  setCarMake,
   clearAllFilters,
 } = carsResults.actions;
 

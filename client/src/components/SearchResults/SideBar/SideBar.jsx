@@ -5,6 +5,7 @@ import BasicModal from '../../BasicModal';
 import Transmission from './transmission';
 import CarCategory from './carCategory';
 import CarSpecs from './carSpecs';
+import CarMake from './carMake';
 import Divider from '@mui/material/Divider';
 import MapView from '../../LocationsMap/MapView';
 import styles from './styles/SideBar.module.css';
@@ -34,6 +35,8 @@ function SideBar() {
       <CarSpecs />
       <Divider />
       <CarCategory />
+      {/* <Divider /> */}
+      <CarMake />
     </Box>
   );
 }

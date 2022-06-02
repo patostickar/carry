@@ -9,7 +9,13 @@ import styles from './styles/ListResult.module.css';
 function ListResult() {
   const {
     carTypes,
-    filters: { transmission, carCategory, airConditioning, fourPlusSeats },
+    filters: {
+      transmission,
+      carCategory,
+      airConditioning,
+      fourPlusSeats,
+      carMakes,
+    },
   } = useSelector((state) => state.carsResults);
 
   const categories = [];
@@ -54,6 +60,9 @@ function ListResult() {
               categories.length
                 ? categories.includes(carType.class_name.toLowerCase())
                 : true
+            )
+            .filter((carType) =>
+              carMakes.length ? carMakes.includes(carType.make) : true
             )
             .map((carType) => (
               <CarDetailCard cartype={carType} key={carType.id} />
