@@ -7,14 +7,14 @@ const { createCar } = require('../services/cars/createCar');
 const { updateCarLocation } = require('../services/cars/updateCarLocation');
 
 module.exports.getAvailableCars = async (req, res, next) => {
-  const { pickUpLocationId, pickUpDate, dropOffDate } = req.query;
+  const { pickUpLocation, pickUpDate, dropOffDate } = req.query;
 
-  if (!pickUpLocationId || !pickUpDate || !dropOffDate)
+  if (!pickUpLocation || !pickUpDate || !dropOffDate)
     return res.status(400).send('Please send all the mandatory information');
 
   try {
     const availableCars = await getAvailableCars(
-      pickUpLocationId,
+      pickUpLocation,
       pickUpDate,
       dropOffDate
     );

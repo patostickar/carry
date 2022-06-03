@@ -1,8 +1,9 @@
 const { Booking } = require('../../db');
+const { getAvailableCars } = require('../cars/getAvailableCars');
 
 module.exports.createBooking = async (data) => {
   const {
-    carId,
+    carTypeId,
     customerId,
     pickUpLocation,
     dropOffLocation,
@@ -11,6 +12,22 @@ module.exports.createBooking = async (data) => {
     reservationTotal,
   } = data;
 
+  const availableCars = await getAvailableCars(
+    pickUpLocation,
+    pickUpDate,
+    dropOffDate
+  );
+
+  // Luego para el usuario premium habría que buscar el de menor kilometraje,
+  // aunque eso ni siquiera forma parte de nuestra DB...
+
+  const findAvailableCarOfType = availableCars.find(
+    (c) => c.cartypeId === carTypeId
+  );
+
+  if (!findAvailableCarOfType)
+    throw new Error('No hay más autos disponibles de este tipo');
+
   const booking = await Booking.create({
     pickUpDate,
     dropOffDate,
@@ -18,10 +35,10 @@ module.exports.createBooking = async (data) => {
   });
 
   booking.setCustomer(customerId);
-  booking.setCar(carId);
+  booking.setCar(findAvailableCarOfType.id);
   booking.setPickUpLocation(pickUpLocation);
   booking.setDropOffLocation(dropOffLocation);
 
   console.log(booking.dataValues);
-  return 'Booking created';
+  return 'Reserva confirmada';
 };

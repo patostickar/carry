@@ -22,7 +22,7 @@ module.exports.getBookings = async (req, res, next) => {
 
 module.exports.createBooking = async (req, res, next) => {
   const {
-    carId,
+    carTypeId,
     customerId,
     pickUpLocation,
     dropOffLocation,
@@ -31,7 +31,7 @@ module.exports.createBooking = async (req, res, next) => {
   } = req.body;
 
   if (
-    !carId ||
+    !carTypeId ||
     !customerId ||
     !pickUpLocation ||
     !dropOffLocation ||
