@@ -1,42 +1,37 @@
 const { Car, Booking } = require('../../db');
 
 module.exports.getAvailableCars = async (
-  pickUpLocationId,
+  locationId,
   pickUpDate,
   dropOffDate
 ) => {
   const carsInLocation = await Car.findAll({
-    where: { locationId: pickUpLocationId },
+    where: { locationId },
   });
 
   const bookingsInLocation = await Booking.findAll({
-    where: { pickUpLocationId },
+    where: { locationId },
   });
+
+  // A simple condition to find out if two segments [a, b] and [c, d] intersect each other
+  // is(a - d) * (b - c) <= 0. It covers all the situations, when one date range(segment)
+  // only starts or only ends during the other and also when one of the is completely included into the other.
 
   pickUpDate = new Date(pickUpDate);
   dropOffDate = new Date(dropOffDate);
 
-  const unavailableCarsPickup = bookingsInLocation
+  const unavailableCars = bookingsInLocation
     .filter((b) => {
       const bookingPickUpDate = new Date(b.dataValues.pickUpDate);
       const bookingDropOffDate = new Date(b.dataValues.dropOffDate);
-      return pickUpDate > bookingPickUpDate && pickUpDate < bookingDropOffDate;
-    })
-    .map((c) => c.dataValues.carId);
 
-  const unavailableCarsDropOff = bookingsInLocation
-    .filter((b) => {
-      const bookingPickUpDate = new Date(b.dataValues.pickUpDate);
-      const bookingDropOffDate = new Date(b.dataValues.dropOffDate);
       return (
-        dropOffDate >= bookingPickUpDate && dropOffDate <= bookingDropOffDate
+        (pickUpDate - bookingDropOffDate) * (dropOffDate - bookingPickUpDate)
       );
     })
     .map((c) => c.dataValues.carId);
 
-  const unavailableCarsId = Array.from(
-    new Set([...unavailableCarsPickup, ...unavailableCarsDropOff])
-  );
+  const unavailableCarsId = Array.from(new Set(unavailableCars));
 
   const availableCars = carsInLocation.filter(
     (c) => !unavailableCarsId.includes(c.dataValues.id)

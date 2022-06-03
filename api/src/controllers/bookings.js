@@ -21,23 +21,10 @@ module.exports.getBookings = async (req, res, next) => {
 };
 
 module.exports.createBooking = async (req, res, next) => {
-  const {
-    carTypeId,
-    customerId,
-    pickUpLocation,
-    dropOffLocation,
-    pickUpDate,
-    dropOffDate,
-  } = req.body;
+  const { carTypeId, customerId, locationId, pickUpDate, dropOffDate } =
+    req.body;
 
-  if (
-    !carTypeId ||
-    !customerId ||
-    !pickUpLocation ||
-    !dropOffLocation ||
-    !pickUpDate ||
-    !dropOffDate
-  )
+  if (!carTypeId || !customerId || !locationId || !pickUpDate || !dropOffDate)
     return 'Se requiere enviar todos los parámetros';
 
   if (dropOffDate < pickUpDate) {

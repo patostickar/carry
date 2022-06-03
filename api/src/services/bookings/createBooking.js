@@ -3,17 +3,10 @@ const { getAvailableCars } = require('../cars/getAvailableCars');
 const { DAY_MILISECONDS } = require('../../constants.js');
 
 module.exports.createBooking = async (data) => {
-  const {
-    carTypeId,
-    customerId,
-    pickUpLocation,
-    dropOffLocation,
-    pickUpDate,
-    dropOffDate,
-  } = data;
+  const { carTypeId, customerId, locationId, pickUpDate, dropOffDate } = data;
 
   const availableCars = await getAvailableCars(
-    pickUpLocation,
+    locationId,
     pickUpDate,
     dropOffDate
   );
@@ -38,8 +31,7 @@ module.exports.createBooking = async (data) => {
 
   booking.setCustomer(customerId);
   booking.setCar(findAvailableCarOfType.id);
-  booking.setPickUpLocation(pickUpLocation);
-  booking.setDropOffLocation(dropOffLocation);
+  booking.setLocation(locationId);
 
   return 'Reserva confirmada';
 };
