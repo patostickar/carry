@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { fetchAllLocations } from './redux/searchBar.js';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Booking } from './components/Booking.jsx';
@@ -14,42 +14,18 @@ import CarCreate from './components/CarCreateForm/CarCreate.jsx';
 import CarTypeCreate from './components/CarCreateForm/CarTypeCreate.jsx';
 import LocationCreate from './components/CarCreateForm/LocationCreate.jsx';
 import './App.css';
-import { fetchcount, fetchTestimonials } from './redux/generalReducer.js';
+import { fetchTestimonials } from './redux/generalReducer.js';
 
 function App() {
-  const { Count } = useSelector((state) => state.generalReducer);
-  
-  
+
   
   const dispatch = useDispatch();
-  const Getrandom = () =>{
-    console.log(Count)
-    const id1 = Math.floor(Math.random()*(Count-1+1)+1)
-    let id2 = Math.floor(Math.random()*(Count-1+1)+1)
-    if(id2 === id1){id2 = Math.floor(Math.random()*(Count-1+1)+1)}
-    let id3 = Math.floor(Math.random()*(Count-1+1)+1)
-    if(id3 === id1 || id3 === id2){id3 = Math.floor(Math.random()*(Count-1+1)+1)}
-
-    return {id1,id2,id3}
-  }
-  
   
   useEffect(() => {  
-    dispatch(fetchcount())
     dispatch(fetchAllLocations());
+    dispatch(fetchTestimonials())
   }, [])
-  useEffect(() => {
-    const{id1,id2,id3} = Getrandom()
-    console.log(id1,id2,id3)
-    if(id1+id2+id3 !== 3){dispatch(fetchTestimonials(id1,id2,id3))}
-   
- 
- }, [Count])
- 
 
-
-  
-  
 
   return (
     <>

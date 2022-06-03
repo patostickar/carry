@@ -3,7 +3,6 @@ import axios from 'axios';
 
 const initialState = {
     testimonials : [],
-    Count: null
 };
 
 export const Generalreducer = createSlice({
@@ -13,27 +12,12 @@ export const Generalreducer = createSlice({
     SetTestimonials: (state, action) => {
         state.testimonials = action.payload;
       },
-    Setcount: (state, action) => {
-        state.Count = action.payload;
-      },
   },
 });
-
-export const fetchcount = () => async (dispatch) => {
-  try {
-    await axios
-      .get(`http://localhost:3001/customers/reviews/count`)
-      .then((res) => {dispatch(Setcount(res.data.count))});
-    console.log('fetched count');
-  } catch (error) {
-    console.log(error);
-  }
-};
-fetchcount()
 export const fetchTestimonials = (id1,id2,id3) => async (dispatch) => {
   try {
     await axios
-      .get(`http://localhost:3001/customers/reviews/?id1=${id1}&id2=${id2}&id3=${id3}`)
+      .get(`http://localhost:3001/customers/reviews/`)
       .then((res) => {dispatch(SetTestimonials(res.data))});
     console.log('fetched testimonial');
   } catch (error) {
@@ -43,7 +27,6 @@ export const fetchTestimonials = (id1,id2,id3) => async (dispatch) => {
 
 export const {
     SetTestimonials,
-    Setcount
 } = Generalreducer.actions;
 
 export default Generalreducer.reducer;
