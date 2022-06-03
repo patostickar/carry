@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const initialState = {
   carTypes: [],
+  sort: '',
   filters: {
     transmission: {
       manual: false,
@@ -11,9 +12,9 @@ const initialState = {
     airConditioning: false,
     fourPlusSeats: false,
     carCategory: {
-      small: false,
-      medium: false,
-      large: false,
+      pequeño: false,
+      mediano: false,
+      grande: false,
       premium: false,
       convertible: false,
       minivan: false,
@@ -29,6 +30,9 @@ export const carsResults = createSlice({
   reducers: {
     setCarTypes: (state, action) => {
       state.carTypes = action.payload;
+    },
+    setSort: (state, action) => {
+      state.sort = action.payload;
     },
     setTransmission: (state, action) => {
       const { name, checked } = action.payload;
@@ -65,7 +69,7 @@ export const fetchCarTypes = (pickupLocation) => async (dispatch) => {
     await axios
       // .get(`http://localhost:3001/cartype/count/${pickupLocation}`)
       // .then((res) => dispatch(setCarTypes(res.data)));
-      .get(`http://localhost:3001/cartype`)
+      .get(`http://localhost:3001/cartypes`)
       .then((res) => dispatch(setCarTypes(res.data)));
     console.log('fetched car types');
   } catch (error) {
@@ -75,6 +79,7 @@ export const fetchCarTypes = (pickupLocation) => async (dispatch) => {
 
 export const {
   setCarTypes,
+  setSort,
   setTransmission,
   setAirConditioning,
   setFourPlusSeats,

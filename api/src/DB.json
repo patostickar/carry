@@ -257,151 +257,151 @@
     {
       "make": "Ford",
       "model": "Fiesta",
-      "vehicle_class_code": "A",
-      "vehicle_class_name": "Pequeño",
+      "vehicle_classCode": "A",
+      "vehicle_className": "Pequeño",
       "vehicle_transmission": "Manual",
       "mpg": "27/35",
       "image_url": "https://www.avis.com/content/dam/cars/l/2019/ford/2019-ford-fiesta-se-5door-2wd-hatchback-white.png",
       "doors": "4",
       "seats": "4",
       "air_conditioned": false,
-      "large_suitcase": "1",
-      "small_suitcase": "1",
+      "largeSuitcase": "1",
+      "smallSuitcase": "1",
       "price": 100
     },
     {
       "make": "Kia",
       "model": "Rio",
-      "vehicle_class_code": "A",
-      "vehicle_class_name": "Pequeño",
+      "vehicle_classCode": "A",
+      "vehicle_className": "Pequeño",
       "vehicle_transmission": "Automático",
       "mpg": "27/35",
       "image_url": "https://www.avis.com/content/dam/cars/l/2021/kia/2021-kia-soul-s-5door-hatchback-white.png",
       "doors": "4",
       "seats": "4",
       "air_conditioned": false,
-      "large_suitcase": "1",
-      "small_suitcase": "1",
+      "largeSuitcase": "1",
+      "smallSuitcase": "1",
       "price": 110
     },
     {
       "make": "Toyota",
       "model": "Corolla",
-      "vehicle_class_code": "B",
-      "vehicle_class_name": "Mediano",
+      "vehicle_classCode": "B",
+      "vehicle_className": "Mediano",
       "vehicle_transmission": "Manual",
       "mpg": "27/35",
       "image_url": "https://www.avis.com/content/dam/cars/l/2020/toyota/2020-toyota-corolla-le-sedan-white.png",
       "doors": "4",
       "seats": "4",
       "air_conditioned": true,
-      "large_suitcase": "1",
-      "small_suitcase": "2",
+      "largeSuitcase": "1",
+      "smallSuitcase": "2",
       "price": 120
     },
     {
       "make": "Volkswagen",
       "model": "Jetta",
-      "vehicle_class_code": "B",
-      "vehicle_class_name": "Mediano",
+      "vehicle_classCode": "B",
+      "vehicle_className": "Mediano",
       "vehicle_transmission": "Automático",
       "mpg": "27/35",
       "image_url": "https://www.avis.com/content/dam/cars/l/2021/volkswagen/2021-volkswagen-jetta-s-sedan-white.png",
       "doors": "4",
       "seats": "4",
       "air_conditioned": false,
-      "large_suitcase": "1",
-      "small_suitcase": "2",
+      "largeSuitcase": "1",
+      "smallSuitcase": "2",
       "price": 130
     },
     {
       "make": "Toyota",
       "model": "Camry",
-      "vehicle_class_code": "C",
-      "vehicle_class_name": "Grande",
+      "vehicle_classCode": "C",
+      "vehicle_className": "Grande",
       "vehicle_transmission": "Manual",
       "mpg": "27/35",
       "image_url": "https://www.avis.com/content/dam/cars/l/2021/toyota/2021-toyota-camry-se-sedan-white.png",
       "doors": "4",
       "seats": "5",
       "air_conditioned": false,
-      "large_suitcase": "2",
-      "small_suitcase": "2",
+      "largeSuitcase": "2",
+      "smallSuitcase": "2",
       "price": 140
     },
     {
       "make": "Volkswagen",
       "model": "Passat",
-      "vehicle_class_code": "C",
-      "vehicle_class_name": "Grande",
+      "vehicle_classCode": "C",
+      "vehicle_className": "Grande",
       "vehicle_transmission": "Automático",
       "mpg": "27/35",
       "image_url": "https://www.avis.com/content/dam/cars/l/2021/volkswagen/2021-volkswagen-passat-se-sedan-white.png",
       "doors": "4",
       "seats": "5",
       "air_conditioned": true,
-      "large_suitcase": "2",
-      "small_suitcase": "2",
+      "largeSuitcase": "2",
+      "smallSuitcase": "2",
       "price": 150
     },
     {
       "make": "Chrysler",
       "model": "300",
-      "vehicle_class_code": "D",
-      "vehicle_class_name": "Premium",
+      "vehicle_classCode": "D",
+      "vehicle_className": "Premium",
       "vehicle_transmission": "Automático",
       "mpg": "27/35",
       "image_url": "https://www.avis.com/content/dam/cars/l/2019/chrysler/2019-chrysler-300-limited-sedan-white.png",
       "doors": "4",
       "seats": "5",
       "air_conditioned": true,
-      "large_suitcase": "2",
-      "small_suitcase": "2",
+      "largeSuitcase": "2",
+      "smallSuitcase": "2",
       "price": 160
     },
     {
       "make": "Ford",
       "model": "Mustang Convertible",
-      "vehicle_class_code": "E",
-      "vehicle_class_name": "Convertible",
+      "vehicle_classCode": "E",
+      "vehicle_className": "Convertible",
       "vehicle_transmission": "Manual",
       "mpg": "27/35",
       "image_url": "https://www.avis.com/content/dam/cars/l/2020/ford/2020-ford-mustang-ecoboost-premium-convertible-white.png",
       "doors": "4",
       "seats": "2",
       "air_conditioned": true,
-      "large_suitcase": "1",
-      "small_suitcase": "1",
+      "largeSuitcase": "1",
+      "smallSuitcase": "1",
       "price": 170
     },
     {
       "make": "Chrysler",
       "model": "Voyager",
-      "vehicle_class_code": "F",
-      "vehicle_class_name": "Minivan",
+      "vehicle_classCode": "F",
+      "vehicle_className": "Minivan",
       "vehicle_transmission": "Automático",
       "mpg": "27/35",
       "image_url": "https://www.avis.com/content/dam/cars/l/2020/chrysler/2020-chrysler-voyager-lx-minivan-white.png",
       "doors": "5",
       "seats": "6",
       "air_conditioned": true,
-      "large_suitcase": "3",
-      "small_suitcase": "2",
+      "largeSuitcase": "3",
+      "smallSuitcase": "2",
       "price": 180
     },
     {
       "make": "Ford",
       "model": "Edge",
-      "vehicle_class_code": "G",
-      "vehicle_class_name": "SUVs",
+      "vehicle_classCode": "G",
+      "vehicle_className": "SUVs",
       "vehicle_transmission": "Automático",
       "mpg": "27/35",
       "image_url": "https://www.avis.com/content/dam/cars/l/2020/ford/2020-ford-edge-st-4wd-suv-white.png",
       "doors": "5",
       "seats": "5",
       "air_conditioned": true,
-      "large_suitcase": "2",
-      "small_suitcase": "2",
+      "largeSuitcase": "2",
+      "smallSuitcase": "2",
       "price": 190
     }
   ],
@@ -410,246 +410,246 @@
       "id": "0",
       "car_type": "1",
       "location": "5",
-      "pickup_date": "2022-01-10",
-      "return_date": "2022-02-05"
+      "pickupDate": "2022-01-10",
+      "returnDate": "2022-02-05"
     },
     {
       "id": "1",
       "car_type": "8",
       "location": "9",
-      "pickup_date": "2022-05-23",
-      "return_date": "2022-05-29"
+      "pickupDate": "2022-05-23",
+      "returnDate": "2022-05-29"
     },
     {
       "id": "2",
       "car_type": "7",
       "location": "5",
-      "pickup_date": "2022-05-23",
-      "return_date": "2022-05-31"
+      "pickupDate": "2022-05-23",
+      "returnDate": "2022-05-31"
     },
     {
       "id": "3",
       "car_type": "4",
       "location": "9",
-      "pickup_date": "2022-05-23",
-      "return_date": "2022-06-31"
+      "pickupDate": "2022-05-23",
+      "returnDate": "2022-06-31"
     },
     {
       "id": "4",
       "car_type": "8",
       "location": "9",
-      "pickup_date": "2022-06-01",
-      "return_date": "2022-06-10"
+      "pickupDate": "2022-06-01",
+      "returnDate": "2022-06-10"
     },
     {
       "id": "5",
       "car_type": "4",
       "location": "1",
-      "pickup_date": "2022-06-01",
-      "return_date": "2022-06-12"
+      "pickupDate": "2022-06-01",
+      "returnDate": "2022-06-12"
     },
     {
       "id": "6",
       "car_type": "9",
       "location": "2",
-      "pickup_date": "2022-06-01",
-      "return_date": "2022-06-15"
+      "pickupDate": "2022-06-01",
+      "returnDate": "2022-06-15"
     },
     {
       "id": "7",
       "car_type": "6",
       "location": "2",
-      "pickup_date": "2022-06-01",
-      "return_date": "2022-06-16"
+      "pickupDate": "2022-06-01",
+      "returnDate": "2022-06-16"
     },
     {
       "id": "8",
       "car_type": "4",
       "location": "4",
-      "pickup_date": "2022-06-01",
-      "return_date": "2022-06-18"
+      "pickupDate": "2022-06-01",
+      "returnDate": "2022-06-18"
     },
     {
       "id": "9",
       "car_type": "9",
       "location": "1",
-      "pickup_date": "2022-06-01",
-      "return_date": "2022-06-21"
+      "pickupDate": "2022-06-01",
+      "returnDate": "2022-06-21"
     },
     {
       "id": "10",
       "car_type": "3",
       "location": "5",
-      "pickup_date": "2022-06-01",
-      "return_date": "2022-06-31"
+      "pickupDate": "2022-06-01",
+      "returnDate": "2022-06-31"
     },
     {
       "id": "11",
       "car_type": "1",
       "location": "4",
-      "pickup_date": "2022-06-15",
-      "return_date": "2022-06-17"
+      "pickupDate": "2022-06-15",
+      "returnDate": "2022-06-17"
     },
     {
       "id": "12",
       "car_type": "8",
       "location": "6",
-      "pickup_date": "2022-06-15",
-      "return_date": "2022-06-20"
+      "pickupDate": "2022-06-15",
+      "returnDate": "2022-06-20"
     },
     {
       "id": "13",
       "car_type": "2",
       "location": "9",
-      "pickup_date": "2022-06-15",
-      "return_date": "2022-06-25"
+      "pickupDate": "2022-06-15",
+      "returnDate": "2022-06-25"
     },
     {
       "id": "14",
       "car_type": "9",
       "location": "1",
-      "pickup_date": "2022-06-15",
-      "return_date": "2022-06-31"
+      "pickupDate": "2022-06-15",
+      "returnDate": "2022-06-31"
     },
     {
       "id": "15",
       "car_type": "8",
       "location": "3",
-      "pickup_date": "2022-06-15",
-      "return_date": "2022-07-01"
+      "pickupDate": "2022-06-15",
+      "returnDate": "2022-07-01"
     },
     {
       "id": "16",
       "car_type": "3",
       "location": "8",
-      "pickup_date": "2022-06-15",
-      "return_date": "2022-07-04"
+      "pickupDate": "2022-06-15",
+      "returnDate": "2022-07-04"
     },
     {
       "id": "17",
       "car_type": "9",
       "location": "2",
-      "pickup_date": "2022-06-23",
-      "return_date": "2022-07-01"
+      "pickupDate": "2022-06-23",
+      "returnDate": "2022-07-01"
     },
     {
       "id": "18",
       "car_type": "8",
       "location": "0",
-      "pickup_date": "2022-06-23",
-      "return_date": "2022-07-10"
+      "pickupDate": "2022-06-23",
+      "returnDate": "2022-07-10"
     },
     {
       "id": "19",
       "car_type": "3",
       "location": "9",
-      "pickup_date": "2022-06-23",
-      "return_date": "2022-07-13"
+      "pickupDate": "2022-06-23",
+      "returnDate": "2022-07-13"
     },
     {
       "id": "20",
       "car_type": "3",
       "location": "9",
-      "pickup_date": "2022-06-23",
-      "return_date": "2022-07-16"
+      "pickupDate": "2022-06-23",
+      "returnDate": "2022-07-16"
     },
     {
       "id": "21",
       "car_type": "9",
       "location": "9",
-      "pickup_date": "2022-06-23",
-      "return_date": "2022-07-20"
+      "pickupDate": "2022-06-23",
+      "returnDate": "2022-07-20"
     },
     {
       "id": "22",
       "car_type": "9",
       "location": "6",
-      "pickup_date": "2022-06-23",
-      "return_date": "2022-07-23"
+      "pickupDate": "2022-06-23",
+      "returnDate": "2022-07-23"
     },
     {
       "id": "23",
       "car_type": "3",
       "location": "5",
-      "pickup_date": "2022-06-23",
-      "return_date": "2022-07-124"
+      "pickupDate": "2022-06-23",
+      "returnDate": "2022-07-124"
     },
     {
       "id": "24",
       "car_type": "4",
       "location": "2",
-      "pickup_date": "2022-07-10",
-      "return_date": "2022-07-14"
+      "pickupDate": "2022-07-10",
+      "returnDate": "2022-07-14"
     },
     {
       "id": "25",
       "car_type": "9",
       "location": "2",
-      "pickup_date": "2022-07-10",
-      "return_date": "2022-07-17"
+      "pickupDate": "2022-07-10",
+      "returnDate": "2022-07-17"
     },
     {
       "id": "26",
       "car_type": "0",
       "location": "0",
-      "pickup_date": "2022-07-10",
-      "return_date": "2022-07-19"
+      "pickupDate": "2022-07-10",
+      "returnDate": "2022-07-19"
     },
     {
       "id": "27",
       "car_type": "6",
       "location": "0",
-      "pickup_date": "2022-07-10",
-      "return_date": "2022-07-22"
+      "pickupDate": "2022-07-10",
+      "returnDate": "2022-07-22"
     },
     {
       "id": "28",
       "car_type": "6",
       "location": "0",
-      "pickup_date": "2022-07-10",
-      "return_date": "2022-07-29"
+      "pickupDate": "2022-07-10",
+      "returnDate": "2022-07-29"
     },
     {
       "id": "29",
       "car_type": "7",
       "location": "7",
-      "pickup_date": "2022-07-10",
-      "return_date": "2022-08-01"
+      "pickupDate": "2022-07-10",
+      "returnDate": "2022-08-01"
     },
     {
       "id": "30",
       "car_type": "1",
       "location": "0",
-      "pickup_date": "2022-07-10",
-      "return_date": "2022-08-05"
+      "pickupDate": "2022-07-10",
+      "returnDate": "2022-08-05"
     },
     {
       "id": "31",
       "car_type": "1",
       "location": "1",
-      "pickup_date": "2022-01-10",
-      "return_date": "2022-02-05"
+      "pickupDate": "2022-01-10",
+      "returnDate": "2022-02-05"
     },
     {
       "id": "32",
       "car_type": "1",
       "location": "2",
-      "pickup_date": "2022-01-10",
-      "return_date": "2022-02-05"
+      "pickupDate": "2022-01-10",
+      "returnDate": "2022-02-05"
     },
     {
       "id": "33",
       "car_type": "1",
       "location": "3",
-      "pickup_date": "2022-01-10",
-      "return_date": "2022-02-05"
+      "pickupDate": "2022-01-10",
+      "returnDate": "2022-02-05"
     },
     {
       "id": "34",
       "car_type": "1",
       "location": "4",
-      "pickup_date": "2022-01-10",
-      "return_date": "2022-02-05"
+      "pickupDate": "2022-01-10",
+      "returnDate": "2022-02-05"
     }
   ],
   "bookings": [
@@ -657,491 +657,491 @@
       "booking_id": "0",
       "customer_id": "5",
       "car_id": "30",
-      "pickup_date": "2022-01-10",
-      "return_date": "2022-02-05",
+      "pickupDate": "2022-01-10",
+      "returnDate": "2022-02-05",
       "pickup_location": "5",
       "dropoff_location": "4",
       "base_rate": "329",
       "taxes_fee_total": "78",
       "insurance_total": "94",
       "discount_total": "0",
-      "reservation_total": "320"
+      "reservationTotal": "320"
     },
     {
       "booking_id": "1",
       "customer_id": "5",
       "car_id": "16",
-      "pickup_date": "2022-06-15",
-      "return_date": "2022-07-04",
+      "pickupDate": "2022-06-15",
+      "returnDate": "2022-07-04",
       "pickup_location": "0",
       "dropoff_location": "1",
       "base_rate": "650",
       "taxes_fee_total": "72",
       "insurance_total": "50",
       "discount_total": "1",
-      "reservation_total": "1088"
+      "reservationTotal": "1088"
     },
     {
       "booking_id": "2",
       "customer_id": "2",
       "car_id": "22",
-      "pickup_date": "2022-06-23",
-      "return_date": "2022-07-23",
+      "pickupDate": "2022-06-23",
+      "returnDate": "2022-07-23",
       "pickup_location": "4",
       "dropoff_location": "3",
       "base_rate": "447",
       "taxes_fee_total": "80",
       "insurance_total": "90",
       "discount_total": "0",
-      "reservation_total": "400"
+      "reservationTotal": "400"
     },
     {
       "booking_id": "3",
       "customer_id": "2",
       "car_id": "20",
-      "pickup_date": "2022-06-23",
-      "return_date": "2022-07-16",
+      "pickupDate": "2022-06-23",
+      "returnDate": "2022-07-16",
       "pickup_location": "3",
       "dropoff_location": "8",
       "base_rate": "361",
       "taxes_fee_total": "65",
       "insurance_total": "53",
       "discount_total": "1",
-      "reservation_total": "857"
+      "reservationTotal": "857"
     },
     {
       "booking_id": "4",
       "customer_id": "0",
       "car_id": "13",
-      "pickup_date": "2022-06-15",
-      "return_date": "2022-06-25",
+      "pickupDate": "2022-06-15",
+      "returnDate": "2022-06-25",
       "pickup_location": "6",
       "dropoff_location": "8",
       "base_rate": "461",
       "taxes_fee_total": "60",
       "insurance_total": "65",
       "discount_total": "0",
-      "reservation_total": "831"
+      "reservationTotal": "831"
     },
     {
       "booking_id": "5",
       "customer_id": "3",
       "car_id": "14",
-      "pickup_date": "2022-06-15",
-      "return_date": "2022-06-31",
+      "pickupDate": "2022-06-15",
+      "returnDate": "2022-06-31",
       "pickup_location": "7",
       "dropoff_location": "2",
       "base_rate": "611",
       "taxes_fee_total": "90",
       "insurance_total": "52",
       "discount_total": "0",
-      "reservation_total": "537"
+      "reservationTotal": "537"
     },
     {
       "booking_id": "6",
       "customer_id": "2",
       "car_id": "18",
-      "pickup_date": "2022-06-23",
-      "return_date": "2022-07-10",
+      "pickupDate": "2022-06-23",
+      "returnDate": "2022-07-10",
       "pickup_location": "3",
       "dropoff_location": "9",
       "base_rate": "666",
       "taxes_fee_total": "71",
       "insurance_total": "83",
       "discount_total": "0",
-      "reservation_total": "1129"
+      "reservationTotal": "1129"
     },
     {
       "booking_id": "7",
       "customer_id": "9",
       "car_id": "27",
-      "pickup_date": "2022-07-10",
-      "return_date": "2022-07-22",
+      "pickupDate": "2022-07-10",
+      "returnDate": "2022-07-22",
       "pickup_location": "3",
       "dropoff_location": "6",
       "base_rate": "111",
       "taxes_fee_total": "93",
       "insurance_total": "71",
       "discount_total": "0",
-      "reservation_total": "1143"
+      "reservationTotal": "1143"
     },
     {
       "booking_id": "8",
       "customer_id": "1",
       "car_id": "3",
-      "pickup_date": "2022-05-23",
-      "return_date": "2022-06-31",
+      "pickupDate": "2022-05-23",
+      "returnDate": "2022-06-31",
       "pickup_location": "8",
       "dropoff_location": "1",
       "base_rate": "184",
       "taxes_fee_total": "81",
       "insurance_total": "90",
       "discount_total": "0",
-      "reservation_total": "353"
+      "reservationTotal": "353"
     },
     {
       "booking_id": "9",
       "customer_id": "4",
       "car_id": "28",
-      "pickup_date": "2022-06-01",
-      "return_date": "2022-06-10",
+      "pickupDate": "2022-06-01",
+      "returnDate": "2022-06-10",
       "pickup_location": "3",
       "dropoff_location": "5",
       "base_rate": "191",
       "taxes_fee_total": "55",
       "insurance_total": "89",
       "discount_total": "1",
-      "reservation_total": "733"
+      "reservationTotal": "733"
     },
     {
       "booking_id": "10",
       "customer_id": "0",
       "car_id": "8",
-      "pickup_date": "2022-06-01",
-      "return_date": "2022-06-18",
+      "pickupDate": "2022-06-01",
+      "returnDate": "2022-06-18",
       "pickup_location": "1",
       "dropoff_location": "1",
       "base_rate": "409",
       "taxes_fee_total": "74",
       "insurance_total": "96",
       "discount_total": "0",
-      "reservation_total": "464"
+      "reservationTotal": "464"
     },
     {
       "booking_id": "11",
       "customer_id": "6",
       "car_id": "2",
-      "pickup_date": "2022-05-23",
-      "return_date": "2022-05-31",
+      "pickupDate": "2022-05-23",
+      "returnDate": "2022-05-31",
       "pickup_location": "5",
       "dropoff_location": "0",
       "base_rate": "244",
       "taxes_fee_total": "55",
       "insurance_total": "88",
       "discount_total": "0",
-      "reservation_total": "856"
+      "reservationTotal": "856"
     },
     {
       "booking_id": "12",
       "customer_id": "3",
       "car_id": "25",
-      "pickup_date": "2022-07-10",
-      "return_date": "2022-07-17",
+      "pickupDate": "2022-07-10",
+      "returnDate": "2022-07-17",
       "pickup_location": "6",
       "dropoff_location": "3",
       "base_rate": "488",
       "taxes_fee_total": "74",
       "insurance_total": "89",
       "discount_total": "1",
-      "reservation_total": "189"
+      "reservationTotal": "189"
     },
     {
       "booking_id": "13",
       "customer_id": "8",
       "car_id": "15",
-      "pickup_date": "2022-06-15",
-      "return_date": "2022-07-01",
+      "pickupDate": "2022-06-15",
+      "returnDate": "2022-07-01",
       "pickup_location": "3",
       "dropoff_location": "3",
       "base_rate": "669",
       "taxes_fee_total": "99",
       "insurance_total": "73",
       "discount_total": "0",
-      "reservation_total": "902"
+      "reservationTotal": "902"
     },
     {
       "booking_id": "14",
       "customer_id": "5",
       "car_id": "32",
-      "pickup_date": "2022-01-10",
-      "return_date": "2022-02-05",
+      "pickupDate": "2022-01-10",
+      "returnDate": "2022-02-05",
       "pickup_location": "1",
       "dropoff_location": "2",
       "base_rate": "497",
       "taxes_fee_total": "62",
       "insurance_total": "79",
       "discount_total": "0",
-      "reservation_total": "155"
+      "reservationTotal": "155"
     },
     {
       "booking_id": "15",
       "customer_id": "5",
       "car_id": "9",
-      "pickup_date": "2022-06-01",
-      "return_date": "2022-06-21",
+      "pickupDate": "2022-06-01",
+      "returnDate": "2022-06-21",
       "pickup_location": "8",
       "dropoff_location": "1",
       "base_rate": "196",
       "taxes_fee_total": "61",
       "insurance_total": "53",
       "discount_total": "0",
-      "reservation_total": "398"
+      "reservationTotal": "398"
     },
     {
       "booking_id": "16",
       "customer_id": "2",
       "car_id": "6",
-      "pickup_date": "2022-06-01",
-      "return_date": "2022-06-15",
+      "pickupDate": "2022-06-01",
+      "returnDate": "2022-06-15",
       "pickup_location": "6",
       "dropoff_location": "3",
       "base_rate": "364",
       "taxes_fee_total": "91",
       "insurance_total": "52",
       "discount_total": "1",
-      "reservation_total": "611"
+      "reservationTotal": "611"
     },
     {
       "booking_id": "17",
       "customer_id": "7",
       "car_id": "31",
-      "pickup_date": "2022-01-10",
-      "return_date": "2022-02-05",
+      "pickupDate": "2022-01-10",
+      "returnDate": "2022-02-05",
       "pickup_location": "2",
       "dropoff_location": "4",
       "base_rate": "657",
       "taxes_fee_total": "76",
       "insurance_total": "63",
       "discount_total": "0",
-      "reservation_total": "255"
+      "reservationTotal": "255"
     },
     {
       "booking_id": "18",
       "customer_id": "9",
       "car_id": "17",
-      "pickup_date": "2022-06-23",
-      "return_date": "2022-07-01",
+      "pickupDate": "2022-06-23",
+      "returnDate": "2022-07-01",
       "pickup_location": "8",
       "dropoff_location": "4",
       "base_rate": "692",
       "taxes_fee_total": "92",
       "insurance_total": "92",
       "discount_total": "0",
-      "reservation_total": "847"
+      "reservationTotal": "847"
     },
     {
       "booking_id": "19",
       "customer_id": "1",
       "car_id": "24",
-      "pickup_date": "2022-07-10",
-      "return_date": "2022-07-14",
+      "pickupDate": "2022-07-10",
+      "returnDate": "2022-07-14",
       "pickup_location": "5",
       "dropoff_location": "7",
       "base_rate": "487",
       "taxes_fee_total": "97",
       "insurance_total": "90",
       "discount_total": "1",
-      "reservation_total": "486"
+      "reservationTotal": "486"
     },
     {
       "booking_id": "20",
       "customer_id": "5",
       "car_id": "23",
-      "pickup_date": "2022-06-23",
-      "return_date": "2022-07-124",
+      "pickupDate": "2022-06-23",
+      "returnDate": "2022-07-124",
       "pickup_location": "3",
       "dropoff_location": "8",
       "base_rate": "501",
       "taxes_fee_total": "98",
       "insurance_total": "57",
       "discount_total": "0",
-      "reservation_total": "221"
+      "reservationTotal": "221"
     },
     {
       "booking_id": "21",
       "customer_id": "7",
       "car_id": "34",
-      "pickup_date": "2022-01-10",
-      "return_date": "2022-02-05",
+      "pickupDate": "2022-01-10",
+      "returnDate": "2022-02-05",
       "pickup_location": "9",
       "dropoff_location": "4",
       "base_rate": "318",
       "taxes_fee_total": "82",
       "insurance_total": "82",
       "discount_total": "0",
-      "reservation_total": "749"
+      "reservationTotal": "749"
     },
     {
       "booking_id": "22",
       "customer_id": "7",
       "car_id": "21",
-      "pickup_date": "2022-06-23",
-      "return_date": "2022-07-20",
+      "pickupDate": "2022-06-23",
+      "returnDate": "2022-07-20",
       "pickup_location": "6",
       "dropoff_location": "1",
       "base_rate": "174",
       "taxes_fee_total": "95",
       "insurance_total": "79",
       "discount_total": "0",
-      "reservation_total": "360"
+      "reservationTotal": "360"
     },
     {
       "booking_id": "23",
       "customer_id": "7",
       "car_id": "0",
-      "pickup_date": "2022-01-10",
-      "return_date": "2022-02-05",
+      "pickupDate": "2022-01-10",
+      "returnDate": "2022-02-05",
       "pickup_location": "8",
       "dropoff_location": "0",
       "base_rate": "423",
       "taxes_fee_total": "51",
       "insurance_total": "69",
       "discount_total": "1",
-      "reservation_total": "1187"
+      "reservationTotal": "1187"
     },
     {
       "booking_id": "24",
       "customer_id": "1",
       "car_id": "12",
-      "pickup_date": "2022-06-15",
-      "return_date": "2022-06-20",
+      "pickupDate": "2022-06-15",
+      "returnDate": "2022-06-20",
       "pickup_location": "0",
       "dropoff_location": "3",
       "base_rate": "486",
       "taxes_fee_total": "99",
       "insurance_total": "63",
       "discount_total": "1",
-      "reservation_total": "476"
+      "reservationTotal": "476"
     },
     {
       "booking_id": "25",
       "customer_id": "2",
       "car_id": "33",
-      "pickup_date": "2022-01-10",
-      "return_date": "2022-02-05",
+      "pickupDate": "2022-01-10",
+      "returnDate": "2022-02-05",
       "pickup_location": "6",
       "dropoff_location": "8",
       "base_rate": "323",
       "taxes_fee_total": "94",
       "insurance_total": "80",
       "discount_total": "1",
-      "reservation_total": "1107"
+      "reservationTotal": "1107"
     },
     {
       "booking_id": "26",
       "customer_id": "3",
       "car_id": "7",
-      "pickup_date": "2022-06-01",
-      "return_date": "2022-06-16",
+      "pickupDate": "2022-06-01",
+      "returnDate": "2022-06-16",
       "pickup_location": "4",
       "dropoff_location": "8",
       "base_rate": "647",
       "taxes_fee_total": "86",
       "insurance_total": "80",
       "discount_total": "1",
-      "reservation_total": "304"
+      "reservationTotal": "304"
     },
     {
       "booking_id": "27",
       "customer_id": "5",
       "car_id": "26",
-      "pickup_date": "2022-07-10",
-      "return_date": "2022-07-19",
+      "pickupDate": "2022-07-10",
+      "returnDate": "2022-07-19",
       "pickup_location": "1",
       "dropoff_location": "5",
       "base_rate": "642",
       "taxes_fee_total": "89",
       "insurance_total": "77",
       "discount_total": "0",
-      "reservation_total": "1046"
+      "reservationTotal": "1046"
     },
     {
       "booking_id": "28",
       "customer_id": "4",
       "car_id": "5",
-      "pickup_date": "2022-06-01",
-      "return_date": "2022-06-12",
+      "pickupDate": "2022-06-01",
+      "returnDate": "2022-06-12",
       "pickup_location": "8",
       "dropoff_location": "6",
       "base_rate": "549",
       "taxes_fee_total": "59",
       "insurance_total": "64",
       "discount_total": "0",
-      "reservation_total": "1161"
+      "reservationTotal": "1161"
     },
     {
       "booking_id": "29",
       "customer_id": "5",
       "car_id": "10",
-      "pickup_date": "2022-06-01",
-      "return_date": "2022-06-31",
+      "pickupDate": "2022-06-01",
+      "returnDate": "2022-06-31",
       "pickup_location": "3",
       "dropoff_location": "4",
       "base_rate": "404",
       "taxes_fee_total": "98",
       "insurance_total": "76",
       "discount_total": "1",
-      "reservation_total": "230"
+      "reservationTotal": "230"
     },
     {
       "booking_id": "30",
       "customer_id": "1",
       "car_id": "11",
-      "pickup_date": "2022-06-15",
-      "return_date": "2022-06-17",
+      "pickupDate": "2022-06-15",
+      "returnDate": "2022-06-17",
       "pickup_location": "1",
       "dropoff_location": "3",
       "base_rate": "367",
       "taxes_fee_total": "89",
       "insurance_total": "59",
       "discount_total": "0",
-      "reservation_total": "702"
+      "reservationTotal": "702"
     },
     {
       "booking_id": "31",
       "customer_id": "7",
       "car_id": "19",
-      "pickup_date": "2022-06-23",
-      "return_date": "2022-07-13",
+      "pickupDate": "2022-06-23",
+      "returnDate": "2022-07-13",
       "pickup_location": "4",
       "dropoff_location": "7",
       "base_rate": "338",
       "taxes_fee_total": "64",
       "insurance_total": "61",
       "discount_total": "1",
-      "reservation_total": "333"
+      "reservationTotal": "333"
     },
     {
       "booking_id": "32",
       "customer_id": "8",
       "car_id": "29",
-      "pickup_date": "2022-07-10",
-      "return_date": "2022-08-01",
+      "pickupDate": "2022-07-10",
+      "returnDate": "2022-08-01",
       "pickup_location": "0",
       "dropoff_location": "8",
       "base_rate": "565",
       "taxes_fee_total": "81",
       "insurance_total": "56",
       "discount_total": "0",
-      "reservation_total": "673"
+      "reservationTotal": "673"
     },
     {
       "booking_id": "33",
       "customer_id": "1",
       "car_id": "1",
-      "pickup_date": "2022-05-23",
-      "return_date": "2022-05-29",
+      "pickupDate": "2022-05-23",
+      "returnDate": "2022-05-29",
       "pickup_location": "2",
       "dropoff_location": "8",
       "base_rate": "444",
       "taxes_fee_total": "93",
       "insurance_total": "88",
       "discount_total": "1",
-      "reservation_total": "1177"
+      "reservationTotal": "1177"
     },
     {
       "booking_id": "34",
       "customer_id": "1",
       "car_id": "4",
-      "pickup_date": "2022-06-01",
-      "return_date": "2022-06-10",
+      "pickupDate": "2022-06-01",
+      "returnDate": "2022-06-10",
       "pickup_location": "1",
       "dropoff_location": "0",
       "base_rate": "551",
       "taxes_fee_total": "89",
       "insurance_total": "69",
       "discount_total": "1",
-      "reservation_total": "1156"
+      "reservationTotal": "1156"
     }
   ]
 }

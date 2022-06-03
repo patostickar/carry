@@ -8,6 +8,7 @@
   gap: 1em;
   margin-bottom: 1.5em;
   box-shadow: 6px 5px 3px 6px hsla(var(--second-hue), 48%, 8%, 0.04);
+  max-width: 800px;
 }
 .imageContainer {
   position: relative;
