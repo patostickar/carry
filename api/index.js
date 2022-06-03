@@ -98,12 +98,13 @@ conn
     // const corrientes = await Location.findOne({
     //   where: { name: 'Corrientes Cars' },
     // });
-    // // const cartype1 = await Cartype.findOne({
-    // //   where: { make: 'Ford', model: 'Fiesta' },
-    // // });
-    // // const cartype2 = await Cartype.findOne({
-    // //   where: { make: 'Kia', model: 'Rio' },
-    // // });
+
+    // const cartype1 = await Cartype.findOne({
+    //   where: { make: 'Ford', model: 'Fiesta' },
+    // });
+    // const cartype2 = await Cartype.findOne({
+    //   where: { make: 'Kia', model: 'Rio' },
+    // });
     // const cartype3 = await Cartype.findOne({
     //   where: { make: 'Toyota', model: 'Corolla' },
     // });
@@ -128,10 +129,6 @@ conn
     // const cartype10 = await Cartype.findOne({
     //   where: { make: 'Ford', model: 'Edge' },
     // });
-    // // const location1 = await Location.findOne({where:{name: "Ministro Pistarini International Airport"}})
-    // const cartype1 = await Cartype.findOne({ where: { make: 'Chrysler' } });
-    // // const location2 = await Location.findOne({where:{name: "Palermo Cars"}})
-    // const cartype2 = await Cartype.findOne({ where: { make: 'Volkswagen' } });
 
     // await createCar(cordoba.id, cartype1.id);
     // await createCar(cordoba.id, cartype1.id);
