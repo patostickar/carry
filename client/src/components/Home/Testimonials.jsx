@@ -1,13 +1,23 @@
 import { Pagination, Navigation } from "swiper";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import Testimonial1 from "../../assets/testimonial1.png";
-import Testimonial2 from "../../assets/testimonial2.png";
-import Testimonial3 from "../../assets/testimonial3.png";
+// import Testimonial2 from "../../assets/testimonial2.png";
+// import Testimonial3 from "../../assets/testimonial3.png";
 import "swiper/css";
 import "swiper/css/pagination";
 import "./styles/Testimonials.css";
 
+import { useSelector } from "react-redux";
+
+
+
+
 function Testimonials() {
+
+  const { testimonials } = useSelector((state) => state.generalReducer);
+  console.log(testimonials);
+
   return (
     <section className="testimonial section">
       <span className="section__subtitle">Nuestros clientes</span>
@@ -33,8 +43,18 @@ function Testimonials() {
           navigation={true}
           modules={[Pagination, Navigation]}
           className="mySwiper"
-        >
-          <SwiperSlide>
+        >{testimonials.reviews?.map((testimonial) => (
+        <SwiperSlide key={testimonial?.id}>
+          <div className="testimonial__card">
+            <img src={Testimonial1} alt="img" className="testimonial__img" />
+
+            <h3 className="testimonial__name">{testimonial?.customer.first_name +" "+ testimonial?.customer.last_name }</h3>
+            <p className="testimonial__description">
+              {testimonial?.review}
+            </p>
+          </div>
+        </SwiperSlide>))}
+          {/* <SwiperSlide>
             <div className="testimonial__card">
               <img src={Testimonial1} alt="img" className="testimonial__img" />
 
@@ -68,7 +88,7 @@ function Testimonials() {
                 contratiempos, el vehiculo en excelentes condiciones.
               </p>
             </div>
-          </SwiperSlide>
+          </SwiperSlide> */}
         </Swiper>
       </div>
     </section>

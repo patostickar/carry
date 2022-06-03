@@ -11,8 +11,8 @@ const reviews = require("./customer/review/review.js")
 
 router.use('/cars', cars);
 router.use('/locations', locations);
-router.use('/customers', customers);
 router.use('/customers/reviews', reviews);
+router.use('/customers', customers);
 router.use('/cartype', cartype);
 router.use('/bookings', bookings);
 

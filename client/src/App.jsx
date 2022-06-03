@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllLocations } from './redux/searchBar.js';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Booking } from './components/Booking.jsx';
@@ -13,14 +13,23 @@ import AdminPanel from './pages/AdminPanel.jsx';
 import CarCreate from './components/CarCreateForm/CarCreate.jsx';
 import CarTypeCreate from './components/CarCreateForm/CarTypeCreate.jsx';
 import LocationCreate from './components/CarCreateForm/LocationCreate.jsx';
-
 import './App.css';
+import { fetchTestimonials } from './redux/generalReducer.js';
 
 function App() {
+  const { testimonials } = useSelector((state) => state.generalReducer);
+  
+  const id1 = Math.floor(Math.random()*(testimonials.conteo-1+1)+1)
+  const id2 = Math.floor(Math.random()*(testimonials.conteo-1+1)+1)
+  const id3 = Math.floor(Math.random()*(testimonials.conteo-1+1)+1)
+  console.log(id1,id2,id3);
+
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchAllLocations());
+    dispatch(fetchTestimonials(id1,id2,id3))
   }, []);
 
   return (
