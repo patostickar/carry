@@ -2,9 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { add } from 'date-fns';
 import axios from 'axios';
 const initialState = {
-  pickupLocation: null,
-  dropoffLocation: null,
-  sameLocation: true,
+  location: null,
   popLocation: '',
   pickupDate: new Date().getTime(),
   dropoffDate: add(new Date(), {
@@ -27,16 +25,8 @@ export const searchBar = createSlice({
   name: 'searchBar',
   initialState,
   reducers: {
-    setPickupLocation: (state, action) => {
-      state.pickupLocation = action.payload;
-      if (state.sameLocation) state.dropoffLocation = state.pickupLocation;
-    },
-    setDroppOffLocation: (state, action) => {
-      state.dropoffLocation = action.payload;
-    },
-    setSameLocation: (state, action) => {
-      state.sameLocation = action.payload;
-      state.dropoffLocation = state.pickupLocation;
+    setLocation: (state, action) => {
+      state.location = action.payload;
     },
     setPopLocation: (state, action) => {
       state.popLocation = action.payload;
@@ -57,9 +47,7 @@ export const searchBar = createSlice({
 });
 
 export const {
-  setPickupLocation,
-  setDroppOffLocation,
-  setSameLocation,
+  setLocation,
   setPopLocation,
   setDate,
   setPickupTime,

@@ -17,14 +17,14 @@ module.exports.getAllCars = async (req, res, next) => {
 };
 
 module.exports.getAvailableCars = async (req, res, next) => {
-  const { pickUpLocation, pickUpDate, dropOffDate } = req.query;
+  const { locationId, pickUpDate, dropOffDate } = req.query;
 
-  if (!pickUpLocation || !pickUpDate || !dropOffDate)
+  if (!locationId || !pickUpDate || !dropOffDate)
     return res.status(400).send('Please send all the mandatory information');
 
   try {
     const availableCars = await getAvailableCars(
-      pickUpLocation,
+      locationId,
       pickUpDate,
       dropOffDate
     );

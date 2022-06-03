@@ -2,11 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { TextField, Autocomplete } from '@mui/material';
-import {
-  setPickupLocation,
-  setDroppOffLocation,
-  setPopLocation,
-} from '../../redux/searchBar.js';
+import { setLocation, setPopLocation } from '../../redux/searchBar.js';
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
@@ -14,9 +10,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import './styles/locationInput.module.css';
 
 export default function Location({ type, sameLocation, popLocation }) {
-  const { locations, pickupLocation, dropoffLocation } = useSelector(
-    (state) => state.searchBar
-  );
+  const { locations, location } = useSelector((state) => state.searchBar);
 
   const route = useLocation();
 
@@ -47,19 +41,15 @@ export default function Location({ type, sameLocation, popLocation }) {
     // Para evitar eso, seteo el valor al de pickup
     // No es la mejor manera, pero funciona
     if (route.pathname === '/searchResult' && type === 'Retiro') {
-      setInput(pickupLocation?.name || '');
+      setInput(location?.name || '');
     }
     return () => {
       dispatch(setPopLocation(''));
     };
   }, [popLocation]);
 
-  const location = type === 'Retiro' ? pickupLocation : dropoffLocation;
-
   function handleDispatch(newValue) {
-    type === 'Retiro'
-      ? dispatch(setPickupLocation(newValue || null))
-      : dispatch(setDroppOffLocation(newValue || null));
+    dispatch(setLocation(newValue || null));
   }
 
   return (
