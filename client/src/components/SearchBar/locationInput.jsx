@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { TextField, Autocomplete } from '@mui/material';
 import { setLocation, setPopLocation } from '../../redux/searchBar.js';
-import parse from 'autosuggest-highlight/parse';
-import match from 'autosuggest-highlight/match';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import InputAdornment from '@mui/material/InputAdornment';
+import parse from 'autosuggest-highlight/parse';
+import match from 'autosuggest-highlight/match';
 import './styles/locationInput.module.css';
 
-export default function Location({ type, sameLocation, popLocation }) {
+export default function Location({ type, popLocation }) {
   const { locations, location } = useSelector((state) => state.searchBar);
 
   const route = useLocation();
@@ -18,9 +18,7 @@ export default function Location({ type, sameLocation, popLocation }) {
 
   const [open, setOpen] = useState(false);
 
-  // Sólamente el input de pickup recibe por props popLocation
-  // DropOff no lo recibe, y por eso el comportamiento de inputValue es como si no estuviese
-  const [input, setInput] = useState(popLocation);
+  const [input, setInput] = useState(popLocation || location?.name);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -37,12 +35,6 @@ export default function Location({ type, sameLocation, popLocation }) {
       setInput(popLocation);
       scrollToTop();
     }
-    // Cuando paso a results, como popLocation === "", me muestra eso en vez del valor elegido
-    // Para evitar eso, seteo el valor al de pickup
-    // No es la mejor manera, pero funciona
-    if (route.pathname === '/searchResult' && type === 'Retiro') {
-      setInput(location?.name || '');
-    }
     return () => {
       dispatch(setPopLocation(''));
     };
@@ -57,7 +49,6 @@ export default function Location({ type, sameLocation, popLocation }) {
       className='headerSearchInput'
       id='pickup_location'
       sx={{ width: 300 }}
-      disabled={sameLocation}
       open={open}
       onOpen={() => {
         setOpen(true);
