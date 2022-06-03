@@ -186,6 +186,6 @@ conn
     // await createCar(corrientes.id, cartype9.id);
     // await createCar(corrientes.id, cartype10.id);
 
-    console.log('Server up and running');
+    // console.log('Server up and running');
   })
   .catch((err) => console.log(err));
