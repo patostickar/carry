@@ -19,6 +19,9 @@ function ListResult() {
       carMakes,
     },
   } = useSelector((state) => state.carsResults);
+  
+  
+console.log(carTypes)
 
   const { pickupLocation } = useSelector((state) => state.searchBar);
 

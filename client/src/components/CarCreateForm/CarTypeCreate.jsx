@@ -1,78 +1,157 @@
-import React from "react";
-import { Formik } from "formik";
+import React, {useEffect} from "react";
+import { Formik, Form, Field } from "formik";
+import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
+
+import { fetchCarTypes } from "../../redux/carsResults";
+import { fetchAllLocations } from "../../redux/searchBar";
+
+
 
 
 
 export default function CarTypeCreate(){
+
+    function postCarType(values) {
+        return async function () {
+         try { const json = await axios.post("http://localhost:3001/cars", values);
+
+          return {
+            type: "POST_CARTYPE",
+            json,
+            
+            
+          };
+        } catch (error){
+          console.log(error)
+          
+        }
+        };
+      }
+
+    useEffect(() => {
+        dispatch(fetchCarTypes());
+      }, []);
+    
+
+      useEffect(() => {
+        dispatch(fetchAllLocations());
+      }, []);
+       
+
+    const dispatch = useDispatch()
+
+      const { carTypes } = useSelector((state) => state.carsResults);
+      const {locations} = useSelector((state) => state.searchBar)
+      console.log(locations.map((d)=> d.id))
+
+
+    
+    
    
     return (
-        <Formik
-        initialValues={{
-            carType: '',
-            stock: ''
-        }}
 
-        validate={(valores)=>{
-
-            // eslint-disable-next-line prefer-const
-            let errores = {}
-
-            if(!valores.stock){
-                errores.stock = "Ingrese un stock valido"
-            }
-
-            return errores
-        }}
-        onSubmit={()=> {console.log("Se ha enviado el formulario")}}
-        > 
         
-        {({values, errors, touched, handleSubmit, handleChange, handleBlur})=>(
+       
+        <Formik
 
-        <form className="carTypeCreate" onSubmit={handleSubmit}>
+        initialValues={{
+        
+            carTypeid: '',
+            locationid: ''
+        
+        } }
+
+       
+        onSubmit={(values)=> {
+            
+            dispatch(postCarType(values))
+            // alert(JSON.stringify(values))
+        
+         
+           
+            console.log("Se ha enviado el formulario")
+            alert("Vehiculo creado")
+        }}
+        > 
+
+        
+        
+        
+
+
+        
+        
+        {({values,   handleSubmit, handleChange, handleBlur})=>(
+
+         
+
+        <Form className="carTypeCreate" onSubmit={handleSubmit}>
             
 
             <div>
             <label htmlFor="carType">Seleccione el vehiculo</label>
-            <select 
-            name="carType" 
-            id="carType" 
+            
+            <Field component="select" 
+            id="carTypeid"
                      
             >
-
+               {carTypes.map((d) => (
                 <option 
-                value={values.carType}
+                value={d.id}
+                id={values.carTypeid}
+                key = {d.id}
                 onChange={handleChange}
                 onBlur={handleBlur} >
-                    Ford Fiesta
+                    {d.model}
                 </option>
-                
 
-            </select>
+))}
+
+
+
+
+            </Field>
+
+          
+
+
             </div>
-
 
             <div>
-            <label htmlFor="stock">Cantidad a crear en stock</label>
-            <input type="number" 
-            id="stock" 
-            name="stock" 
-            placeholder="1" 
-            value={values.stock}
-            onChange={handleChange}
-            onBlur={handleBlur}
+            <label htmlFor="location">Seleccione la ubicacion</label>
+            <Field component="select" 
+            id="locationid"
+                     
             
-            
-            />
-            {touched.stock && errors.stock && <div>{errors.stock}</div>}
+            >
+               {locations.map((d) => (
+                <option 
+                value={d.id}
+                
+                id={values.locationid}
+                key = {d.id}
+                onChange={handleChange}
+                onBlur={handleBlur} >
+                    {d.name}
+                </option>
+
+))}
+
+
+            </Field>
             </div>
-            
+
+
 
             
             <button type="submit">Crear</button>
+
+            
             
         
         
-        </form>
+        </Form>
 
         )}
 

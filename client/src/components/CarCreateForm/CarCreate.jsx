@@ -1,7 +1,26 @@
 import React from 'react';
 import { Formik } from 'formik';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
 
 export default function CarCreate() {
+  const dispatch = useDispatch();
+
+  function postCar(values) {
+    return async function () {
+      try {
+        const json = await axios.post('http://localhost:3001/cartypes', values);
+
+        return {
+          type: 'POST_CAR',
+          json,
+        };
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  }
+
   return (
     <Formik
       initialValues={{
@@ -70,10 +89,16 @@ export default function CarCreate() {
           errores.smallSuitcase = 'Ingrese un valor valido';
         }
 
+        if (!valores.Price) {
+          errores.Price = 'Ingrese un valor valido';
+        }
+
         return errores;
       }}
-      onSubmit={() => {
+      onSubmit={(values) => {
         console.log('Se ha enviado el formulario');
+        // alert(JSON.stringify(values))
+        dispatch(postCar(values));
       }}
     >
       {({
@@ -276,6 +301,21 @@ export default function CarCreate() {
             {touched.smallSuitcase && errors.smallSuitcase && (
               <div>{errors.smallSuitcase}</div>
             )}
+          </div>
+
+          <div>
+            <label htmlFor='Price'>Precio</label>
+
+            <input
+              type='text'
+              id='Price'
+              name='Price'
+              placeholder='Si'
+              value={values.Price}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+            {touched.Price && errors.Price && <div>{errors.Price}</div>}
           </div>
 
           <button type='submit'>Crear</button>
