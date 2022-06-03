@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { AnimatePresence } from 'framer-motion';
+import SearchBar from '../../SearchBar/SearchBar';
 import Steps from './steps';
 import CarCategoryTopBar from '../TopBar/CarCategoryTopBar';
 import SortByPrice from '../TopBar/sortByPrice';
@@ -19,11 +20,10 @@ function ListResult() {
       carMakes,
     },
   } = useSelector((state) => state.carsResults);
-  
-  
-console.log(carTypes)
 
-  const { pickupLocation } = useSelector((state) => state.searchBar);
+  console.log(carTypes);
+
+  const { location } = useSelector((state) => state.searchBar);
 
   const categories = [];
   for (const category in carCategory) {
@@ -40,9 +40,10 @@ console.log(carTypes)
   }
   return (
     <div className={styles.listResult}>
+      <SearchBar />
       <div className={styles.listTitle}>
         <h1>
-          {pickupLocation?.name}: {carTypes.length} autos disponibles
+          {location?.name}: {carTypes.length} modelos disponibles
         </h1>
       </div>
       <Steps />
