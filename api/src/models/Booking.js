@@ -9,11 +9,11 @@ module.exports = (sequelize) => {
         defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
       },
-      pickupDate: {
+      pickUpDate: {
         type: DataTypes.DATEONLY,
         allowNull: false,
       },
-      returnDate: {
+      dropOffDate: {
         type: DataTypes.DATEONLY,
         allowNull: false,
       },
@@ -21,15 +21,11 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      Status: {
+      status: {
         type: DataTypes.STRING,
+        defaultValue: 'activo',
       },
     },
     { timestamps: false }
   );
 };
-
-/*      
-=> customer_id wasn't added
-=> booking_id wasn't added
-        */

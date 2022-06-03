@@ -20,11 +20,32 @@ module.exports.getBookings = async (req, res, next) => {
   }
 };
 
-module.exports.createBookingDB = async (req, res, next) => {
-  try {
-    //  const {carid}=req.body
+module.exports.createBooking = async (req, res, next) => {
+  const {
+    carId,
+    customerId,
+    pickUpLocation,
+    dropOffLocation,
+    pickUpDate,
+    dropOffDate,
+  } = req.body;
 
-    const data = await createBooking(req);
+  if (
+    !carId ||
+    !customerId ||
+    !pickUpLocation ||
+    !dropOffLocation ||
+    !pickUpDate ||
+    !dropOffDate
+  )
+    return 'Se requiere enviar todos los parámetros';
+
+  if (dropOffDate < pickUpDate) {
+    return 'La reserva mínima es de 24hs';
+  }
+
+  try {
+    const data = await createBooking(req.body);
     res.status(200).send(data);
   } catch (error) {
     if (error.response) {
