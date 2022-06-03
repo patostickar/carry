@@ -1,5 +1,6 @@
-const { Booking } = require('../../db');
+const { Booking, Cartype } = require('../../db');
 const { getAvailableCars } = require('../cars/getAvailableCars');
+const { DAY_MILISECONDS } = require('../../constants.js');
 
 module.exports.createBooking = async (data) => {
   const {
@@ -9,7 +10,6 @@ module.exports.createBooking = async (data) => {
     dropOffLocation,
     pickUpDate,
     dropOffDate,
-    reservationTotal,
   } = data;
 
   const availableCars = await getAvailableCars(
@@ -27,6 +27,11 @@ module.exports.createBooking = async (data) => {
 
   if (!findAvailableCarOfType)
     throw new Error('No hay más autos disponibles de este tipo');
+
+  const { price } = await Cartype.findByPk(findAvailableCarOfType.cartypeId);
+  const dateRange =
+    (new Date(dropOffDate) - new Date(pickUpDate)) / DAY_MILISECONDS;
+  const reservationTotal = price * dateRange;
 
   const booking = await Booking.create({
     pickUpDate,

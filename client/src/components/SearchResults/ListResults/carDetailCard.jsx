@@ -24,9 +24,9 @@ export const carDetailCard = (props) => {
     mpg,
     img,
     seats,
-    className: className,
-    largeSuitcase: largeSuitcase,
-    smallSuitcase: smallSuitcase,
+    className,
+    largeSuitcase,
+    smallSuitcase,
     price,
   } = props.cartype;
 

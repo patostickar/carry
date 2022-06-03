@@ -1,6 +1,6 @@
 const server = require('./src/app.js');
 const fs = require('fs');
-const { conn, Location, Customer, Cartype,Review } = require('./src/db.js');
+const { conn, Location, Customer, Cartype, Review } = require('./src/db.js');
 const { createCar } = require('./src/services/cars/createCar');
 const { PORT } = process.env;
 
@@ -11,71 +11,80 @@ conn
       console.log('%s listening at 3001');
     });
 
-    const bufferData = fs.readFileSync('./src/DB.json');
-    const stData = bufferData.toString();
-    const data = JSON.parse(stData);
+    // const bufferData = fs.readFileSync('./src/DB.json');
+    // const stData = bufferData.toString();
+    // const data = JSON.parse(stData);
 
-    const locations = data.locations.map((l) => ({
-      name: l.name,
-      street: l.street,
-      city: l.city,
-      state_name: l.state_name,
-      postal_code: l.postal_code,
-      geo: l.geo,
-      phone: l.telephone,
-      time_open: l.time_open,
-      time_close: l.time_close,
-      airport_location: l.airport_location,
-      img: l.img,
-    }));
+    // const locations = data.locations.map((l) => ({
+    //   name: l.name,
+    //   street: l.street,
+    //   city: l.city,
+    //   state_name: l.state_name,
+    //   postal_code: l.postal_code,
+    //   geo: l.geo,
+    //   phone: l.telephone,
+    //   time_open: l.time_open,
+    //   time_close: l.time_close,
+    //   airport_location: l.airport_location,
+    //   img: l.img,
+    // }));
 
-    const customers = data.customers.map((c) => ({
-      email: c.email,
-      first_name: c.first_name,
-      last_name: c.last_name,
-      street: c.street,
-      city: c.city,
-      postal_code: c.postcal_code,
-      phone: c.phone,
-      password: c.password,
-    }));
+    // const customers = data.customers.map((c) => ({
+    //   email: c.email,
+    //   first_name: c.first_name,
+    //   last_name: c.last_name,
+    //   street: c.street,
+    //   city: c.city,
+    //   postal_code: c.postcal_code,
+    //   phone: c.phone,
+    //   password: c.password,
+    // }));
 
-    const carTypes = data.car_types.map((c) => ({
-      make: c.make,
-      model: c.model,
-      classCode: c.vehicle_classCode,
-      className: c.vehicle_className,
-      transmission: c.vehicle_transmission,
-      mpg: c.mpg,
-      img: c.image_url,
-      doors: c.doors,
-      seats: c.seats,
-      airConditioning: c.air_conditioned,
-      largeSuitcase: c.largeSuitcase,
-      smallSuitcase: c.smallSuitcase,
-      price: c.price,
-    }));
+    // const carTypes = data.car_types.map((c) => ({
+    //   make: c.make,
+    //   model: c.model,
+    //   classCode: c.vehicle_classCode,
+    //   className: c.vehicle_className,
+    //   transmission: c.vehicle_transmission,
+    //   mpg: c.mpg,
+    //   img: c.image_url,
+    //   doors: c.doors,
+    //   seats: c.seats,
+    //   airConditioning: c.air_conditioned,
+    //   largeSuitcase: c.largeSuitcase,
+    //   smallSuitcase: c.smallSuitcase,
+    //   price: c.price,
+    // }));
 
-    await Promise.all([
-      Location.bulkCreate(locations, {
-        ignoreDuplicates: true,
-      }),
-      Customer.bulkCreate(customers, {
-        ignoreDuplicates: true,
-      }),
-      Cartype.bulkCreate(carTypes, {
-        ignoreDuplicates: true,
-      }),
-    ]);
-    const review = await Review.create({review: "Trabajamos con Carry hace un año, nos sentimos satisfechos con su servicio además cuentan con vehiculos de alta gama."})
-    const user = await Customer.findOne()
-    review.setCustomer(user)
-    const review1 = await Review.create({review: "Alquilamos un Spark GT para visitar Córdoba y todo fue espectacular. Hasta pudimos dejar el auto en el aeropuerto."})
-    const user1 = await Customer.findOne()
-    review1.setCustomer(user1)
-    const review2 = await Review.create({review: "Empresa recomenda al 100% la transaccion fue rapida y sin contratiempos, el vehiculo en excelentes condiciones."})
-    const user2 = await Customer.findOne()
-    review2.setCustomer(user2)
+    // await Promise.all([
+    //   Location.bulkCreate(locations, {
+    //     ignoreDuplicates: true,
+    //   }),
+    //   Customer.bulkCreate(customers, {
+    //     ignoreDuplicates: true,
+    //   }),
+    //   Cartype.bulkCreate(carTypes, {
+    //     ignoreDuplicates: true,
+    //   }),
+    // ]);
+    // const review = await Review.create({
+    //   review:
+    //     'Trabajamos con Carry hace un año, nos sentimos satisfechos con su servicio además cuentan con vehiculos de alta gama.',
+    // });
+    // const user = await Customer.findOne();
+    // review.setCustomer(user);
+    // const review1 = await Review.create({
+    //   review:
+    //     'Alquilamos un Spark GT para visitar Córdoba y todo fue espectacular. Hasta pudimos dejar el auto en el aeropuerto.',
+    // });
+    // const user1 = await Customer.findOne();
+    // review1.setCustomer(user1);
+    // const review2 = await Review.create({
+    //   review:
+    //     'Empresa recomenda al 100% la transaccion fue rapida y sin contratiempos, el vehiculo en excelentes condiciones.',
+    // });
+    // const user2 = await Customer.findOne();
+    // review2.setCustomer(user2);
 
     // const cordoba = await Location.findOne({
     //   where: { name: 'Córdoba Cars' },
@@ -89,12 +98,12 @@ conn
     // const corrientes = await Location.findOne({
     //   where: { name: 'Corrientes Cars' },
     // });
-    // const cartype1 = await Cartype.findOne({
-    //   where: { make: 'Ford', model: 'Fiesta' },
-    // });
-    // const cartype2 = await Cartype.findOne({
-    //   where: { make: 'Kia', model: 'Rio' },
-    // });
+    // // const cartype1 = await Cartype.findOne({
+    // //   where: { make: 'Ford', model: 'Fiesta' },
+    // // });
+    // // const cartype2 = await Cartype.findOne({
+    // //   where: { make: 'Kia', model: 'Rio' },
+    // // });
     // const cartype3 = await Cartype.findOne({
     //   where: { make: 'Toyota', model: 'Corolla' },
     // });
@@ -119,10 +128,10 @@ conn
     // const cartype10 = await Cartype.findOne({
     //   where: { make: 'Ford', model: 'Edge' },
     // });
-    // const location1 = await Location.findOne({where:{name: "Ministro Pistarini International Airport"}})
-    // const cartype1 = await Cartype.findOne({where:{make: "Chrysler"}})
-    // const location2 = await Location.findOne({where:{name: "Palermo Cars"}})
-    // const cartype2 = await Cartype.findOne({where:{make: "Volkswagen"}})
+    // // const location1 = await Location.findOne({where:{name: "Ministro Pistarini International Airport"}})
+    // const cartype1 = await Cartype.findOne({ where: { make: 'Chrysler' } });
+    // // const location2 = await Location.findOne({where:{name: "Palermo Cars"}})
+    // const cartype2 = await Cartype.findOne({ where: { make: 'Volkswagen' } });
 
     // await createCar(cordoba.id, cartype1.id);
     // await createCar(cordoba.id, cartype1.id);
