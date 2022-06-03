@@ -36,7 +36,7 @@ function SearchBar() {
     if (dropoffDate - pickupDate < DAY_MILISECONDS) {
       return alert('El alquiler mínimo es de 24 hs');
     }
-    dispatch(fetchCarTypes(pickupLocation));
+    dispatch(fetchCarTypes(pickupLocation.id, pickupDate, dropoffDate));
     navigate('/searchResult');
   };
 
