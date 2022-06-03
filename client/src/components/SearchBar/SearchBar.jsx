@@ -10,6 +10,10 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import styles from './styles/SearchBar.module.css';
+import Swal from 'sweetalert2'
+import 'sweetalert2/dist/sweetalert2.css'
+
+
 
 function SearchBar() {
   const {
@@ -31,10 +35,38 @@ function SearchBar() {
 
   const handleSearch = () => {
     if (!(pickupLocation && dropoffLocation)) {
-      return alert('Por favor complete los campos de búsqueda');
+      return Swal.fire({
+        position: 'top-end',
+        color: "#1976d2",
+        toast:true,
+        heightAuto: "100px",
+        icon: 'warning',
+        title: 'Por favor complete los campos de búsqued',
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+
+      // return alert('Por favor complete los campos de búsqueda');
     }
     if (dropoffDate - pickupDate < DAY_MILISECONDS) {
-      return alert('El alquiler mínimo es de 24 hs');
+      return Swal.fire({
+        position: 'top-end',
+        toast:true,
+        icon: 'info',
+        title: 'El alquiler mínimo es de 24 hs',
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
     }
     dispatch(fetchCarTypes(pickupLocation.id, pickupDate, dropoffDate));
     navigate('/searchResult');

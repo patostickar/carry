@@ -2,7 +2,8 @@ import React, {useEffect} from "react";
 import { Formik, Form, Field } from "formik";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
-
+import Swal from 'sweetalert2'
+import 'sweetalert2/dist/sweetalert2.css'
 import { fetchCarTypes } from "../../redux/carsResults";
 import { fetchAllLocations } from "../../redux/searchBar";
 
@@ -71,7 +72,19 @@ export default function CarTypeCreate(){
          
            
             console.log("Se ha enviado el formulario")
-            alert("Vehiculo creado")
+            Swal.fire({
+              position: 'top-end',
+              toast:true,
+              icon: 'info',
+              title: 'Vehiculo creado',
+              showConfirmButton: false,
+              timer: 1500,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+              }
+            })
         }}
         > 
 
