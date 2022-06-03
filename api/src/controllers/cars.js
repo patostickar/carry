@@ -1,4 +1,7 @@
 const { getAvailableCars } = require('../services/cars/getAvailableCars');
+const {
+  getAvailableCarTypes,
+} = require('../services/cartypes/getAvailableCarTypes');
 const { getCarById } = require('../services/cars/getCarById');
 const { createCar } = require('../services/cars/createCar');
 const { updateCarLocation } = require('../services/cars/updateCarLocation');
@@ -15,7 +18,8 @@ module.exports.getAvailableCars = async (req, res, next) => {
       pickUpDate,
       dropOffDate
     );
-    res.send(availableCars);
+    const availableCarTypes = await getAvailableCarTypes(availableCars);
+    res.send(availableCarTypes);
   } catch (error) {
     next(error);
   }

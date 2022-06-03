@@ -1,4 +1,4 @@
-const { Car, Booking, Cartype } = require('../../db');
+const { Car, Booking } = require('../../db');
 
 module.exports.getAvailableCars = async (
   pickUpLocationId,
@@ -42,18 +42,9 @@ module.exports.getAvailableCars = async (
     (c) => !unavailableCarsId.includes(c.dataValues.id)
   );
 
-  const availableCarTypesId = Array.from(
-    new Set(availableCars.map((c) => c.dataValues.cartypeId))
-  );
-
-  const carTypes = await Cartype.findAll({
-    where: { id: availableCarTypesId },
-  });
-
   console.log('Cars in location: ', carsInLocation.length);
   console.log('Unavailable cars: ', unavailableCarsId.length);
   console.log('Available cars: ', availableCars.length);
-  console.log('Available types: ', availableCarTypesId.length);
 
-  return carTypes;
+  return availableCars;
 };
