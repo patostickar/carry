@@ -41,7 +41,7 @@ export const Navbar = () => {
   };
 
   return (
-    <AppBar color='transparent' sx={{ height: 80, position: 'relative' }}>
+    <AppBar color='transparent' sx={{ height: 80, position: 'relative',"z-index": "1" }}>
       <Toolbar>
         <Link to='/home'>
           <Box
