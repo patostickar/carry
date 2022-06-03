@@ -8,8 +8,8 @@ const {
 } = require('../controllers/bookings');
 
 router.get('/', getBookings);
-router.get('/:id', getBookings);
 router.get('/customer/:id', getCustomersBookings);
+router.get('/:id', getBookings);
 router.post('/', createBooking);
 
 module.exports = router;

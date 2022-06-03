@@ -1,15 +1,34 @@
-const { Booking } = require('../../db');
+const { Booking, Cartype } = require('../../db');
+const { getAvailableCars } = require('../cars/getAvailableCars');
+const { DAY_MILISECONDS } = require('../../constants.js');
 
 module.exports.createBooking = async (data) => {
   const {
-    carId,
+    carTypeId,
     customerId,
     pickUpLocation,
     dropOffLocation,
     pickUpDate,
     dropOffDate,
-    reservationTotal,
   } = data;
+
+  const availableCars = await getAvailableCars(
+    pickUpLocation,
+    pickUpDate,
+    dropOffDate
+  );
+
+  const findAvailableCarOfType = availableCars.find(
+    (c) => c.cartypeId === carTypeId
+  );
+
+  if (!findAvailableCarOfType)
+    throw new Error('No hay más autos disponibles de este tipo');
+
+  const { price } = await Cartype.findByPk(findAvailableCarOfType.cartypeId);
+  const dateRange =
+    (new Date(dropOffDate) - new Date(pickUpDate)) / DAY_MILISECONDS;
+  const reservationTotal = price * dateRange;
 
   const booking = await Booking.create({
     pickUpDate,
@@ -18,10 +37,9 @@ module.exports.createBooking = async (data) => {
   });
 
   booking.setCustomer(customerId);
-  booking.setCar(carId);
+  booking.setCar(findAvailableCarOfType.id);
   booking.setPickUpLocation(pickUpLocation);
   booking.setDropOffLocation(dropOffLocation);
 
-  console.log(booking.dataValues);
-  return 'Booking created';
+  return 'Reserva confirmada';
 };

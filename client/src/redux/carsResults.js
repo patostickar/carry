@@ -64,13 +64,13 @@ export const carsResults = createSlice({
 });
 
 export const fetchCarTypes =
-  (pickUpLocationId, pickUpDate, dropOffDate) => async (dispatch) => {
+  (pickUpLocation, pickUpDate, dropOffDate) => async (dispatch) => {
     pickUpDate = new Date(pickUpDate).toISOString().slice(0, 10);
     dropOffDate = new Date(dropOffDate).toISOString().slice(0, 10);
     dispatch(setCarTypes([]));
     try {
       const res = await axios.get('http://localhost:3001/cars/SearchResults', {
-        params: { pickUpLocationId, pickUpDate, dropOffDate },
+        params: { pickUpLocation, pickUpDate, dropOffDate },
       });
       dispatch(setCarTypes(res.data));
       // .then((res) => dispatch(setCarTypes(res.data)));
