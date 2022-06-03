@@ -29,7 +29,7 @@ module.exports.getAvailableCars = async (
       const bookingPickUpDate = new Date(b.dataValues.pickUpDate);
       const bookingDropOffDate = new Date(b.dataValues.dropOffDate);
       return (
-        dropOffDate > bookingPickUpDate && dropOffDate < bookingDropOffDate
+        dropOffDate >= bookingPickUpDate && dropOffDate <= bookingDropOffDate
       );
     })
     .map((c) => c.dataValues.carId);
@@ -42,9 +42,13 @@ module.exports.getAvailableCars = async (
     (c) => !unavailableCarsId.includes(c.dataValues.id)
   );
 
-  console.log('Cars in location: ', carsInLocation.length);
-  console.log('Unavailable cars: ', unavailableCarsId.length);
-  console.log('Available cars: ', availableCars.length);
+  // const availableCarsId = availableCars.map((c) => c.dataValues.id);
+
+  // console.log('Cars in location: ', carsInLocation.length);
+  // console.log('Unavailable cars: ', unavailableCarsId.length);
+  // console.log('Unavailable cars id: ', unavailableCarsId);
+  // console.log('Available cars: ', availableCars.length);
+  // console.log('Available cars id: ', availableCarsId);
 
   return availableCars;
 };

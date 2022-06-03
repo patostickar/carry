@@ -18,12 +18,6 @@ module.exports.createBooking = async (data) => {
     dropOffDate
   );
 
-  // Luego para el usuario premium habría que buscar el de menor kilometraje,
-  // aunque eso ni siquiera forma parte de nuestra DB...
-
-  // EL PROBLEMA ESTÁ ACÁ. PORQUE TENGO AUTOS DEL TIPO DISPONIBLE,
-  // PERO ME VUELVE A RESERVAR EL QUE YA ESTÁ RESERVADO PORQUE NO ESTOY FILTRANDO POR EL ESTADO ACTIVO.
-  // Y EL MÉTOOD FIND AGARRA EL PRIMERO
   const findAvailableCarOfType = availableCars.find(
     (c) => c.cartypeId === carTypeId
   );
@@ -47,6 +41,5 @@ module.exports.createBooking = async (data) => {
   booking.setPickUpLocation(pickUpLocation);
   booking.setDropOffLocation(dropOffLocation);
 
-  console.log(booking.dataValues);
   return 'Reserva confirmada';
 };
