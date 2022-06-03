@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const router = Router();
 
-const {Customer, Review } = require("../../../db");
+const {Customer, Review } = require("../db");
 
 
 router.get("/",async(req,res,next)=>{

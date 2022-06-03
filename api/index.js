@@ -1,6 +1,6 @@
 const server = require('./src/app.js');
 const fs = require('fs');
-const { conn, Location, Customer, Cartype } = require('./src/db.js');
+const { conn, Location, Customer, Cartype,Review } = require('./src/db.js');
 const { createCar } = require('./src/services/cars/createCar');
 
 const { PORT } = process.env;
@@ -68,6 +68,15 @@ conn
         ignoreDuplicates: true,
       }),
     ]);
+    const review = await Review.create({review: "Trabajamos con Carry hace un año, nos sentimos satisfechos con su servicio además cuentan con vehiculos de alta gama."})
+    const user = await Customer.findOne()
+    review.setCustomer(user)
+    const review1 = await Review.create({review: "Alquilamos un Spark GT para visitar Córdoba y todo fue espectacular. Hasta pudimos dejar el auto en el aeropuerto."})
+    const user1 = await Customer.findOne()
+    review1.setCustomer(user1)
+    const review2 = await Review.create({review: "Empresa recomenda al 100% la transaccion fue rapida y sin contratiempos, el vehiculo en excelentes condiciones."})
+    const user2 = await Customer.findOne()
+    review2.setCustomer(user2)
 
     const cordoba = await Location.findOne({
       where: { name: 'Córdoba Cars' },

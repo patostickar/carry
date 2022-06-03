@@ -7,6 +7,7 @@ const locations = require('./locations');
 const customers = require('./customers');
 const cartypes = require('./cartypes');
 const bookings = require('./bookings');
+const reviews = require('./review');
 
 
 router.use('/cars', cars);
