@@ -21,8 +21,6 @@ export default function BasicModal(props) {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  console.log(props);
-
   return (
     <div>
       <Button

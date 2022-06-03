@@ -80,14 +80,14 @@ Review.belongsTo(Customer)
 
 //  LOCATION : BOOKING => ONE TO MANY
 Location.hasMany(Booking);
-Booking.belongsTo(Location, { as: 'PickupLocation' });
+Booking.belongsTo(Location, { as: 'pickUpLocation' });
 Location.hasMany(Booking);
-Booking.belongsTo(Location, { as: 'DropoffLocation' });
+Booking.belongsTo(Location, { as: 'dropOffLocation' });
 //  expecting for foreign key in Booking?
 
 //  BOOKING : CAR => ONE TO ONE
-Car.hasOne(Booking)
-Booking.belongsTo(Car)
+Car.hasOne(Booking);
+Booking.belongsTo(Car);
 //  expecting for fk or create Booking foreign key "booking_car"?
 
 //  LOCATION : CAR => ONE TO MANY

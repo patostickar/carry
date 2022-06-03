@@ -1,6 +1,5 @@
 const { getTypeDB, cartypecount } = require('../services/cartypeService');
 const { Cartype } = require('../db');
-
 const getType = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -12,36 +11,40 @@ const getType = async (req, res, next) => {
 };
 const createCartype = async (req, res, next) => {
   try {
+    // eslint-disable-next-line camelcase
     const {
       make,
       model,
-      class_code,
-      class_name,
+      classCode,
+      className,
       transmission,
       mpg,
       img,
       doors,
       seats,
-      air_conditioning,
-      large_suitcase,
-      small_suitcase,
-      price,
+      airConditioning,
+      largeSuitcase,
+      smallSuitcase,
+      Price,
     } = req.body;
     const [cartype, created] = await Cartype.findOrCreate({
       where: {
+        // eslint-disable-next-line camelcase
         make,
         model,
-        class_code,
-        class_name,
+        classCode,
+        className,
+        // eslint-disable-next-line camelcase
         transmission,
         mpg,
         img,
         doors,
         seats,
-        air_conditioning,
-        large_suitcase,
-        small_suitcase,
-        price,
+        airConditioning,
+        // eslint-disable-next-line camelcase
+        largeSuitcase,
+        smallSuitcase,
+        Price,
       },
     });
     if (created) {

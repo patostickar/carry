@@ -1,14 +1,16 @@
-import Steps from './steps';
-import CarDetailCard from './carDetailCard';
-import CarCategoryTopBar from '../TopBar/CarCategoryTopBar';
-import LinearIndeterminate from '../../GeneralFuntions/LinearIndeterminate';
 import { useSelector } from 'react-redux';
 import { AnimatePresence } from 'framer-motion';
+import Steps from './steps';
+import CarCategoryTopBar from '../TopBar/CarCategoryTopBar';
+import SortByPrice from '../TopBar/sortByPrice';
+import CarDetailCard from './carDetailCard';
+import LinearIndeterminate from '../../GeneralFuntions/LinearIndeterminate';
 import styles from './styles/ListResult.module.css';
 
 function ListResult() {
   const {
     carTypes,
+    sort,
     filters: {
       transmission,
       carCategory,
@@ -17,6 +19,9 @@ function ListResult() {
       carMakes,
     },
   } = useSelector((state) => state.carsResults);
+  
+  
+console.log(carTypes)
 
   const { pickupLocation } = useSelector((state) => state.searchBar);
 
@@ -42,6 +47,7 @@ function ListResult() {
       </div>
       <Steps />
       <CarCategoryTopBar />
+      <SortByPrice />
       <AnimatePresence>
         {!carTypes.length ? (
           <LinearIndeterminate />
@@ -55,19 +61,26 @@ function ListResult() {
                 : true
             )
             .filter((carType) =>
-              airConditioning ? carType.air_conditioning : true
+              airConditioning ? carType.airConditioning : true
             )
             .filter((carType) => {
               return fourPlusSeats ? carType.seats >= 4 : true;
             })
             .filter((carType) =>
               categories.length
-                ? categories.includes(carType.class_name.toLowerCase())
+                ? categories.includes(carType.className.toLowerCase())
                 : true
             )
             .filter((carType) =>
               carMakes.length ? carMakes.includes(carType.make) : true
             )
+            .sort((a, b) => {
+              return sort.length
+                ? sort === 'asc'
+                  ? a.price - b.price
+                  : b.price - a.price
+                : null;
+            })
             .map((carType) => (
               <CarDetailCard cartype={carType} key={carType.id} />
             ))
