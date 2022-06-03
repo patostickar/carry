@@ -2,43 +2,43 @@ const { Booking, Car, Location, Customer } = require('../../db');
 
 module.exports.createBooking = async (req) => {
   const {
-    carid,
-    customerid,
-    locationStart,
-    locationEnd,
-    returnDate,
-    pickupDate,
+    carId,
+    customerId,
+    pickUpLocation,
+    dropOffLocation,
+    dropOffDate,
+    pickUpDate,
     reservationTotal,
-    Status,
+    status,
   } = req.body;
   if (
-    carid &&
-    customerid &&
-    locationStart &&
-    locationEnd &&
-    returnDate &&
-    pickupDate &&
+    carId &&
+    customerId &&
+    pickUpLocation &&
+    dropOffLocation &&
+    dropOffDate &&
+    pickUpDate &&
     reservationTotal &&
-    Status
+    status
   ) {
-    if (pickupDate === returnDate || returnDate < pickupDate) {
+    if (pickUpDate === dropOffDate || dropOffDate < pickUpDate) {
       return 'Deben ser diferentes fechas para generar la reserva y la fecha de retorno no puede ser menor a la fecha inicio ';
     }
 
-    const customer = await Customer.findOne({ where: { id: customerid } });
-    const car = await Car.findOne({ where: { id: carid } });
-    const lstart = await Location.findOne({ where: { id: locationStart } });
-    const lend = await Location.findOne({ where: { id: locationEnd } });
+    const customer = await Customer.findOne({ where: { id: customerId } });
+    const car = await Car.findOne({ where: { id: carId } });
+    const lstart = await Location.findOne({ where: { id: pickUpLocation } });
+    const lend = await Location.findOne({ where: { id: dropOffLocation } });
     const { dataValues } = car;
 
     const [booking, created] = await Booking.findOrCreate({
       where: {
-        carId: carid,
-        pickupDate,
-        returnDate,
+        carId,
+        pickUpDate,
+        dropOffDate,
       },
       defaults: {
-        Status,
+        status,
         reservationTotal,
         locationId: dataValues.locationId,
       },
@@ -57,12 +57,12 @@ module.exports.createBooking = async (req) => {
     if (lstart) {
       booking.setPickupLocation(lstart);
     } else {
-      return 'Location start not found';
+      return 'Pick Up Location not found';
     }
     if (lend) {
       booking.setDropoffLocation(lend);
     } else {
-      return 'Location end not found';
+      return 'Drop Off Location not found';
     }
 
     if (created) {

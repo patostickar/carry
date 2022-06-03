@@ -6,7 +6,7 @@ const { createCar } = require('./src/services/cars/createCar');
 const { PORT } = process.env;
 
 conn
-  .sync({ force: true })
+  .sync({ force: false })
   .then(async () => {
     server.listen(PORT, () => {
       console.log('%s listening at 3001');
@@ -58,9 +58,15 @@ conn
     }));
 
     await Promise.all([
-      Location.bulkCreate(locations),
-      Customer.bulkCreate(customers),
-      Cartype.bulkCreate(carTypes),
+      Location.bulkCreate(locations, {
+        ignoreDuplicates: true,
+      }),
+      Customer.bulkCreate(customers, {
+        ignoreDuplicates: true,
+      }),
+      Cartype.bulkCreate(carTypes, {
+        ignoreDuplicates: true,
+      }),
     ]);
 
     const cordoba = await Location.findOne({

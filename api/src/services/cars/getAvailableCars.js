@@ -1,11 +1,14 @@
-const { Car, Location } = require('../../db');
+const { Car } = require('../../db');
 
 module.exports.getAvailableCars = async (
   pickUpLocation,
   pickUpDate,
   dropOffDate
 ) => {
-  const carsInLocation = await Car.findAll({ include: Location });
+  const carsInLocation = await Car.findAll({
+    where: { locationId: pickUpLocation },
+  });
+  console.log(carsInLocation.length);
   return carsInLocation;
 };
 
