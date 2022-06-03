@@ -9,6 +9,7 @@ import "swiper/css/pagination";
 import "./styles/Testimonials.css";
 
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 
 
@@ -16,7 +17,13 @@ import { useSelector } from "react-redux";
 function Testimonials() {
 
   const { testimonials } = useSelector((state) => state.generalReducer);
-  console.log(testimonials);
+  useEffect(() => {
+    
+    console.log(testimonials);
+  
+    
+  }, [testimonials])
+  
 
   return (
     <section className="testimonial section">
@@ -33,7 +40,7 @@ function Testimonials() {
           }}
           breakpoints={{
             576: {
-              slidesPerView: 2,
+              slidesPerView: 1,
             },
             768: {
               slidesPerView: 2,
@@ -43,12 +50,12 @@ function Testimonials() {
           navigation={true}
           modules={[Pagination, Navigation]}
           className="mySwiper"
-        >{testimonials.reviews?.map((testimonial) => (
+        >{testimonials?.map((testimonial) => (
         <SwiperSlide key={testimonial?.id}>
           <div className="testimonial__card">
             <img src={Testimonial1} alt="img" className="testimonial__img" />
 
-            <h3 className="testimonial__name">{testimonial?.customer.first_name +" "+ testimonial?.customer.last_name }</h3>
+            <h3 className="testimonial__name">{testimonial?.customer?.first_name +" "+ testimonial?.customer?.last_name }</h3>
             <p className="testimonial__description">
               {testimonial?.review}
             </p>
