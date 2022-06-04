@@ -28,7 +28,11 @@ module.exports.getAvailableCars = async (req, res, next) => {
       pickUpDate,
       dropOffDate
     );
-    const availableCarTypes = await getAvailableCarTypes(availableCars);
+    const availableCarTypes = await getAvailableCarTypes(
+      availableCars,
+      pickUpDate,
+      dropOffDate
+    );
     res.send(availableCarTypes);
   } catch (error) {
     next(error);

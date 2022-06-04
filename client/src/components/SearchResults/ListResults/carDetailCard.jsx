@@ -1,4 +1,5 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setBookingDetails } from '../../../redux/booking.js';
 import { DAY_MILISECONDS } from '../../GeneralFuntions/constants.js';
 import { motion } from 'framer-motion';
 import styles from './styles/carDetail.module.css';
@@ -30,9 +31,23 @@ export const carDetailCard = (props) => {
     price,
   } = props.cartype;
 
-  const { pickupDate, dropoffDate } = useSelector((state) => state.searchBar);
+  const dispatch = useDispatch();
+  const { location, pickupDate, dropoffDate } = useSelector(
+    (state) => state.searchBar
+  );
 
   const dateRange = (dropoffDate - pickupDate) / DAY_MILISECONDS;
+
+  function handleBooking() {
+    const booking = {
+      carTypeId: id,
+      customerId: null,
+      locationId: location.id,
+      pickUpDate: new Date(pickupDate).toISOString().slice(0, 10),
+      dropOffDate: new Date(dropoffDate).toISOString().slice(0, 10),
+    };
+    dispatch(setBookingDetails(booking));
+  }
 
   return (
     <motion.div
@@ -76,7 +91,9 @@ export const carDetailCard = (props) => {
             <span className={styles.siprice}>$ {price}</span>
             <span className={styles.siAmendments}>Cancelación gratuita</span>
 
-            <button className={styles.siCheckButton}>Ver oferta</button>
+            <button className={styles.siCheckButton} onClick={handleBooking}>
+              Ver oferta
+            </button>
           </div>
         </div>
       </div>
