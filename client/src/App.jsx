@@ -15,6 +15,7 @@ import CarTypeCreate from './components/CarCreateForm/CarTypeCreate.jsx';
 import LocationCreate from './components/CarCreateForm/LocationCreate.jsx';
 import './App.css';
 import { fetchTestimonials } from './redux/generalReducer.js';
+import { Account } from './components/Account/Account.jsx';
 
 function App() {
 
@@ -36,7 +37,7 @@ function App() {
           <Route path='/home' element={<Home />} />
           <Route path='/about' element={<About />} />
           <Route path='/booking' element={<Booking />} />
-          <Route path='/profile' element={<Profile />} />
+          <Route path='/profile' element={<Account />} />
           <Route path='/searchResult' element={<SearchResults />} />
           <Route path='/adminPanel' element={<AdminPanel />} />
           <Route path='/carcreate' element={<CarCreate />} />
