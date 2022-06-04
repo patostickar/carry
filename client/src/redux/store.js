@@ -3,6 +3,7 @@ import searchBar from './searchBar';
 import carsResults from './carsResults';
 import testimonials from './testimonials';
 import booking from './booking';
+import user from "./user"
 
 import {
   persistStore,
@@ -27,6 +28,7 @@ const rootReducer = combineReducers({
   carsResults,
   booking,
   testimonials,
+  user
 });
 
 // const store = configureStore({
