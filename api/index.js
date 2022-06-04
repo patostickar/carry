@@ -5,10 +5,10 @@ const { createCar } = require('./src/services/cars/createCar');
 const { PORT } = process.env;
 
 conn
-  .sync({ force: false })
+  .sync({ force: true })
   .then(async () => {
     server.listen(PORT, () => {
-      console.log('%s listening at 3001');
+      console.log(`%s listening at ${PORT}`);
     });
 
     const bufferData = fs.readFileSync('./src/DB.json');
