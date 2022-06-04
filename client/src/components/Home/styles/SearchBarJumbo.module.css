@@ -31,7 +31,8 @@
 
 .searchBarPosition {
   position: absolute;
-  bottom: -40px;
-  width: 100%;
+  bottom: 0;
+  left: 50%;
   max-width: 1024px;
+  transform: translateY(50%) translateX(-50%);
 }

@@ -7,6 +7,7 @@ import Calendar from './calendar';
 import styles from './styles/SearchBar.module.css';
 import Swal from 'sweetalert2'
 import 'sweetalert2/dist/sweetalert2.css'
+import { Alerts } from '../GeneralFuntions/GeneralFuntions';
 
 
 
@@ -21,38 +22,12 @@ function SearchBar() {
   const handleSearch = () => {
 
     if (!location) {
-      return Swal.fire({
-        position: 'top-end',
-        color: "#1976d2",
-        toast:true,
-        heightAuto: "100px",
-        icon: 'warning',
-        title: 'Por favor elija una ubicación',
-        showConfirmButton: false,
-        timer: 1500,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer)
-          toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
-      })
-
+      return Alerts('warning','Por favor elija una ubicación')
 
     }
     if (dropoffDate - pickupDate < DAY_MILISECONDS) {
-      return Swal.fire({
-        position: 'top-end',
-        toast:true,
-        icon: 'info',
-        title: 'El alquiler mínimo es de 24 hs',
-        showConfirmButton: false,
-        timer: 1500,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer)
-          toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
-      })
+      return Alerts('info','El alquiler mínimo es de 24 hs')
+      
     }
     dispatch(fetchCarTypes(location.id, pickupDate, dropoffDate));
     navigate('/searchResult');

@@ -7,13 +7,6 @@
   margin-right: auto;
 }
 
-.searchBarPosition {
-  position: relative;
-  max-width: 1024px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
 .listContainer {
   display: flex;
   column-gap: 3em;

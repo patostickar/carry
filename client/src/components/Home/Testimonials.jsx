@@ -1,36 +1,28 @@
-import { Pagination, Navigation } from "swiper";
+import { Pagination, Navigation } from 'swiper';
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import Testimonial1 from "../../assets/testimonial1.png";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import Testimonial1 from '../../assets/testimonial1.png';
 // import Testimonial2 from "../../assets/testimonial2.png";
 // import Testimonial3 from "../../assets/testimonial3.png";
-import "swiper/css";
-import "swiper/css/pagination";
-import "./styles/Testimonials.css";
+import 'swiper/css';
+import 'swiper/css/pagination';
+import './styles/Testimonials.css';
 
-import { useSelector } from "react-redux";
-import { useEffect } from "react";
-
-
-
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 function Testimonials() {
-
-  const { testimonials } = useSelector((state) => state.generalReducer);
+  const { testimonials } = useSelector((state) => state.testimonials);
   useEffect(() => {
-    
     console.log(testimonials);
-  
-    
-  }, [testimonials])
-  
+  }, [testimonials]);
 
   return (
-    <section className="testimonial section">
-      <span className="section__subtitle">Nuestros clientes</span>
-      <h2 className="section__title">Testimonios</h2>
+    <section className='testimonial section'>
+      <span className='section__subtitle'>Nuestros clientes</span>
+      <h2 className='section__title'>Testimonios</h2>
 
-      <div className="testimonial__container container">
+      <div className='testimonial__container container'>
         <Swiper
           spaceBetween={24}
           loop={true}
@@ -49,18 +41,28 @@ function Testimonials() {
           }}
           navigation={true}
           modules={[Pagination, Navigation]}
-          className="mySwiper"
-        >{testimonials?.map((testimonial) => (
-        <SwiperSlide key={testimonial?.id}>
-          <div className="testimonial__card">
-            <img src={Testimonial1} alt="img" className="testimonial__img" />
+          className='mySwiper'
+        >
+          {testimonials?.map((testimonial) => (
+            <SwiperSlide key={testimonial?.id}>
+              <div className='testimonial__card'>
+                <img
+                  src={Testimonial1}
+                  alt='img'
+                  className='testimonial__img'
+                />
 
-            <h3 className="testimonial__name">{testimonial?.customer?.first_name +" "+ testimonial?.customer?.last_name }</h3>
-            <p className="testimonial__description">
-              {testimonial?.review}
-            </p>
-          </div>
-        </SwiperSlide>))}
+                <h3 className='testimonial__name'>
+                  {testimonial?.customer?.first_name +
+                    ' ' +
+                    testimonial?.customer?.last_name}
+                </h3>
+                <p className='testimonial__description'>
+                  {testimonial?.review}
+                </p>
+              </div>
+            </SwiperSlide>
+          ))}
           {/* <SwiperSlide>
             <div className="testimonial__card">
               <img src={Testimonial1} alt="img" className="testimonial__img" />

@@ -1,7 +1,8 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import searchBarReducer from './searchBar';
-import carsResultsReducer from './carsResults';
-import generalReducer from './generalReducer';
+import searchBar from './searchBar';
+import carsResults from './carsResults';
+import testimonials from './testimonials';
+import booking from './booking';
 
 import {
   persistStore,
@@ -22,9 +23,10 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-  searchBar: searchBarReducer,
-  carsResults: carsResultsReducer,
-  generalReducer
+  searchBar,
+  carsResults,
+  booking,
+  testimonials,
 });
 
 // const store = configureStore({

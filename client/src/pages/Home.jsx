@@ -3,11 +3,12 @@ import PopularLocations from '../components/Home/PopularLocations';
 import Testimonials from '../components/Home/Testimonials';
 import FAQ from '../components/Home/FAQ';
 import { TabTitle } from '../components/GeneralFuntions/GeneralFuntions';
+import styles from './styles/Home.module.css';
 
 const Home = () => {
   TabTitle('Inicio - Carry');
   return (
-    <div>
+    <div className={styles.homeContainer}>
       <SearchBarJumbo />
       <PopularLocations />
       <Testimonials />
