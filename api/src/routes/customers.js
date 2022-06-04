@@ -6,11 +6,13 @@ const {
   getCustomerById,
   postCustomer,
   putCustomer,
+  getCustomerByemail,
 } = require('../controllers/customers');
 
 router.get('/', getCustomers);
 
-router.get('/:id', getCustomerById);
+router.get('/:email', getCustomerByemail);
+// router.get('/:id', getCustomerById);
 
 router.put('/:id', putCustomer);
 

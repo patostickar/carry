@@ -14,15 +14,33 @@ import CarCreate from './components/CarCreateForm/CarCreate.jsx';
 import CarTypeCreate from './components/CarCreateForm/CarTypeCreate.jsx';
 import LocationCreate from './components/CarCreateForm/LocationCreate.jsx';
 import './App.css';
+import { useAuth0 } from "@auth0/auth0-react";
+
 
 import { Account } from './components/Account/Account.jsx';
 
 import { fetchTestimonials } from './redux/testimonials.js';
+import axios from 'axios';
+import { ClearUser, fetchUser } from './redux/user.js';
+
 
 
 function App() {
   const dispatch = useDispatch();
+  const { user, isAuthenticated } = useAuth0();
 
+  
+  
+  
+  useEffect(() => {
+
+    isAuthenticated  && axios.post("http://localhost:3001/customers",user) 
+    isAuthenticated && dispatch(fetchUser(user.email))
+    !isAuthenticated && dispatch(ClearUser())
+  
+    
+  }, [isAuthenticated])
+  
   useEffect(() => {
     dispatch(fetchAllLocations());
     dispatch(fetchTestimonials());

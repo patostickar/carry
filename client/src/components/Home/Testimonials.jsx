@@ -47,7 +47,7 @@ function Testimonials() {
             <SwiperSlide key={testimonial?.id}>
               <div className='testimonial__card'>
                 <img
-                  src={Testimonial1}
+                  src={testimonial?.customer?.img}
                   alt='img'
                   className='testimonial__img'
                 />

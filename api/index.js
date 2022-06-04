@@ -71,13 +71,13 @@ conn
     //   review:
     //     'Trabajamos con Carry hace un año, nos sentimos satisfechos con su servicio además cuentan con vehiculos de alta gama.',
     // });
-    // const user = await Customer.findOne();
+    // const user = await Customer.findOne({where:{email:"franco.adriel.garcia@gmail.com"}});
     // review.setCustomer(user);
     // const review1 = await Review.create({
     //   review:
     //     'Alquilamos un Spark GT para visitar Córdoba y todo fue espectacular. Hasta pudimos dejar el auto en el aeropuerto.',
     // });
-    // const user1 = await Customer.findOne();
+    // const user1 = await Customer.findOne({where:{email:"elozcuro1@gmail.com"}});
     // review1.setCustomer(user1);
     // const review2 = await Review.create({
     //   review:
