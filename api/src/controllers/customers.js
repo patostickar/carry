@@ -24,7 +24,7 @@ const getCustomerByemail = async (req, res, next) => {
         ? res.status(200).send(data)
         : res.send({ msg: 'Customer not found' });
     } else {
-      res.send({ msg: 'Customer not found' });
+      res.send({ msg: 'el email es necesario' });
     }
   } catch (error) {
     if (error.response) {
