@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { fetchAllLocations } from './redux/searchBar.js';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Booking } from './components/Booking.jsx';
@@ -14,18 +14,15 @@ import CarCreate from './components/CarCreateForm/CarCreate.jsx';
 import CarTypeCreate from './components/CarCreateForm/CarTypeCreate.jsx';
 import LocationCreate from './components/CarCreateForm/LocationCreate.jsx';
 import './App.css';
-import { fetchTestimonials } from './redux/generalReducer.js';
+import { fetchTestimonials } from './redux/testimonials.js';
 
 function App() {
-
-  
   const dispatch = useDispatch();
-  
-  useEffect(() => {  
-    dispatch(fetchAllLocations());
-    dispatch(fetchTestimonials())
-  }, [])
 
+  useEffect(() => {
+    dispatch(fetchAllLocations());
+    dispatch(fetchTestimonials());
+  }, []);
 
   return (
     <>
