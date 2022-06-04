@@ -69,7 +69,7 @@ export const fetchCarTypes =
     dropOffDate = new Date(dropOffDate).toISOString().slice(0, 10);
     dispatch(setCarTypes([]));
     try {
-      const res = await axios.get('http://localhost:3001/cars/SearchResults', {
+      const res = await axios.get('/cars/SearchResults', {
         params: { locationId, pickUpDate, dropOffDate },
       });
       dispatch(setCarTypes(res.data));
