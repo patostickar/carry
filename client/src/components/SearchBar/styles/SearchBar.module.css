@@ -6,6 +6,7 @@
   justify-content: space-around;
   padding: 10px 10px;
   border-radius: 0.5rem;
+  gap: 3em;
 }
 
 .headerSearchItem {
