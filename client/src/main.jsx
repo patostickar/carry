@@ -9,7 +9,7 @@ import './index.css';
 import CssBaseline from '@mui/material/CssBaseline';
 
 const REACT_APP_AUTH0_DOMAIN = 'carry-login.us.auth0.com';
-const REACT_APP_AUTH0_CLIENT_ID = '5DElbsy3qZ5EhBt3BQOMDpHiCfHfAbe6';
+const REACT_APP_AUTH0_CLIENT_ID = 'Yr5AIizkXNBNNk6LrdHwrj3ZO7suns8e';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
