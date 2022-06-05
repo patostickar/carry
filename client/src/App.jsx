@@ -15,6 +15,7 @@ import CarTypeCreate from './components/CarCreateForm/CarTypeCreate.jsx';
 import LocationCreate from './components/CarCreateForm/LocationCreate.jsx';
 
 import './App.css';
+import Payment from './pages/Payment.jsx';
 
 function App() {
   const dispatch = useDispatch();
@@ -38,6 +39,7 @@ function App() {
           <Route path='/carcreate' element={<CarCreate />} />
           <Route path='/cartypecreate' element={<CarTypeCreate />} />
           <Route path='/locationcreate' element={<LocationCreate />} />
+          <Route path='/payment' element={<Payment />} />
         </Routes>
         <Footer />
       </BrowserRouter>

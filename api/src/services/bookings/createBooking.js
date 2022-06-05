@@ -29,18 +29,18 @@ module.exports.createBooking = async (req) => {
     const car = await Car.findOne({ where: { id: carId } });
     const lstart = await Location.findOne({ where: { id: pickUpLocation } });
     const lend = await Location.findOne({ where: { id: dropOffLocation } });
-    const { dataValues } = car;
+   // const { dataValues } = car;
 
     const [booking, created] = await Booking.findOrCreate({
       where: {
         carId,
-        pickUpDate,
-        dropOffDate,
+        pickupDate:pickUpDate,
+        returnDate:dropOffDate
       },
       defaults: {
         status,
         reservationTotal,
-        locationId: dataValues.locationId,
+        //locationId: dataValues.locationId,
       },
     });
 
@@ -55,12 +55,12 @@ module.exports.createBooking = async (req) => {
       return 'Car not found';
     }
     if (lstart) {
-      booking.setPickupLocation(lstart);
+      booking.setPickUpLocation(lstart);
     } else {
       return 'Pick Up Location not found';
     }
     if (lend) {
-      booking.setDropoffLocation(lend);
+      booking.setDropOffLocation(lend);
     } else {
       return 'Drop Off Location not found';
     }

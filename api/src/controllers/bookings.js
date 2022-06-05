@@ -1,5 +1,5 @@
 const { createBooking } = require('../services/bookings/createBooking');
-const { getBookings } = require('../services/bookings/getBookings');
+const { getBookingsDB } = require('../services/bookings/getBookings');
 const {
   getCustomerBookings,
 } = require('../services/bookings/getCustomerBookings');
@@ -7,7 +7,7 @@ const {
 module.exports.getBookings = async (req, res, next) => {
   const { id } = req.params;
   try {
-    const data = await getBookings(id);
+    const data = await getBookingsDB(id);
     data ? res.send(data) : res.send({ msg: 'booking not found' });
   } catch (error) {
     if (error.response) {
@@ -22,7 +22,7 @@ module.exports.getBookings = async (req, res, next) => {
 
 module.exports.createBookingDB = async (req, res, next) => {
   try {
-    //  const {carid}=req.body
+  
 
     const data = await createBooking(req);
     res.status(200).send(data);
