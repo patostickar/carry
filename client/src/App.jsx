@@ -43,7 +43,6 @@ function App() {
   useEffect(() => {
     dispatch(fetchAllLocations());
     dispatch(fetchTestimonials());
-    dispatch(fetchUser());
   }, []);
 
   return (
