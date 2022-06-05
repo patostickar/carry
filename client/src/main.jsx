@@ -5,8 +5,11 @@ import { Auth0Provider } from '@auth0/auth0-react';
 import { Provider } from 'react-redux';
 import { store, persistor } from './redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
-import './index.css';
+import axios from 'axios';
 import CssBaseline from '@mui/material/CssBaseline';
+import './index.css';
+
+axios.defaults.baseURL = import.meta.env.VITE_CARRY_API;
 
 const REACT_APP_AUTH0_DOMAIN = 'carry-login.us.auth0.com';
 const REACT_APP_AUTH0_CLIENT_ID = 'Yr5AIizkXNBNNk6LrdHwrj3ZO7suns8e';

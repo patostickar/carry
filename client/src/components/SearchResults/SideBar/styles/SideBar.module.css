@@ -3,7 +3,8 @@
   height: 150px;
   border: 1px solid lightgray;
   margin-bottom: 15px;
-  background-image: url('../../../../assets/miniMap.png');
+  background-image: url('../../../../assets/miniMap.jpg');
+  background-size: cover;
 }
 
 .siCheckButton {

@@ -13,9 +13,11 @@ import AdminPanel from './pages/AdminPanel.jsx';
 import CarCreate from './components/CarCreateForm/CarCreate.jsx';
 import CarTypeCreate from './components/CarCreateForm/CarTypeCreate.jsx';
 import LocationCreate from './components/CarCreateForm/LocationCreate.jsx';
+
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from 'axios';
 import { ClearUser, fetchUser } from './redux/user.js';
+
 
 import './App.css';
 
@@ -27,7 +29,6 @@ import Reservation from './components/Reservation/Reservation.jsx';
 
 function App() {
   const dispatch = useDispatch();
-  const { user, isAuthenticated } = useAuth0();
 
   
   
@@ -37,6 +38,7 @@ function App() {
     isAuthenticated && dispatch(fetchUser(user.email))
     !isAuthenticated && dispatch(ClearUser())    
   }, [isAuthenticated])
+
 
   useEffect(() => {
     dispatch(fetchAllLocations());

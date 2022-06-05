@@ -9,7 +9,7 @@ export default function CarCreate() {
   function postCar(values) {
     return async function () {
       try {
-        const json = await axios.post('http://localhost:3001/cartypes', values);
+        const json = await axios.post('/cartypes', values);
 
         return {
           type: 'POST_CAR',

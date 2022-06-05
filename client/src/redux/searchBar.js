@@ -14,7 +14,7 @@ const initialState = {
 export const fetchAllLocations = () => async (dispatch) => {
   try {
     await axios
-      .get('http://localhost:3001/locations')
+      .get('/locations')
       .then((res) => dispatch(setLocationList(res.data)));
   } catch (error) {
     console.log(error);
