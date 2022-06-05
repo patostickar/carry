@@ -7,7 +7,7 @@ import Checkbox from '@mui/material/Checkbox';
 import {
   setAirConditioning,
   setFourPlusSeats,
-} from '../../../redux/carsResults.js';
+} from '../../../redux/carsResults';
 
 export default function CarSpecs() {
   const { airConditioning, fourPlusSeats } = useSelector(

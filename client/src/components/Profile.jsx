@@ -1,13 +1,12 @@
-import { useAuth0 } from "@auth0/auth0-react";
-import { TabTitle } from "./GeneralFuntions/GeneralFuntions";
-import JSONPretty from "react-json-pretty";
-import styles from "./styles/Profile.module.css";
-import "react-json-pretty/themes/monikai.css";
+import { useAuth0 } from '@auth0/auth0-react';
+import { TabTitle } from './GeneralFuntions/GeneralFuntions';
+import JSONPretty from 'react-json-pretty';
+import styles from './styles/Profile.module.css';
+import 'react-json-pretty/themes/monikai.css';
 
 const Profile = () => {
-  TabTitle("Perfil - Carry");
+  TabTitle('Perfil - Carry');
   const { user, isAuthenticated, loginWithRedirect, isLoading } = useAuth0();
-  console.log(user);
   return (
     <div>
       {!isAuthenticated && isLoading ? (
@@ -20,7 +19,7 @@ const Profile = () => {
         </div>
       ) : (
         <div className={styles.back}>
-          <div className={styles.card} data-state="#about">
+          <div className={styles.card} data-state='#about'>
             <div className={styles.cardHeader}>
               <div className={styles.cardCover}></div>
               <img
@@ -32,7 +31,7 @@ const Profile = () => {
               <h2 className={styles.cardJobTitle}>{user.email}</h2>
             </div>
             <div className={styles.cardMain}>
-              <div className={(styles.cardSection, styles.isActive)} id="about">
+              <div className={(styles.cardSection, styles.isActive)} id='about'>
                 <div className={styles.cardContent}>
                   <div className={styles.cardSubtitle}>Data</div>
                   <p className={styles.cardDesc}>

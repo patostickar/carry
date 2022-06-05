@@ -19,15 +19,14 @@ export const User = createSlice({
 });
 export const fetchUser = (email) => async (dispatch) => {
   try {
-    await axios.get(`http://localhost:3001/customers/${email}`).then((res) => {
+    await axios.get(`/customers/${email}`).then((res) => {
       dispatch(SetUser(res.data));
     });
-    console.log('fetched user');
   } catch (error) {
     console.log(error);
   }
 };
 
-export const { SetUser,ClearUser } = User.actions;
+export const { SetUser, ClearUser } = User.actions;
 
 export default User.reducer;

@@ -74,7 +74,6 @@ export const fetchCarTypes =
       });
       dispatch(setCarTypes(res.data));
       // .then((res) => dispatch(setCarTypes(res.data)));
-      console.log('fetched car types');
     } catch (error) {
       console.log(error);
     }
