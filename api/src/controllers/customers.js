@@ -49,10 +49,11 @@ const postCustomer = async (req, res, next) => {
     const [customer, created] = await Customer.findOrCreate({
       where: {
         email,
-        first_name : given_name,
-        last_name : family_name,
         img :picture,
-      },
+      },defaults:{
+        first_name : given_name,
+        last_name : family_name
+      }
     });
     if (created) {
       return res.status(201).send({ msg: 'Customer created' });
