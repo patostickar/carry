@@ -18,6 +18,7 @@ import './App.css';
 import { Account } from './components/Account/Account.jsx';
 
 import { fetchTestimonials } from './redux/testimonials.js';
+import Reservation from './components/Reservation/Reservation.jsx';
 
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
           <Route path='/carcreate' element={<CarCreate />} />
           <Route path='/cartypecreate' element={<CarTypeCreate />} />
           <Route path='/locationcreate' element={<LocationCreate />} />
+          <Route path='/reservation' element={<Reservation />} />
         </Routes>
         <Footer />
       </BrowserRouter>
