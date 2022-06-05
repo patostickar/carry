@@ -5,7 +5,6 @@ import { DAY_MILISECONDS } from '../GeneralFuntions/constants';
 import Location from './locationInput';
 import Calendar from './calendar';
 import styles from './styles/SearchBar.module.css';
-import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.css';
 import { Alerts } from '../GeneralFuntions/GeneralFuntions';
 

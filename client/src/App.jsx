@@ -34,15 +34,14 @@ function App() {
         <Navbar />
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/home' element={<Home />} />
           <Route path='/about' element={<About />} />
-          <Route path='/profile' element={<Account />} />
-          <Route path='/searchResult' element={<SearchResults />} />
           <Route path='/adminPanel' element={<AdminPanel />} />
           <Route path='/carcreate' element={<CarCreate />} />
           <Route path='/cartypecreate' element={<CarTypeCreate />} />
           <Route path='/locationcreate' element={<LocationCreate />} />
+          <Route path='/profile' element={<Account />} />
           <Route path='/reservation' element={<Reservation />} />
+          <Route path='/searchResult' element={<SearchResults />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
         <Footer />

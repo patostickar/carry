@@ -29,7 +29,7 @@ export default function Location({ type, popLocation }) {
 
   useEffect(() => {
     // Evito que este comportamiento suceda en searchResults
-    if (popLocation && (route.pathname === '/' || route.pathname === '/home')) {
+    if (popLocation && route.pathname === '/') {
       // Si hay popLocation (seteado por una card), abro la lista, seteo el input, voy hacia arriba
       setOpen(true);
       setInput(popLocation);
