@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { setBookingDetails } from '../../../redux/booking';
 import { DAY_MILISECONDS } from '../../GeneralFuntions/constants';
@@ -32,6 +33,7 @@ export const carDetailCard = (props) => {
   } = props.cartype;
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { location, pickupDate, dropoffDate } = useSelector(
     (state) => state.searchBar
   );
@@ -41,12 +43,12 @@ export const carDetailCard = (props) => {
   function handleBooking() {
     const booking = {
       carTypeId: id,
-      customerId: null,
       locationId: location.id,
       pickUpDate: new Date(pickupDate).toISOString().slice(0, 10),
       dropOffDate: new Date(dropoffDate).toISOString().slice(0, 10),
     };
     dispatch(setBookingDetails(booking));
+    navigate('/reservation');
   }
 
   return (
