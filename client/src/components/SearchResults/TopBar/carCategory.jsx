@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { setOneCarCategory } from '../../../redux/carsResults.js';
+import { setOneCarCategory } from '../../../redux/carsResults';
 import styles from './styles/carCategory.module.css';
 
 export default function carCategory({ category, img }) {

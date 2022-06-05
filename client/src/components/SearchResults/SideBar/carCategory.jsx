@@ -4,7 +4,7 @@ import FormControl from '@mui/material/FormControl';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import { setCarCategory } from '../../../redux/carsResults.js';
+import { setCarCategory } from '../../../redux/carsResults';
 
 export default function CarCategory() {
   const { pequeño, mediano, grande, premium, convertible, minivan, suvs } =

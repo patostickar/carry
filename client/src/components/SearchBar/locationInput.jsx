@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { TextField, Autocomplete } from '@mui/material';
-import { setLocation, setPopLocation } from '../../redux/searchBar.js';
+import { setLocation, setPopLocation } from '../../redux/searchBar';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import InputAdornment from '@mui/material/InputAdornment';
 import parse from 'autosuggest-highlight/parse';
@@ -18,7 +18,7 @@ export default function Location({ type, popLocation }) {
 
   const [open, setOpen] = useState(false);
 
-  const [input, setInput] = useState(popLocation || location?.name);
+  const [input, setInput] = useState(popLocation || location?.name || '');
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -29,7 +29,7 @@ export default function Location({ type, popLocation }) {
 
   useEffect(() => {
     // Evito que este comportamiento suceda en searchResults
-    if (popLocation && (route.pathname === '/' || route.pathname === '/home')) {
+    if (popLocation && route.pathname === '/') {
       // Si hay popLocation (seteado por una card), abro la lista, seteo el input, voy hacia arriba
       setOpen(true);
       setInput(popLocation);

@@ -20,7 +20,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Logout from '@mui/icons-material/Logout';
 import logo from '../assets/logo.png';
 
-export const Navbar = () => {
+export default function Navbar() {
   const [selectedItem, setSelectedItem] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -36,14 +36,16 @@ export const Navbar = () => {
   };
 
   const handleChange = (event, newValue) => {
-    console.log(newValue);
     setSelectedItem(newValue);
   };
 
   return (
-    <AppBar color='transparent' sx={{ height: 80, position: 'relative',"z-index": "1" }}>
+    <AppBar
+      color='transparent'
+      sx={{ height: 80, position: 'relative', 'z-index': '1' }}
+    >
       <Toolbar>
-        <Link to='/home'>
+        <Link to='/'>
           <Box
             component='img'
             sx={{ height: 80, width: 90, marginRight: '1.5rem' }}
@@ -57,7 +59,7 @@ export const Navbar = () => {
           onChange={handleChange}
           aria-label='wrapped label tabs example'
         >
-          <Tab value={0} label='INICIO' to='/home' component={Link} />
+          <Tab value={0} label='INICIO' to='/' component={Link} />
           <Tab value={1} label='NOSOTROS' to='/about' component={Link} />
         </Tabs>
         {!isAuthenticated && !isLoading ? (
@@ -140,4 +142,4 @@ export const Navbar = () => {
       </Toolbar>
     </AppBar>
   );
-};
+}
