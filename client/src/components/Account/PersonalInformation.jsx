@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import {
   Box,
   Button,
@@ -13,39 +14,42 @@ import {
    Avatar
 } from '@mui/material';
 
-const states = [
-  {
-    value: 'alabama',
-    label: 'Alabama'
-  },
-  {
-    value: 'new-york',
-    label: 'New York'
-  },
-  {
-    value: 'san-francisco',
-    label: 'San Francisco'
-  }
-];
+// const states = [
+//   {
+//     value: 'alabama',
+//     label: 'Alabama'
+//   },
+//   {
+//     value: 'new-york',
+//     label: 'New York'
+//   },
+//   {
+//     value: 'san-francisco',
+//     label: 'San Francisco'
+//   }
+// ];
 
-const user = {
-  avatar: '/static/images/avatars/avatar_6.png',
-  city: 'Los Angeles',
-  country: 'USA',
-  jobTitle: 'Senior Developer',
-  name: 'Katarina Smith',
-  timezone: 'GTM-7'
-};
+// const User = {
+//   avatar: '/static/images/avatars/avatar_6.png',
+//   city: 'Los Angeles',
+//   country: 'USA',
+//   jobTitle: 'Senior Developer',
+//   name: 'Katarina Smith',
+//   timezone: 'GTM-7'
+// };
 
 export const PersonalInformation = () => {
+  const { User } = useSelector((state) => state.user);
   const [values, setValues] = useState({
-    firstName: 'Cesar',
-    lastName: 'Galeano',
-    email: 'tocega@yahoo.es',
-    phone: '3013111225',
-    city: 'Bucaramanga',
-    postal_code: '754543'
+    firstName: User.first_name,
+    lastName: User.last_name,
+    email: User.email,
+    phone: User.phone,
+    city: User.city,
+    postal_code: User.postal_code,
+    avatar : User.img
   });
+
 
   const handleChange = (event) => {
     setValues({
@@ -67,7 +71,7 @@ export const PersonalInformation = () => {
     <Grid item xs={5} style={{ border:'solid 1px lightgrey', borderRadius:'8px'}}>
      <Box style={{display:'flex', justifyContent:'center', padding:'10px'}} >
         <Avatar
-            src={user.avatar}
+            src={values.avatar}
             sx={{
               height: 64,
               mb: 2,

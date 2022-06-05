@@ -27,23 +27,18 @@ module.exports = (sequelize) => {
       },
       street: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
       city: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
       postal_code: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
       phone: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
-      password: {
+      img:{
         type: DataTypes.STRING,
-        allowNull: false,
       },
       isAdmin: {
         type: DataTypes.BOOLEAN,

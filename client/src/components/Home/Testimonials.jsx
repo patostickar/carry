@@ -13,9 +13,7 @@ import { useEffect } from 'react';
 
 function Testimonials() {
   const { testimonials } = useSelector((state) => state.testimonials);
-  useEffect(() => {
-    console.log(testimonials);
-  }, [testimonials]);
+  useEffect(() => {}, [testimonials]);
 
   return (
     <section className='testimonial section'>
@@ -43,11 +41,11 @@ function Testimonials() {
           modules={[Pagination, Navigation]}
           className='mySwiper'
         >
-          {testimonials?.map((testimonial) => (
-            <SwiperSlide key={testimonial?.id}>
+          {testimonials?.map((testimonial, i) => (
+            <SwiperSlide key={i}>
               <div className='testimonial__card'>
                 <img
-                  src={Testimonial1}
+                  src={testimonial?.customer?.img}
                   alt='img'
                   className='testimonial__img'
                 />

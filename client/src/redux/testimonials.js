@@ -16,10 +16,9 @@ export const Testimonials = createSlice({
 });
 export const fetchTestimonials = (id1, id2, id3) => async (dispatch) => {
   try {
-    await axios.get(`http://localhost:3001/customers/reviews/`).then((res) => {
+    await axios.get(`/customers/reviews/`).then((res) => {
       dispatch(SetTestimonials(res.data));
     });
-    console.log('fetched testimonial');
   } catch (error) {
     console.log(error);
   }
