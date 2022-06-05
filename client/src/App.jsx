@@ -1,18 +1,17 @@
 import { useEffect } from 'react';
-import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { useAuth0 } from "@auth0/auth0-react";
 import { fetchAllLocations } from './redux/searchBar';
 import { fetchTestimonials } from './redux/testimonials';
 import { ClearUser, fetchUser } from './redux/user.js';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
+import axios from 'axios';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import About from './components/About';
-import Profile from './components/Profile';
+// import Profile from './components/Profile';
 import SearchResults from './pages/SearchResults';
 import Footer from './components/Footer';
-
 
 import AdminPanel from './pages/AdminPanel';
 import CarCreate from './components/CarCreateForm/CarCreate';
@@ -37,15 +36,11 @@ function App() {
   console.log(user);
 
 
-  
-  
-  
   useEffect(() => {
-    isAuthenticated  && axios.post("/customers",user) 
-    isAuthenticated && dispatch(fetchUser(user.email))
-    !isAuthenticated && dispatch(ClearUser())    
-  }, [isAuthenticated])
-
+    isAuthenticated && axios.post('/customers', user);
+    isAuthenticated && dispatch(fetchUser(user.email));
+    !isAuthenticated && dispatch(ClearUser());
+  }, [isAuthenticated]);
 
   useEffect(() => {
     dispatch(fetchAllLocations());
