@@ -13,16 +13,16 @@ import AdminPanel from './pages/AdminPanel.jsx';
 import CarCreate from './components/CarCreateForm/CarCreate.jsx';
 import CarTypeCreate from './components/CarCreateForm/CarTypeCreate.jsx';
 import LocationCreate from './components/CarCreateForm/LocationCreate.jsx';
-import './App.css';
 import { useAuth0 } from "@auth0/auth0-react";
+import axios from 'axios';
+import { ClearUser, fetchUser } from './redux/user.js';
 
+import './App.css';
 
 import { Account } from './components/Account/Account.jsx';
 
 import { fetchTestimonials } from './redux/testimonials.js';
-import axios from 'axios';
-import { ClearUser, fetchUser } from './redux/user.js';
-
+import Reservation from './components/Reservation/Reservation.jsx';
 
 
 function App() {
@@ -33,14 +33,11 @@ function App() {
   
   
   useEffect(() => {
-
-    isAuthenticated  && axios.post("http://localhost:3001/customers",user) 
+    isAuthenticated  && axios.post("/customers",user) 
     isAuthenticated && dispatch(fetchUser(user.email))
-    !isAuthenticated && dispatch(ClearUser())
-  
-    
+    !isAuthenticated && dispatch(ClearUser())    
   }, [isAuthenticated])
-  
+
   useEffect(() => {
     dispatch(fetchAllLocations());
     dispatch(fetchTestimonials());
@@ -61,6 +58,7 @@ function App() {
           <Route path='/carcreate' element={<CarCreate />} />
           <Route path='/cartypecreate' element={<CarTypeCreate />} />
           <Route path='/locationcreate' element={<LocationCreate />} />
+          <Route path='/reservation' element={<Reservation />} />
         </Routes>
         <Footer />
       </BrowserRouter>
@@ -69,3 +67,4 @@ function App() {
 }
 
 export default App;
+
