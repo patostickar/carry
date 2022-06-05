@@ -2,25 +2,26 @@ import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const initialState = {
-  User: null,
+  customerId: null,
 };
 
-export const User = createSlice({
-  name: 'User',
+export const user = createSlice({
+  name: 'user',
   initialState,
   reducers: {
-    SetUser: (state, action) => {
-      state.User = action.payload;
+    setUserId: (state, action) => {
+      state.customerId = action.payload;
     },
-    ClearUser: (state, action) => {
-      state.User = null;
+    clearUserId: (state, action) => {
+      state.customerId = initialState;
     },
   },
 });
+
 export const fetchUser = (email) => async (dispatch) => {
   try {
     await axios.get(`/customers/${email}`).then((res) => {
-      dispatch(SetUser(res.data));
+      dispatch(setUserId(res.data));
     });
     console.log('fetched user');
   } catch (error) {
@@ -28,6 +29,6 @@ export const fetchUser = (email) => async (dispatch) => {
   }
 };
 
-export const { SetUser, ClearUser } = User.actions;
+export const { setUserId, clearUserId } = user.actions;
 
-export default User.reducer;
+export default user.reducer;

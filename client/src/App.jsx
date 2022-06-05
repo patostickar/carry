@@ -2,12 +2,11 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchAllLocations } from './redux/searchBar';
 import { fetchTestimonials } from './redux/testimonials';
-import { fetchUser } from './redux/user';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import About from './components/About';
-import Profile from './components/Profile';
+// import Profile from './components/Profile';
 import SearchResults from './pages/SearchResults';
 import Footer from './components/Footer';
 import AdminPanel from './pages/AdminPanel';
@@ -25,7 +24,6 @@ function App() {
   useEffect(() => {
     dispatch(fetchAllLocations());
     dispatch(fetchTestimonials());
-    dispatch(fetchUser());
   }, []);
 
   return (

@@ -17,7 +17,7 @@ export const booking = createSlice({
       state.booking = action.payload;
     },
     clearBookingDetails: (state, action) => {
-      state = initialState;
+      state.booking = initialState.booking;
     },
   },
 });

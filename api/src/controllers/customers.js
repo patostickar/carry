@@ -19,7 +19,7 @@ const getCustomerByemail = async (req, res, next) => {
   try {
     const { email } = req.params;
     if (email) {
-      const data = await Customer.findOne({where:{email}});
+      const data = await Customer.findOne({ where: { email } });
       data
         ? res.status(200).send(data)
         : res.send({ msg: 'Customer not found' });
@@ -37,21 +37,15 @@ const getCustomerByemail = async (req, res, next) => {
   }
 };
 
-
 const postCustomer = async (req, res, next) => {
   try {
-    const {
-      email,
-      given_name,
-      family_name,
-      picture,
-    } = req.body;
+    const { email, given_name, family_name, picture } = req.body;
     const [customer, created] = await Customer.findOrCreate({
       where: {
         email,
-        first_name : given_name,
-        last_name : family_name,
-        img :picture,
+        first_name: given_name,
+        last_name: family_name,
+        img: picture,
       },
     });
     if (created) {
@@ -149,5 +143,5 @@ module.exports = {
   postCustomer,
   getCustomerById,
   putCustomer,
-  getCustomerByemail
+  getCustomerByemail,
 };

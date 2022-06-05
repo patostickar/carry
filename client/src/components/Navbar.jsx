@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchUser } from '../redux/user';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Link } from 'react-router-dom';
 import {
@@ -26,6 +28,12 @@ export default function Navbar() {
   const open = Boolean(anchorEl);
   const { isAuthenticated, user, loginWithRedirect, logout, isLoading } =
     useAuth0();
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (isAuthenticated) dispatch(fetchUser(user.email));
+  }, [isAuthenticated]);
 
   const handleClick = (e) => {
     setAnchorEl(e.currentTarget);
