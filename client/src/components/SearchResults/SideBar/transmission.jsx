@@ -4,7 +4,7 @@ import FormControl from '@mui/material/FormControl';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import { setTransmission } from '../../../redux/carsResults.js';
+import { setTransmission } from '../../../redux/carsResults';
 
 export default function Transmission() {
   const { manual, automatic } = useSelector(

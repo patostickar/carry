@@ -20,7 +20,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Logout from '@mui/icons-material/Logout';
 import logo from '../assets/logo.png';
 
-export const Navbar = () => {
+export default function Navbar() {
   const [selectedItem, setSelectedItem] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -142,4 +142,4 @@ export const Navbar = () => {
       </Toolbar>
     </AppBar>
   );
-};
+}

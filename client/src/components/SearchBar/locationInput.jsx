@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { TextField, Autocomplete } from '@mui/material';
-import { setLocation, setPopLocation } from '../../redux/searchBar.js';
+import { setLocation, setPopLocation } from '../../redux/searchBar';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import InputAdornment from '@mui/material/InputAdornment';
 import parse from 'autosuggest-highlight/parse';
