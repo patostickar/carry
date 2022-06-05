@@ -18,7 +18,7 @@ export default function Location({ type, popLocation }) {
 
   const [open, setOpen] = useState(false);
 
-  const [input, setInput] = useState(popLocation || location?.name);
+  const [input, setInput] = useState(popLocation || location?.name || '');
 
   const scrollToTop = () => {
     window.scrollTo({

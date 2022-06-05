@@ -36,12 +36,14 @@ export const Navbar = () => {
   };
 
   const handleChange = (event, newValue) => {
-    console.log(newValue);
     setSelectedItem(newValue);
   };
 
   return (
-    <AppBar color='transparent' sx={{ height: 80, position: 'relative',"z-index": "1" }}>
+    <AppBar
+      color='transparent'
+      sx={{ height: 80, position: 'relative', 'z-index': '1' }}
+    >
       <Toolbar>
         <Link to='/home'>
           <Box

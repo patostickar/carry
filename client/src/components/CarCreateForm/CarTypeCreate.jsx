@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { Formik, Form, Field } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
-import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.css';
 import { fetchCarTypes } from '../../redux/carsResults';
 import { fetchAllLocations } from '../../redux/searchBar';
@@ -36,7 +35,6 @@ export default function CarTypeCreate() {
 
   const { carTypes } = useSelector((state) => state.carsResults);
   const { locations } = useSelector((state) => state.searchBar);
-  console.log(locations.map((d) => d.id));
 
   return (
     <Formik
