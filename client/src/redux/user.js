@@ -23,7 +23,6 @@ export const fetchUser = (email) => async (dispatch) => {
     await axios.get(`/customers/${email}`).then((res) => {
       dispatch(setUserId(res.data));
     });
-    console.log('fetched user');
   } catch (error) {
     console.log(error);
   }
