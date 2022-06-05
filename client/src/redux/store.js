@@ -1,9 +1,9 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import searchBar from './searchBar';
-import carsResults from './carsResults';
-import testimonials from './testimonials';
-import booking from './booking';
-import user from "./user"
+import searchBarReducer from './searchBar';
+import carsResultsReducer from './carsResults';
+import testimonialsReducer from './testimonials';
+import bookingReducer from './booking';
+import userReducer from './user';
 
 import {
   persistStore,
@@ -15,20 +15,33 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+import storageSession from 'redux-persist/lib/storage/session';
 import storage from 'redux-persist/lib/storage';
 
 const persistConfig = {
   key: 'root',
   version: 1,
   storage,
+  blacklist: ['searchBar', 'carsResults', 'booking', 'testimonials'],
+};
+
+const searchBarPersistConfig = {
+  key: 'searchBar',
+  version: 1,
+  storage: storageSession,
+};
+const carsResultsPersistConfig = {
+  key: 'carsResults',
+  version: 1,
+  storage: storageSession,
 };
 
 const rootReducer = combineReducers({
-  searchBar,
-  carsResults,
-  booking,
-  testimonials,
-  user
+  searchBar: persistReducer(searchBarPersistConfig, searchBarReducer),
+  carsResults: persistReducer(carsResultsPersistConfig, carsResultsReducer),
+  booking: testimonialsReducer,
+  testimonials: bookingReducer,
+  user: userReducer,
 });
 
 // const store = configureStore({
