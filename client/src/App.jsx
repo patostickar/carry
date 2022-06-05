@@ -22,19 +22,20 @@ import Account from './components/Account/Account';
 import Reservation from './components/Reservation/Reservation';
 import NotFound from './components/NotFound';
 
-
-import AdminPanel from './pages/AdminPanel';
-import CarCreate from './components/CarCreateForm/CarCreate';
-import CarTypeCreate from './components/CarCreateForm/CarTypeCreate';
-import LocationCreate from './components/CarCreateForm/LocationCreate';
-import Account from './components/Account/Account';
-import Reservation from './components/Reservation/Reservation';
-import NotFound from './components/NotFound';
 import './App.css';
+
+
+
+
+
+
+
 
 function App() {
   const dispatch = useDispatch();
   const { user, isAuthenticated } = useAuth0();
+  console.log(user);
+
 
   
   

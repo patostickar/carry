@@ -29,16 +29,16 @@ conn
       img: l.img,
     }));
 
-    const customers = data.customers.map((c) => ({
-      email: c.email,
-      first_name: c.first_name,
-      last_name: c.last_name,
-      street: c.street,
-      city: c.city,
-      postal_code: c.postcal_code,
-      phone: c.phone,
-      password: c.password,
-    }));
+    // const customers = data.customers.map((c) => ({
+    //   email: c.email,
+    //   first_name: c.first_name,
+    //   last_name: c.last_name,
+    //   street: c.street,
+    //   city: c.city,
+    //   postal_code: c.postcal_code,
+    //   phone: c.phone,
+    //   password: c.password,
+    // }));
 
     const carTypes = data.car_types.map((c) => ({
       make: c.make,
@@ -60,35 +60,35 @@ conn
       Location.bulkCreate(locations, {
         ignoreDuplicates: true,
       }),
-      Customer.bulkCreate(customers, {
-        ignoreDuplicates: true,
-      }),
+      // Customer.bulkCreate(customers, {
+      //   ignoreDuplicates: true,
+      // }),
       Cartype.bulkCreate(carTypes, {
         ignoreDuplicates: true,
       }),
     ]);
-    const review = await Review.create({
-      review:
-        'Trabajamos con Carry hace un año, nos sentimos satisfechos con su servicio además cuentan con vehiculos de alta gama.',
-    });
-    const user = await Customer.findOne({
-      where: { email: 'franco.adriel.garcia@gmail.com' },
-    });
-    review.setCustomer(user);
-    const review1 = await Review.create({
-      review:
-        'Alquilamos un Spark GT para visitar Córdoba y todo fue espectacular. Hasta pudimos dejar el auto en el aeropuerto.',
-    });
-    const user1 = await Customer.findOne({
-      where: { email: 'elozcuro1@gmail.com' },
-    });
-    review1.setCustomer(user1);
-    const review2 = await Review.create({
-      review:
-        'Empresa recomenda al 100% la transaccion fue rapida y sin contratiempos, el vehiculo en excelentes condiciones.',
-    });
-    const user2 = await Customer.findOne();
-    review2.setCustomer(user2);
+    // const review = await Review.create({
+    //   review:
+    //     'Trabajamos con Carry hace un año, nos sentimos satisfechos con su servicio además cuentan con vehiculos de alta gama.',
+    // });
+    // const user = await Customer.findOne({
+    //   where: { email: 'franco.adriel.garcia@gmail.com' },
+    // });
+    // review.setCustomer(user);
+    // const review1 = await Review.create({
+    //   review:
+    //     'Alquilamos un Spark GT para visitar Córdoba y todo fue espectacular. Hasta pudimos dejar el auto en el aeropuerto.',
+    // });
+    // const user1 = await Customer.findOne({
+    //   where: { email: 'elozcuro1@gmail.com' },
+    // });
+    // review1.setCustomer(user1);
+    // const review2 = await Review.create({
+    //   review:
+    //     'Empresa recomenda al 100% la transaccion fue rapida y sin contratiempos, el vehiculo en excelentes condiciones.',
+    // });
+    // const user2 = await Customer.findOne();
+    // review2.setCustomer(user2);
 
     const cordoba = await Location.findOne({
       where: { name: 'Córdoba Cars' },
