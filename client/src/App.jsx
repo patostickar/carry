@@ -62,7 +62,6 @@ function App() {
           <Route path='/profile' element={<Account />} />
           <Route path='/reservation' element={<Reservation />} />
           <Route path='/searchResult' element={<SearchResults />} />
-          <Route path='/Test' element={<Bookings/>} />
           <Route path='*' element={<NotFound />} />
         </Routes>
         <Footer />
