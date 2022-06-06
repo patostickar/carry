@@ -4,6 +4,11 @@ import { setBookingDetails } from "../../../redux/booking";
 import { DAY_MILISECONDS } from "../../GeneralFuntions/constants";
 import { motion } from "framer-motion";
 import styles from "./styles/carDetail.module.css";
+import PersonIcon from "@mui/icons-material/Person";
+import SpeedIcon from "@mui/icons-material/Speed";
+import LuggageIcon from "@mui/icons-material/Luggage";
+import WorkIcon from "@mui/icons-material/Work";
+import BuildIcon from "@mui/icons-material/Build";
 
 const variants = {
   hidden: {
@@ -51,7 +56,6 @@ export const carDetailCard = (props) => {
       carLargeSuitcase: largeSuitcase,
       carSmallSuitcase: smallSuitcase,
       carPrice: price,
-
       carTypeId: id,
       locationId: location.id,
       pickUpDate: new Date(pickupDate).toISOString().slice(0, 10),
@@ -85,14 +89,33 @@ export const carDetailCard = (props) => {
           </div>
 
           <div className={styles.siCarDesc}>
-            <span className="">{seats} Asientos </span>
-            <span className="">{largeSuitcase} Maleta grande </span>
-            <span className="">{smallSuitcase} Maleta pequeña </span>
-            <span className="">{mpg} km/l</span>
+            <div>
+              <span className="">
+                <PersonIcon /> {seats} Asientos{" "}
+              </span>
+            </div>
+            <div>
+              <span className="">
+                <LuggageIcon /> {largeSuitcase} Maleta grande{" "}
+              </span>
+            </div>
+            <div>
+              <span className="">
+                <WorkIcon /> {smallSuitcase} Maleta pequeña{" "}
+              </span>
+            </div>
+
+            <div>
+              <span className="">
+                <SpeedIcon /> {mpg} km/l
+              </span>
+            </div>
           </div>
 
           <div className={styles.siLocation}>
-            <span className={styles.siFeatures}>{transmission}</span>
+            <span className={styles.siFeatures}>
+              <BuildIcon /> {transmission}
+            </span>
           </div>
         </div>
         <div className={styles.siDetails}>
