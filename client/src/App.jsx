@@ -22,7 +22,6 @@ import Reservation from './components/Reservation/Reservation';
 import NotFound from './components/NotFound';
 
 import './App.css';
-import { Bookings } from './components/Account/Bookings';
 
 
 
