@@ -58,8 +58,8 @@ export const carDetailCard = (props) => {
       carPrice: price,
       carTypeId: id,
       locationId: location.id,
-      pickUpDate: new Date(pickupDate).toISOString().slice(0, 10),
-      dropOffDate: new Date(dropoffDate).toISOString().slice(0, 10),
+      pickUpDate: new Date(pickupDate).toUTCString().slice(0, 10),
+      dropOffDate: new Date(dropoffDate).toUTCString().slice(0, 10),
     };
     dispatch(setBookingDetails(booking));
     navigate("/reservation");
