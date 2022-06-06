@@ -1,9 +1,17 @@
 import React from "react";
 import { Formik } from "formik";
+import axios from "axios";
 
 
 
 export default function LocationCreate(){
+    async function postLocation(values){
+        try {
+         await axios.post('/locations', values);
+  
+        } catch (error) {
+          console.log(error);
+        }};
 
     return (
        
@@ -14,6 +22,9 @@ export default function LocationCreate(){
             street:'',
             city:'',
             state_name:'',
+            postal_code:'',
+            lat:"",
+            lon:"",
             phone:'',
             time_open:'',
             time_close:'',
@@ -34,6 +45,15 @@ export default function LocationCreate(){
             }
             if(!valores.city){
                 errores.city="Ingrese un valor"
+            }
+            if(!valores.postal_code){
+                errores.postal_code="Ingrese un valor"
+            }
+            if(!valores.lat){
+                errores.lat="Ingrese un valor"
+            }
+            if(!valores.lon){
+                errores.lon="Ingrese un valor"
             }
             if(!valores.state_name){
                 errores.state_name="Ingrese un valor"
@@ -56,7 +76,7 @@ export default function LocationCreate(){
 
        
 
-        onSubmit={()=> {console.log("Se ha enviado el formulario")}}
+        onSubmit={(values)=> {postLocation(values)}}
         >
             
             {({values, errors, touched,  handleSubmit, handleChange, handleBlur}) =>(
@@ -97,46 +117,75 @@ export default function LocationCreate(){
                 />
                 {touched.street && errors.street && <div className="error">{errors.street}</div>}
                 </div>
-
-
                 <div>
-                <label htmlFor="city" >Ciudad</label>
-                {/* Esto es lo que tengo que mapear desde el estado global de locations */}
-                <select 
-                name="city"                 
-                id="city"                 
+                <label htmlFor="city">ciudad</label>
+                <input 
                 
-               
-                >
-                    <option 
-                     value={values.city}
-                     onChange={handleChange}
-                     onBlur={handleBlur}>
-                        Buenos Aires
-                    </option>
-
-                    {touched.city && errors.city && <div className="error">{errors.city}</div>}
-
-                </select>
+                type="text"                 
+                id="city"                
+                name="city"                 
+                placeholder="cuidad" 
+                value={values.city}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                />
+                {touched.city && errors.city && <div className="error">{errors.city}</div>}
+                </div>
+                <div>
+                <label htmlFor="city">provincia</label>
+                <input 
+                
+                type="text"     
+                id="state_name"    
+                name="state_name" 
+                placeholder="provincia" 
+                value={values.state_name}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                />
+                {touched.state_name && errors.state_name && <div className="error">{errors.state_name}</div>}
                 </div>
 
-
                 <div>
-                <label htmlFor="state_name" >Provincia</label>
-                <select                 
-                name="state_name"                 
-                id="state_name"                 
-                                
-                >
-                    <option 
-                    value={values.state_name}
-                    onChange={handleChange}
-                    onBlur={handleBlur}>CABA
-                    </option>
-
-                    {touched.state_name && errors.state_name && <div className="error">{errors.state_name}</div>}
-
-                </select>
+                <label htmlFor="lat">latitud </label>
+                <input 
+                
+                type="text"                 
+                id="lat"                
+                name="lat"                 
+                placeholder="latitud" 
+                value={values.lat}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                />
+                {touched.lat && errors.lat && <div className="error">{errors.lat}</div>}
+                </div>
+                <div>
+                <label htmlFor="lon">longitud </label>
+                <input 
+                
+                type="text"                 
+                id="lon"                
+                name="lon"                 
+                placeholder="longitud" 
+                value={values.lon}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                />
+                {touched.lon && errors.lon && <div className="error">{errors.lon}</div>}
+                </div>
+                <div>
+                <label htmlFor="postal_code">codigo postal</label>
+                <input 
+                type="text"                 
+                id="postal_code"                
+                name="postal_code"                 
+                placeholder="codigo postal" 
+                value={values.postal_code}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                />
+                {touched.postal_code && errors.postal_code && <div className="error">{errors.postal_code}</div>}
                 </div>
 
 
@@ -158,7 +207,7 @@ export default function LocationCreate(){
                 <div>           
                 <label htmlFor="time_open">Horario de apertura</label>
                 <input 
-                type="number" 
+                type="text" 
                 id="time_open" 
                 name="time_open" 
                 placeholder="08AM"
@@ -173,7 +222,7 @@ export default function LocationCreate(){
                 <div>
                 <label htmlFor="time_close">Horario de cierre</label>
                 <input 
-                type="number"  
+                type="text"  
                 id="time_close" 
                 name="time_close" 
                 placeholder="22PM"

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Grid } from '@mui/material';
+import { Button, Grid } from '@mui/material';
 import { Sidebar } from './Sidebar';
 import { PersonalInformation } from './PersonalInformation';
+import { NavLink } from 'react-router-dom';
 
 export default function Account() {
   const [renderControl, setRenderControl] = useState({
@@ -10,13 +11,15 @@ export default function Account() {
     payment: false,
     booking: false,
   });
-  return (
+  return (<>
+      <NavLink to='/AdminPanel'><Button variant='contained'>opciones de admin</Button>  </NavLink>
     <Grid container my={4}>
       <Sidebar
         setRenderControl={setRenderControl}
         renderControl={renderControl}
-      />
+        />
       {renderControl.personalInfo && <PersonalInformation />}
     </Grid>
+        </>
   );
 }

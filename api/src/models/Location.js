@@ -39,11 +39,11 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       time_open: {
-        type: DataTypes.TIME,
+        type: DataTypes.STRING,
         allowNull: false,
       },
       time_close: {
-        type: DataTypes.TIME,
+        type: DataTypes.STRING,
         allowNull: false,
       },
       airport_location: {
