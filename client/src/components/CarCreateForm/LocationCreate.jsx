@@ -1,6 +1,7 @@
 import React from "react";
 import { Formik } from "formik";
 import axios from "axios";
+import { Alerts } from "../GeneralFuntions/GeneralFuntions";
 
 
 
@@ -76,7 +77,10 @@ export default function LocationCreate(){
 
        
 
-        onSubmit={(values)=> {postLocation(values)}}
+        onSubmit={(values)=> {
+            postLocation(values)  
+            Alerts('success', 'location creado');
+        }}
         >
             
             {({values, errors, touched,  handleSubmit, handleChange, handleBlur}) =>(
