@@ -82,6 +82,8 @@ Booking.belongsTo(Location);
 
 Car.hasMany(Booking);
 Booking.belongsTo(Car);
+Cartype.hasMany(Booking);
+Booking.belongsTo(Cartype);
 
 Location.hasMany(Car);
 Car.belongsTo(Location);

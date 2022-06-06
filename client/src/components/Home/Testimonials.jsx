@@ -13,7 +13,7 @@ import { useEffect } from 'react';
 
 function Testimonials() {
   const { testimonials } = useSelector((state) => state.testimonials);
-  useEffect(() => {}, [testimonials]);
+
 
   return (
     <section className='testimonial section'>
