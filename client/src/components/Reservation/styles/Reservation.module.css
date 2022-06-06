@@ -16,6 +16,12 @@ container {
   margin-top: 1rem;
 }
 
+.loader {
+  justify-content: center;
+  display: flex;
+  margin-bottom: 15rem;
+}
+
 .date {
   text-align: center;
   justify-content: space-around;

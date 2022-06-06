@@ -18,6 +18,7 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import { useSelector } from "react-redux";
 import { DAY_MILISECONDS } from "../GeneralFuntions/constants";
+import LinearIndeterminate from "../GeneralFuntions/LinearIndeterminate";
 
 function Reservation(props) {
   const { location, pickupDate, dropoffDate } = useSelector(
@@ -33,11 +34,11 @@ function Reservation(props) {
   const steps = [
     {
       label: "Retira",
-      description: `${location.street}, ${location.city} (${booking.pickUpDate})`,
+      description: `${location.street}, ${location.city} `,
     },
     {
       label: "Entrega",
-      description: `${location.street}, ${location.city} (${booking.dropOffDate}) `,
+      description: `${location.street}, ${location.city}`,
     },
     {
       label: "Disfrutar",
@@ -60,11 +61,11 @@ function Reservation(props) {
   };
 
   const onClick = () => {
-    navigate("/home");
+    navigate("/searchResult");
   };
 
   const handleSearch = () => {
-    navigate("/searchResult");
+    navigate("/");
   };
 
   return (
@@ -97,136 +98,145 @@ function Reservation(props) {
         </div>
       </div>
 
-      <div className={styles.contenedor}>
-        <div className={styles.derecha}>
-          <Box
-            sx={{
-              maxWidth: 400,
-              marginLeft: "-10px",
-            }}
-          >
-            <h2>Recogida y devolucion</h2>
-            <Stepper activeStep={activeStep} orientation="vertical">
-              {steps.map((step, index) => (
-                <Step key={step.label}>
-                  <StepLabel
-                    optional={
-                      index === 2 ? (
-                        <Typography variant="caption">{""}</Typography>
-                      ) : null
-                    }
-                  >
-                    {step.label}
-                  </StepLabel>
-                  <StepContent>
-                    <Typography>{step.description}</Typography>
-                    <Box sx={{ mb: 2 }}>
-                      <div>
-                        <Button
-                          variant="contained"
-                          onClick={
-                            index === steps.length - 1
-                              ? handleSearch
-                              : handleNext
-                          }
-                          sx={{ mt: 1, mr: 1 }}
-                        >
-                          {index === steps.length - 1
-                            ? "Reservar"
-                            : "Continuar"}
-                        </Button>
-                        <Button
-                          disabled={index === 0}
-                          onClick={handleBack}
-                          sx={{ mt: 1, mr: 1 }}
-                        >
-                          Volver
-                        </Button>
-                      </div>
-                    </Box>
-                  </StepContent>
-                </Step>
-              ))}
-            </Stepper>
-            {activeStep === steps.length && (
-              <Paper square elevation={0} sx={{ p: 3 }}>
-                <Typography>Redireccionar a pagar</Typography>
-                <Button onClick={handleReset} sx={{ mt: 1, mr: 1 }}>
-                  Volver
-                </Button>
-              </Paper>
-            )}
-          </Box>
+      {!booking.locationId ? (
+        <div className={styles.loader}>
+          <LinearIndeterminate />
         </div>
-        <div className={styles.izquierda}>
-          <div>
-            <div className={styles.Detalles}>
-              <h1>Detalles del auto</h1>
-            </div>
-            <div className={styles.carCard}>
-              <div className={styles.imageContainer}>
-                <img src={booking.carImg} alt="img" className={styles.siImg} />
+      ) : (
+        <div className={styles.contenedor}>
+          <div className={styles.derecha}>
+            <Box
+              sx={{
+                maxWidth: 400,
+                marginLeft: "-10px",
+              }}
+            >
+              <h2>Recogida y devolucion</h2>
+              <Stepper activeStep={activeStep} orientation="vertical">
+                {steps.map((step, index) => (
+                  <Step key={step.label}>
+                    <StepLabel
+                      optional={
+                        index === 2 ? (
+                          <Typography variant="caption">{""}</Typography>
+                        ) : null
+                      }
+                    >
+                      {step.label}
+                    </StepLabel>
+                    <StepContent>
+                      <Typography>{step.description}</Typography>
+                      <Box sx={{ mb: 2 }}>
+                        <div>
+                          <Button
+                            variant="contained"
+                            onClick={
+                              index === steps.length - 1
+                                ? handleSearch
+                                : handleNext
+                            }
+                            sx={{ mt: 1, mr: 1 }}
+                          >
+                            {index === steps.length - 1
+                              ? "Reservar"
+                              : "Continuar"}
+                          </Button>
+                          <Button
+                            disabled={index === 0}
+                            onClick={handleBack}
+                            sx={{ mt: 1, mr: 1 }}
+                          >
+                            Volver
+                          </Button>
+                        </div>
+                      </Box>
+                    </StepContent>
+                  </Step>
+                ))}
+              </Stepper>
+              {activeStep === steps.length && (
+                <Paper square elevation={0} sx={{ p: 3 }}>
+                  <Typography>Redireccionar a pagar</Typography>
+                  <Button onClick={handleReset} sx={{ mt: 1, mr: 1 }}>
+                    Volver
+                  </Button>
+                </Paper>
+              )}
+            </Box>
+          </div>
+          <div className={styles.izquierda}>
+            <div>
+              <div className={styles.Detalles}>
+                <h1>Detalles del auto</h1>
               </div>
-
-              <div className={styles.siDesc}>
-                <div className={styles.siRating}>
-                  <span>Top Pick</span>
-                </div>
-                <div className={styles.siTitle}>
-                  <h3>
-                    {booking.carType}
-                    <span> o un coche {booking.carClassName} similar</span>{" "}
-                  </h3>
-                </div>
-                <div className={styles.siCarDesc}>
-                  <div>
-                    <span className="">
-                      <PersonIcon /> {booking.carSeats} Asientos
-                    </span>
-                  </div>
-                  <div>
-                    <span className="">
-                      {" "}
-                      <LuggageIcon /> {booking.carLargeSuitcase} Maleta grande
-                    </span>
-                  </div>
-                  <div>
-                    <span className="">
-                      {" "}
-                      <WorkIcon /> {booking.carSmallSuitcase} Maleta pequeña
-                    </span>
-                  </div>
-                  <div>
-                    <span className="">
-                      <SpeedIcon /> {booking.carMpg} km/l
-                    </span>
-                  </div>
+              <div className={styles.carCard}>
+                <div className={styles.imageContainer}>
+                  <img
+                    src={booking.carImg}
+                    alt="img"
+                    className={styles.siImg}
+                  />
                 </div>
 
-                <div className={styles.siLocation}>
-                  <span className={styles.siFeatures}>
-                    <BuildIcon /> {booking.carTransmission}
-                  </span>
+                <div className={styles.siDesc}>
+                  <div className={styles.siRating}>
+                    <span>Top Pick</span>
+                  </div>
+                  <div className={styles.siTitle}>
+                    <h3>
+                      {booking.carType}
+                      <span> o un coche {booking.carClass} similar</span>{" "}
+                    </h3>
+                  </div>
+                  <div className={styles.siCarDesc}>
+                    <div>
+                      <span className="">
+                        <PersonIcon /> {booking.carSeats} Asientos
+                      </span>
+                    </div>
+                    <div>
+                      <span className="">
+                        {" "}
+                        <LuggageIcon /> {booking.carLargeSuitcase} Maleta grande
+                      </span>
+                    </div>
+                    <div>
+                      <span className="">
+                        {" "}
+                        <WorkIcon /> {booking.carSmallSuitcase} Maleta pequeña
+                      </span>
+                    </div>
+                    <div>
+                      <span className="">
+                        <SpeedIcon /> {booking.carMpg} km/l
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className={styles.siLocation}>
+                    <span className={styles.siFeatures}>
+                      <BuildIcon /> {booking.carTransmission}
+                    </span>
+                  </div>
                 </div>
-              </div>
-              <div className={styles.siDetails}>
-                <div className={styles.siDetailTexts}>
-                  <span className={styles.siDaysxprice}>
-                    {" "}
-                    Precio por {dateRange} {dateRange === 1 ? "día" : "días"}:{" "}
-                  </span>
-                  <span className={styles.siprice}>$ {booking.carPrice}</span>
-                  <span className={styles.siAmendments}>
-                    Cancelación gratuita
-                  </span>
+                <div className={styles.siDetails}>
+                  <div className={styles.siDetailTexts}>
+                    <span className={styles.siDaysxprice}>
+                      {" "}
+                      Precio por {dateRange} {dateRange === 1 ? "día" : "días"}:{" "}
+                    </span>
+                    <span className={styles.siprice}>$ {booking.carPrice}</span>
+                    <span className={styles.siAmendments}>
+                      Cancelación gratuita
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
-
 export default Reservation;
