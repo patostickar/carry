@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Grid } from '@mui/material';
 import { Sidebar } from './Sidebar';
 import { PersonalInformation } from './PersonalInformation';
+import  Review from './Review';
 import { NavLink } from 'react-router-dom';
 
 export default function Account() {
@@ -20,6 +21,7 @@ export default function Account() {
         />
       {renderControl.personalInfo && <PersonalInformation />}
     </Grid>
+    <Review/>
         </>
   );
 }

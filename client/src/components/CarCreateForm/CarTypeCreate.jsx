@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik } from 'formik';
 import axios from 'axios';
+import { Alerts } from '../GeneralFuntions/GeneralFuntions';
 
 
 export default function CarCreate() {
@@ -85,9 +86,9 @@ export default function CarCreate() {
         return errores;
       }}
       onSubmit={(values) => {
-        console.log(values)
         // alert(JSON.stringify(values))
-       postCar(values)
+        postCar(values)
+        Alerts('success', 'Vehiculo creado');
       }}
     >
       {({
