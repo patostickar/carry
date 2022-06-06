@@ -3,16 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import {
   Box,
-  Button,
   Card,
-  CardContent,
-  CardHeader,
-  CardActions,
-  Divider,
   Grid,
-  TextField,
-   Typography,
-   Avatar
 } from '@mui/material';
 import { fetchUserBokings } from '../../redux/booking';
 
