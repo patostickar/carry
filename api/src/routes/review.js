@@ -37,9 +37,9 @@ router.get('/', async (req, res, next) => {
 
 router.post('/:id', async (req, res, next) => {
   const { id } = req.params;
-  const { testimonio } = req.body;
+  const { reviews } = req.body;
   try {
-    const review = await Review.create({ review: testimonio });
+    const review = await Review.create({ review: reviews });
     const customer = await Customer.findOne({ where: { id } });
     review.setCustomer(customer);
     res.send('review Creada');

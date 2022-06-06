@@ -39,12 +39,14 @@ const postLocations = async (req, res, next) => {
       city,
       state_name,
       postal_code,
-      geo,
+      lat,
+      lon,
       phone,
       time_open,
       time_close,
       airport_location,
     } = req.body;
+    const geo=[lat,lon]
     const [location, created] = await Location.findOrCreate({
       where: {
         name,
@@ -53,7 +55,7 @@ const postLocations = async (req, res, next) => {
         state_name,
         postal_code,
         geo,
-        phone,
+        phone:String(phone),
         time_open,
         time_close,
         airport_location,

@@ -16,7 +16,6 @@ const createCartype = async (req, res, next) => {
     const {
       make,
       model,
-      classCode,
       className,
       transmission,
       mpg,
@@ -32,7 +31,6 @@ const createCartype = async (req, res, next) => {
       where: {
         make,
         model,
-        classCode,
         className,
         transmission,
         mpg,

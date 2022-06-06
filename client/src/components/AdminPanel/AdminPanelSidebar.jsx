@@ -1,16 +1,19 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import {Button} from '@mui/material';  
 
 
 export default function AdminPanelSideBar(){
     return(
-        <><div>Holis soy una sidebar jajaj</div>
+        <>
+        {/* <div>Holis soy una sidebar jajaj</div> */}
         
-        <span>
+        <span style={{display: "flex", "flexDirection": "column", "alignItems": "center"}}>
 
-            <NavLink to='/cartypecreate'> Agregar auto a stock </NavLink>
-            <NavLink to='/carcreate'> Crear un auto </NavLink>
-            <NavLink to='/locationcreate'> Crear una locacion </NavLink>
+
+            <NavLink to='/cartypecreate'><Button variant='contained'>Crear un tipo auto</Button>  </NavLink>
+            <NavLink to='/carcreate'><Button variant='contained'>Agregar auto a stock</Button>  </NavLink>
+            <NavLink to='/locationcreate'> <Button variant='contained'>Crear una locacion</Button> </NavLink>
 
 
 

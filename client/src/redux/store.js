@@ -39,8 +39,8 @@ const carsResultsPersistConfig = {
 const rootReducer = combineReducers({
   searchBar: persistReducer(searchBarPersistConfig, searchBarReducer),
   carsResults: persistReducer(carsResultsPersistConfig, carsResultsReducer),
-  booking: testimonialsReducer,
-  testimonials: bookingReducer,
+  booking: bookingReducer,
+  testimonials: testimonialsReducer,
   user: userReducer,
 });
 
