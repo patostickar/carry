@@ -19,8 +19,6 @@ import Typography from "@mui/material/Typography";
 import { useSelector } from "react-redux";
 import { DAY_MILISECONDS } from "../GeneralFuntions/constants";
 
-// import SearchBar from "../SearchBar/SearchBar";
-
 function Reservation(props) {
   const { location, pickupDate, dropoffDate } = useSelector(
     (state) => state.searchBar
@@ -30,30 +28,16 @@ function Reservation(props) {
 
   const navigate = useNavigate();
 
-  // const {
-  //   // id,
-  //   make,
-  //   model,
-  //   transmission,
-  //   mpg,
-  //   img,
-  //   seats,
-  //   className,
-  //   largeSuitcase,
-  //   smallSuitcase,
-  //   price,
-  // } = props.cartype;
-
   const dateRange = (dropoffDate - pickupDate) / DAY_MILISECONDS;
 
   const steps = [
     {
       label: "Retira",
-      description: `${location.name}   /   ${booking.pickUpDate}`,
+      description: `${location.street}, ${location.city} (${booking.pickUpDate})`,
     },
     {
       label: "Entrega",
-      description: `${location.name}   /   ${booking.dropOffDate}`,
+      description: `${location.street}, ${location.city} (${booking.dropOffDate}) `,
     },
     {
       label: "Disfrutar",
@@ -76,12 +60,15 @@ function Reservation(props) {
   };
 
   const onClick = () => {
+    navigate("/home");
+  };
+
+  const handleSearch = () => {
     navigate("/searchResult");
   };
 
   return (
     <div className={styles.all}>
-      {/* <SearchBar /> */}
       <div className={styles.container}>
         <div className={styles.date}>
           <div className={styles.dateItem1}>
@@ -137,7 +124,11 @@ function Reservation(props) {
                       <div>
                         <Button
                           variant="contained"
-                          onClick={handleNext}
+                          onClick={
+                            index === steps.length - 1
+                              ? handleSearch
+                              : handleNext
+                          }
                           sx={{ mt: 1, mr: 1 }}
                         >
                           {index === steps.length - 1
