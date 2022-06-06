@@ -1,6 +1,6 @@
 const { createBooking } = require('../services/bookings/createBooking');
 const { getBookings } = require('../services/bookings/getBookings');
-const { searchBooking} = require('../services/bookings/getCustomerBookings');
+const { searchBooking } = require('../services/bookings/getCustomerBookings');
 
 const getallBookings = async (req, res, next) => {
   const { id } = req.params;
@@ -8,13 +8,7 @@ const getallBookings = async (req, res, next) => {
     const data = await getBookings(id);
     data ? res.send(data) : res.send({ msg: 'booking not found' });
   } catch (error) {
-    if (error.response) {
-      res.status(error.response.status).send({ msg: error.response.status });
-    } else if (error.request) {
-      next(error.request);
-    } else {
-      next(error);
-    }
+    next(error);
   }
 };
 
@@ -33,13 +27,7 @@ const dbcreateBooking = async (req, res, next) => {
     const data = await createBooking(req.body);
     res.status(200).send(data);
   } catch (error) {
-    if (error.response) {
-      res.status(error.response.status).send({ msg: error.response.status });
-    } else if (error.request) {
-      next(error.request);
-    } else {
-      next(error);
-    }
+    next(error);
   }
 };
 
@@ -49,13 +37,7 @@ const getCustomersBookings = async (req, res, next) => {
     const bookingByCustomer = await searchBooking(id);
     res.status(200).send(bookingByCustomer);
   } catch (error) {
-    if (error.response) {
-      res.status(error.response.status).send({ msg: error.response.status });
-    } else if (error.request) {
-      next(error.request);
-    } else {
-      next(error);
-    }
+    next(error);
   }
 };
 module.exports = {

@@ -21,13 +21,7 @@ const getLocations = async (req, res, next) => {
       res.send(dataDB);
     }
   } catch (error) {
-    if (error.response) {
-      res.status(error.response.status).send({ msg: error.response.status });
-    } else if (error.request) {
-      next(error.request);
-    } else {
-      next(error);
-    }
+    next(error);
   }
 };
 
@@ -46,7 +40,7 @@ const postLocations = async (req, res, next) => {
       time_close,
       airport_location,
     } = req.body;
-    const geo=[lat,lon]
+    const geo = [lat, lon];
     const [location, created] = await Location.findOrCreate({
       where: {
         name,
@@ -55,7 +49,7 @@ const postLocations = async (req, res, next) => {
         state_name,
         postal_code,
         geo,
-        phone:String(phone),
+        phone: String(phone),
         time_open,
         time_close,
         airport_location,
@@ -69,13 +63,7 @@ const postLocations = async (req, res, next) => {
         .send({ msg: 'There is already a location with this name', location });
     }
   } catch (error) {
-    if (error.response) {
-      res.status(error.response.status).send({ msg: error.response.status });
-    } else if (error.request) {
-      next(error.request);
-    } else {
-      next(error);
-    }
+    next(error);
   }
 };
 
@@ -89,13 +77,7 @@ const getLocationById = async (req, res, next) => {
         : res.send({ msg: 'Location not found by id' });
     }
   } catch (error) {
-    if (error.response) {
-      res.status(error.response.status).send({ msg: error.response.status });
-    } else if (error.request) {
-      next(error.request);
-    } else {
-      next(error);
-    }
+    next(error);
   }
 };
 

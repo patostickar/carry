@@ -51,13 +51,7 @@ const createCartype = async (req, res, next) => {
         .send({ msg: 'There is already a cartype with this name', cartype });
     }
   } catch (error) {
-    if (error.response) {
-      res.status(error.response.status).send({ msg: error.response.status });
-    } else if (error.request) {
-      next(error.request);
-    } else {
-      next(error);
-    }
+    next(error);
   }
 };
 const GetTypeConunt = async (req, res, next) => {
