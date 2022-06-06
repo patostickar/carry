@@ -5,7 +5,7 @@ const { createCar } = require('./src/services/cars/createCar');
 const { PORT } = process.env;
 
 conn
-  .sync({ force: true })
+  .sync({ force: false })
   .then(async () => {
     server.listen(PORT, () => {
       console.log(`%s listening at ${PORT}`);
