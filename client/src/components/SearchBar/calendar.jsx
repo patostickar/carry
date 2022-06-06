@@ -1,12 +1,12 @@
-import { useState, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setPickupTime, setDroppOffTime } from '../../redux/searchBar';
-import { DateRange } from 'react-date-range';
-import { format } from 'date-fns';
-import { useOutsideAlerter } from '../GeneralFuntions/useOutsideAlerter';
-import 'react-date-range/dist/styles.css'; // main style file
-import 'react-date-range/dist/theme/default.css'; // theme css file
-import styles from './styles/calendar.module.css';
+import { useState, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setPickupTime, setDroppOffTime } from "../../redux/searchBar";
+import { DateRange } from "react-date-range";
+import { format } from "date-fns";
+import { useOutsideAlerter } from "../GeneralFuntions/useOutsideAlerter";
+import "react-date-range/dist/styles.css"; // main style file
+import "react-date-range/dist/theme/default.css"; // theme css file
+import styles from "./styles/calendar.module.css";
 
 // I had to mix redux and local state, because I can only store timestamp on redux,
 // but the Calendar needs an object Date to work properly
@@ -18,7 +18,7 @@ export default function Calendar() {
     {
       startDate: new Date(pickupDate),
       endDate: new Date(dropoffDate),
-      key: 'selection',
+      key: "selection",
     },
   ]);
   // console.log(date);
@@ -33,13 +33,13 @@ export default function Calendar() {
         <span
           onClick={() => setOpenDate(!openDate)}
           className={styles.headerSearchText}
-        >{`${format(new Date(pickupDate), 'dd/MM/yyyy')}`}</span>
+        >{`${format(new Date(pickupDate), "dd/MM/yyyy")}`}</span>
       </div>
       <div className={styles.endDateContainer}>
         <span
           onClick={() => setOpenDate(!openDate)}
           className={styles.headerSearchText}
-        >{`${format(new Date(dropoffDate), 'dd/MM/yyyy')}`}</span>
+        >{`${format(new Date(dropoffDate), "dd/MM/yyyy")}`}</span>
       </div>
       {openDate && (
         <DateRange
