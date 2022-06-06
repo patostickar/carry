@@ -19,17 +19,31 @@ import Typography from "@mui/material/Typography";
 import { useSelector } from "react-redux";
 import { DAY_MILISECONDS } from "../GeneralFuntions/constants";
 import LinearIndeterminate from "../GeneralFuntions/LinearIndeterminate";
+import axios from "axios";
 
 function Reservation(props) {
+  const { User } = useSelector((state) => state.user);
   const { location, pickupDate, dropoffDate } = useSelector(
     (state) => state.searchBar
   );
 
   const { booking } = useSelector((state) => state.booking);
+  const Pdate = new Date(pickupDate)
+  const Ddate = new Date(dropoffDate)
+  const PickDate = Pdate.getFullYear()+"/"+(Pdate.getMonth()+1)+"/"+Pdate.getDate()
+  const DropDate = Ddate.getFullYear()+"/"+(Ddate.getMonth()+1)+"/"+Ddate.getDate()
 
   const navigate = useNavigate();
 
   const dateRange = (dropoffDate - pickupDate) / DAY_MILISECONDS;
+
+  async function CreateBooking(data){
+    try {
+     await axios.post('/bookings', data);
+
+    } catch (error) {
+      console.log(error);
+    }};
 
   const steps = [
     {
@@ -61,10 +75,18 @@ function Reservation(props) {
   };
 
   const onClick = () => {
-    navigate("/searchResult");
+ 
+    navigate("/");
   };
 
   const handleSearch = () => {
+    CreateBooking({
+      carTypeId: booking.carTypeId ,
+      customerId:User.id ,
+      locationId:booking.locationId,
+      pickUpDate:PickDate,
+      dropOffDate:DropDate
+    })
     navigate("/");
   };
 
