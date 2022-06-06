@@ -1,6 +1,6 @@
 const { Booking } = require('../../db');
 
-module.exports.getBookingsDB = async (id) => {
+module.exports.getBookings = async (id) => {
   if (id) {
     return await Booking.findOne({
       where: { id },

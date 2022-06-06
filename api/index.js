@@ -1,15 +1,14 @@
 const server = require('./src/app.js');
 const fs = require('fs');
-const { conn, Location, Customer, Cartype } = require('./src/db.js');
+const { conn, Location, Customer, Cartype, Review } = require('./src/db.js');
 const { createCar } = require('./src/services/cars/createCar');
-
 const { PORT } = process.env;
 
 conn
   .sync({ force: false })
   .then(async () => {
     server.listen(PORT, () => {
-      console.log('%s listening at 3001');
+      console.log(`%s listening at ${PORT}`);
     });
 
     const bufferData = fs.readFileSync('./src/DB.json');
@@ -30,16 +29,16 @@ conn
       img: l.img,
     }));
 
-    const customers = data.customers.map((c) => ({
-      email: c.email,
-      first_name: c.first_name,
-      last_name: c.last_name,
-      street: c.street,
-      city: c.city,
-      postal_code: c.postcal_code,
-      phone: c.phone,
-      password: c.password,
-    }));
+    // const customers = data.customers.map((c) => ({
+    //   email: c.email,
+    //   first_name: c.first_name,
+    //   last_name: c.last_name,
+    //   street: c.street,
+    //   city: c.city,
+    //   postal_code: c.postcal_code,
+    //   phone: c.phone,
+    //   password: c.password,
+    // }));
 
     const carTypes = data.car_types.map((c) => ({
       make: c.make,
@@ -61,13 +60,35 @@ conn
       Location.bulkCreate(locations, {
         ignoreDuplicates: true,
       }),
-      Customer.bulkCreate(customers, {
-        ignoreDuplicates: true,
-      }),
+      // Customer.bulkCreate(customers, {
+      //   ignoreDuplicates: true,
+      // }),
       Cartype.bulkCreate(carTypes, {
         ignoreDuplicates: true,
       }),
     ]);
+    // const review = await Review.create({
+    //   review:
+    //     'Trabajamos con Carry hace un año, nos sentimos satisfechos con su servicio además cuentan con vehiculos de alta gama.',
+    // });
+    // const user = await Customer.findOne({
+    //   where: { email: 'franco.adriel.garcia@gmail.com' },
+    // });
+    // review.setCustomer(user);
+    // const review1 = await Review.create({
+    //   review:
+    //     'Alquilamos un Spark GT para visitar Córdoba y todo fue espectacular. Hasta pudimos dejar el auto en el aeropuerto.',
+    // });
+    // const user1 = await Customer.findOne({
+    //   where: { email: 'elozcuro1@gmail.com' },
+    // });
+    // review1.setCustomer(user1);
+    // const review2 = await Review.create({
+    //   review:
+    //     'Empresa recomenda al 100% la transaccion fue rapida y sin contratiempos, el vehiculo en excelentes condiciones.',
+    // });
+    // const user2 = await Customer.findOne();
+    // review2.setCustomer(user2);
 
     const cordoba = await Location.findOne({
       where: { name: 'Córdoba Cars' },
@@ -81,6 +102,7 @@ conn
     const corrientes = await Location.findOne({
       where: { name: 'Corrientes Cars' },
     });
+
     const cartype1 = await Cartype.findOne({
       where: { make: 'Ford', model: 'Fiesta' },
     });
@@ -111,10 +133,6 @@ conn
     const cartype10 = await Cartype.findOne({
       where: { make: 'Ford', model: 'Edge' },
     });
-    // const location1 = await Location.findOne({where:{name: "Ministro Pistarini International Airport"}})
-    // const cartype1 = await Cartype.findOne({where:{make: "Chrysler"}})
-    // const location2 = await Location.findOne({where:{name: "Palermo Cars"}})
-    // const cartype2 = await Cartype.findOne({where:{make: "Volkswagen"}})
 
     await createCar(cordoba.id, cartype1.id);
     await createCar(cordoba.id, cartype1.id);
@@ -172,6 +190,6 @@ conn
     await createCar(corrientes.id, cartype9.id);
     await createCar(corrientes.id, cartype10.id);
 
-    console.log('Locations, Customers and CarTypes have been saved');
+    console.log('Server up and running');
   })
   .catch((err) => console.log(err));

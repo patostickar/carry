@@ -10,7 +10,7 @@ export default function Steps() {
     <Box sx={{ width: '100%' }}>
       <Stepper activeStep={0} alternativeLabel>
         {steps.map((label) => (
-          <Step key={label}>
+          <Step style={{zIndex:"-1"}} key={label}>
             <StepLabel>{label}</StepLabel>
           </Step>
         ))}

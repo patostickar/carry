@@ -1,30 +1,49 @@
-const { Car } = require('../../db');
+const { Car, Booking } = require('../../db');
 
 module.exports.getAvailableCars = async (
-  pickUpLocation,
+  locationId,
   pickUpDate,
   dropOffDate
 ) => {
   const carsInLocation = await Car.findAll({
-    where: { locationId: pickUpLocation },
+    where: { locationId },
   });
-  console.log(carsInLocation.length);
-  return carsInLocation;
+
+  const bookingsInLocation = await Booking.findAll({
+    where: { locationId },
+  });
+
+  // A simple condition to find out if two segments [a, b] and [c, d] intersect each other
+  // is(a - d) * (b - c) <= 0. It covers all the situations, when one date range(segment)
+  // only starts or only ends during the other and also when one of the is completely included into the other.
+
+  pickUpDate = new Date(pickUpDate);
+  dropOffDate = new Date(dropOffDate);
+
+  const unavailableCars = bookingsInLocation
+    .filter((b) => {
+      const bookingPickUpDate = new Date(b.dataValues.pickUpDate);
+      const bookingDropOffDate = new Date(b.dataValues.dropOffDate);
+
+      return (
+        (pickUpDate - bookingDropOffDate) * (dropOffDate - bookingPickUpDate)
+      );
+    })
+    .map((c) => c.dataValues.carId);
+
+  const unavailableCarsId = Array.from(new Set(unavailableCars));
+
+  const availableCars = carsInLocation.filter(
+    (c) => !unavailableCarsId.includes(c.dataValues.id)
+  );
+
+  // const availableCarsId = availableCars.map((c) => c.dataValues.id);
+
+  // console.log('Cars in location: ', carsInLocation.length);
+  // console.log('Unavailable cars: ', unavailableCarsId.length);
+  // console.log('Unavailable cars id: ', unavailableCarsId);
+  // console.log('Available cars: ', availableCars.length);
+  // console.log('Available cars id: ', availableCarsId);
+
+  return availableCars;
 };
-
-/*
-Document.findAll({
-where: {'$employee.manager.id$': id},
-      include: [{
-        model: models.Employee,
-        required: true,
-        as: 'employee',
-        include: [{
-          model: models.Manager,
-          required: true,
-          as: 'manager',
-          where: { id: managerId },
-        }],
-      }],
-
-*/

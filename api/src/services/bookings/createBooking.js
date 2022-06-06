@@ -1,76 +1,37 @@
-const { Booking, Car, Location, Customer } = require('../../db');
+const { Booking, Cartype } = require('../../db');
+const { getAvailableCars } = require('../cars/getAvailableCars');
+const { DAY_MILISECONDS } = require('../../constants.js');
 
-module.exports.createBooking = async (req) => {
-  const {
-    carId,
-    customerId,
-    pickUpLocation,
-    dropOffLocation,
-    dropOffDate,
+module.exports.createBooking = async (data) => {
+  const { carTypeId, customerId, locationId, pickUpDate, dropOffDate } = data;
+
+  const availableCars = await getAvailableCars(
+    locationId,
     pickUpDate,
+    dropOffDate
+  );
+
+  const findAvailableCarOfType = availableCars.find(
+    (c) => c.cartypeId === carTypeId
+  );
+
+  if (!findAvailableCarOfType)
+    throw new Error('No hay más autos disponibles de este tipo');
+
+  const { price } = await Cartype.findByPk(findAvailableCarOfType.cartypeId);
+  const dateRange =
+    (new Date(dropOffDate) - new Date(pickUpDate)) / DAY_MILISECONDS;
+  const reservationTotal = price * dateRange;
+
+  const booking = await Booking.create({
+    pickUpDate,
+    dropOffDate,
     reservationTotal,
-    status,
-  } = req.body;
-  if (
-    carId &&
-    customerId &&
-    pickUpLocation &&
-    dropOffLocation &&
-    dropOffDate &&
-    pickUpDate &&
-    reservationTotal &&
-    status
-  ) {
-    if (pickUpDate === dropOffDate || dropOffDate < pickUpDate) {
-      return 'Deben ser diferentes fechas para generar la reserva y la fecha de retorno no puede ser menor a la fecha inicio ';
-    }
+  });
 
-    const customer = await Customer.findOne({ where: { id: customerId } });
-    const car = await Car.findOne({ where: { id: carId } });
-    const lstart = await Location.findOne({ where: { id: pickUpLocation } });
-    const lend = await Location.findOne({ where: { id: dropOffLocation } });
-   // const { dataValues } = car;
+  booking.setCustomer(customerId);
+  booking.setCar(findAvailableCarOfType.id);
+  booking.setLocation(locationId);
 
-    const [booking, created] = await Booking.findOrCreate({
-      where: {
-        carId,
-        pickupDate:pickUpDate,
-        returnDate:dropOffDate
-      },
-      defaults: {
-        status,
-        reservationTotal,
-        //locationId: dataValues.locationId,
-      },
-    });
-
-    if (customer) {
-      booking.setCustomer(customer);
-    } else {
-      return 'Customer not found';
-    }
-    if (car) {
-      booking.setCar(car);
-    } else {
-      return 'Car not found';
-    }
-    if (lstart) {
-      booking.setPickUpLocation(lstart);
-    } else {
-      return 'Pick Up Location not found';
-    }
-    if (lend) {
-      booking.setDropOffLocation(lend);
-    } else {
-      return 'Drop Off Location not found';
-    }
-
-    if (created) {
-      return 'Booking created';
-    } else {
-      return 'El car ya se encuentra reservado';
-    }
-  } else {
-    return 'Incomplete data';
-  }
+  return 'Reserva confirmada';
 };

@@ -33,13 +33,13 @@ export default function Calendar() {
         <span
           onClick={() => setOpenDate(!openDate)}
           className={styles.headerSearchText}
-        >{`${format(new Date(pickupDate), 'MM/dd/yyyy')}`}</span>
+        >{`${format(new Date(pickupDate), 'dd/MM/yyyy')}`}</span>
       </div>
       <div className={styles.endDateContainer}>
         <span
           onClick={() => setOpenDate(!openDate)}
           className={styles.headerSearchText}
-        >{`${format(new Date(dropoffDate), 'MM/dd/yyyy')}`}</span>
+        >{`${format(new Date(dropoffDate), 'dd/MM/yyyy')}`}</span>
       </div>
       {openDate && (
         <DateRange

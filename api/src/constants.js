@@ -1,0 +1,1 @@
+module.exports.DAY_MILISECONDS = 86400000;

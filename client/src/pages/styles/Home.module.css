@@ -1,0 +1,9 @@
+.homeContainer {
+  max-width: 1024px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}

@@ -63,19 +63,21 @@ export const carsResults = createSlice({
   },
 });
 
-export const fetchCarTypes = (pickupLocation) => async (dispatch) => {
-  try {
+export const fetchCarTypes =
+  (locationId, pickUpDate, dropOffDate) => async (dispatch) => {
+    pickUpDate = new Date(pickUpDate).toISOString().slice(0, 10);
+    dropOffDate = new Date(dropOffDate).toISOString().slice(0, 10);
     dispatch(setCarTypes([]));
-    await axios
-      // .get(`http://localhost:3001/cartype/count/${pickupLocation}`)
+    try {
+      const res = await axios.get('/cars/SearchResults', {
+        params: { locationId, pickUpDate, dropOffDate },
+      });
+      dispatch(setCarTypes(res.data));
       // .then((res) => dispatch(setCarTypes(res.data)));
-      .get(`http://localhost:3001/cartypes`)
-      .then((res) => dispatch(setCarTypes(res.data)));
-    console.log('fetched car types');
-  } catch (error) {
-    console.log(error);
-  }
-};
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
 export const {
   setCarTypes,

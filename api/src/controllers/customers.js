@@ -15,36 +15,45 @@ const getCustomers = async (req, res, next) => {
     }
   }
 };
+const getCustomerByemail = async (req, res, next) => {
+  try {
+    const { email } = req.params;
+    if (email) {
+      const data = await Customer.findOne({where:{email}});
+      data
+        ? res.status(200).send(data)
+        : res.send({ msg: 'Customer not found' });
+    } else {
+      res.send({ msg: 'el email es necesario' });
+    }
+  } catch (error) {
+    if (error.response) {
+      res.status(error.response.status).send({ msg: error.response.status });
+    } else if (error.request) {
+      next(error.request);
+    } else {
+      next(error);
+    }
+  }
+};
+
 
 const postCustomer = async (req, res, next) => {
   try {
     const {
       email,
-      first_name,
-      last_name,
-      street,
-      city,
-      phone,
-      postal_code,
-      password,
-      isAdmin,
-      isPremium,
-      isBanned,
+      given_name,
+      family_name,
+      picture,
     } = req.body;
     const [customer, created] = await Customer.findOrCreate({
       where: {
         email,
-        first_name,
-        last_name,
-        street,
-        city,
-        phone,
-        postal_code,
-        password,
-        isAdmin,
-        isPremium,
-        isBanned,
-      },
+        img :picture,
+      },defaults:{
+        first_name : given_name,
+        last_name : family_name
+      }
     });
     if (created) {
       return res.status(201).send({ msg: 'Customer created' });
@@ -141,4 +150,5 @@ module.exports = {
   postCustomer,
   getCustomerById,
   putCustomer,
+  getCustomerByemail
 };
