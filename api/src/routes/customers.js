@@ -3,19 +3,23 @@ const router = Router();
 
 const {
   getCustomers,
-  getCustomerById,
-  postCustomer,
-  putCustomer,
   getCustomerByemail,
+  getReviews,
+  postCustomer,
+  postReview,
+  putCustomer,
+  // getCustomerById,
 } = require('../controllers/customers');
 
 router.get('/', getCustomers);
-
+router.get('/reviews', getReviews);
 router.get('/:email', getCustomerByemail);
-// router.get('/:id', getCustomerById);
+
+router.post('/', postCustomer);
+router.post('/reviews', postReview);
 
 router.put('/:id', putCustomer);
 
-router.post('/', postCustomer);
+// router.get('/:id', getCustomerById);
 
 module.exports = router;
