@@ -7,7 +7,7 @@ import Checkbox from '@mui/material/Checkbox';
 import { setTransmission } from '../../../redux/carsResults';
 
 export default function Transmission() {
-  const { manual, automatic } = useSelector(
+  const { manual, automático } = useSelector(
     (state) => state.carsResults.filters.transmission
   );
 
@@ -27,7 +27,7 @@ export default function Transmission() {
             <Checkbox
               checked={manual}
               onChange={handleTransmission}
-              disabled={automatic}
+              disabled={automático}
               name='manual'
             />
           }
@@ -36,10 +36,10 @@ export default function Transmission() {
         <FormControlLabel
           control={
             <Checkbox
-              checked={automatic}
+              checked={automático}
               onChange={handleTransmission}
               disabled={manual}
-              name='automatic'
+              name='automático'
             />
           }
           label='Automático'

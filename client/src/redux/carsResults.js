@@ -8,7 +8,7 @@ const initialState = {
   filters: {
     transmission: {
       manual: false,
-      automatic: false,
+      automático: false,
     },
     airConditioning: false,
     fourPlusSeats: false,
@@ -83,15 +83,14 @@ export const fetchCarTypes =
     }
   };
 export const fetchAllCarTypes = () => async (dispatch) => {
-
-    try {
-      const res = await axios.get('/carTypes');
-      dispatch(setAllCarTypes(res.data));
-      // .then((res) => dispatch(setCarTypes(res.data)));
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  try {
+    const res = await axios.get('/carTypes');
+    dispatch(setAllCarTypes(res.data));
+    // .then((res) => dispatch(setCarTypes(res.data)));
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export const {
   setCarTypes,
