@@ -8,7 +8,7 @@ export default function AdminPanelSideBar(){
         <>
         {/* <div>Holis soy una sidebar jajaj</div> */}
         
-        <span style={{display: "flex", "flex-direction": "column", "align-items": "center"}}>
+        <span style={{display: "flex", "flexDirection": "column", "alignItems": "center"}}>
 
 
             <NavLink to='/cartypecreate'><Button variant='contained'>Crear un tipo auto</Button>  </NavLink>
