@@ -31,6 +31,7 @@ module.exports.createBooking = async (data) => {
 
   booking.setCustomer(customerId);
   booking.setCar(findAvailableCarOfType.id);
+  booking.setCartype(findAvailableCarOfType.cartypeId);
   booking.setLocation(locationId);
 
   return 'Reserva confirmada';

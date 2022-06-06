@@ -18,8 +18,6 @@ export default function Review() {
     };
 
 
-
-  console.log(User)
  
 
   return (
