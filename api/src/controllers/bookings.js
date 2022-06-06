@@ -1,10 +1,8 @@
 const { createBooking } = require('../services/bookings/createBooking');
 const { getBookings } = require('../services/bookings/getBookings');
-const {
-  getCustomerBookings,
-} = require('../services/bookings/getCustomerBookings');
+const { searchBooking} = require('../services/bookings/getCustomerBookings');
 
-module.exports.getBookings = async (req, res, next) => {
+const getallBookings = async (req, res, next) => {
   const { id } = req.params;
   try {
     const data = await getBookings(id);
@@ -20,7 +18,7 @@ module.exports.getBookings = async (req, res, next) => {
   }
 };
 
-module.exports.createBooking = async (req, res, next) => {
+const dbcreateBooking = async (req, res, next) => {
   const { carTypeId, customerId, locationId, pickUpDate, dropOffDate } =
     req.body;
 
@@ -45,10 +43,10 @@ module.exports.createBooking = async (req, res, next) => {
   }
 };
 
-module.exports.getCustomersBookings = async (req, res, next) => {
+const getCustomersBookings = async (req, res, next) => {
   const { id } = req.params;
   try {
-    const bookingByCustomer = await getCustomerBookings(id);
+    const bookingByCustomer = await searchBooking(id);
     res.status(200).send(bookingByCustomer);
   } catch (error) {
     if (error.response) {
@@ -59,4 +57,9 @@ module.exports.getCustomersBookings = async (req, res, next) => {
       next(error);
     }
   }
+};
+module.exports = {
+  getallBookings,
+  dbcreateBooking,
+  getCustomersBookings,
 };

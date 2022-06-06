@@ -34,7 +34,7 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
             <PersonIcon color='primary' />
             <Typography
               onClick={() =>
-                setRenderControl({ ...renderControl, personalInfo: true })
+                setRenderControl({ ...renderControl, personalInfo: !renderControl.personalInfo })
               }
               style={{ fontWeight: 'lighter' }}
             >
@@ -55,7 +55,7 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
             <SecurityIcon color='primary' />
             <Typography
               onClick={() =>
-                setRenderControl({ ...renderControl, security: true })
+                setRenderControl({ ...renderControl, security: !renderControl.security })
               }
             >
               Seguridad
@@ -75,7 +75,7 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
             <PaymentIcon color='primary' />
             <Typography
               onClick={() =>
-                setRenderControl({ ...renderControl, payment: true })
+                setRenderControl({ ...renderControl, payment:!renderControl.payment })
               }
             >
               Pagos
@@ -95,7 +95,7 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
             <BookmarkAddIcon color='primary' />
             <Typography
               onClick={() =>
-                setRenderControl({ ...renderControl, booking: true })
+                setRenderControl({ ...renderControl, booking: !renderControl.booking })
               }
             >
               Reservas
