@@ -1,10 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Steps from "./Step2";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import PersonIcon from "@mui/icons-material/Person";
 import SpeedIcon from "@mui/icons-material/Speed";
 import LuggageIcon from "@mui/icons-material/Luggage";
 import WorkIcon from "@mui/icons-material/Work";
+import BuildIcon from "@mui/icons-material/Build";
 import styles from "./styles/Reservation.module.css";
 import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
@@ -14,24 +16,35 @@ import StepContent from "@mui/material/StepContent";
 import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
+import { useSelector } from "react-redux";
+import { DAY_MILISECONDS } from "../GeneralFuntions/constants";
 
-const steps = [
-  {
-    label: "Retira",
-    description: `Buenos Aires Centro - dom, 5 jun 2022 10:00`,
-  },
-  {
-    label: "Entrega",
-    description: "Buenos Aires Centro - dom, 6 jun 2022 10:00",
-  },
-  {
-    label: "Disfrutar",
-    description: `Si los datos son correctos, presiona para reservar, de lo contrario vaya al botón "Modificar"
-    `,
-  },
-];
+function Reservation(props) {
+  const { location, pickupDate, dropoffDate } = useSelector(
+    (state) => state.searchBar
+  );
 
-function Reservation() {
+  const { booking } = useSelector((state) => state.booking);
+
+  const navigate = useNavigate();
+
+  const dateRange = (dropoffDate - pickupDate) / DAY_MILISECONDS;
+
+  const steps = [
+    {
+      label: "Retira",
+      description: `${location.street}, ${location.city} (${booking.pickUpDate})`,
+    },
+    {
+      label: "Entrega",
+      description: `${location.street}, ${location.city} (${booking.dropOffDate}) `,
+    },
+    {
+      label: "Disfrutar",
+      description: "",
+    },
+  ];
+
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {
@@ -45,13 +58,22 @@ function Reservation() {
   const handleReset = () => {
     setActiveStep(0);
   };
+
+  const onClick = () => {
+    navigate("/home");
+  };
+
+  const handleSearch = () => {
+    navigate("/searchResult");
+  };
+
   return (
     <div className={styles.all}>
       <div className={styles.container}>
         <div className={styles.date}>
           <div className={styles.dateItem1}>
-            <span>Buenos Aires Centro</span>
-            <h3>dom, 5 jun 2022 10:00</h3>
+            <span>{location.name}</span>
+            <h3>{booking.pickUpDate}</h3>
           </div>
 
           <div className={styles.step}>
@@ -59,11 +81,11 @@ function Reservation() {
           </div>
 
           <div className={styles.dateItem2}>
-            <span>Buenos Aires Centro</span>
-            <h3>dom, 6 jun 2022 10:00</h3>
+            <span>{location.name}</span>
+            <h3>{booking.dropOffDate}</h3>
           </div>
           <div className={styles.modificar}>
-            <button>Modificar</button>
+            <button onClick={onClick}>Modificar</button>
           </div>
         </div>
         <div>
@@ -90,7 +112,7 @@ function Reservation() {
                   <StepLabel
                     optional={
                       index === 2 ? (
-                        <Typography variant="caption">Por ultimo</Typography>
+                        <Typography variant="caption">{""}</Typography>
                       ) : null
                     }
                   >
@@ -102,7 +124,11 @@ function Reservation() {
                       <div>
                         <Button
                           variant="contained"
-                          onClick={handleNext}
+                          onClick={
+                            index === steps.length - 1
+                              ? handleSearch
+                              : handleNext
+                          }
                           sx={{ mt: 1, mr: 1 }}
                         >
                           {index === steps.length - 1
@@ -139,11 +165,7 @@ function Reservation() {
             </div>
             <div className={styles.carCard}>
               <div className={styles.imageContainer}>
-                <img
-                  src="https://us.123rf.com/450wm/rawpixel/rawpixel1905/rawpixel190502364/123234788-vista-lateral-de-un-coche-deportivo-amarillo-en-3d.jpg"
-                  alt="img"
-                  className={styles.siImg}
-                />
+                <img src={booking.carImg} alt="img" className={styles.siImg} />
               </div>
 
               <div className={styles.siDesc}>
@@ -152,44 +174,48 @@ function Reservation() {
                 </div>
                 <div className={styles.siTitle}>
                   <h3>
-                    {"VolksWagen "}
-                    <span>o un coche similar</span>{" "}
+                    {booking.carType}
+                    <span> o un coche {booking.carClassName} similar</span>{" "}
                   </h3>
                 </div>
                 <div className={styles.siCarDesc}>
                   <div>
                     <span className="">
-                      <PersonIcon /> 4
+                      <PersonIcon /> {booking.carSeats} Asientos
                     </span>
                   </div>
                   <div>
                     <span className="">
                       {" "}
-                      <LuggageIcon /> 1 Maleta Grande{" "}
+                      <LuggageIcon /> {booking.carLargeSuitcase} Maleta grande
                     </span>
                   </div>
                   <div>
                     <span className="">
                       {" "}
-                      <WorkIcon /> 2 Maleta pequeña{" "}
+                      <WorkIcon /> {booking.carSmallSuitcase} Maleta pequeña
                     </span>
                   </div>
                   <div>
                     <span className="">
-                      {" "}
-                      <SpeedIcon /> 100 km/l
+                      <SpeedIcon /> {booking.carMpg} km/l
                     </span>
                   </div>
                 </div>
 
                 <div className={styles.siLocation}>
-                  <span className={styles.siFeatures}></span>
+                  <span className={styles.siFeatures}>
+                    <BuildIcon /> {booking.carTransmission}
+                  </span>
                 </div>
               </div>
               <div className={styles.siDetails}>
                 <div className={styles.siDetailTexts}>
-                  <span className={styles.siDaysxprice}>Precio por día/s </span>
-                  <span className={styles.siprice}>U$150 </span>
+                  <span className={styles.siDaysxprice}>
+                    {" "}
+                    Precio por {dateRange} {dateRange === 1 ? "día" : "días"}:{" "}
+                  </span>
+                  <span className={styles.siprice}>$ {booking.carPrice}</span>
                   <span className={styles.siAmendments}>
                     Cancelación gratuita
                   </span>

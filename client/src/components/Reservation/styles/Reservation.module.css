@@ -90,7 +90,6 @@ container {
 .carCard {
   grid-column: 2;
   grid-row: 3;
-  /* border: 2px solid #febb02; */
   padding: 2em 1em;
   border-radius: 5px;
   display: flex;
@@ -109,7 +108,7 @@ container {
 }
 .imageContainer {
   position: relative;
-  width: 350px;
+  width: 500px;
 }
 .siImg {
   width: 100%;
@@ -131,8 +130,6 @@ container {
 }
 
 .siCarDesc {
-  /* background-color: #febb02; */
-  /* display: list-item; */
   display: flexbox;
   position: relative;
   justify-content: center;
