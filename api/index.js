@@ -29,16 +29,6 @@ conn
     //   img: l.img,
     // }));
 
-    // const customers = data.customers.map((c) => ({
-    //   email: c.email,
-    //   firstName: c.first_name,
-    //   lastName: c.last_name,
-    //   street: c.street,
-    //   city: c.city,
-    //   postalCode: c.postcal_code,
-    //   phone: c.phone,
-    //   password: c.password,
-    // }));
 
     // const carTypes = data.car_types.map((c) => ({
     //   make: c.make,
@@ -60,9 +50,7 @@ conn
     //   Location.bulkCreate(locations, {
     //     ignoreDuplicates: true,
     //   }),
-    //   Customer.bulkCreate(customers, {
-    //     ignoreDuplicates: true,
-    //   }),
+
     //   Cartype.bulkCreate(carTypes, {
     //     ignoreDuplicates: true,
     //   }),
