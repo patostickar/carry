@@ -1,3 +1,4 @@
+const { Booking } = require('../db');
 const { createBooking } = require('../services/bookings/createBooking');
 const { getBookings } = require('../services/bookings/getBookings');
 const { searchBooking } = require('../services/bookings/getCustomerBookings');
@@ -52,8 +53,24 @@ const dbCreateBooking = async (req, res, next) => {
   }
 };
 
+const editBooking = async (req, res, next) => {
+  const { id } = req.params;
+
+  if (!id)
+    return res.status(400).send('Se requiere enviar el ID de la reserva');
+
+  try {
+    const booking = await Booking.findByPk(id);
+    booking.update(req.body);
+    res.send(booking);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   getAllBookings,
   dbCreateBooking,
   getCustomerBookings,
+  editBooking,
 };
