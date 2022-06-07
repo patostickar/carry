@@ -2,15 +2,14 @@ const { Router } = require('express');
 const router = Router();
 
 const {
-  getLocations,
-  postLocations,
+  getAllLocations,
+  createLocation,
   getLocationById,
 } = require('../controllers/locations');
 
-router.get('/', getLocations);
-
+router.get('/', getAllLocations);
 router.get('/:id', getLocationById);
 
-router.post('/', postLocations);
+router.post('/', createLocation);
 
 module.exports = router;

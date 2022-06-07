@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import logError from '../components/GeneralFuntions/logError';
 
 const initialState = {
   testimonials: [],
@@ -20,7 +21,7 @@ export const fetchTestimonials = (id1, id2, id3) => async (dispatch) => {
       dispatch(SetTestimonials(res.data));
     });
   } catch (error) {
-    console.log(error);
+    logError(error);
   }
 };
 

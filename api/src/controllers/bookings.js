@@ -1,65 +1,59 @@
 const { createBooking } = require('../services/bookings/createBooking');
 const { getBookings } = require('../services/bookings/getBookings');
-const { searchBooking} = require('../services/bookings/getCustomerBookings');
+const { searchBooking } = require('../services/bookings/getCustomerBookings');
 
-const getallBookings = async (req, res, next) => {
+const getAllBookings = async (req, res, next) => {
   const { id } = req.params;
   try {
-    const data = await getBookings(id);
-    data ? res.send(data) : res.send({ msg: 'booking not found' });
+    const booking = await getBookings(id);
+    booking
+      ? res.send(booking)
+      : res.status(400).send('No se encontró una reserva con ese ID');
   } catch (error) {
-    if (error.response) {
-      res.status(error.response.status).send({ msg: error.response.status });
-    } else if (error.request) {
-      next(error.request);
-    } else {
-      next(error);
-    }
+    next(error);
   }
 };
 
-const dbcreateBooking = async (req, res, next) => {
+const getCustomerBookings = async (req, res, next) => {
+  const { id } = req.params;
+
+  if (!id) return res.status(400).send('Se requiere enviar el ID del cliente');
+
+  try {
+    const booking = await searchBooking(id);
+    res.send(booking);
+  } catch (error) {
+    next(error);
+  }
+};
+
+const dbCreateBooking = async (req, res, next) => {
   const { carTypeId, customerId, locationId, pickUpDate, dropOffDate } =
     req.body;
 
   if (!carTypeId || !customerId || !locationId || !pickUpDate || !dropOffDate)
-    return 'Se requiere enviar todos los parámetros';
+    return res.status(400).send('Se requiere enviar todos los parámetros');
 
-  if (dropOffDate < pickUpDate) {
-    return 'La reserva mínima es de 24hs';
+  if (new Date(dropOffDate) <= new Date(pickUpDate)) {
+    return res.status(400).send('La reserva mínima es de 24hs');
+  }
+
+  if (new Date(pickUpDate) < new Date()) {
+    return res
+      .status(400)
+      .send(`Fecha de retiro no puede ser anterior a ${new Date().toString()}`);
   }
 
   try {
-    const data = await createBooking(req.body);
-    res.status(200).send(data);
+    const booking = await createBooking(req.body);
+    res.status(201).send({ msg: 'Reserva confirmada', booking });
   } catch (error) {
-    if (error.response) {
-      res.status(error.response.status).send({ msg: error.response.status });
-    } else if (error.request) {
-      next(error.request);
-    } else {
-      next(error);
-    }
+    next(error);
   }
 };
 
-const getCustomersBookings = async (req, res, next) => {
-  const { id } = req.params;
-  try {
-    const bookingByCustomer = await searchBooking(id);
-    res.status(200).send(bookingByCustomer);
-  } catch (error) {
-    if (error.response) {
-      res.status(error.response.status).send({ msg: error.response.status });
-    } else if (error.request) {
-      next(error.request);
-    } else {
-      next(error);
-    }
-  }
-};
 module.exports = {
-  getallBookings,
-  dbcreateBooking,
-  getCustomersBookings,
+  getAllBookings,
+  dbCreateBooking,
+  getCustomerBookings,
 };

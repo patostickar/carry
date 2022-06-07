@@ -1,19 +1,16 @@
-import React from 'react';
 import { Formik } from 'formik';
+import Alerts from '../Alerts';
 import axios from 'axios';
-import { Alerts } from '../GeneralFuntions/GeneralFuntions';
-
+import logError from '../GeneralFuntions/logError';
 
 export default function CarCreate() {
-
- async function postCar(values){
-      try {
-       await axios.post('/cartypes', values);
-
-      } catch (error) {
-        console.log(error);
-      }};
-  
+  async function postCar(values) {
+    try {
+      await axios.post('/cartypes', values);
+    } catch (error) {
+      logError(error);
+    }
+  }
 
   return (
     <Formik
@@ -87,7 +84,7 @@ export default function CarCreate() {
       }}
       onSubmit={(values) => {
         // alert(JSON.stringify(values))
-        postCar(values)
+        postCar(values);
         Alerts('success', 'Vehiculo creado');
       }}
     >
@@ -130,7 +127,6 @@ export default function CarCreate() {
             />
             {touched.model && errors.model && <div>{errors.model}</div>}
           </div>
-
 
           <div>
             <label htmlFor='className'>nombre de clase</label>
