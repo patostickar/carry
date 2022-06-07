@@ -1,6 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 import logError from '../components/GeneralFuntions/logError';
+
 
 const initialState = {
   User: null,
@@ -32,8 +34,11 @@ export const putUser = (id, data) => async (dispatch) => {
   try {
     await axios.put(`/customers/${id}`, data).then((res) => {
       dispatch(SetUser(res.data));
+      Swal.fire('La informacion se ha actualizado correctamente!!')
+    
     });
   } catch (error) {
+    Swal.fire('Error: ', error.message);
     console.log(error);
   }
 };

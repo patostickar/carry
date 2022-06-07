@@ -33,9 +33,12 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
           >
             <PersonIcon color='primary' />
             <Typography
-              onClick={() =>
+              onClick={() =>{
+                (!renderControl.security&&
+                !renderControl.payment&&
+                !renderControl.booking)&&
                 setRenderControl({ ...renderControl, personalInfo: !renderControl.personalInfo })
-              }
+                }}
               style={{ fontWeight: 'lighter' }}
             >
               Informacion Personal
@@ -55,6 +58,7 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
             <SecurityIcon color='primary' />
             <Typography
               onClick={() =>
+                
                 setRenderControl({ ...renderControl, security: !renderControl.security })
               }
             >
