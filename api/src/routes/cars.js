@@ -4,7 +4,7 @@ const router = Router();
 const {
   getAllCars,
   getAvailableCars,
-  createCar,
+  addCar,
   getCarById,
 } = require('../controllers/cars');
 
@@ -12,7 +12,7 @@ router.get('/', getAllCars);
 router.get('/:id', getCarById);
 router.get('/SearchResults', getAvailableCars);
 
-router.post('/', createCar);
+router.post('/', addCar);
 
 // router.put("/:id", updateCarDate)
 // router.patch('/:id', updateLocation);

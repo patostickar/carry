@@ -4,15 +4,31 @@ const {
   getAvailableCarTypes,
 } = require('../services/cartypes/getAvailableCarTypes');
 const { getCarById } = require('../services/cars/getCarById');
-const { createCar } = require('../services/cars/createCar');
+const { addCar } = require('../services/cars/addCar');
 // const { updateCarLocation } = require('../services/cars/updateCarLocation');
 
-module.exports.getAllCars = async (req, res, next) => {
+module.exports.getAllCars = async (_req, res, next) => {
   try {
     const allCars = await getAllCars();
+    if (!allCars.length)
+      return res.status(400).send('No hay autos en la base de datos');
     res.send(allCars);
   } catch (error) {
-    console.log(error);
+    next(error);
+  }
+};
+
+module.exports.getCarById = async (req, res, next) => {
+  const { id } = req.params;
+  if (!id) return res.status(400).send('Por favor enviar el ID del auto');
+
+  try {
+    const data = await getCarById(id);
+    data
+      ? res.send(data)
+      : res.status(400).send('No se encontró un auto con ese ID');
+  } catch (error) {
+    next(error);
   }
 };
 
@@ -43,29 +59,18 @@ module.exports.getAvailableCars = async (req, res, next) => {
   }
 };
 
-module.exports.getCarById = async (req, res, next) => {
-  const { id } = req.params;
-  try {
-    const data = await getCarById(id);
-    if (!id) {
-      data.length
-        ? res.send(data)
-        : res.send({ msg: 'no se encontraron autos' });
-    } else {
-      data ? res.send(data) : res.send({ msg: 'no se encontraron autos' });
-    }
-  } catch (error) {
-    next(error);
-  }
-};
+module.exports.addCar = async (req, res, next) => {
+  const { locationId, carTypeId } = req.body;
 
-module.exports.createCar = async (req, res, next) => {
-  const { locationid, carTypeid } = req.body;
+  if (!locationId)
+    return res.status(400).send('Por favor enviar ID de ubicación');
+  if (!carTypeId)
+    return res.status(400).send('Por favor enviar ID de tipo de auto');
+
   try {
-    await createCar(locationid, carTypeid);
-    res.status(200).send({ msg: 'auto creado' });
+    await addCar(locationId, carTypeId);
+    res.status(200).send('Auto Creado');
   } catch (error) {
-    console.log(error);
     next(error);
   }
 };
