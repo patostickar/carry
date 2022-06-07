@@ -18,22 +18,24 @@ export default function Review() {
   return (
     <Formik
       initialValues={{
-        reviews: '',
+        review: '',
       }}
       onSubmit={(values) => {
         postreview(values);
-        Alerts('success', 'Gracias por la review');
+        Alerts('success', 'Gracias por su compartir su opinión');
       }}
     >
       {({ values, handleSubmit, handleChange, handleBlur }) => (
         <Form className='PostReview' onSubmit={handleSubmit}>
           <div>
-            <label htmlFor='reviews'>Deje una review</label>
+            <label htmlFor='review'>
+              ¿Cómo evaluaría experiencia con Carry?
+            </label>
             <textarea
-              id='reviews'
-              name='reviews'
-              placeholder='Deje una reviews'
-              value={values.reviews}
+              id='review'
+              name='review'
+              placeholder='Compártanos su experiencia'
+              value={values.review}
               onChange={handleChange}
               onBlur={handleBlur}
               cols='30'

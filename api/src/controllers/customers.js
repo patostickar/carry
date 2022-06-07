@@ -31,8 +31,12 @@ const postCustomer = async (req, res, next) => {
     family_name: lastName,
     picture,
   } = req.body;
+
+  if (!email)
+    return res.status(400).send('Se require un email para pder registrarse');
+
   try {
-    const [customer, created] = await Customer.findOrCreate({
+    const [, created] = await Customer.findOrCreate({
       where: {
         email,
       },
@@ -44,7 +48,7 @@ const postCustomer = async (req, res, next) => {
     });
 
     created
-      ? res.status(201).send({ msg: 'Cliente creado', customer })
+      ? res.status(201).send('Cliente registrado satisfactoriamente')
       : res.status(200).send('Ya existe un cliente con este correo');
   } catch (error) {
     next(error);
@@ -75,7 +79,7 @@ const putCustomer = async (req, res, next) => {
     const customer = await Customer.findByPk(id);
     if (!customer) return res.status(400).send('No hay un cliente con ese id');
     await customer.update(req.body);
-    res.status(200).send({ msg: 'Información editada', customer });
+    res.status(200).send({ msg: 'Información actualizada', customer });
   } catch (error) {
     next(error);
   }
@@ -90,17 +94,17 @@ const getReviews = async (_req, res, next) => {
 };
 
 const postReview = async (req, res, next) => {
-  console.log('hola');
   const { id } = req.params;
-  const { reviews } = req.body;
-  if (!id || !reviews.length)
+  const { review } = req.body;
+
+  if (!id || !review.length)
     return res.status(400).send('El testimonio no puede estar vacío');
 
   try {
     const customer = await Customer.findByPk(id);
-    const review = await Review.create({ review: reviews });
-    review.setCustomer(customer);
-    res.send('Gracias por tu testimonio!');
+    const newReview = await Review.create({ review });
+    newReview.setCustomer(customer);
+    res.send('Gracias por compartir tu testimonio!');
   } catch (error) {
     next(error);
   }
