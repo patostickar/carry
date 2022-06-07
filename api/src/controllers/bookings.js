@@ -21,7 +21,7 @@ const dbCreateBooking = async (req, res, next) => {
   if (!carTypeId || !customerId || !locationId || !pickUpDate || !dropOffDate)
     return res.status(400).send('Se requiere enviar todos los parámetros');
 
-  if (new Date(dropOffDate) < new Date(pickUpDate)) {
+  if (new Date(dropOffDate) <= new Date(pickUpDate)) {
     return res.status(400).send('La reserva mínima es de 24hs');
   }
 
