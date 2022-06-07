@@ -1,6 +1,23 @@
 .googleMap {
+  position: relative;
   height: 150px;
   border: 1px solid lightgray;
   margin-bottom: 15px;
-  background-image: url('../../../../assets/miniMap.png');
+  background-image: url('../../../../assets/miniMap.jpg');
+  background-size: cover;
+}
+
+.siCheckButton {
+  color: var(--white);
+  border-radius: 5px;
+  padding: 10px 5px;
+  font-size: 15px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  background-color: #1976d2d1;
+}
+
+.siCheckButton:hover {
+  background-color: #1976d2;
 }

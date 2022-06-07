@@ -1,32 +1,65 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import searchBarReducer from './searchBar';
 import carsResultsReducer from './carsResults';
+import testimonialsReducer from './testimonials';
+import bookingReducer from './booking';
+import userReducer from './user';
 
-// import {
-//   persistStore,
-//   persistReducer,
-//   FLUSH,
-//   REHYDRATE,
-//   PAUSE,
-//   PERSIST,
-//   PURGE,
-//   REGISTER,
-// } from 'redux-persist';
-// import storage from 'redux-persist/lib/storage';
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
+import storageSession from 'redux-persist/lib/storage/session';
+import storage from 'redux-persist/lib/storage';
 
-// const persistConfig = {
-//   key: 'root',
-//   version: 1,
-//   storage,
-// };
+const persistConfig = {
+  key: 'root',
+  version: 1,
+  storage,
+  blacklist: ['searchBar', 'carsResults', 'booking', 'testimonials'],
+};
+
+const searchBarPersistConfig = {
+  key: 'searchBar',
+  version: 1,
+  storage: storageSession,
+};
+const carsResultsPersistConfig = {
+  key: 'carsResults',
+  version: 1,
+  storage: storageSession,
+};
 
 const rootReducer = combineReducers({
-  searchBar: searchBarReducer,
-  carsResults: carsResultsReducer,
+  searchBar: persistReducer(searchBarPersistConfig, searchBarReducer),
+  carsResults: persistReducer(carsResultsPersistConfig, carsResultsReducer),
+  booking: bookingReducer,
+  testimonials: testimonialsReducer,
+  user: userReducer,
 });
 
-const store = configureStore({
-  reducer: rootReducer,
+// const store = configureStore({
+//   reducer: rootReducer,
+// });
+
+// export { store };
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+export const store = configureStore({
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
 
 export { store };

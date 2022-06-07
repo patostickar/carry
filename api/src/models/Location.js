@@ -11,37 +11,47 @@ module.exports = (sequelize) => {
       },
       name: {
         type: DataTypes.STRING,
+        allowNull: false,
       },
       street: {
         type: DataTypes.STRING,
+        allowNull: false,
       },
       city: {
         type: DataTypes.STRING,
+        allowNull: false,
       },
-      state_name: {
+      stateName: {
         type: DataTypes.STRING,
+        allowNull: false,
       },
-      postal_code: {
+      postalCode: {
         type: DataTypes.STRING,
+        allowNull: false,
       },
       geo: {
-        type: DataTypes.STRING,
+        type: DataTypes.ARRAY(DataTypes.STRING),
+        allowNull: false,
+        unique: true,
       },
-      /*       
-const point = { type: 'Point', coordinates: [-76.984722, 39.807222]}; // GeoJson format: [lng, lat]
-
-User.create({username: 'username', geometry: point }); */
       phone: {
         type: DataTypes.STRING,
+        allowNull: false,
       },
-      time_open: {
-        type: DataTypes.TIME,
+      timeOpen: {
+        type: DataTypes.STRING,
+        allowNull: false,
       },
-      time_close: {
-        type: DataTypes.TIME,
+      timeClose: {
+        type: DataTypes.STRING,
+        allowNull: false,
       },
-      airport_location: {
+      airportLocation: {
         type: DataTypes.BOOLEAN,
+        allowNull: false,
+      },
+      img: {
+        type: DataTypes.STRING,
       },
     },
     { timestamps: false }

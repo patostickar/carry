@@ -17,33 +17,26 @@ module.exports = (sequelize) => {
           isEmail: true,
         },
       },
-      first_name: {
+      firstName: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
-      last_name: {
+      lastName: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
       street: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
       city: {
         type: DataTypes.STRING,
-        allowNull: false,
+      },
+      postalCode: {
+        type: DataTypes.STRING,
       },
       phone: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
-      postal_code: {
+      img: {
         type: DataTypes.STRING,
-        allowNull: false,
-      },
-      password: {
-        type: DataTypes.STRING,
-        allowNull: false,
       },
       isAdmin: {
         type: DataTypes.BOOLEAN,

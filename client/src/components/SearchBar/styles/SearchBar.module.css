@@ -3,9 +3,10 @@
   background-color: var(--white);
   border: 3px solid #febb02;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 10px 10px;
   border-radius: 0.5rem;
+  gap: 3em;
 }
 
 .headerSearchItem {
@@ -14,11 +15,26 @@
   gap: 10px;
 }
 
-.headerButton {
+/* .headerButton {
   background-color: var(--bluebtn);
   color: var(--white);
   font-weight: 500;
   border: none;
   padding: 10px;
   cursor: pointer;
+} */
+
+.siCheckButton {
+  color: var(--white);
+  border-radius: 5px;
+  padding: 10px 5px;
+  font-size: 15px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  background-color: #1976d2d1;
+}
+
+.siCheckButton:hover {
+  background-color: #1976d2;
 }

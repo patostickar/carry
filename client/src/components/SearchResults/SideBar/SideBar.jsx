@@ -1,10 +1,13 @@
 import { useDispatch } from 'react-redux';
-import { clearAllFilters } from '../../../redux/carsResults.js';
+import { clearAllFilters } from '../../../redux/carsResults';
 import Box from '@mui/material/Box';
+import BasicModal from '../../BasicModal';
 import Transmission from './transmission';
 import CarCategory from './carCategory';
 import CarSpecs from './carSpecs';
+import CarMake from './carMake';
 import Divider from '@mui/material/Divider';
+import MapView from '../../LocationsMap/MapView';
 import styles from './styles/SideBar.module.css';
 
 function SideBar() {
@@ -17,10 +20,17 @@ function SideBar() {
         flexDirection: 'column',
       }}
     >
-      <div className={styles.googleMap}></div>
-      <h2>Filter</h2>
-      <button onClick={() => dispatch(clearAllFilters())}>
-        <h4>Clear all filters</h4>
+      <div className={styles.googleMap}>
+        <BasicModal text='Ver Mapa'>
+          <MapView />
+        </BasicModal>
+      </div>
+      <h2>Filtros</h2>
+      <button
+        className={styles.siCheckButton}
+        onClick={() => dispatch(clearAllFilters())}
+      >
+        Borrar todos los filtros
       </button>
       <Divider />
       <Transmission />
@@ -28,6 +38,8 @@ function SideBar() {
       <CarSpecs />
       <Divider />
       <CarCategory />
+      {/* <Divider /> */}
+      <CarMake />
     </Box>
   );
 }

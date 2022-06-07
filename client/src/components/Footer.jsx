@@ -86,11 +86,20 @@ export default function Footer() {
             </Box>
             <Box sx={{ textAlign: 'center' }}>
               <Link
-                href={'/home'}
+                href={'/'}
                 color='inherit'
                 sx={{ textDecoration: 'none', fontSize: '12px' }}
               >
                 Inicio
+              </Link>
+            </Box>
+            <Box sx={{ textAlign: 'center' }}>
+              <Link
+                href={'/about'}
+                color='inherit'
+                sx={{ textDecoration: 'none', fontSize: '12px' }}
+              >
+                Nosotros
               </Link>
             </Box>
             <Box sx={{ textAlign: 'center' }}>
@@ -100,15 +109,6 @@ export default function Footer() {
                 sx={{ textDecoration: 'none', fontSize: '12px' }}
               >
                 Terminos y Condiciones
-              </Link>
-            </Box>
-            <Box sx={{ textAlign: 'center' }}>
-              <Link
-                href={'/about'}
-                color='inherit'
-                sx={{ textDecoration: 'none', fontSize: '12px' }}
-              >
-                About
               </Link>
             </Box>
           </Grid>

@@ -1,16 +1,23 @@
 import { useAuth0 } from '@auth0/auth0-react';
-import { TabTitle } from './GeneralFuntions/GeneralFuntions';
+import TabTitle from './TabTitle';
 import JSONPretty from 'react-json-pretty';
 import styles from './styles/Profile.module.css';
 import 'react-json-pretty/themes/monikai.css';
 
 const Profile = () => {
   TabTitle('Perfil - Carry');
-  const { user, isAuthenticated, loginWithRedirect } = useAuth0();
-  console.log(user);
+  const { user, isAuthenticated, loginWithRedirect, isLoading } = useAuth0();
   return (
     <div>
-      {isAuthenticated ? (
+      {!isAuthenticated && isLoading ? (
+        <div className={styles.container}>
+          <h1>Bienvenido!</h1>
+          <p>Registrate para poder acceder a tu perfil</p>
+          <button className={styles.ghost} onClick={loginWithRedirect}>
+            Registrarse
+          </button>
+        </div>
+      ) : (
         <div className={styles.back}>
           <div className={styles.card} data-state='#about'>
             <div className={styles.cardHeader}>
@@ -34,14 +41,6 @@ const Profile = () => {
               </div>
             </div>
           </div>
-        </div>
-      ) : (
-        <div className={styles.container}>
-          <h1>Bienvenido!</h1>
-          <p>Registrate para poder acceder a tu perfil</p>
-          <button className={styles.ghost} onClick={loginWithRedirect}>
-            Registrarse
-          </button>
         </div>
       )}
     </div>

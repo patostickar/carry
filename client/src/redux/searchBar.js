@@ -1,17 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { add } from 'date-fns';
 import axios from 'axios';
 const initialState = {
-  pickupLocation: null,
-  dropoffLocation: null,
-  pickupDate: null,
-  dropoffDate: null,
+  location: null,
+  popLocation: '',
+  pickupDate: new Date().getTime(),
+  dropoffDate: add(new Date(), {
+    days: 1,
+  }).getTime(),
   locations: [],
 };
 
 export const fetchAllLocations = () => async (dispatch) => {
   try {
     await axios
-      .get('http://localhost:3001/locations')
+      .get('/locations')
       .then((res) => dispatch(setLocationList(res.data)));
   } catch (error) {
     console.log(error);
@@ -22,11 +25,14 @@ export const searchBar = createSlice({
   name: 'searchBar',
   initialState,
   reducers: {
-    setPickupLocation: (state, action) => {
-      state.pickupLocation = action.payload;
+    setLocation: (state, action) => {
+      state.location = action.payload;
     },
-    setDroppOffLocation: (state, action) => {
-      state.dropoffLocation = action.payload;
+    setPopLocation: (state, action) => {
+      state.popLocation = action.payload;
+    },
+    setDate: (state, action) => {
+      state.date = action.payload;
     },
     setPickupTime: (state, action) => {
       state.pickupDate = action.payload;
@@ -41,8 +47,9 @@ export const searchBar = createSlice({
 });
 
 export const {
-  setPickupLocation,
-  setDroppOffLocation,
+  setLocation,
+  setPopLocation,
+  setDate,
   setPickupTime,
   setDroppOffTime,
   setLocationList,

@@ -4,10 +4,10 @@ import FormControl from '@mui/material/FormControl';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import { setTransmission } from '../../../redux/carsResults.js';
+import { setTransmission } from '../../../redux/carsResults';
 
 export default function Transmission() {
-  const { manual, automatic } = useSelector(
+  const { manual, automático } = useSelector(
     (state) => state.carsResults.filters.transmission
   );
 
@@ -20,14 +20,14 @@ export default function Transmission() {
 
   return (
     <FormControl sx={{ m: 3 }} component='fieldset' variant='standard'>
-      <FormLabel component='legend'>Transmission</FormLabel>
+      <FormLabel component='legend'>Transmisión</FormLabel>
       <FormGroup>
         <FormControlLabel
           control={
             <Checkbox
               checked={manual}
               onChange={handleTransmission}
-              disabled={automatic}
+              disabled={automático}
               name='manual'
             />
           }
@@ -36,13 +36,13 @@ export default function Transmission() {
         <FormControlLabel
           control={
             <Checkbox
-              checked={automatic}
+              checked={automático}
               onChange={handleTransmission}
               disabled={manual}
-              name='automatic'
+              name='automático'
             />
           }
-          label='Automatic'
+          label='Automático'
         />
       </FormGroup>
     </FormControl>

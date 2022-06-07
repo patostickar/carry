@@ -1,4 +1,5 @@
 .headerSearchItem {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -12,6 +13,7 @@
 
 .headerSearchDate {
   position: absolute;
-  top: 80px;
+  top: 4em;
+  left: -6em;
   z-index: 2;
 }

@@ -1,6 +1,6 @@
 .CarCategoryTopBar > ul {
   display: flex;
-  gap: 2em;
+  gap: 1em;
   text-decoration: none;
   list-style: none;
   padding: 1em 0em;

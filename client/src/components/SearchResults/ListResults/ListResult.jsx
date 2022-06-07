@@ -1,15 +1,29 @@
-import Steps from './steps';
-import CarDetailCard from './carDetailCard';
-import CarCategoryTopBar from '../TopBar/CarCategoryTopBar';
 import { useSelector } from 'react-redux';
 import { AnimatePresence } from 'framer-motion';
+import SearchBar from '../../SearchBar/SearchBar';
+import Steps from './steps';
+import CarCategoryTopBar from '../TopBar/CarCategoryTopBar';
+import SortByPrice from '../TopBar/sortByPrice';
+import CarDetailCard from './carDetailCard';
+import LinearIndeterminate from '../../GeneralFuntions/LinearIndeterminate';
 import styles from './styles/ListResult.module.css';
 
 function ListResult() {
   const {
     carTypes,
-    filters: { transmission, carCategory, airConditioning, fourPlusSeats },
+    sort,
+    filters: {
+      transmission,
+      carCategory,
+      airConditioning,
+      fourPlusSeats,
+      carMakes,
+    },
   } = useSelector((state) => state.carsResults);
+
+  console.log(carTypes);
+
+  const { location } = useSelector((state) => state.searchBar);
 
   const categories = [];
   for (const category in carCategory) {
@@ -26,32 +40,52 @@ function ListResult() {
   }
   return (
     <div className={styles.listResult}>
+      <SearchBar />
       <div className={styles.listTitle}>
-        <h1>Bogotá: 65 autos disponibles</h1>
+        <h1>
+          {location?.name}: {carTypes.length} modelos disponibles
+        </h1>
       </div>
       <Steps />
       <CarCategoryTopBar />
+      <SortByPrice />
       <AnimatePresence>
-        {carTypes
-          .filter((carType) =>
-            transmissionOptions.length
-              ? transmissionOptions.includes(carType.transmission.toLowerCase())
-              : true
-          )
-          .filter((carType) =>
-            airConditioning ? carType.air_conditioning : true
-          )
-          .filter((carType) => {
-            return fourPlusSeats ? carType.seats >= 4 : true;
-          })
-          .filter((carType) =>
-            categories.length
-              ? categories.includes(carType.class_name.toLowerCase())
-              : true
-          )
-          .map((carType) => (
-            <CarDetailCard cartype={carType} key={carType.id} />
-          ))}
+        {!carTypes.length ? (
+          <LinearIndeterminate />
+        ) : (
+          carTypes
+            .filter((carType) =>
+              transmissionOptions.length
+                ? transmissionOptions.includes(
+                    carType.transmission.toLowerCase()
+                  )
+                : true
+            )
+            .filter((carType) =>
+              airConditioning ? carType.airConditioning : true
+            )
+            .filter((carType) => {
+              return fourPlusSeats ? carType.seats >= 4 : true;
+            })
+            .filter((carType) =>
+              categories.length
+                ? categories.includes(carType.className.toLowerCase())
+                : true
+            )
+            .filter((carType) =>
+              carMakes.length ? carMakes.includes(carType.make) : true
+            )
+            .sort((a, b) => {
+              return sort.length
+                ? sort === 'asc'
+                  ? a.price - b.price
+                  : b.price - a.price
+                : null;
+            })
+            .map((carType) => (
+              <CarDetailCard cartype={carType} key={carType.id} />
+            ))
+        )}
       </AnimatePresence>
     </div>
   );

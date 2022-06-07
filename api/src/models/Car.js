@@ -8,13 +8,7 @@ module.exports = (sequelize) => {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
-      },
-      pickup_date: {
-        type: DataTypes.DATEONLY,
-      },
-      return_date: {
-        type: DataTypes.DATEONLY,
-      },
+      }
     },
     { timestamps: false }
   );

@@ -7,7 +7,7 @@ import Checkbox from '@mui/material/Checkbox';
 import {
   setAirConditioning,
   setFourPlusSeats,
-} from '../../../redux/carsResults.js';
+} from '../../../redux/carsResults';
 
 export default function CarSpecs() {
   const { airConditioning, fourPlusSeats } = useSelector(
@@ -44,7 +44,7 @@ export default function CarSpecs() {
 
   return (
     <FormControl sx={{ m: 3 }} component='fieldset' variant='standard'>
-      <FormLabel component='legend'>Car Specs</FormLabel>
+      <FormLabel component='legend'>Características del coche</FormLabel>
       <FormGroup>
         <FormControlLabel
           control={
@@ -55,7 +55,7 @@ export default function CarSpecs() {
               name='airConditioning'
             />
           }
-          label='Air Conditioning'
+          label='Aire acondicionado'
         />
         <FormControlLabel
           control={
@@ -66,7 +66,7 @@ export default function CarSpecs() {
               name='fourPlusSeats'
             />
           }
-          label='4+ fourPlusSeats'
+          label='4+ Asientos'
         />
       </FormGroup>
     </FormControl>

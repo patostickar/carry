@@ -4,10 +4,10 @@ import FormControl from '@mui/material/FormControl';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import { setCarCategory } from '../../../redux/carsResults.js';
+import { setCarCategory } from '../../../redux/carsResults';
 
 export default function CarCategory() {
-  const { small, medium, large, premium, convertible, minivan, suvs } =
+  const { pequeño, mediano, grande, premium, convertible, minivan, suvs } =
     useSelector((state) => state.carsResults.filters.carCategory);
   const dispatch = useDispatch();
 
@@ -18,40 +18,40 @@ export default function CarCategory() {
 
   return (
     <FormControl sx={{ m: 3 }} component='fieldset' variant='standard'>
-      <FormLabel component='legend'>Car Category</FormLabel>
+      <FormLabel component='legend'>Categoría del vehículo</FormLabel>
       <FormGroup>
         <FormControlLabel
           control={
             <Checkbox
-              checked={small}
+              checked={pequeño}
               onChange={handleChange}
               disabled={false}
-              name='small'
+              name='pequeño'
             />
           }
-          label='Small'
+          label='Pequeño'
         />
         <FormControlLabel
           control={
             <Checkbox
-              checked={medium}
+              checked={mediano}
               onChange={handleChange}
               disabled={false}
-              name='medium'
+              name='mediano'
             />
           }
-          label='Medium'
+          label='Mediano'
         />
         <FormControlLabel
           control={
             <Checkbox
-              checked={large}
+              checked={grande}
               onChange={handleChange}
               disabled={false}
-              name='large'
+              name='grande'
             />
           }
-          label='Large'
+          label='Grande'
         />
         <FormControlLabel
           control={

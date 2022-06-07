@@ -11,40 +11,51 @@ module.exports = (sequelize) => {
       },
       make: {
         type: DataTypes.STRING,
+        allowNull: false,
       },
       model: {
         type: DataTypes.STRING,
+        allowNull: false,
       },
-      class_code: {
+      className: {
         type: DataTypes.STRING,
-      },
-      class_name: {
-        type: DataTypes.STRING,
+        allowNull: false,
       },
       transmission: {
         type: DataTypes.STRING,
+        allowNull: false,
       },
       mpg: {
         type: DataTypes.STRING,
+        allowNull: false,
       },
       img: {
         type: DataTypes.STRING,
+        allowNull: false,
       },
       doors: {
         type: DataTypes.INTEGER,
+        allowNull: false,
       },
       seats: {
         type: DataTypes.INTEGER,
+        allowNull: false,
       },
-      air_conditioning: {
+      airConditioning: {
         type: DataTypes.BOOLEAN,
         defaultValue: true,
       },
-      large_suitcase: {
+      largeSuitcase: {
         type: DataTypes.INTEGER,
+        allowNull: false,
       },
-      small_suitcase: {
+      smallSuitcase: {
         type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      price: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
       },
     },
     { timestamps: false }

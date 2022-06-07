@@ -1,3 +1,8 @@
 .listTitle {
   padding: 1em 0em;
+  max-width: 42em;
+}
+
+.listResult {
+  margin-bottom: 3rem;
 }

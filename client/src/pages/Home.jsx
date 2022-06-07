@@ -1,13 +1,14 @@
-import SearchBarJumbo from '../components/SearchBarJumbo';
-import PopularLocations from '../components/PopularLocations';
-import Testimonials from '../components/Testimonials';
-import FAQ from '../components/FAQ';
-import { TabTitle } from '../components/GeneralFuntions/GeneralFuntions';
+import SearchBarJumbo from '../components/Home/SearchBarJumbo';
+import PopularLocations from '../components/Home/PopularLocations';
+import Testimonials from '../components/Home/Testimonials';
+import FAQ from '../components/Home/FAQ';
+import TabTitle from '../components/TabTitle';
+import styles from './styles/Home.module.css';
 
 const Home = () => {
   TabTitle('Inicio - Carry');
   return (
-    <div>
+    <div className={styles.homeContainer}>
       <SearchBarJumbo />
       <PopularLocations />
       <Testimonials />

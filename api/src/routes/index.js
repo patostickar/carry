@@ -1,15 +1,18 @@
 const { Router } = require('express');
 const router = Router();
 
-const cars = require('./cars/cars.js');
-const locations = require('./location/location.js');
-const customers= require('./customer/customer.js')
-const cartype = require("./cartype/cartype.js")
+const cars = require('./cars');
+const locations = require('./locations');
+const customers = require('./customers');
+const cartypes = require('./cartypes');
+const bookings = require('./bookings');
+const payments = require('./payments');
 
 router.use('/cars', cars);
 router.use('/locations', locations);
 router.use('/customers', customers);
-router.use('/cartype', cartype);
-
+router.use('/cartypes', cartypes);
+router.use('/bookings', bookings);
+router.use('/payment', payments);
 
 module.exports = router;
