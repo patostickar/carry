@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formik } from 'formik';
+import { Formik, Field } from 'formik';
 import axios from 'axios';
 import { Alerts } from '../GeneralFuntions/GeneralFuntions';
 
@@ -13,6 +13,16 @@ export default function CarCreate() {
       } catch (error) {
         console.log(error);
       }};
+          
+
+      // constantes locales para el drop down de los selects
+      const numbers = [ "---" , 1, 2, 3, 4, 5, 6, 7]
+      const baul = ["---", 0, 1, 2]
+      const boolean = [{key:"Seleccione un valor", value:null}, {key:"Si", value:true}, {key:"No", value:false}]   
+      const transmicion = ["Seleccione un valor", "Manual", "Automatico"]
+
+      // constante de error para la funcion validadora
+      const errormsg = 'Ingrese un valor valido'
   
 
   return (
@@ -35,58 +45,60 @@ export default function CarCreate() {
         // eslint-disable-next-line prefer-const
         let errores = {};
 
-        if (!valores.make) {
-          errores.make = 'Ingrese una marca';
+        if (!valores.make || valores.make.length > 15) {
+          errores.make = errormsg;
         }
 
-        if (!valores.model) {
-          errores.model = 'Ingrese un modelo';
+        if (!valores.model || valores.model.length > 15) {
+          errores.model = errormsg;
         }
 
         if (!valores.className) {
-          errores.className = 'Ingrese un valor valido';
+          errores.className = errormsg;
         }
 
-        if (!valores.transmission) {
-          errores.transmission = 'Ingrese un valor valido';
+        if (!valores.transmission || valores.transmission === transmicion[0] ) {
+          errores.transmission = errormsg;
         }
 
         if (!valores.mpg) {
-          errores.mpg = 'Ingrese un valor valido';
+          errores.mpg = errormsg;
         }
 
-        if (!valores.img) {
-          errores.img = 'Ingrese un valor valido';
+        if (!valores.img.includes("https://") && !valores.img.includes("http://") ) {
+          errores.img = errormsg;
         }
 
-        if (!valores.doors) {
-          errores.doors = 'Ingrese un valor valido';
+        if ( !valores.doors || valores.doors === "---" ) {
+          errores.doors = 'Seleccione un valor por favor';
         }
 
-        if (!valores.seats) {
-          errores.seats = 'Ingrese un valor valido';
+        if ( !valores.airConditioning || valores.airConditioning === "null" ) {
+          errores.airConditioning = 'Seleccione un valor ';
         }
 
-        if (!valores.airConditioning) {
-          errores.airConditioning = 'Ingrese un valor valido';
+        if (!valores.seats || valores.seats === "---") {
+          errores.seats = 'Seleccione un valor por favor';
         }
 
-        if (!valores.largeSuitcase) {
-          errores.largeSuitcase = 'Ingrese un valor valido';
+       
+        if (!valores.largeSuitcase || valores.largeSuitcase === "---") {
+          errores.largeSuitcase = errormsg;
         }
 
-        if (!valores.smallSuitcase) {
-          errores.smallSuitcase = 'Ingrese un valor valido';
+        if (!valores.smallSuitcase || valores.smallSuitcase === "---") {
+          errores.smallSuitcase = errormsg;
         }
 
-        if (!valores.price) {
-          errores.price = 'Ingrese un valor valido';
+        if (!valores.price || valores.price > 25000 || typeof(valores.price) === "string") {
+          errores.price = errormsg;
         }
 
         return errores;
       }}
       onSubmit={(values) => {
-        // alert(JSON.stringify(values))
+         alert(JSON.stringify(values))
+         console.log(typeof(values.price))
         postCar(values)
         Alerts('success', 'Vehiculo creado');
       }}
@@ -100,7 +112,7 @@ export default function CarCreate() {
         handleBlur,
       }) => (
         <form className='CarCreate' onSubmit={handleSubmit}>
-          <div>
+          <Field component="div">
             <label htmlFor='make'>Marca</label>
 
             <input
@@ -114,9 +126,9 @@ export default function CarCreate() {
             />
 
             {touched.make && errors.make && <div>{errors.make}</div>}
-          </div>
+          </Field>
 
-          <div>
+          <Field component="div">
             <label htmlFor='model'>Modelo</label>
 
             <input
@@ -129,17 +141,17 @@ export default function CarCreate() {
               onBlur={handleBlur}
             />
             {touched.model && errors.model && <div>{errors.model}</div>}
-          </div>
+            </Field>
 
 
-          <div>
-            <label htmlFor='className'>nombre de clase</label>
+          <Field component="div">
+            <label htmlFor='className'>Clase</label>
 
             <input
               type='text'
               id='className'
               name='className'
-              placeholder='A...'
+              placeholder='Small...'
               value={values.className}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -147,26 +159,34 @@ export default function CarCreate() {
             {touched.className && errors.className && (
               <div>{errors.className}</div>
             )}
-          </div>
+          </Field>
 
-          <div>
+          <Field component="div">
             <label htmlFor='transmission'>Transmision</label>
 
-            <input
-              type='text'
-              id='transmission'
-              name='transmission'
-              placeholder='Manual...'
-              value={values.transmission}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
+
+            <select name="transmission" id="transmission">
+            
+
+            {transmicion.map((d) => (
+              
+              <option
+                    value={d}
+                    id={values.d}
+                    key={d}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  >
+                    {`${d}`}
+                  </option>
+                  ))}
+            </select>
             {touched.transmission && errors.transmission && (
               <div>{errors.transmission}</div>
             )}
-          </div>
+          </Field>
 
-          <div>
+          <Field component="div">
             <label htmlFor='mpg'>Millas por galon</label>
 
             <input
@@ -179,9 +199,9 @@ export default function CarCreate() {
               onBlur={handleBlur}
             />
             {touched.mpg && errors.mpg && <div>{errors.mpg}</div>}
-          </div>
+            </Field>
 
-          <div>
+          <Field component="div">
             <label htmlFor='img'>Imagen</label>
 
             <input
@@ -194,27 +214,37 @@ export default function CarCreate() {
               onBlur={handleBlur}
             />
             {touched.img && errors.img && <div>{errors.img}</div>}
-          </div>
+            </Field>
 
-          <div>
+          <Field component="div">
             <label htmlFor='doors'>Cantidad de puertas</label>
 
-            <input
-              type='text'
-              id='doors'
-              name='doors'
-              placeholder='4'
-              value={values.doors}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            {touched.doors && errors.doors && <div>{errors.doors}</div>}
-          </div>
+          
 
-          <div>
+
+            <select name="doors" id="doors">
+              
+            {numbers.map((d) => (
+              
+            <option
+                  value={d}
+                  id={values.d}
+                  key={d}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                >
+                  {`${d} Puertas`}
+                </option>
+                ))}
+            </select>
+
+            {touched.doors && errors.doors && <div>{errors.doors}</div>}
+            </Field>
+
+          <Field component="div">
             <label htmlFor='seats'>Asientos</label>
 
-            <input
+            {/* <input
               type='text'
               id='seats'
               name='seats'
@@ -222,75 +252,107 @@ export default function CarCreate() {
               value={values.seats}
               onChange={handleChange}
               onBlur={handleBlur}
-            />
-            {touched.seats && errors.seats && <div>{errors.seats}</div>}
-          </div>
+            /> */}
 
-          <div>
+            <select name="seats" id="seats">
+            {numbers.map((d) => (
+            <option
+                  value={d}
+                  id={values.d}
+                  key={d}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                >
+                  {`${d} Asientos`}
+                </option>
+                ))}
+            </select>
+            {touched.seats && errors.seats && <div>{errors.seats}</div>}
+            </Field>
+
+          <Field component="div">
             <label htmlFor='airConditioning'>Aire acondicionado</label>
 
-            <input
-              type='text'
-              id='airConditioning'
-              name='airConditioning'
-              placeholder='Si'
-              value={values.airConditioning}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            {touched.airConditioning && errors.airConditioning && (
-              <div>{errors.airConditioning}</div>
-            )}
-          </div>
+            
+            <select name="airConditioning" id="airConditioning">
+            {boolean.map((d) => (
+            <option
+                  value={d.value}
+                  id={values.d}
+                  key={d.value}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                >
+                  {`${d.key}`}
+                </option>
+                ))}
+            </select>
 
-          <div>
+            {touched.airConditioning && errors.airConditioning && <div>{errors.airConditioning}</div>}
+            
+          </Field>
+
+          <Field component="div">
             <label htmlFor='largeSuitcase'>Baul grande</label>
 
-            <input
-              type='text'
-              id='largeSuitcase'
-              name='largeSuitcase'
-              placeholder='Si'
-              value={values.largeSuitcase}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
+         
+
+            <select name="largeSuitcase" id="largeSuitcase">
+            {baul.map((d) => (
+            <option
+                  value={d}
+                  id={values.d}
+                  key={d}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                >
+                  {`${d}`}
+                </option>
+                ))}
+            </select>
             {touched.largeSuitcase && errors.largeSuitcase && (
               <div>{errors.largeSuitcase}</div>
             )}
-          </div>
+          </Field>
 
-          <div>
+          <Field component="div">
             <label htmlFor='smallSuitcase'>Baul chico</label>
 
-            <input
-              type='text'
-              id='smallSuitcase'
-              name='smallSuitcase'
-              placeholder='Si'
-              value={values.smallSuitcase}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
+        
+
+        <select name="smallSuitcase" id="smallSuitcase">
+            {baul.map((d) => (
+            <option
+                  value={d}
+                  id={values.d}
+                  key={d}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                >
+                  {`${d}`}
+                </option>
+                ))}
+            </select> 
             {touched.smallSuitcase && errors.smallSuitcase && (
               <div>{errors.smallSuitcase}</div>
             )}
-          </div>
+          </Field>
 
-          <div>
+          <Field component="div">
             <label htmlFor='price'>Precio</label>
 
             <input
-              type='text'
+              
+              type='number'
               id='price'
               name='price'
-              placeholder='Si'
-              value={values.price}
+              placeholder='Solo numeros por favor'
+              value={parseInt(values.price)}
               onChange={handleChange}
               onBlur={handleBlur}
             />
             {touched.price && errors.price && <div>{errors.price}</div>}
-          </div>
+          </Field>
 
           <button type='Submit'>Crear</button>
         </form>
