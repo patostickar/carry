@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   Box,
@@ -15,20 +15,22 @@ import { putUser } from '../../redux/user';
 
 
 
+
+
 export const PersonalInformation = ({ setRenderControl, renderControl }) => {
   const dispatch = useDispatch();
   const { User } = useSelector((state) => state.user);
-
+  
   const [values, setValues] = useState({
     firstName: User?.firstName,
     lastName: User?.lastName,
     email: User?.email,
     phone: User?.phone,
     city: User?.city,
+    street: User?.street,
     postalCode: User?.postalCode,
     avatar: User?.img,
   });
- 
 
   const handleChange = (event) => {
     setValues({
@@ -38,10 +40,8 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
   };
 
   const handleSubmit = (e) => {
-    // e.preventDefault();
- console.log("test");
     // setRenderControl({ ...renderControl, personalInfo: !renderControl.personalInfo })
-    // dispatch(putUser(User.id, values));
+    dispatch(putUser(User.id, values));
   };
 
   return (
@@ -50,8 +50,7 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
       <Grid
         item
         xs={5}
-        style={{ border: 'solid 1px lightgrey', borderRadius: '8px' }}
-      >
+        style={{ border: 'solid 1px lightgrey', borderRadius: '8px' }}>
         <Box
           style={{ display: 'flex', justifyContent: 'center', padding: '10px' }}
         >
@@ -64,7 +63,7 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
             }}
           />
         </Box>
-        <form autoComplete='off' noValidate onSubmit={handleSubmit} />
+        <form autoComplete='off' noValidate onSubmit={handleSubmit} >
         <Card>
           <CardHeader
             subheader='Actualiza tus datos'
@@ -113,7 +112,7 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
                   required
                   value={values.email || ""}
                   variant='outlined'
-                />
+                  />
               </Grid>
               <Grid item md={6} xs={12}>
                 <TextField
@@ -125,7 +124,7 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
                   value={values.phone || ""}
                   variant='outlined'
                   required
-                />
+                  />
               </Grid>
               <Grid item md={6} xs={12}>
                 <TextField
@@ -134,7 +133,6 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
                   name='city'
                   onChange={handleChange}
                   required
-
                   value={values.city || ""}
                   variant='outlined'
                 />
@@ -176,6 +174,7 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
             </Button>
           </Box>
         </Card>
+            </form>
       </Grid>
     </>
   );

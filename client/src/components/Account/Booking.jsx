@@ -37,7 +37,6 @@ console.log(Userbokings);
       <Table aria-label="simple table" stickyHeader>
         <TableHead>
           <TableRow>
-            <TableCell align="center" style={{color:'#1565C0', fontWeight:'bolder'}}>Id</TableCell>
             <TableCell align="center" style={{color:'#1565C0', fontWeight:'bolder'}}>Auto</TableCell>
             <TableCell align="center" style={{color:'#1565C0', fontWeight:'bolder'}}>PickUp Date</TableCell>
             <TableCell align="center" style={{color:'#1565C0', fontWeight:'bolder'}}>DropOff Date</TableCell>
@@ -48,10 +47,9 @@ console.log(Userbokings);
         <TableBody>
           {Userbokings.bookings?.length&& Userbokings.bookings.map((row) => (
             <TableRow key={row.id}>
-              {// <TableCell component="th" scope="row">{row.id}</TableCell>
-}
-              <TableCell align="center"><img src={row.cartype.img} alt='' style={{height:60, width:110}} /></TableCell>
-              <TableCell align="center">{`${row.cartype.make} ${row.cartype.model} `}</TableCell>
+              {// <TableCell component="th" scope="row">{row.id}</TableCell> 
+              }
+              <TableCell style={{display: "flex","align-items": "center"}} align="center"><img src={row.cartype.img} alt='' style={{height:60, width:110}}/> {`${row.cartype.make} ${row.cartype.model} `}</TableCell>
               <TableCell align="center">{row.pickUpDate}</TableCell>
               <TableCell align="center">{row.dropOffDate}</TableCell>
               <TableCell align="center">{row.reservationTotal}</TableCell>
