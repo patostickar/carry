@@ -13,10 +13,12 @@ const getCustomers = async (_req, res, next) => {
 
 const getCustomerByemail = async (req, res, next) => {
   const { email } = req.params;
-  if (!email) return res.status(400).send({ msg: 'el email es necesario' });
+  if (!email) return res.status(400).send('El email es requerido');
   try {
     const data = await Customer.findOne({ where: { email } });
-    data ? res.send(data) : res.status(400).send({ msg: 'Customer not found' });
+    data
+      ? res.send(data)
+      : res.status(400).send('Cliente no encontrado con ese email');
   } catch (error) {
     next(error);
   }
@@ -43,7 +45,7 @@ const postCustomer = async (req, res, next) => {
 
     created
       ? res.status(201).send({ msg: 'Cliente creado', customer })
-      : res.status(406).send('Ya existe un cliente con este correo');
+      : res.status(200).send('Ya existe un cliente con este correo');
   } catch (error) {
     next(error);
   }
@@ -88,11 +90,11 @@ const getReviews = async (_req, res, next) => {
 };
 
 const postReview = async (req, res, next) => {
+  console.log('hola');
   const { id } = req.params;
   const { reviews } = req.body;
-
   if (!id || !reviews.length)
-    return res.status(400).send('El testimonio no puede estar vacía');
+    return res.status(400).send('El testimonio no puede estar vacío');
 
   try {
     const customer = await Customer.findByPk(id);
