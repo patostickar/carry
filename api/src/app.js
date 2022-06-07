@@ -4,11 +4,10 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const routes = require('./routes/index.js');
 const dotenv = require('dotenv');
-dotenv.config();
-
-require('./db.js');
-
 const server = express();
+
+dotenv.config();
+require('./db.js');
 
 server.name = 'API';
 
@@ -29,10 +28,7 @@ server.use((req, res, next) => {
 
 server.use('/', routes);
 
-// Error catching endware.
-
-// eslint-disable-next-line
-server.use((err, req, res, next) => {
+server.use((err, _req, res, _next) => {
   const status = err.status || 500;
   const message = err?.message || err;
   console.error(err);
