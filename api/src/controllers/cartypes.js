@@ -3,58 +3,53 @@ const { carTypeCount } = require('../services/cartypes/carTypeCount');
 const { Cartype } = require('../db');
 
 const getType = async (req, res, next) => {
+  const { id } = req.params;
+
   try {
-    const { id } = req.params;
     const data = await getCarType(id);
+    if (!data) return res.send('No hay tipos de auto');
     res.send(data);
   } catch (error) {
     next(error);
   }
 };
+
 const createCartype = async (req, res, next) => {
+  // const {
+  //   make,
+  //   model,
+  //   className,
+  //   transmission,
+  //   mpg,
+  //   img,
+  //   doors,
+  //   seats,
+  //   airConditioning,
+  //   largeSuitcase,
+  //   smallSuitcase,
+  //   price,
+  // } = req.body;
+
+  // Validaciones
+
   try {
-    const {
-      make,
-      model,
-      className,
-      transmission,
-      mpg,
-      img,
-      doors,
-      seats,
-      airConditioning,
-      largeSuitcase,
-      smallSuitcase,
-      price,
-    } = req.body;
     const [cartype, created] = await Cartype.findOrCreate({
-      where: {
-        make,
-        model,
-        className,
-        transmission,
-        mpg,
-        img,
-        doors,
-        seats,
-        airConditioning,
-        largeSuitcase,
-        smallSuitcase,
-        price,
-      },
+      where: req.body,
     });
     if (created) {
-      return res.status(201).send({ msg: 'cartype created' });
+      return res.status(201).send({ msg: 'Tipo de auto creado' });
     } else {
-      return res
-        .status(406)
-        .send({ msg: 'There is already a cartype with this name', cartype });
+      return res.status(200).send({
+        msg: 'Ya existe un modelo de auto de estas características',
+        cartype,
+      });
     }
   } catch (error) {
     next(error);
   }
 };
-const GetTypeConunt = async (req, res, next) => {
+
+const getTypeConunt = async (req, res, next) => {
   const { locationId } = req.params;
   try {
     const count = await carTypeCount(locationId);
@@ -63,8 +58,9 @@ const GetTypeConunt = async (req, res, next) => {
     next(err);
   }
 };
+
 module.exports = {
   getType,
-  GetTypeConunt,
+  getTypeConunt,
   createCartype,
 };

@@ -1,14 +1,15 @@
 const { Router } = require('express');
 const {
   getType,
-  GetTypeConunt,
+  getTypeConunt,
   createCartype,
 } = require('../controllers/cartypes');
 const router = Router();
 
 router.get('/', getType);
-router.get('/count/:locationId', GetTypeConunt);
 router.get('/:id', getType);
+router.get('/count/:locationId', getTypeConunt);
+
 router.post('/', createCartype);
 
 router.put('/:id');
