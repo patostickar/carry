@@ -1,58 +1,44 @@
-const { Op } = require('sequelize');
 const { Location } = require('../db');
 
-const getLocations = async (req, res, next) => {
+const getAllLocations = async (req, res, next) => {
   try {
-    const { name } = req.query;
-    if (name) {
-      const { dataValues } = await Location.findOne({
-        where: {
-          name: {
-            [Op.iLike]: `${name}`,
-          },
-        },
-      });
-      dataValues
-        ? res.status(200).send(dataValues)
-        : res.send({ msg: 'Location not found by name' });
-    } else {
-      const data = await Location.findAll();
-      const dataDB = data.map?.((res) => res.dataValues);
-      res.send(dataDB);
-    }
+    const locations = await Location.findAll();
+    res.send(locations);
   } catch (error) {
     next(error);
   }
 };
 
-const postLocations = async (req, res, next) => {
+const createLocation = async (req, res, next) => {
   try {
     const {
       name,
       street,
       city,
-      state_name,
-      postal_code,
+      stateName,
+      postalCode,
       lat,
       lon,
       phone,
-      time_open,
-      time_close,
-      airport_location,
+      timeOpen,
+      timeClose,
+      airportLocation,
     } = req.body;
+
     const geo = [lat, lon];
+
     const [location, created] = await Location.findOrCreate({
       where: {
         name,
         street,
         city,
-        state_name,
-        postal_code,
+        stateName,
+        postalCode,
         geo,
         phone: String(phone),
-        time_open,
-        time_close,
-        airport_location,
+        timeOpen,
+        timeClose,
+        airportLocation,
       },
     });
     if (created) {
@@ -82,7 +68,7 @@ const getLocationById = async (req, res, next) => {
 };
 
 module.exports = {
-  getLocations,
-  postLocations,
+  getAllLocations,
+  createLocation,
   getLocationById,
 };
