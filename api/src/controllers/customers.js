@@ -90,13 +90,16 @@ const getReviews = async (_req, res, next) => {
 const postReview = async (req, res, next) => {
   const { id } = req.params;
   const { reviews } = req.body;
+
+  if (!id || !reviews.length)
+    return res.status(400).send('El testimonio no puede estar vacía');
+
   try {
+    const customer = await Customer.findByPk(id);
     const review = await Review.create({ review: reviews });
-    const customer = await Customer.findOne({ where: { id } });
     review.setCustomer(customer);
-    res.send('review Creada');
+    res.send('Gracias por tu testimonio!');
   } catch (error) {
-    console.log(error);
     next(error);
   }
 };
