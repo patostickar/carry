@@ -2,14 +2,14 @@ const { Router } = require('express');
 const router = Router();
 
 const {
-  dbcreateBooking,
+  dbCreateBooking,
   getAllBookings,
-  getCustomersBookings,
+  getCustomerBookings,
 } = require('../controllers/bookings');
 
 router.get('/', getAllBookings);
-router.get('/customer/:id', getCustomersBookings);
+router.get('/customer/:id', getCustomerBookings);
 router.get('/:id', getAllBookings);
-router.post('/', dbcreateBooking);
+router.post('/', dbCreateBooking);
 
 module.exports = router;
