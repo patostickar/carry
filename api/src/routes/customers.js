@@ -16,7 +16,7 @@ router.get('/reviews', getReviews);
 router.get('/:email', getCustomerByemail);
 
 router.post('/', postCustomer);
-router.post('/reviews', postReview);
+router.post('/reviews/:id', postReview);
 
 router.put('/:id', putCustomer);
 
