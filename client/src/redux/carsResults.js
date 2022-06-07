@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import logError from '../components/GeneralFuntions/logError';
 
 const initialState = {
   carTypes: [],
@@ -79,7 +80,7 @@ export const fetchCarTypes =
       dispatch(setCarTypes(res.data));
       // .then((res) => dispatch(setCarTypes(res.data)));
     } catch (error) {
-      console.log(error);
+      logError(error);
     }
   };
 export const fetchAllCarTypes = () => async (dispatch) => {
@@ -88,7 +89,7 @@ export const fetchAllCarTypes = () => async (dispatch) => {
     dispatch(setAllCarTypes(res.data));
     // .then((res) => dispatch(setCarTypes(res.data)));
   } catch (error) {
-    console.log(error);
+    logError(error);
   }
 };
 

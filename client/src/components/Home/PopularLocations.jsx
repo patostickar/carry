@@ -8,12 +8,12 @@ export default function PopularLocations() {
   // La tomé prestada de internet, filtra uno de cada ciudad
   const popLocation = locations.filter(
     (value, index, self) =>
-      index === self.findIndex((t) => t.state_name === value.state_name)
+      index === self.findIndex((t) => t.stateName === value.stateName)
   );
 
   // Agrupa por ciudad
   const popLocationCount = locations.reduce(function (acc, item) {
-    const key = item.state_name;
+    const key = item.stateName;
     if (!acc[key]) {
       acc[key] = [];
     }
@@ -30,8 +30,8 @@ export default function PopularLocations() {
         {popLocation.map((pl, i) => (
           <PopLocationCard
             key={i}
-            cityName={pl.state_name}
-            agencies={popLocationCount[pl.state_name].length}
+            cityName={pl.stateName}
+            agencies={popLocationCount[pl.stateName].length}
             img={pl.img}
           />
         ))}

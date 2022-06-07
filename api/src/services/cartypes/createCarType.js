@@ -1,9 +1,9 @@
-const { getTypeDB, cartypecount } = require('../services/cartypeService');
+const { getCarTypeDB, cartypecount } = require('../services/cartypeService');
 const { Cartype } = require('../db');
-const getType = async (req, res, next) => {
+const getCarType = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const data = await getTypeDB(id);
+    const data = await getCarTypeDB(id);
     res.send(data);
   } catch (error) {
     next(error);
@@ -55,13 +55,7 @@ const createCartype = async (req, res, next) => {
         .send({ msg: 'There is already a cartype with this name', cartype });
     }
   } catch (error) {
-    if (error.response) {
-      res.status(error.response.status).send({ msg: error.response.status });
-    } else if (error.request) {
-      next(error.request);
-    } else {
-      next(error);
-    }
+    next(error);
   }
 };
 const GetTypeConunt = async (req, res, next) => {
@@ -74,7 +68,7 @@ const GetTypeConunt = async (req, res, next) => {
   }
 };
 module.exports = {
-  getType,
+  getCarType,
   GetTypeConunt,
   createCartype,
 };
