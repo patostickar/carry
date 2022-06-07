@@ -12,6 +12,7 @@ import {
    Avatar
 } from '@mui/material';
 import { fetchUser, putUser } from '../../redux/user';
+import Swal from 'sweetalert2'
 
 
 export const PersonalInformation = ({setRenderControl, renderControl}) => {
@@ -26,7 +27,7 @@ export const PersonalInformation = ({setRenderControl, renderControl}) => {
     postal_code: User?.postal_code,
     avatar : User?.img
   });
-  console.log(values);
+ 
 
   const handleChange = (event) => {
     setValues({
@@ -39,7 +40,9 @@ export const PersonalInformation = ({setRenderControl, renderControl}) => {
     e.preventDefault();
     console.log(User.id);
     //dispatch(fetchUser(values.email))
+    setRenderControl({ ...renderControl, personalInfo: !renderControl.personalInfo })
     dispatch(putUser(User.id, values));
+    
     
 
 
