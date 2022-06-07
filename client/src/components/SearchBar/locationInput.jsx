@@ -60,7 +60,7 @@ export default function Location({ type, popLocation }) {
       options={[...locations].sort((a, b) => a.name.localeCompare(b.name))}
       // El verdadero texto del input, luego modificado por renderInput
       getOptionLabel={(option) =>
-        `${option.name}, ${option.city}, ${option.state_name}`
+        `${option.name}, ${option.city}, ${option.stateName}`
       }
       // options y value contienen objetos, como no se puede saber si son iguales, hay que hacer esta comparación
       isOptionEqualToValue={(option, value) => {

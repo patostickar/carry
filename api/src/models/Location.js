@@ -21,11 +21,11 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      state_name: {
+      stateName: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      postal_code: {
+      postalCode: {
         type: DataTypes.STRING,
         allowNull: false,
       },
@@ -38,15 +38,15 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      time_open: {
+      timeOpen: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      time_close: {
+      timeClose: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      airport_location: {
+      airportLocation: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
       },

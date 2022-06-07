@@ -166,7 +166,7 @@ export const PersonalInformation = () => {
                     name='postalcode'
                     onChange={handleChange}
                     required
-                    value={values.postal_code}
+                    value={values.postalCode}
                     variant='outlined'
                   />
                 </Grid>

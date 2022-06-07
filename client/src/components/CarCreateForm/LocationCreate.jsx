@@ -18,14 +18,14 @@ export default function LocationCreate() {
         name: '',
         street: '',
         city: '',
-        state_name: '',
-        postal_code: '',
+        stateName: '',
+        postalCode: '',
         lat: '',
         lon: '',
         phone: '',
-        time_open: '',
-        time_close: '',
-        airport_location: '',
+        timeOpen: '',
+        timeClose: '',
+        airportLocation: '',
       }}
       validate={(valores) => {
         // eslint-disable-next-line prefer-const
@@ -40,8 +40,8 @@ export default function LocationCreate() {
         if (!valores.city) {
           errores.city = 'Ingrese un valor';
         }
-        if (!valores.postal_code) {
-          errores.postal_code = 'Ingrese un valor';
+        if (!valores.postalCode) {
+          errores.postalCode = 'Ingrese un valor';
         }
         if (!valores.lat) {
           errores.lat = 'Ingrese un valor';
@@ -49,20 +49,20 @@ export default function LocationCreate() {
         if (!valores.lon) {
           errores.lon = 'Ingrese un valor';
         }
-        if (!valores.state_name) {
-          errores.state_name = 'Ingrese un valor';
+        if (!valores.stateName) {
+          errores.stateName = 'Ingrese un valor';
         }
         if (!valores.phone) {
           errores.phone = 'Ingrese un valor';
         }
-        if (!valores.time_open) {
-          errores.time_open = 'Ingrese un valor';
+        if (!valores.timeOpen) {
+          errores.timeOpen = 'Ingrese un valor';
         }
-        if (!valores.time_close) {
-          errores.time_close = 'Ingrese un valor';
+        if (!valores.timeClose) {
+          errores.timeClose = 'Ingrese un valor';
         }
-        if (!valores.airport_location) {
-          errores.airport_location = 'Ingrese un valor';
+        if (!valores.airportLocation) {
+          errores.airportLocation = 'Ingrese un valor';
         }
 
         return errores;
@@ -131,15 +131,15 @@ export default function LocationCreate() {
             <label htmlFor='city'>provincia</label>
             <input
               type='text'
-              id='state_name'
-              name='state_name'
+              id='stateName'
+              name='stateName'
               placeholder='provincia'
-              value={values.state_name}
+              value={values.stateName}
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            {touched.state_name && errors.state_name && (
-              <div className='error'>{errors.state_name}</div>
+            {touched.stateName && errors.stateName && (
+              <div className='error'>{errors.stateName}</div>
             )}
           </div>
 
@@ -174,18 +174,18 @@ export default function LocationCreate() {
             )}
           </div>
           <div>
-            <label htmlFor='postal_code'>codigo postal</label>
+            <label htmlFor='postalCode'>codigo postal</label>
             <input
               type='text'
-              id='postal_code'
-              name='postal_code'
+              id='postalCode'
+              name='postalCode'
               placeholder='codigo postal'
-              value={values.postal_code}
+              value={values.postalCode}
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            {touched.postal_code && errors.postal_code && (
-              <div className='error'>{errors.postal_code}</div>
+            {touched.postalCode && errors.postalCode && (
+              <div className='error'>{errors.postalCode}</div>
             )}
           </div>
 
@@ -206,49 +206,49 @@ export default function LocationCreate() {
           </div>
 
           <div>
-            <label htmlFor='time_open'>Horario de apertura</label>
+            <label htmlFor='timeOpen'>Horario de apertura</label>
             <input
               type='text'
-              id='time_open'
-              name='time_open'
+              id='timeOpen'
+              name='timeOpen'
               placeholder='08AM'
-              value={values.time_open}
+              value={values.timeOpen}
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            {touched.time_open && errors.time_open && (
-              <div className='error'>{errors.time_open}</div>
+            {touched.timeOpen && errors.timeOpen && (
+              <div className='error'>{errors.timeOpen}</div>
             )}
           </div>
 
           <div>
-            <label htmlFor='time_close'>Horario de cierre</label>
+            <label htmlFor='timeClose'>Horario de cierre</label>
             <input
               type='text'
-              id='time_close'
-              name='time_close'
+              id='timeClose'
+              name='timeClose'
               placeholder='22PM'
-              value={values.time_close}
+              value={values.timeClose}
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            {touched.time_close && errors.time_close && (
-              <div className='error'>{errors.time_close}</div>
+            {touched.timeClose && errors.timeClose && (
+              <div className='error'>{errors.timeClose}</div>
             )}
           </div>
 
           <div>
-            <label htmlFor='airport_location'> Es aeropuerto?</label>
+            <label htmlFor='airportLocation'> Es aeropuerto?</label>
             <input
               type='text'
-              id='airport_location'
-              name='airport_location'
-              value={values.airport_location}
+              id='airportLocation'
+              name='airportLocation'
+              value={values.airportLocation}
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            {touched.airport_location && errors.airport_location && (
-              <div className='error'>{errors.airport_location}</div>
+            {touched.airportLocation && errors.airportLocation && (
+              <div className='error'>{errors.airportLocation}</div>
             )}
           </div>
 

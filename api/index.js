@@ -19,13 +19,13 @@ conn
     //   name: l.name,
     //   street: l.street,
     //   city: l.city,
-    //   state_name: l.state_name,
-    //   postal_code: l.postal_code,
+    //   stateName: l.stateName,
+    //   postalCode: l.postalCode,
     //   geo: l.geo,
     //   phone: l.telephone,
-    //   time_open: l.time_open,
-    //   time_close: l.time_close,
-    //   airport_location: l.airport_location,
+    //   timeOpen: l.timeOpen,
+    //   timeClose: l.timeClose,
+    //   airportLocation: l.airportLocation,
     //   img: l.img,
     // }));
 
