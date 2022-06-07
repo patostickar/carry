@@ -10,21 +10,36 @@ const getAllLocations = async (req, res, next) => {
 };
 
 const createLocation = async (req, res, next) => {
-  try {
-    const {
-      name,
-      street,
-      city,
-      stateName,
-      postalCode,
-      lat,
-      lon,
-      phone,
-      timeOpen,
-      timeClose,
-      airportLocation,
-    } = req.body;
+  const {
+    name,
+    street,
+    city,
+    stateName,
+    postalCode,
+    lat,
+    lon,
+    phone,
+    timeOpen,
+    timeClose,
+    airportLocation,
+  } = req.body;
 
+  if (
+    !name ||
+    !street ||
+    !city ||
+    !stateName ||
+    !postalCode ||
+    !lat ||
+    !lon ||
+    !phone ||
+    !timeOpen ||
+    !timeClose ||
+    !airportLocation
+  )
+    return res.status(400).send('Se requiere enviar todos los parámetros');
+
+  try {
     const geo = [lat, lon];
 
     const [location, created] = await Location.findOrCreate({
@@ -42,11 +57,11 @@ const createLocation = async (req, res, next) => {
       },
     });
     if (created) {
-      return res.status(201).send({ msg: 'Location created' });
+      return res.status(201).send({ msg: 'Ubicación creada', location });
     } else {
       return res
-        .status(406)
-        .send({ msg: 'There is already a location with this name', location });
+        .status(200)
+        .send('Ya existe una ubicación con estos parámetros');
     }
   } catch (error) {
     next(error);
@@ -54,14 +69,15 @@ const createLocation = async (req, res, next) => {
 };
 
 const getLocationById = async (req, res, next) => {
+  const { id } = req.params;
+  if (!id)
+    return res.status(400).send('Se requiere enviar el ID de la ubicación');
+
   try {
-    const { id } = req.params;
-    if (id) {
-      const { dataValues } = await Location.findByPk(id);
-      dataValues
-        ? res.status(200).send(dataValues)
-        : res.send({ msg: 'Location not found by id' });
-    }
+    const location = await Location.findByPk(id);
+    if (!location)
+      return res.status(400).send('No se encuentra una ubicación con ese ID');
+    res.send(location);
   } catch (error) {
     next(error);
   }
