@@ -1,6 +1,7 @@
 const { Customer, Review } = require('../db');
+const { randomReviews } = require('../services/customers/randomReviews');
 
-const getCustomers = async (req, res, next) => {
+const getCustomers = async (_req, res, next) => {
   try {
     const customers = await Customer.findAll();
     if (!customers) res.send('No hay ningún cliente registrado');
@@ -48,96 +49,39 @@ const postCustomer = async (req, res, next) => {
   }
 };
 
-// const getCustomerById = async (req, res, next) => {
-//   try {
-//     const { id } = req.params;
-//     if (id) {
-//       const data = await Customer.findByPk(id);
-//       data
-//         ? res.status(200).send(data)
-//         : res.send({ msg: 'Customer not found by id' });
-//     } else {
-//       res.send({ msg: 'Customer not found' });
-//     }
-//   } catch (error) {
-//     if (error.response) {
-//       res.status(error.response.status).send({ msg: error.response.status });
-//     } else if (error.request) {
-//       next(error.request);
-//     } else {
-//       next(error);
-//     }
-//   }
-// };
-
 const putCustomer = async (req, res, next) => {
   const { id } = req.params;
   if (!id) return res.status(400).send('Por favor enviar ID del cliente');
-  const {
-    email,
-    firstName,
-    lastName,
-    street,
-    city,
-    phone,
-    postalCode,
-    password,
-    isAdmin,
-    isPremium,
-    isBanned,
-  } = req.body;
+
+  // const {
+  //   email,
+  //   firstName,
+  //   lastName,
+  //   street,
+  //   city,
+  //   phone,
+  //   postalCode,
+  //   password,
+  //   isAdmin,
+  //   isPremium,
+  //   isBanned,
+  // } = req.body;
+
+  // Validaciones de los datos
 
   try {
     const customer = await Customer.findByPk(id);
     if (!customer) return res.status(400).send('No hay un cliente con ese id');
-
-    await customer.update({
-      email,
-      firstName,
-      lastName,
-      street,
-      city,
-      phone,
-      postalCode,
-      password,
-      isAdmin,
-      isPremium,
-      isBanned,
-    });
-
+    await customer.update(req.body);
     res.status(200).send({ msg: 'Información editada', customer });
   } catch (error) {
     next(error);
   }
 };
 
-const getReviews = async (req, res, next) => {
+const getReviews = async (_req, res, next) => {
   try {
-    // const {id1,id2,id3} =req.query
-    const testimonios = [];
-    const count = await Review.count();
-    const Getrandom = () => {
-      return Math.floor(Math.random() * (count - 1 + 1) + 1);
-    };
-    const id1 = Getrandom();
-    let id2 = Getrandom();
-    let id3 = Getrandom();
-    if (id2 === id1) {
-      id2 = Getrandom();
-    }
-    if (id3 === id1 || id3 === id2) {
-      id3 = Getrandom();
-    }
-    testimonios.push(
-      await Review.findOne({ where: { id: id1 }, include: [Customer] })
-    );
-    testimonios.push(
-      await Review.findOne({ where: { id: id2 }, include: [Customer] })
-    );
-    testimonios.push(
-      await Review.findOne({ where: { id: id3 }, include: [Customer] })
-    );
-    res.send(testimonios);
+    res.send(await randomReviews());
   } catch (error) {
     next(error);
   }
@@ -164,5 +108,26 @@ module.exports = {
   postCustomer,
   postReview,
   putCustomer,
-  // getCustomerById,
 };
+
+// const getCustomerById = async (req, res, next) => {
+//   try {
+//     const { id } = req.params;
+//     if (id) {
+//       const data = await Customer.findByPk(id);
+//       data
+//         ? res.status(200).send(data)
+//         : res.send({ msg: 'Customer not found by id' });
+//     } else {
+//       res.send({ msg: 'Customer not found' });
+//     }
+//   } catch (error) {
+//     if (error.response) {
+//       res.status(error.response.status).send({ msg: error.response.status });
+//     } else if (error.request) {
+//       next(error.request);
+//     } else {
+//       next(error);
+//     }
+//   }
+// };
