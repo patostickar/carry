@@ -9,8 +9,8 @@ const {
 } = require('../controllers/cars');
 
 router.get('/', getAllCars);
-router.get('/:id', getCarById);
 router.get('/SearchResults', getAvailableCars);
+router.get('/:id', getCarById);
 
 router.post('/', addCar);
 
