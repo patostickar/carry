@@ -30,7 +30,8 @@
     "react-simple-typewriter": "^3.0.1",
     "redux-persist": "^6.0.0",
     "sweetalert2": "^11.4.17",
-    "swiper": "^8.1.6"
+    "swiper": "^8.1.6",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",

@@ -5,6 +5,7 @@ import { PersonalInformation } from './PersonalInformation';
 import  Review from './Review';
 import { NavLink } from 'react-router-dom';
 import {Booking} from './Booking';
+import { Security } from './Security';
 
 
 export default function Account() {
@@ -27,6 +28,10 @@ export default function Account() {
       {renderControl.booking &&<Booking/>
 
 }
+{renderControl.security&&<Security />
+
+}
+
     </Grid>
     <Review/>
         </>
