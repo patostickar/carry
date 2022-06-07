@@ -11,19 +11,21 @@ import {
   Typography,
   Avatar,
 } from '@mui/material';
-import { fetchUser, putUser } from '../../redux/user';
-import Swal from 'sweetalert2'
+import { putUser } from '../../redux/user';
+
+
 
 export const PersonalInformation = ({ setRenderControl, renderControl }) => {
   const dispatch = useDispatch();
   const { User } = useSelector((state) => state.user);
+
   const [values, setValues] = useState({
-    first_name: User?.first_name,
-    last_name: User?.last_name,
+    firstName: User?.firstName,
+    lastName: User?.lastName,
     email: User?.email,
     phone: User?.phone,
     city: User?.city,
-    postal_code: User?.postal_code,
+    postalCode: User?.postalCode,
     avatar: User?.img,
   });
  
@@ -36,10 +38,10 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-
-    setRenderControl({ ...renderControl, personalInfo: !renderControl.personalInfo })
-    dispatch(putUser(User.id, values));
+    // e.preventDefault();
+ console.log("test");
+    // setRenderControl({ ...renderControl, personalInfo: !renderControl.personalInfo })
+    // dispatch(putUser(User.id, values));
   };
 
   return (
@@ -80,10 +82,12 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
                   fullWidth
                   helperText='Please specify the first name'
                   label='First name'
-                  name='first_name'
+
+                  name='firstName'
                   onChange={handleChange}
                   required
-                  value={values.firstName}
+                  value={values.firstName || ""}
+
                   variant='outlined'
                 />
               </Grid>
@@ -91,10 +95,12 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
                 <TextField
                   fullWidth
                   label='Last name'
-                  name='last_name'
+
+                  name='lastName'
                   onChange={handleChange}
                   required
-                  value={values.lastName}
+                  value={values.lastName || ""}
+
                   variant='outlined'
                 />
               </Grid>
@@ -105,7 +111,7 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
                   name='email'
                   onChange={handleChange}
                   required
-                  value={values.email}
+                  value={values.email || ""}
                   variant='outlined'
                 />
               </Grid>
@@ -116,7 +122,7 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
                   name='phone'
                   onChange={handleChange}
                   type='number'
-                  value={values.phone}
+                  value={values.phone || ""}
                   variant='outlined'
                   required
                 />
@@ -128,7 +134,8 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
                   name='city'
                   onChange={handleChange}
                   required
-                  value={values.city}
+
+                  value={values.city || ""}
                   variant='outlined'
                 />
               </Grid>
@@ -139,7 +146,7 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
                   name='street'
                   onChange={handleChange}
                   required
-                  value={values.street}
+                  value={values.street || ""}
                   variant='outlined'
                 />
               </Grid>
@@ -147,10 +154,10 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
                 <TextField
                   fullWidth
                   label='Postal Code'
-                  name='postal_code'
+                  name='postalCode'
                   onChange={handleChange}
                   required
-                  value={values.postal_code}
+                  value={values.postalCode || ""}
                   variant='outlined'
                 />
               </Grid>

@@ -4,8 +4,8 @@ import { Sidebar } from './Sidebar';
 import { PersonalInformation } from './PersonalInformation';
 import  Review from './Review';
 import { NavLink } from 'react-router-dom';
-import { Bookings } from './Bookings';
-import {Booking1} from './Booking1';
+import {Booking} from './Booking';
+
 
 export default function Account() {
   const [renderControl, setRenderControl] = useState({
@@ -24,7 +24,8 @@ export default function Account() {
       {renderControl.personalInfo && <PersonalInformation
        setRenderControl={setRenderControl}
         renderControl={renderControl}/>}
-      {renderControl.booking &&<Booking1/>
+      {renderControl.booking &&<Booking/>
+
 }
     </Grid>
     <Review/>
