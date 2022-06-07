@@ -1,4 +1,4 @@
-import { Formik } from 'formik';
+import { Formik, Field } from 'formik';
 import Alerts from '../Alerts';
 import axios from 'axios';
 import logError from '../GeneralFuntions/logError';
@@ -11,6 +11,22 @@ export default function LocationCreate() {
       logError(error);
     }
   }
+
+  const provincias = ["Ciudad de Buenos Aires", "Buenos Aires", "Jujuy", "Salta", "Tucuman",
+                     "San juan", "Formosa", "Corrientes", "Chaco", "Misiones",
+                     "Santa Fe", "Cordoba", "San Luis", "Entre Rios", "Mendoza",
+                     "Rio Negro", "Neuquen", "Santa Cruz", "Tierra Del Fuego",
+                     "La Pampa", "La Rioja", "Santiago del Estero", "Chubut", "Catamarca"]
+
+
+  const horarios = [ ]    
+  for (let i = 0; i < 24; i++) {
+    horarios.push(i)
+    
+  }    
+
+  const boolean = [{key:"Seleccione un valor", value:null}, {key:"Si", value:true}, {key:"No", value:false}]
+             
 
   return (
     <Formik
@@ -30,17 +46,18 @@ export default function LocationCreate() {
       validate={(valores) => {
         // eslint-disable-next-line prefer-const
         let errores = {};
+        const patt = (/^[A-Za-z0-9\s]+$/)
 
-        if (!valores.name) {
+        if (!patt.test(valores.name) === true) {
           errores.name = 'Ingrese un valor';
         }
-        if (!valores.street) {
-          errores.street = 'Ingrese un valor';
+        if (!patt.test(valores.street) === true) {
+          errores.street = 'Ingrese un condor';
         }
-        if (!valores.city) {
+        if (!patt.test(valores.city) === true) {
           errores.city = 'Ingrese un valor';
         }
-        if (!valores.postalCode) {
+        if (!patt.test(valores.postalCode) === true) {
           errores.postalCode = 'Ingrese un valor';
         }
         if (!valores.lat) {
@@ -52,7 +69,7 @@ export default function LocationCreate() {
         if (!valores.stateName) {
           errores.stateName = 'Ingrese un valor';
         }
-        if (!valores.phone) {
+        if (!patt.test(valores.phone) === true) {
           errores.phone = 'Ingrese un valor';
         }
         if (!valores.timeOpen) {
@@ -127,21 +144,27 @@ export default function LocationCreate() {
               <div className='error'>{errors.city}</div>
             )}
           </div>
-          <div>
-            <label htmlFor='city'>provincia</label>
-            <input
-              type='text'
-              id='stateName'
-              name='stateName'
-              placeholder='provincia'
-              value={values.stateName}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
+          <Field component="div">
+            <label htmlFor='stateName'>provincia</label>
+            <select name="stateName" id="stateName">
+              
+            {provincias.map((d) => (
+              
+            <option
+                  value={d}
+                  id={values.d}
+                  key={d}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                >
+                  {`${d}`}
+                </option>
+                ))}
+            </select>
             {touched.stateName && errors.stateName && (
               <div className='error'>{errors.stateName}</div>
             )}
-          </div>
+          </Field>
 
           <div>
             <label htmlFor='lat'>latitud </label>
@@ -205,52 +228,74 @@ export default function LocationCreate() {
             )}
           </div>
 
-          <div>
+          <Field component="div">
             <label htmlFor='timeOpen'>Horario de apertura</label>
-            <input
-              type='text'
-              id='timeOpen'
-              name='timeOpen'
-              placeholder='08AM'
-              value={values.timeOpen}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
+         
+
+           <select name="timeOpen" id="timeOpen">
+              
+              {horarios.map((d) => (
+                
+              <option
+                    value={d}
+                    id={values.d}
+                    key={d}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  >
+                    {`${d} HS`}
+                  </option>
+                  ))}
+              </select> 
             {touched.timeOpen && errors.timeOpen && (
               <div className='error'>{errors.timeOpen}</div>
             )}
-          </div>
+          </Field>
 
-          <div>
+          <Field component = "div">
             <label htmlFor='timeClose'>Horario de cierre</label>
-            <input
-              type='text'
-              id='timeClose'
-              name='timeClose'
-              placeholder='22PM'
-              value={values.timeClose}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
+           
+             <select name="timeClose" id="timeClose">
+              
+              {horarios.map((d) => (
+                
+              <option
+                    value={d}
+                    id={values.d}
+                    key={d}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  >
+                    {`${d} HS`}
+                  </option>
+                  ))}
+              </select> 
             {touched.timeClose && errors.timeClose && (
               <div className='error'>{errors.timeClose}</div>
             )}
-          </div>
+          </Field>
 
-          <div>
+          <Field component="div">
             <label htmlFor='airportLocation'> Es aeropuerto?</label>
-            <input
-              type='text'
-              id='airportLocation'
-              name='airportLocation'
-              value={values.airportLocation}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
+           
+
+          <select name="airportLocation" id="airportLocation">
+            {boolean.map((d) => (
+            <option
+                  value={d.value}
+                  id={values.d}
+                  key={d.value}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                >
+                  {`${d.key}`}
+                </option>
+                ))}
+            </select>
             {touched.airportLocation && errors.airportLocation && (
               <div className='error'>{errors.airportLocation}</div>
             )}
-          </div>
+          </Field>
 
           <button type='submit'>Crea</button>
         </form>
