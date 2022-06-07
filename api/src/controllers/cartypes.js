@@ -1,67 +1,75 @@
-const { getCarType } = require('../services/cartypes/getCarType');
+const { findCarType } = require('../services/cartypes/findCarType');
 const { carTypeCount } = require('../services/cartypes/carTypeCount');
 const { Cartype } = require('../db');
 
-const getType = async (req, res, next) => {
+const getCarType = async (req, res, next) => {
+  const { id } = req.params;
+
   try {
-    const { id } = req.params;
-    const data = await getCarType(id);
+    const data = await findCarType(id);
+    if (!data)
+      return res.status(400).send('No se encontró un tipo de auto con ese ID');
     res.send(data);
   } catch (error) {
     next(error);
   }
 };
+
 const createCartype = async (req, res, next) => {
+  const {
+    make,
+    model,
+    className,
+    transmission,
+    mpg,
+    img,
+    doors,
+    seats,
+    airConditioning,
+    largeSuitcase,
+    smallSuitcase,
+    price,
+  } = req.body;
+
+  if (
+    !make ||
+    !model ||
+    !className ||
+    !transmission ||
+    !mpg ||
+    !img ||
+    !doors ||
+    !seats ||
+    !airConditioning ||
+    !largeSuitcase ||
+    !smallSuitcase ||
+    !price
+  )
+    return res
+      .status(400)
+      .send('Se requiere enviar todos los parámetros para crear un auto');
+
   try {
-    const {
-      make,
-      model,
-      className,
-      transmission,
-      mpg,
-      img,
-      doors,
-      seats,
-      airConditioning,
-      largeSuitcase,
-      smallSuitcase,
-      price,
-    } = req.body;
-    const [cartype, created] = await Cartype.findOrCreate({
-      where: {
-        make,
-        model,
-        className,
-        transmission,
-        mpg,
-        img,
-        doors,
-        seats,
-        airConditioning,
-        largeSuitcase,
-        smallSuitcase,
-        price,
-      },
+    const [carType, created] = await Cartype.findOrCreate({
+      where: req.body,
     });
-    if (created) {
-      return res.status(201).send({ msg: 'cartype created' });
-    } else {
+    if (!created)
       return res
-        .status(406)
-        .send({ msg: 'There is already a cartype with this name', cartype });
-    }
+        .status(400)
+        .send('Ya existe un modelo de auto de estas características');
+
+    return res.status(201).send({ msg: `${make} ${model} creado`, carType });
   } catch (error) {
-    if (error.response) {
-      res.status(error.response.status).send({ msg: error.response.status });
-    } else if (error.request) {
-      next(error.request);
-    } else {
-      next(error);
-    }
+    next(error);
   }
 };
-const GetTypeConunt = async (req, res, next) => {
+
+const getCarTypeCount = async (req, res, next) => {
   const { locationId } = req.params;
+
+  if (!locationId)
+    return res.status(400).send('Se requiere enviar un ID de ubicación');
+
   try {
     const count = await carTypeCount(locationId);
     res.send(count);
@@ -69,8 +77,9 @@ const GetTypeConunt = async (req, res, next) => {
     next(err);
   }
 };
+
 module.exports = {
-  getType,
-  GetTypeConunt,
+  getCarType,
+  getCarTypeCount,
   createCartype,
 };

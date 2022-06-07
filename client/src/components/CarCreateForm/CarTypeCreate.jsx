@@ -1,19 +1,20 @@
-import React from 'react';
-import { Formik, Field } from 'formik';
-import axios from 'axios';
-import { Alerts } from '../GeneralFuntions/GeneralFuntions';
 
+import { Formik, Field } from 'formik';
+import Alerts from '../Alerts';
+
+import axios from 'axios';
+import logError from '../GeneralFuntions/logError';
 
 export default function CarCreate() {
 
- async function postCar(values){
-      try {
-       await axios.post('/cartypes', values);
 
-      } catch (error) {
-        console.log(error);
-      }};
-          
+   async function postCar(values) {
+    try {
+      await axios.post('/cartypes', values);
+    } catch (error) {
+      logError(error);
+    }
+  }
 
       // constantes locales para el drop down de los selects
       const numbers = [ "---" , 1, 2, 3, 4, 5, 6, 7]
@@ -24,6 +25,7 @@ export default function CarCreate() {
       // constante de error para la funcion validadora
       const errormsg = 'Ingrese un valor valido'
   
+
 
   return (
     <Formik
@@ -97,9 +99,10 @@ export default function CarCreate() {
         return errores;
       }}
       onSubmit={(values) => {
-         alert(JSON.stringify(values))
-         console.log(typeof(values.price))
-        postCar(values)
+                    
+       
+        postCar(values);
+
         Alerts('success', 'Vehiculo creado');
       }}
     >
@@ -144,8 +147,10 @@ export default function CarCreate() {
             </Field>
 
 
+
           <Field component="div">
             <label htmlFor='className'>Clase</label>
+
 
             <input
               type='text'

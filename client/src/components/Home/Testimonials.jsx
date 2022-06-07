@@ -14,7 +14,6 @@ import { useEffect } from 'react';
 function Testimonials() {
   const { testimonials } = useSelector((state) => state.testimonials);
 
-
   return (
     <section className='testimonial section'>
       <span className='section__subtitle'>Nuestros clientes</span>
@@ -51,9 +50,9 @@ function Testimonials() {
                 />
 
                 <h3 className='testimonial__name'>
-                  {testimonial?.customer?.first_name +
+                  {testimonial?.customer?.firstName +
                     ' ' +
-                    testimonial?.customer?.last_name}
+                    testimonial?.customer?.lastName}
                 </h3>
                 <p className='testimonial__description'>
                   {testimonial?.review}

@@ -6,13 +6,12 @@ import { ClearUser, fetchUser } from './redux/user.js';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
+import logError from './components/GeneralFuntions/logError';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import About from './components/About';
-// import Profile from './components/Profile';
 import SearchResults from './pages/SearchResults';
 import Footer from './components/Footer';
-
 import AdminPanel from './pages/AdminPanel';
 import CarCreate from './components/CarCreateForm/CarCreate';
 import CarTypeCreate from './components/CarCreateForm/CarTypeCreate';
@@ -23,23 +22,25 @@ import NotFound from './components/NotFound';
 
 import './App.css';
 
-
-
-
-
-
-
-
 function App() {
   const dispatch = useDispatch();
   const { user, isAuthenticated } = useAuth0();
   console.log(user);
 
-
   useEffect(() => {
-    isAuthenticated && axios.post('/customers', user);
-    isAuthenticated && dispatch(fetchUser(user.email));
-    !isAuthenticated && dispatch(ClearUser());
+    if (!isAuthenticated) {
+      dispatch(ClearUser());
+    } else {
+      async function setCustomer() {
+        try {
+          await axios.post('/customers', user);
+        } catch (error) {
+          logError(error);
+        }
+        dispatch(fetchUser(user.email));
+      }
+      setCustomer();
+    }
   }, [isAuthenticated]);
 
   useEffect(() => {
