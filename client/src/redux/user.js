@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import logError from '../components/GeneralFuntions/logError';
 
 const initialState = {
   User: null,
@@ -23,7 +24,7 @@ export const fetchUser = (email) => async (dispatch) => {
       dispatch(SetUser(res.data));
     });
   } catch (error) {
-    console.log(error);
+    logError(error);
   }
 };
 

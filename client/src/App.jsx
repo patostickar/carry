@@ -6,13 +6,12 @@ import { ClearUser, fetchUser } from './redux/user.js';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
+import logError from './components/GeneralFuntions/logError';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import About from './components/About';
-// import Profile from './components/Profile';
 import SearchResults from './pages/SearchResults';
 import Footer from './components/Footer';
-
 import AdminPanel from './pages/AdminPanel';
 import CarCreate from './components/CarCreateForm/CarCreate';
 import CarTypeCreate from './components/CarCreateForm/CarTypeCreate';
@@ -33,7 +32,11 @@ function App() {
       dispatch(ClearUser());
     } else {
       async function setCustomer() {
-        await axios.post('/customers', user);
+        try {
+          await axios.post('/customers', user);
+        } catch (error) {
+          logError(error);
+        }
         dispatch(fetchUser(user.email));
       }
       setCustomer();

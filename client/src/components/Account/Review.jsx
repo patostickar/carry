@@ -1,24 +1,19 @@
-import React  from 'react';
-import { Formik, Form,  } from 'formik';
-import { useSelector,  } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { Formik, Form } from 'formik';
+import { Alerts } from '../GeneralFuntions/GeneralFuntions';
 import axios from 'axios';
+import logError from '../GeneralFuntions/logError';
 import 'sweetalert2/dist/sweetalert2.css';
 
-import { Alerts } from '../GeneralFuntions/GeneralFuntions';
-
 export default function Review() {
-    const { User } = useSelector((state) => state.user);
-    async function postreview(values){
-      try {
-         await axios.post(`/customers/reviews/${User.id}`, values);
-
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-
- 
+  const { User } = useSelector((state) => state.user);
+  async function postreview(values) {
+    try {
+      await axios.post(`/customers/reviews/${User.id}`, values);
+    } catch (error) {
+      logError(error);
+    }
+  }
 
   return (
     <Formik
@@ -26,26 +21,25 @@ export default function Review() {
         reviews: '',
       }}
       onSubmit={(values) => {
-        console.log(values);
         postreview(values);
-        // alert(JSON.stringify(values))
         Alerts('success', 'Gracias por la review');
-
       }}
     >
       {({ values, handleSubmit, handleChange, handleBlur }) => (
         <Form className='PostReview' onSubmit={handleSubmit}>
-           <div>
+          <div>
             <label htmlFor='reviews'>Deje una review</label>
-            <textarea id='reviews'
+            <textarea
+              id='reviews'
               name='reviews'
               placeholder='Deje una reviews'
               value={values.reviews}
               onChange={handleChange}
               onBlur={handleBlur}
-              cols="30"
-               rows="10"></textarea>   
-          </div> 
+              cols='30'
+              rows='10'
+            ></textarea>
+          </div>
           <button type='Submit'>Crear</button>
         </Form>
       )}
