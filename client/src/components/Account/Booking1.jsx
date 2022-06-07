@@ -7,7 +7,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch } from 'react-redux';
 
 
 import axios from "axios";
@@ -16,13 +16,14 @@ import axios from "axios";
 
 
 export const Booking1 = ()=> {
-//const bookings = useSelector(state=>state.booking.booking); 
-const bookings = [{id:'1', pickupDate:'09/06/22' ,dropOffDate:'11/06/22', reservationTotal:'2', status:'active'}]
+const bookings = useSelector(state=>state.booking.booking); 
 
-  useEffect(() => {
-    
-  }, []);
+ const dispatch = useDispatch();
 
+  
+    useEffect  (() => { 
+        dispatch(fetchUserBokings(User.id))
+    }, [])
   return (
     <>
     <Grid item xs={1}>
