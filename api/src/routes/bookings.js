@@ -3,13 +3,13 @@ const router = Router();
 
 const {
   dbcreateBooking,
-  getallBookings,
+  getAllBookings,
   getCustomersBookings,
 } = require('../controllers/bookings');
 
-router.get('/', getallBookings);
+router.get('/', getAllBookings);
 router.get('/customer/:id', getCustomersBookings);
-router.get('/:id', getallBookings);
+router.get('/:id', getAllBookings);
 router.post('/', dbcreateBooking);
 
 module.exports = router;
