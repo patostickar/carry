@@ -1,55 +1,32 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   Box,
   Button,
   Card,
   CardContent,
   CardHeader,
-  CardActions,
-  Divider,
   Grid,
   TextField,
    Typography,
    Avatar
 } from '@mui/material';
+import { fetchUser, putUser } from '../../redux/user';
 
-// const states = [
-//   {
-//     value: 'alabama',
-//     label: 'Alabama'
-//   },
-//   {
-//     value: 'new-york',
-//     label: 'New York'
-//   },
-//   {
-//     value: 'san-francisco',
-//     label: 'San Francisco'
-//   }
-// ];
 
-// const User = {
-//   avatar: '/static/images/avatars/avatar_6.png',
-//   city: 'Los Angeles',
-//   country: 'USA',
-//   jobTitle: 'Senior Developer',
-//   name: 'Katarina Smith',
-//   timezone: 'GTM-7'
-// };
-
-export const PersonalInformation = () => {
+export const PersonalInformation = ({setRenderControl, renderControl}) => {
+  const dispatch= useDispatch();
   const { User } = useSelector((state) => state.user);
   const [values, setValues] = useState({
-    firstName: User.first_name,
-    lastName: User.last_name,
-    email: User.email,
-    phone: User.phone,
-    city: User.city,
-    postal_code: User.postal_code,
-    avatar : User.img
+    first_name: User?.first_name,
+    last_name: User?.last_name,
+    email: User?.email,
+    phone: User?.phone,
+    city: User?.city,
+    postal_code: User?.postal_code,
+    avatar : User?.img
   });
-
+  console.log(values);
 
   const handleChange = (event) => {
     setValues({
@@ -58,8 +35,13 @@ export const PersonalInformation = () => {
     });
   };
 
-  const handleSubmit = ()=>{
+  const handleSubmit = (e)=>{
+    e.preventDefault();
+    console.log(User.id);
+    //dispatch(fetchUser(values.email))
+    dispatch(putUser(User.id, values));
     
+
 
   };
 
@@ -109,7 +91,7 @@ export const PersonalInformation = () => {
                 fullWidth
                 helperText="Please specify the first name"
                 label="First name"
-                name="firstName"
+                name="first_name"
                 onChange={handleChange}
                 required
                 value={values.firstName}
@@ -124,7 +106,7 @@ export const PersonalInformation = () => {
               <TextField
                 fullWidth
                 label="Last name"
-                name="lastName"
+                name="last_name"
                 onChange={handleChange}
                 required
                 value={values.lastName}
@@ -159,6 +141,7 @@ export const PersonalInformation = () => {
                 type="number"
                 value={values.phone}
                 variant="outlined"
+                required
               />
             </Grid>
             <Grid
@@ -199,7 +182,7 @@ export const PersonalInformation = () => {
               <TextField
                 fullWidth
                 label="Postal Code"
-                name="postalcode"
+                name="postal_code"
                 onChange={handleChange}
                 required
                 value={values.postal_code}
@@ -219,6 +202,7 @@ export const PersonalInformation = () => {
           <Button
             color="primary"
             variant="contained"
+            type='submit'
           >
             Save details
           </Button>
