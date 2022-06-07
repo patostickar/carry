@@ -33,8 +33,8 @@ export default function CarTypeCreate() {
   return (
     <Formik
       initialValues={{
-        carTypeid: '',
-        locationid: '',
+        carTypeId: '',
+        locationId: '',
       }}
       onSubmit={(values) => {
         console.log(values);
@@ -48,12 +48,12 @@ export default function CarTypeCreate() {
           <div>
             <label htmlFor='carType'>Seleccione el vehiculo</label>
 
-            <Field component='div' id='carTypeid'>
-              <select name='carTypeid' id='carTypeid'>
+            <Field component='div' id='carTypeId'>
+              <select name='carTypeId' id='carTypeId'>
                 {AllcarTypes.map((d) => (
                   <option
                     value={d.id}
-                    id={values.carTypeid}
+                    id={values.carTypeId}
                     key={d.id}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -66,13 +66,13 @@ export default function CarTypeCreate() {
           </div>
 
           <div>
-            <label htmlFor='locationid'>Seleccione la ubicacion</label>
-            <Field component='div' id='locationid'>
-              <select name='locationid' id='locationid'>
+            <label htmlFor='locationId'>Seleccione la ubicacion</label>
+            <Field component='div' id='locationId'>
+              <select name='locationId' id='locationId'>
                 {locations.map((d) => (
                   <option
                     value={d.id}
-                    id={values.locationid}
+                    id={values.locationId}
                     key={d.id}
                     onChange={handleChange}
                     onBlur={handleBlur}
