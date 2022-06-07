@@ -21,6 +21,7 @@ import Reservation from './components/Reservation/Reservation';
 import NotFound from './components/NotFound';
 
 import './App.css';
+import Payment from './pages/Payment';
 
 function App() {
   const dispatch = useDispatch();
@@ -62,6 +63,7 @@ function App() {
           <Route path='/profile' element={<Account />} />
           <Route path='/reservation' element={<Reservation />} />
           <Route path='/searchResult' element={<SearchResults />} />
+          <Route path='/payment' element={<Payment />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
         <Footer />
