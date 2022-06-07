@@ -5,7 +5,7 @@ const {
 } = require('../services/cartypes/getAvailableCarTypes');
 const { getCarById } = require('../services/cars/getCarById');
 const { createCar } = require('../services/cars/createCar');
-const { updateCarLocation } = require('../services/cars/updateCarLocation');
+// const { updateCarLocation } = require('../services/cars/updateCarLocation');
 
 module.exports.getAllCars = async (req, res, next) => {
   try {
@@ -20,7 +20,7 @@ module.exports.getAvailableCars = async (req, res, next) => {
   const { locationId, pickUpDate, dropOffDate } = req.query;
 
   if (!locationId || !pickUpDate || !dropOffDate)
-    return res.status(400).send('Please send all the mandatory information');
+    return res.status(400).send('Por favor completar ubicación y fechas');
 
   try {
     const availableCars = await getAvailableCars(
@@ -28,6 +28,10 @@ module.exports.getAvailableCars = async (req, res, next) => {
       pickUpDate,
       dropOffDate
     );
+
+    if (!availableCars.length)
+      return res.send('No hay autos en esta ubicación');
+
     const availableCarTypes = await getAvailableCarTypes(
       availableCars,
       pickUpDate,
@@ -79,13 +83,13 @@ module.exports.createCar = async (req, res, next) => {
 //    }
 //  }
 
-module.exports.updateLocation = async (req, res, next) => {
-  const { locationid } = req.body;
-  const { id } = req.params;
-  try {
-    const response = await updateCarLocation(id, locationid);
-    res.send({ msg: response });
-  } catch (error) {
-    next(error);
-  }
-};
+// module.exports.updateLocation = async (req, res, next) => {
+//   const { locationid } = req.body;
+//   const { id } = req.params;
+//   try {
+//     const response = await updateCarLocation(id, locationid);
+//     res.send({ msg: response });
+//   } catch (error) {
+//     next(error);
+//   }
+// };
