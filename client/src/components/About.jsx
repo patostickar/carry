@@ -8,7 +8,7 @@ import Patricio from '../assets/Patricio.jpg';
 import styles from './styles/About.module.css';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import { TabTitle } from '../components/GeneralFuntions/GeneralFuntions';
+import TabTitle from '../components/TabTitle';
 
 function About() {
   TabTitle('Nosotros - Carry');

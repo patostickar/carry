@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Formik, Form } from 'formik';
-import { Alerts } from '../GeneralFuntions/GeneralFuntions';
+import Alerts from '../Alerts';
 import axios from 'axios';
 import logError from '../GeneralFuntions/logError';
 import 'sweetalert2/dist/sweetalert2.css';

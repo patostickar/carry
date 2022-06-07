@@ -1,5 +1,5 @@
 import { Formik } from 'formik';
-import { Alerts } from '../GeneralFuntions/GeneralFuntions';
+import Alerts from '../Alerts';
 import axios from 'axios';
 import logError from '../GeneralFuntions/logError';
 
