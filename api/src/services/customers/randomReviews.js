@@ -13,8 +13,8 @@ module.exports.randomReviews = async () => {
   const idArray = Array.from(uniqueIds);
 
   let r1 = Review.findByPk(idArray[0], { include: [Customer] });
-  let r2 = Review.findByPk(idArray[0], { include: [Customer] });
-  let r3 = Review.findByPk(idArray[0], { include: [Customer] });
+  let r2 = Review.findByPk(idArray[1], { include: [Customer] });
+  let r3 = Review.findByPk(idArray[2], { include: [Customer] });
 
   return ([r1, r2, r3] = await Promise.all([r1, r2, r3]));
 };
