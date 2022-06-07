@@ -2,29 +2,24 @@ import axios from 'axios'
 import {useEffect,useState} from 'react'
 import Checkout from '../components/Checkout'
 
-const Payment = () => {
+const Payment = (reserva) => {
 
     const[datos,setDatos]=useState('')
 
-    const booking=[
-        {title:'Reserva 1', quantity:10, price:100},
-        {title:'Reserva 2', quantity:20, price:250},
-        {title:'Reserva 3', quantity:11, price:500},
-    ]
 
-  
-
+  const data = reserva.data.booking
+console.log(data);
 useEffect(() => {
 
-       axios.get('http://localhost:3001/payment/payment')
+       axios.post('/payment/payment',{
+         total:data.reservationTotal,
+         id: data.id
+      })
        .then((res)=>{
         setDatos(res.data)
         console.info('Contenido de la data: ',res); 
        }) 
        .catch(err=>console.log(err))
-  
-  
-  
 
 }, [])
 
@@ -32,14 +27,11 @@ useEffect(() => {
 
 
   return (
-    <div>
-        {!datos
+    <>
+         {!datos
         ?<p>Aguarde un momento...</p>
-        : <Checkout booking={booking} data={datos}/>
-        }
-       
-
-    </div>
+        : <Checkout data={datos}/>}
+    </>
   )
 }
 

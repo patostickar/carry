@@ -49,7 +49,7 @@ console.log(Userbokings);
             <TableRow key={row.id}>
               {// <TableCell component="th" scope="row">{row.id}</TableCell> 
               }
-              <TableCell style={{display: "flex","align-items": "center"}} align="center"><img src={row.cartype.img} alt='' style={{height:60, width:110}}/> {`${row.cartype.make} ${row.cartype.model} `}</TableCell>
+              <TableCell style={{display: "flex","align-items": "center","flex-direction": "column"}} align="center"><img src={row.cartype.img} alt='' style={{height:60, width:110}}/> {`${row.cartype.make} ${row.cartype.model} `}</TableCell>
               <TableCell align="center">{row.pickUpDate}</TableCell>
               <TableCell align="center">{row.dropOffDate}</TableCell>
               <TableCell align="center">{row.reservationTotal}</TableCell>
