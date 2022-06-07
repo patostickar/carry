@@ -46,7 +46,7 @@ module.exports.getAvailableCars = async (req, res, next) => {
     );
 
     if (!availableCars.length)
-      return res.send('No hay autos en esta ubicación');
+      return res.status(400).send('No hay autos en esta ubicación');
 
     const availableCarTypes = await getAvailableCarTypes(
       availableCars,
@@ -68,8 +68,8 @@ module.exports.addCar = async (req, res, next) => {
     return res.status(400).send('Por favor enviar ID de tipo de auto');
 
   try {
-    await addCar(locationId, carTypeId);
-    res.status(200).send('Auto Creado');
+    const car = await addCar(locationId, carTypeId);
+    res.status(200).send({ msg: 'Auto Creado', car });
   } catch (error) {
     next(error);
   }

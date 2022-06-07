@@ -36,7 +36,7 @@ const postCustomer = async (req, res, next) => {
     return res.status(400).send('Se require un email para pder registrarse');
 
   try {
-    const [, created] = await Customer.findOrCreate({
+    const [customer, created] = await Customer.findOrCreate({
       where: {
         email,
       },
@@ -48,8 +48,10 @@ const postCustomer = async (req, res, next) => {
     });
 
     created
-      ? res.status(201).send('Cliente registrado satisfactoriamente')
-      : res.status(200).send('Ya existe un cliente con este correo');
+      ? res
+          .status(201)
+          .send({ msg: 'Cliente registrado satisfactoriamente', customer })
+      : res.send({ msg: 'Ya existe un cliente con este correo', customer });
   } catch (error) {
     next(error);
   }
@@ -104,7 +106,9 @@ const postReview = async (req, res, next) => {
     const customer = await Customer.findByPk(id);
     const newReview = await Review.create({ review });
     newReview.setCustomer(customer);
-    res.send('Gracias por compartir tu testimonio!');
+    res
+      .status(201)
+      .send({ msg: 'Gracias por compartir tu testimonio!', review });
   } catch (error) {
     next(error);
   }

@@ -9,6 +9,21 @@ const getAllLocations = async (req, res, next) => {
   }
 };
 
+const getLocationById = async (req, res, next) => {
+  const { id } = req.params;
+  if (!id)
+    return res.status(400).send('Se requiere enviar el ID de la ubicación');
+
+  try {
+    const location = await Location.findByPk(id);
+    if (!location)
+      return res.status(400).send('No se encuentra una ubicación con ese ID');
+    res.send(location);
+  } catch (error) {
+    next(error);
+  }
+};
+
 const createLocation = async (req, res, next) => {
   const {
     name,
@@ -56,28 +71,13 @@ const createLocation = async (req, res, next) => {
         airportLocation,
       },
     });
-    if (created) {
-      return res.status(201).send({ msg: 'Ubicación creada', location });
-    } else {
-      return res
-        .status(200)
-        .send('Ya existe una ubicación con estos parámetros');
+    if (!created) {
+      return res.send({
+        msg: 'Ya existe una ubicación con estos parámetros',
+        location,
+      });
     }
-  } catch (error) {
-    next(error);
-  }
-};
-
-const getLocationById = async (req, res, next) => {
-  const { id } = req.params;
-  if (!id)
-    return res.status(400).send('Se requiere enviar el ID de la ubicación');
-
-  try {
-    const location = await Location.findByPk(id);
-    if (!location)
-      return res.status(400).send('No se encuentra una ubicación con ese ID');
-    res.send(location);
+    res.status(201).send({ msg: 'Ubicación creada', location });
   } catch (error) {
     next(error);
   }

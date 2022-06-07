@@ -14,6 +14,19 @@ const getAllBookings = async (req, res, next) => {
   }
 };
 
+const getCustomerBookings = async (req, res, next) => {
+  const { id } = req.params;
+
+  if (!id) return res.status(400).send('Se requiere enviar el ID del cliente');
+
+  try {
+    const booking = await searchBooking(id);
+    res.send(booking);
+  } catch (error) {
+    next(error);
+  }
+};
+
 const dbCreateBooking = async (req, res, next) => {
   const { carTypeId, customerId, locationId, pickUpDate, dropOffDate } =
     req.body;
@@ -33,24 +46,12 @@ const dbCreateBooking = async (req, res, next) => {
 
   try {
     const booking = await createBooking(req.body);
-    res.status(200).send(booking);
+    res.status(201).send({ msg: 'Reserva confirmada', booking });
   } catch (error) {
     next(error);
   }
 };
 
-const getCustomerBookings = async (req, res, next) => {
-  const { id } = req.params;
-
-  if (!id) return res.status(400).send('Se requiere enviar el ID del cliente');
-
-  try {
-    const bookingByCustomer = await searchBooking(id);
-    res.status(200).send(bookingByCustomer);
-  } catch (error) {
-    next(error);
-  }
-};
 module.exports = {
   getAllBookings,
   dbCreateBooking,

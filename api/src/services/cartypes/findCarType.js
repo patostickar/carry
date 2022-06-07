@@ -1,6 +1,6 @@
 const { Cartype } = require('../../db');
 
-module.exports.getCarType = async (id) => {
+module.exports.findCarType = async (id) => {
   if (id) {
     return await Cartype.findByPk(id);
   }

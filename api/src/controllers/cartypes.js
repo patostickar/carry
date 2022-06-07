@@ -1,12 +1,12 @@
-const { getCarType } = require('../services/cartypes/getCarType');
+const { findCarType } = require('../services/cartypes/findCarType');
 const { carTypeCount } = require('../services/cartypes/carTypeCount');
 const { Cartype } = require('../db');
 
-const getType = async (req, res, next) => {
+const getCarType = async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    const data = await getCarType(id);
+    const data = await findCarType(id);
     if (!data)
       return res.status(400).send('No se encontró un tipo de auto con ese ID');
     res.send(data);
@@ -50,21 +50,21 @@ const createCartype = async (req, res, next) => {
       .send('Se requiere enviar todos los parámetros para crear un auto');
 
   try {
-    const [, created] = await Cartype.findOrCreate({
+    const [carType, created] = await Cartype.findOrCreate({
       where: req.body,
     });
     if (!created)
       return res
-        .status(200)
+        .status(400)
         .send('Ya existe un modelo de auto de estas características');
 
-    return res.status(201).send(`${make} ${model} creado`);
+    return res.status(201).send({ msg: `${make} ${model} creado`, carType });
   } catch (error) {
     next(error);
   }
 };
 
-const getTypeCount = async (req, res, next) => {
+const getCarTypeCount = async (req, res, next) => {
   const { locationId } = req.params;
 
   if (!locationId)
@@ -79,7 +79,7 @@ const getTypeCount = async (req, res, next) => {
 };
 
 module.exports = {
-  getType,
-  getTypeCount,
+  getCarType,
+  getCarTypeCount,
   createCartype,
 };
