@@ -5,6 +5,8 @@ import PersonIcon from '@mui/icons-material/Person';
 import SecurityIcon from '@mui/icons-material/Security';
 import PaymentIcon from '@mui/icons-material/Payment';
 import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
+import DeleteIcon from '@mui/icons-material/Delete';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 export const Sidebar = ({ setRenderControl, renderControl }) => {
   const navigate = useNavigate();
@@ -34,10 +36,13 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
             <PersonIcon color='primary' />
             <Typography
               onClick={() =>{
-                (!renderControl.security&&
-                !renderControl.payment&&
-                !renderControl.booking)&&
-                setRenderControl({ ...renderControl, personalInfo: !renderControl.personalInfo })
+                
+                setRenderControl({
+                  personalInfo: true,
+                  security: false,
+                  payment: false,
+                  booking: false
+                   })
                 }}
               style={{ fontWeight: 'lighter' }}
             >
@@ -58,8 +63,12 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
             <SecurityIcon color='primary' />
             <Typography
               onClick={() =>
-                
-                setRenderControl({ ...renderControl, security: !renderControl.security })
+                setRenderControl({
+                  personalInfo: false,
+                  security: true,
+                  payment: false,
+                  booking: false
+                   })
               }
             >
               Seguridad
@@ -79,7 +88,12 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
             <PaymentIcon color='primary' />
             <Typography
               onClick={() =>
-                setRenderControl({ ...renderControl, payment:!renderControl.payment })
+                setRenderControl({
+                  personalInfo: false,
+                  security: false,
+                  payment: true,
+                  booking: false
+                   })
               }
             >
               Pagos
@@ -99,7 +113,12 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
             <BookmarkAddIcon color='primary' />
             <Typography
               onClick={() =>
-                setRenderControl({ ...renderControl, booking: !renderControl.booking })
+                setRenderControl({
+                  personalInfo: false,
+                  security: false,
+                  payment: false,
+                  booking: true
+                   })
               }
             >
               Reservas
@@ -116,7 +135,7 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
               gap: '5px',
             }}
           >
-            <BookmarkAddIcon color='primary' />
+            <DeleteIcon color='primary' />
             <Typography onClick={() => navigate('/')}>
               Eliminar Cuenta
             </Typography>
@@ -132,7 +151,7 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
               gap: '5px',
             }}
           >
-            <BookmarkAddIcon color='primary' />
+            <ExitToAppIcon color='primary' />
             <Typography onClick={() => navigate('/')}>Salir</Typography>
           </Box>
         </Grid>
