@@ -27,6 +27,7 @@ module.exports.createBooking = async (data) => {
     pickUpDate,
     dropOffDate,
     reservationTotal,
+    status: "pendiente"
   });
 
   booking.setCustomer(customerId);
@@ -34,5 +35,5 @@ module.exports.createBooking = async (data) => {
   booking.setCartype(findAvailableCarOfType.cartypeId);
   booking.setLocation(locationId);
 
-  return 'Reserva confirmada';
+  return booking;
 };
