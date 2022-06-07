@@ -14,6 +14,7 @@ import {
 import { putUser } from '../../redux/user';
 
 
+
 export const PersonalInformation = ({ setRenderControl, renderControl }) => {
   const dispatch = useDispatch();
   const { User } = useSelector((state) => state.user);
@@ -39,7 +40,6 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
   const handleSubmit = (e) => {
     // e.preventDefault();
  console.log("test");
-
     // setRenderControl({ ...renderControl, personalInfo: !renderControl.personalInfo })
     // dispatch(putUser(User.id, values));
   };
@@ -82,10 +82,12 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
                   fullWidth
                   helperText='Please specify the first name'
                   label='First name'
+
                   name='firstName'
                   onChange={handleChange}
                   required
                   value={values.firstName || ""}
+
                   variant='outlined'
                 />
               </Grid>
@@ -93,10 +95,12 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
                 <TextField
                   fullWidth
                   label='Last name'
+
                   name='lastName'
                   onChange={handleChange}
                   required
                   value={values.lastName || ""}
+
                   variant='outlined'
                 />
               </Grid>
@@ -130,6 +134,7 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
                   name='city'
                   onChange={handleChange}
                   required
+
                   value={values.city || ""}
                   variant='outlined'
                 />

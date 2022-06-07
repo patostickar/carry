@@ -1,5 +1,5 @@
 import { useAuth0 } from '@auth0/auth0-react';
-import { TabTitle } from './GeneralFuntions/GeneralFuntions';
+import TabTitle from './TabTitle';
 import JSONPretty from 'react-json-pretty';
 import styles from './styles/Profile.module.css';
 import 'react-json-pretty/themes/monikai.css';

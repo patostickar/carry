@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import logError from '../components/GeneralFuntions/logError';
+
 const initialState = {
   booking: {
     carTypeId: null,
@@ -8,7 +10,7 @@ const initialState = {
     pickUpDate: null,
     dropOffDate: null,
   },
-  Userbokings:[],
+  Userbokings: [],
 };
 
 export const booking = createSlice({
@@ -27,16 +29,16 @@ export const booking = createSlice({
   },
 });
 export const fetchUserBokings = (id) => async (dispatch) => {
-
   try {
     const res = await axios.get(`/bookings/customer/${id}`);
     dispatch(setUserBookings(res.data));
     // .then((res) => dispatch(setCarTypes(res.data)));
   } catch (error) {
-    console.log(error);
+    logError(error);
   }
 };
 
-export const { setBookingDetails, clearBookingDetails,setUserBookings } = booking.actions;
+export const { setBookingDetails, clearBookingDetails, setUserBookings } =
+  booking.actions;
 
 export default booking.reducer;

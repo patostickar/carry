@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import logError from '../components/GeneralFuntions/logError';
 
 const initialState = {
   carTypes: [],
@@ -8,7 +9,7 @@ const initialState = {
   filters: {
     transmission: {
       manual: false,
-      automatic: false,
+      automático: false,
     },
     airConditioning: false,
     fourPlusSeats: false,
@@ -79,19 +80,18 @@ export const fetchCarTypes =
       dispatch(setCarTypes(res.data));
       // .then((res) => dispatch(setCarTypes(res.data)));
     } catch (error) {
-      console.log(error);
+      logError(error);
     }
   };
 export const fetchAllCarTypes = () => async (dispatch) => {
-
-    try {
-      const res = await axios.get('/carTypes');
-      dispatch(setAllCarTypes(res.data));
-      // .then((res) => dispatch(setCarTypes(res.data)));
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  try {
+    const res = await axios.get('/carTypes');
+    dispatch(setAllCarTypes(res.data));
+    // .then((res) => dispatch(setCarTypes(res.data)));
+  } catch (error) {
+    logError(error);
+  }
+};
 
 export const {
   setCarTypes,

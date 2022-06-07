@@ -6,6 +6,7 @@ import  Review from './Review';
 import { NavLink } from 'react-router-dom';
 import {Booking} from './Booking';
 
+
 export default function Account() {
   const [renderControl, setRenderControl] = useState({
     personalInfo: false,
@@ -24,6 +25,7 @@ export default function Account() {
        setRenderControl={setRenderControl}
         renderControl={renderControl}/>}
       {renderControl.booking &&<Booking/>
+
 }
     </Grid>
     <Review/>

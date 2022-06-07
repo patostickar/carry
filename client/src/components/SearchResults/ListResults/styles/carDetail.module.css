@@ -1,6 +1,6 @@
 .carCard {
   border: 1px solid lightgray;
-  padding: 2em 1em;
+  padding: 1.5em 1.5em;
   border-radius: 5px;
   display: flex;
   flex-direction: row;

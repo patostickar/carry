@@ -17,10 +17,10 @@ module.exports = (sequelize) => {
           isEmail: true,
         },
       },
-      first_name: {
+      firstName: {
         type: DataTypes.STRING,
       },
-      last_name: {
+      lastName: {
         type: DataTypes.STRING,
       },
       street: {
@@ -29,13 +29,13 @@ module.exports = (sequelize) => {
       city: {
         type: DataTypes.STRING,
       },
-      postal_code: {
+      postalCode: {
         type: DataTypes.STRING,
       },
       phone: {
         type: DataTypes.STRING,
       },
-      img:{
+      img: {
         type: DataTypes.STRING,
       },
       isAdmin: {
