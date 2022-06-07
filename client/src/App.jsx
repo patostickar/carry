@@ -23,23 +23,21 @@ import NotFound from './components/NotFound';
 
 import './App.css';
 
-
-
-
-
-
-
-
 function App() {
   const dispatch = useDispatch();
   const { user, isAuthenticated } = useAuth0();
   console.log(user);
 
-
   useEffect(() => {
-    isAuthenticated && axios.post('/customers', user);
-    isAuthenticated && dispatch(fetchUser(user.email));
-    !isAuthenticated && dispatch(ClearUser());
+    if (!isAuthenticated) {
+      dispatch(ClearUser());
+    } else {
+      async function setCustomer() {
+        await axios.post('/customers', user);
+        dispatch(fetchUser(user.email));
+      }
+      setCustomer();
+    }
   }, [isAuthenticated]);
 
   useEffect(() => {
