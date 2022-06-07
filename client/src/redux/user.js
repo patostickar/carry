@@ -28,6 +28,16 @@ export const fetchUser = (email) => async (dispatch) => {
   }
 };
 
+export const putUser = (id, data) => async (dispatch) => {
+  try {
+    await axios.put(`/customers/${id}`, data).then((res) => {
+      dispatch(SetUser(res.data));
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const { SetUser, ClearUser } = User.actions;
 
 export default User.reducer;
