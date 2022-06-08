@@ -18,6 +18,7 @@ import CarTypeCreate from './components/CarCreateForm/CarTypeCreate';
 import LocationCreate from './components/CarCreateForm/LocationCreate';
 import Account from './components/Account/Account';
 import Reservation from './components/Reservation/Reservation';
+import AdminUsersManagement from './components/GestionDeUsuarios/AdminUsersManagement'
 import NotFound from './components/NotFound';
 
 import './App.css';
@@ -64,6 +65,7 @@ function App() {
           <Route path='/reservation' element={<Reservation />} />
           <Route path='/searchResult' element={<SearchResults />} />
           <Route path='/payment' element={<Payment />} />
+          <Route path="/usermanagement" element={<AdminUsersManagement />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
         <Footer />
