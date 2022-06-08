@@ -7,7 +7,7 @@ import AdminCard from "./AdminPanelCard";
 export default function AdminPanelSideBar(){
     return(
         <>
-        {/* <div>Holis soy una sidebar jajaj</div> */}
+        
         
         <span style={{display: "flex", "flexDirection": "column", "alignItems": "center"}}>
 

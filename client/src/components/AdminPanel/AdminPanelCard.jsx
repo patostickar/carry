@@ -50,6 +50,8 @@ export default function AdminCard(){
         totalStockCars = stockCars.length
         
     }
+
+    console.log(quantityCustomers)
     
 
 
