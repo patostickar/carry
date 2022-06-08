@@ -19,7 +19,7 @@ import CarTypeCreate from './components/AdminPanel/CreateForms/CarTypeCreate';
 import LocationCreate from './components/AdminPanel/CreateForms/LocationCreate';
 import Account from './pages/Account';
 import Reservation from './pages/Reservation/Reservation';
-import AdminUsersManagement from './components/AdminPanel/AdminUsersManagement'
+// import AdminUsersManagement from './components/AdminPanel/AdminUsersManagement'
 import NotFound from './pages/NotFound';
 import "./App.css";
 import TermsAndConditions from "./pages/TermsAndConditions/TermsAndConditions";
