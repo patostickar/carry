@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchAllLocations } from './redux/searchBar';
@@ -18,10 +19,12 @@ import CarTypeCreate from './components/CarCreateForm/CarTypeCreate';
 import LocationCreate from './components/CarCreateForm/LocationCreate';
 import Account from './components/Account/Account';
 import Reservation from './components/Reservation/Reservation';
+import AdminUsersManagement from './components/GestionDeUsuarios/AdminUsersManagement'
 import NotFound from './components/NotFound';
+import "./App.css";
+import TermsAndConditions from "./components/TermsAndConditions/TermsAndConditions";
+import Response from './components/MPrespose';
 
-import './App.css';
-import Payment from './pages/Payment';
 
 function App() {
   const dispatch = useDispatch();
@@ -34,7 +37,7 @@ function App() {
     } else {
       async function setCustomer() {
         try {
-          await axios.post('/customers', user);
+          await axios.post("/customers", user);
         } catch (error) {
           logError(error);
         }
@@ -54,6 +57,7 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
+          <Route path="/terminos-condiciones" element={<TermsAndConditions />} />
           <Route path='/' element={<Home />} />
           <Route path='/about' element={<About />} />
           <Route path='/adminPanel' element={<AdminPanel />} />
@@ -63,7 +67,8 @@ function App() {
           <Route path='/profile' element={<Account />} />
           <Route path='/reservation' element={<Reservation />} />
           <Route path='/searchResult' element={<SearchResults />} />
-          <Route path='/payment' element={<Payment />} />
+          <Route path="/Response" element={<Response/>} />
+          <Route path="/usermanagement" element={<AdminUsersManagement />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
         <Footer />

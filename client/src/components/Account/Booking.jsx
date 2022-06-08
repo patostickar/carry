@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -7,8 +8,12 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
 import {useSelector, useDispatch } from 'react-redux';
-import { fetchUserBokings } from '../../redux/booking';
+import { fetchUserBokings, putUserBookings } from '../../redux/booking';
+import { Button } from "@mui/material";
+import CancelIcon from '@mui/icons-material/Cancel';
+import ReviewsIcon from '@mui/icons-material/Reviews';
 
 
 
@@ -19,11 +24,24 @@ export const Booking = ()=> {
   const { Userbokings } = useSelector((state) => state.booking);
 console.log(Userbokings);
   const { User } = useSelector((state) => state.user);
-
+  console.log(User.id);
  const dispatch = useDispatch();
+ 
+ const handleCancellBooking = (id)=>{
+   console.log(id);
 
+   const data = Userbokings.bookings.filter(el=>el.id === id);
+   const putData = {...data[0], status: 'inactive' }
+   console.log(data);
+   console.log(putData); 
+   dispatch(putUserBookings(id,putData))
+   dispatch(fetchUserBokings(User.id))
+
+
+ };
   
     useEffect  (() => { 
+
         dispatch(fetchUserBokings(User.id))
     }, [])
   return (
@@ -31,8 +49,9 @@ console.log(Userbokings);
     <Grid item xs={1}>
 
    </Grid>
-    <Grid item xs={7} style={{ border:'solid 1px lightgrey', borderRadius:'8px'}}>
-
+   
+    <Grid item xs={8} style={{ border:'solid 1px lightgrey', borderRadius:'8px'}}>
+    
     <TableContainer component={Paper}>
       <Table aria-label="simple table" stickyHeader>
         <TableHead>
@@ -42,6 +61,8 @@ console.log(Userbokings);
             <TableCell align="center" style={{color:'#1565C0', fontWeight:'bolder'}}>DropOff Date</TableCell>
             <TableCell align="center" style={{color:'#1565C0', fontWeight:'bolder'}}>Reservation Total</TableCell>
             <TableCell align="center" style={{color:'#1565C0', fontWeight:'bolder'}}>Status</TableCell>
+            <TableCell align="center" style={{color:'#1565C0', fontWeight:'bolder'}}>Accion</TableCell>
+            
           </TableRow>
         </TableHead>
         <TableBody>
@@ -54,6 +75,7 @@ console.log(Userbokings);
               <TableCell align="center">{row.dropOffDate}</TableCell>
               <TableCell align="center">{row.reservationTotal}</TableCell>
               <TableCell align="center">{row.status}</TableCell>
+              <TableCell  align="center">{row.status==='active'&&<CancelIcon color='primary' cursor='pointer' onClick={()=>handleCancellBooking(row.id)} /> }</TableCell>
               
             </TableRow>
           ))}
@@ -64,5 +86,3 @@ console.log(Userbokings);
     </>
   );
 }
-
-

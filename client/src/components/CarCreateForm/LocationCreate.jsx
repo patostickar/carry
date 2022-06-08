@@ -1,4 +1,6 @@
+
 import { Form, Formik,Field } from 'formik';
+
 import Alerts from '../Alerts';
 import axios from 'axios';
 import * as Yup from 'yup';
@@ -81,6 +83,7 @@ export default function LocationCreate() {
 
 
 
+
   return (
     <div className={styles.container}>
     <Formik
@@ -97,8 +100,10 @@ export default function LocationCreate() {
         timeClose: '',
         airportLocation: '',
       }}
+
      
       onSubmit={(values,{resetForm}) => {
+
         postLocation(values);
         Alerts('success', 'location creado');
         resetForm()
@@ -163,6 +168,7 @@ export default function LocationCreate() {
            {touched.city && errors.city ? 
             (<Error>{errors.city}</Error>):null}
           </div>
+
           <div className={styles.content}>
             <label htmlFor='city'
             className={styles.label}
@@ -188,6 +194,7 @@ export default function LocationCreate() {
            {touched.stateName && errors.stateName ? 
             (<Error>{errors.stateName}</Error>):null}
           </div>
+
 
           <div className={styles.content}>
             <label htmlFor='lat'
@@ -250,6 +257,7 @@ export default function LocationCreate() {
             {touched.phone && errors.phone ? 
             (<Error>{errors.phone}</Error>):null}
           </div>
+
 
           <div  className={styles.content}>
             <label htmlFor='timeOpen'
@@ -315,18 +323,21 @@ export default function LocationCreate() {
               
             >
                {boolean.map((d) => (
+
             <option
                   value={d.value}
                   id={values.d}
                   key={d.value}
-                >
-                  {`${d.key}`}
-                </option>
-                ))}
+
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+
+
             </Field>
                 {touched.airportLocation && errors.airportLocation ? 
             (<Error>{errors.airportLocation}</Error>):null}
           </div>
+
 
           <button type='submit'>Crea</button>
         </Form>

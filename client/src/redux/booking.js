@@ -23,9 +23,18 @@ export const booking = createSlice({
     setUserBookings: (state, action) => {
       state.Userbokings = action.payload;
     },
+    // updateUserBookings: (state, action) => {
+    //  state.Userbokings = initialState;
+    // },
     clearBookingDetails: (state, action) => {
       state = initialState;
+
     },
+    ClearBookingState: (state, action) => {
+      state.booking = initialState.booking
+
+    }
+    
   },
 });
 export const fetchUserBokings = (id) => async (dispatch) => {
@@ -38,7 +47,22 @@ export const fetchUserBokings = (id) => async (dispatch) => {
   }
 };
 
-export const { setBookingDetails, clearBookingDetails, setUserBookings } =
+export const putUserBookings = (id,data) => async (dispatch) => {
+  try {
+    const res = await axios.put(`/bookings/${id}`, data);
+     dispatch(fetchUserBokings(id));
+    // dispatch(setBookingDetails(res.data));
+    
+  } catch (error) {
+    logError(error);
+  }
+};
+
+
+
+export const { setBookingDetails, clearBookingDetails, setUserBookings,ClearBookingState } =
+
+
   booking.actions;
 
 export default booking.reducer;
