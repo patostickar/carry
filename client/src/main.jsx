@@ -15,7 +15,7 @@ const REACT_APP_AUTH0_DOMAIN = 'carry-login.us.auth0.com';
 const REACT_APP_AUTH0_CLIENT_ID = 'Yr5AIizkXNBNNk6LrdHwrj3ZO7suns8e';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <CssBaseline />
@@ -30,5 +30,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <App />
       </Auth0Provider>
     </Provider>
-  </React.StrictMode>
+  // </React.StrictMode>
 );

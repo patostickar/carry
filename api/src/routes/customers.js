@@ -7,12 +7,14 @@ const {
   getReviews,
   postCustomer,
   postReview,
+  getUserReviews,
   putCustomer,
   // getCustomerById,
 } = require('../controllers/customers');
 
 router.get('/', getCustomers);
 router.get('/reviews', getReviews);
+router.get('/reviews/:id', getUserReviews);
 router.get('/:email', getCustomerByemail);
 
 router.post('/', postCustomer);
