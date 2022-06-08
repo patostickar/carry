@@ -21,11 +21,10 @@ import Account from './components/Account/Account';
 import Reservation from './components/Reservation/Reservation';
 import AdminUsersManagement from './components/GestionDeUsuarios/AdminUsersManagement'
 import NotFound from './components/NotFound';
-
-
 import "./App.css";
-import Payment from "./pages/Payment";
 import TermsAndConditions from "./components/TermsAndConditions/TermsAndConditions";
+import Response from './components/MPrespose';
+
 
 function App() {
   const dispatch = useDispatch();
@@ -68,7 +67,7 @@ function App() {
           <Route path='/profile' element={<Account />} />
           <Route path='/reservation' element={<Reservation />} />
           <Route path='/searchResult' element={<SearchResults />} />
-          <Route path='/payment' element={<Payment />} />
+          <Route path="/Response" element={<Response/>} />
           <Route path="/usermanagement" element={<AdminUsersManagement />} />
           <Route path='*' element={<NotFound />} />
         </Routes>

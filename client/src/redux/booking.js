@@ -28,6 +28,11 @@ export const booking = createSlice({
     // },
     clearBookingDetails: (state, action) => {
       state = initialState;
+
+    },
+    ClearBookingState: (state, action) => {
+      state.booking = initialState.booking
+
     }
     
   },
@@ -54,7 +59,10 @@ export const putUserBookings = (id,data) => async (dispatch) => {
 };
 
 
-export const { setBookingDetails, clearBookingDetails, setUserBookings } =
+
+export const { setBookingDetails, clearBookingDetails, setUserBookings,ClearBookingState } =
+
+
   booking.actions;
 
 export default booking.reducer;
