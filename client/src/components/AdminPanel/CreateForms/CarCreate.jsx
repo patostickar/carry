@@ -37,7 +37,6 @@ export default function CarTypeCreate() {
         locationId: '',
       }}
       onSubmit={(values) => {
-        values;
         postCarType(values);
         // alert(JSON.stringify(values))
         Alerts('success', 'Vehiculo creado');

@@ -44,8 +44,6 @@ export default function AdminCard() {
     totalStockCars = stockCars.length;
   }
 
-  quantityCustomers;
-
   useEffect(() => {
     dispatch(fetchAllCarTypes());
   }, []);
