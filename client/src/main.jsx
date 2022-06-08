@@ -1,33 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import { Auth0Provider } from '@auth0/auth0-react';
+import { Auth0ProviderWithHistory } from './auth0-provider-with-history';
 import { Provider } from 'react-redux';
 import { store, persistor } from './redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
+import { BrowserRouter } from 'react-router-dom';
 import axios from 'axios';
 import CssBaseline from '@mui/material/CssBaseline';
 import './index.css';
 
 axios.defaults.baseURL = import.meta.env.VITE_CARRY_API;
 
-const domain = import.meta.env.VITE_AUTH0_DOMAIN;
-const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID;
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <CssBaseline />
-        <Auth0Provider
-          domain={domain}
-          clientId={clientId}
-          redirectUri={window.location.origin}
-          useRefreshTokens
-          cacheLocation='localstorage'
-        >
-          <App />
-        </Auth0Provider>
+        <BrowserRouter>
+          <Auth0ProviderWithHistory>
+            <App />
+          </Auth0ProviderWithHistory>
+        </BrowserRouter>
       </PersistGate>
     </Provider>
   </React.StrictMode>
