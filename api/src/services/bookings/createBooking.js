@@ -27,7 +27,6 @@ module.exports.createBooking = async (data) => {
     pickUpDate,
     dropOffDate,
     reservationTotal,
-    status: "pendiente"
   });
 
   booking.setCustomer(customerId);

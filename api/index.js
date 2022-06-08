@@ -56,19 +56,6 @@ conn
     //   }),
     // ]);
 
-    // const user = await Customer.findOne({
-    //   where: { email: 'amya.keeling@gmail.com' },
-    // });
-    // const review = await Review.create({
-    //   review:
-    //     'Trabajamos con Carry hace un año, nos sentimos satisfechos con su servicio además cuentan con vehiculos de alta gama.',
-    // });
-    // const review2 = await Review.create({
-    //   review:
-    //     'Trabajamos con Carry hace un año, nos sentimos satisfechos con su servicio además cuentan con vehiculos de alta gama.',
-    // });
-    // review.setCustomer(user);
-    // review2.setCustomer(user);
 
     // const cordoba = await Location.findOne({
     //   where: { name: 'Córdoba Cars' },

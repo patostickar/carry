@@ -19,9 +19,10 @@ import LocationCreate from './components/CarCreateForm/LocationCreate';
 import Account from './components/Account/Account';
 import Reservation from './components/Reservation/Reservation';
 import NotFound from './components/NotFound';
+import "./App.css";
+import TermsAndConditions from "./components/TermsAndConditions/TermsAndConditions";
+import Response from './components/MPrespose';
 
-import './App.css';
-import Payment from './pages/Payment';
 
 function App() {
   const dispatch = useDispatch();
@@ -63,7 +64,7 @@ function App() {
           <Route path='/profile' element={<Account />} />
           <Route path='/reservation' element={<Reservation />} />
           <Route path='/searchResult' element={<SearchResults />} />
-          <Route path='/payment' element={<Payment />} />
+          <Route path="/Response" element={<Response/>} />
           <Route path='*' element={<NotFound />} />
         </Routes>
         <Footer />
