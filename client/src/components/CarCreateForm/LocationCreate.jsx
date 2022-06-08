@@ -322,15 +322,16 @@ export default function LocationCreate() {
               className={styles.field}
               
             >
-               {boolean.map((d) => (
-
+                {boolean.map((d) => (
             <option
                   value={d.value}
                   id={values.d}
                   key={d.value}
-
-                  onChange={handleChange}
-                  onBlur={handleBlur}
+                
+                >
+                  {`${d.key}`}
+                </option>
+                ))}
 
 
             </Field>
