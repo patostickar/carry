@@ -1,6 +1,9 @@
-import { Formik } from 'formik';
+import { Form, Formik,Field } from 'formik';
 import Alerts from '../Alerts';
 import axios from 'axios';
+import * as Yup from 'yup';
+import Error from './Error';
+import styles from './styles/Formulario.module.css'
 import logError from '../GeneralFuntions/logError';
 
 export default function LocationCreate() {
@@ -12,7 +15,74 @@ export default function LocationCreate() {
     }
   }
 
+  const provincias = ["Ciudad de Buenos Aires", "Buenos Aires", "Jujuy", "Salta", "Tucuman",
+                     "San juan", "Formosa", "Corrientes", "Chaco", "Misiones",
+                     "Santa Fe", "Cordoba", "San Luis", "Entre Rios", "Mendoza",
+                     "Rio Negro", "Neuquen", "Santa Cruz", "Tierra Del Fuego",
+                     "La Pampa", "La Rioja", "Santiago del Estero", "Chubut", "Catamarca"]
+
+
+  const horarios = [ ]    
+  for (let i = 0; i < 24; i++) {
+    horarios.push(i)
+    
+  }    
+
+  const boolean = [{key:"Seleccione un valor", value:null}, {key:"Si", value:true},{key:"No", value:false}]
+
+  const newLocationSchema=Yup.object().shape({
+      name:Yup.string().matches(/^[A-Z]+$/i,'El nombre solo debe contener letras')
+      .min(3,'El nombre de la  localidad es muy corto')
+      .max(50,'El nombre de la localidad es muy larga')
+      .required('El nombre es requerido'),
+
+      street:Yup.string()
+      .min(3,'La dirección es muy corta')
+      .max(50,'La dirección muy larga')
+      .required('La dirección es requerida'),
+
+      city:Yup.string()
+      .min(3,'El nombre de la ciudad es muy corto')
+      .max(30,'El nombre de la icudad es muy larga')
+      .required('La ciudad es requerida'),
+
+      stateName:Yup.string()
+      .required('La provincia es requerida'),
+
+      postalCode:Yup.number()
+      .integer('Código no válido')
+      .moreThan(1000,'El código debe tener 4 digitos')
+      .lessThan(10000,'El código debe tener 4 digitos')
+      .typeError('El Campo no es válido')
+      .required('El campo es obligatorio'),
+
+      lat:Yup.number()
+      .typeError('El Campo no es válido')
+      .required('El campo es obligatorio'),
+
+      lon:Yup.number()
+      .typeError('El Campo no es válido')
+      .required('El campo es obligatorio'),
+
+      phone:Yup.string().matches(/^(\(\+?\d{2,3}\)[\*|\s|\-|\.]?(([\d][\*|\s|\-|\.]?){6})(([\d][\s|\-|\.]?){2})?|(\+?[\d][\s|\-|\.]?){8}(([\d][\s|\-|\.]?){2}(([\d][\s|\-|\.]?){2})?)?)$/,'Teléfono no válido')
+      .required('El campo es obligatorio'),
+
+      timeOpen:Yup.string()
+      .required('El campo es obligatorio'),
+
+      timeClose:Yup.string()
+      .required('El campo es obligatorio'),
+
+      airportLocation:Yup.boolean()
+      .required('Debe seleccionar un valor')
+      .typeError('El Campo no es válido'),
+    })
+
+
+
+
   return (
+    <div className={styles.container}>
     <Formik
       initialValues={{
         name: '',
@@ -27,234 +97,242 @@ export default function LocationCreate() {
         timeClose: '',
         airportLocation: '',
       }}
-      validate={(valores) => {
-        // eslint-disable-next-line prefer-const
-        let errores = {};
-
-        if (!valores.name) {
-          errores.name = 'Ingrese un valor';
-        }
-        if (!valores.street) {
-          errores.street = 'Ingrese un valor';
-        }
-        if (!valores.city) {
-          errores.city = 'Ingrese un valor';
-        }
-        if (!valores.postalCode) {
-          errores.postalCode = 'Ingrese un valor';
-        }
-        if (!valores.lat) {
-          errores.lat = 'Ingrese un valor';
-        }
-        if (!valores.lon) {
-          errores.lon = 'Ingrese un valor';
-        }
-        if (!valores.stateName) {
-          errores.stateName = 'Ingrese un valor';
-        }
-        if (!valores.phone) {
-          errores.phone = 'Ingrese un valor';
-        }
-        if (!valores.timeOpen) {
-          errores.timeOpen = 'Ingrese un valor';
-        }
-        if (!valores.timeClose) {
-          errores.timeClose = 'Ingrese un valor';
-        }
-        if (!valores.airportLocation) {
-          errores.airportLocation = 'Ingrese un valor';
-        }
-
-        return errores;
-      }}
-      onSubmit={(values) => {
+     
+      onSubmit={(values,{resetForm}) => {
         postLocation(values);
         Alerts('success', 'location creado');
+        resetForm()
       }}
+
+      validationSchema={newLocationSchema}
     >
       {({
         values,
         errors,
         touched,
         handleSubmit,
-        handleChange,
-        handleBlur,
       }) => (
-        <form className='LocationCreate' onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor='name'>Nombre</label>
-            <input
+      
+        <Form  onSubmit={handleSubmit}>
+          <div className={styles.content}>
+            <label htmlFor='name'
+            className={styles.label}
+            >Nombre</label>
+            <Field
               type='text'
               id='name'
               name='name'
               placeholder='nombre'
               value={values.name}
-              onChange={handleChange}
-              onBlur={handleBlur}
+              className={styles.field}
             />
-            {touched.name && errors.name && (
-              <div className='error'>{errors.name}</div>
-            )}
+          {touched.name && errors.name ? 
+            (<Error>{errors.name}</Error>):null}
           </div>
 
-          <div>
-            <label htmlFor='street'>Direccion</label>
-            <input
+          <div className={styles.content}>
+            <label htmlFor='street'
+             className={styles.label}
+            >Dirección</label>
+            <Field
               type='text'
               id='street'
               name='street'
-              placeholder='direccion'
+              placeholder='dirección'
               value={values.street}
-              onChange={handleChange}
-              onBlur={handleBlur}
+              className={styles.field}
+            
             />
-            {touched.street && errors.street && (
-              <div className='error'>{errors.street}</div>
-            )}
+           {touched.street && errors.street ? 
+            (<Error>{errors.street}</Error>):null}
+
           </div>
-          <div>
-            <label htmlFor='city'>ciudad</label>
-            <input
+          <div className={styles.content}>
+            <label htmlFor='city'
+            className={styles.label}
+            >Ciudad</label>
+            <Field
               type='text'
               id='city'
               name='city'
               placeholder='cuidad'
               value={values.city}
-              onChange={handleChange}
-              onBlur={handleBlur}
+              className={styles.field}
+              
             />
-            {touched.city && errors.city && (
-              <div className='error'>{errors.city}</div>
-            )}
+           {touched.city && errors.city ? 
+            (<Error>{errors.city}</Error>):null}
           </div>
-          <div>
-            <label htmlFor='city'>provincia</label>
-            <input
-              type='text'
+          <div className={styles.content}>
+            <label htmlFor='city'
+            className={styles.label}
+            >Provincia</label>
+            <Field
+              as='select'
               id='stateName'
               name='stateName'
-              placeholder='provincia'
               value={values.stateName}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            {touched.stateName && errors.stateName && (
-              <div className='error'>{errors.stateName}</div>
-            )}
+              className={styles.field}
+            
+            >
+              {provincias.map((t) => (
+                <option
+                    value={t}
+                    id={values.t}
+                    key={t}     
+                  >
+                    {`${t}`}
+                  </option>
+                  ))}
+            </Field>
+           {touched.stateName && errors.stateName ? 
+            (<Error>{errors.stateName}</Error>):null}
           </div>
 
-          <div>
-            <label htmlFor='lat'>latitud </label>
-            <input
+          <div className={styles.content}>
+            <label htmlFor='lat'
+             className={styles.label}
+            >Latitud </label>
+            <Field
               type='text'
               id='lat'
               name='lat'
               placeholder='latitud'
               value={values.lat}
-              onChange={handleChange}
-              onBlur={handleBlur}
+              className={styles.field}
             />
-            {touched.lat && errors.lat && (
-              <div className='error'>{errors.lat}</div>
-            )}
+           {touched.lat && errors.lat ? 
+            (<Error>{errors.lat}</Error>):null}
           </div>
-          <div>
-            <label htmlFor='lon'>longitud </label>
-            <input
+          <div  className={styles.content}>
+            <label htmlFor='lon'
+             className={styles.label}
+            >Longitud </label>
+            <Field
               type='text'
               id='lon'
               name='lon'
               placeholder='longitud'
               value={values.lon}
-              onChange={handleChange}
-              onBlur={handleBlur}
+              className={styles.field}
             />
-            {touched.lon && errors.lon && (
-              <div className='error'>{errors.lon}</div>
-            )}
+           {touched.lon && errors.lon ? 
+            (<Error>{errors.lon}</Error>):null}
           </div>
-          <div>
-            <label htmlFor='postalCode'>codigo postal</label>
-            <input
+          <div  className={styles.content}>
+            <label htmlFor='postalCode'
+             className={styles.label}
+            >Código postal</label>
+            <Field
               type='text'
               id='postalCode'
               name='postalCode'
-              placeholder='codigo postal'
+              placeholder='código postal'
               value={values.postalCode}
-              onChange={handleChange}
-              onBlur={handleBlur}
+              className={styles.field}
             />
-            {touched.postalCode && errors.postalCode && (
-              <div className='error'>{errors.postalCode}</div>
-            )}
+          {touched.postalCode && errors.postalCode ? 
+            (<Error>{errors.postalCode}</Error>):null}
           </div>
 
-          <div>
-            <label htmlFor='phone'>Telefono</label>
-            <input
-              type='number'
+          <div  className={styles.content}>
+            <label htmlFor='phone'
+             className={styles.label}
+            >Teléfono</label>
+            <Field
+              type='text'
               id='phone'
               name='phone'
               placeholder='+5491155254522'
               value={values.phone}
-              onChange={handleChange}
-              onBlur={handleBlur}
+              className={styles.field}
             />
-            {touched.phone && errors.phone && (
-              <div className='error'>{errors.phone}</div>
-            )}
+            {touched.phone && errors.phone ? 
+            (<Error>{errors.phone}</Error>):null}
           </div>
 
-          <div>
-            <label htmlFor='timeOpen'>Horario de apertura</label>
-            <input
-              type='text'
+          <div  className={styles.content}>
+            <label htmlFor='timeOpen'
+             className={styles.label}
+            >Horario de apertura</label>
+            <Field
+              as='select'
               id='timeOpen'
               name='timeOpen'
-              placeholder='08AM'
               value={values.timeOpen}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            {touched.timeOpen && errors.timeOpen && (
-              <div className='error'>{errors.timeOpen}</div>
-            )}
+              className={styles.field}
+            >
+              {horarios.map((d) => (
+                <option
+                      value={d}
+                      id={values.d}
+                      key={d}
+                    >
+                      {`${d} HS`}
+                    </option>
+                    ))}
+            </Field>
+           {touched.timeOpen && errors.timeOpen ? 
+            (<Error>{errors.timeOpen}</Error>):null}
           </div>
 
-          <div>
-            <label htmlFor='timeClose'>Horario de cierre</label>
-            <input
-              type='text'
+          <div className={styles.content}>
+            <label htmlFor='timeClose'
+             className={styles.label}
+            >Horario de cierre</label>
+            <Field
+              as='select'
               id='timeClose'
               name='timeClose'
-              placeholder='22PM'
               value={values.timeClose}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            {touched.timeClose && errors.timeClose && (
-              <div className='error'>{errors.timeClose}</div>
-            )}
+              className={styles.field}
+             
+            >
+                {horarios.map((d) => (
+                <option
+                      value={d}
+                      id={values.d}
+                      key={d}
+                    >
+                      {`${d} HS`}
+                    </option>
+                    ))}
+            </Field>
+          {touched.timeClose && errors.timeClose ? 
+            (<Error>{errors.timeClose}</Error>):null}
           </div>
 
-          <div>
-            <label htmlFor='airportLocation'> Es aeropuerto?</label>
-            <input
-              type='text'
+          <div className={styles.content}>
+            <label htmlFor='airportLocation'
+             className={styles.label}
+            > Es aeropuerto?</label>
+            <Field
+              as='select'
               id='airportLocation'
               name='airportLocation'
               value={values.airportLocation}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            {touched.airportLocation && errors.airportLocation && (
-              <div className='error'>{errors.airportLocation}</div>
-            )}
+              className={styles.field}
+              
+            >
+               {boolean.map((d) => (
+            <option
+                  value={d.value}
+                  id={values.d}
+                  key={d.value}
+                >
+                  {`${d.key}`}
+                </option>
+                ))}
+            </Field>
+                {touched.airportLocation && errors.airportLocation ? 
+            (<Error>{errors.airportLocation}</Error>):null}
           </div>
 
           <button type='submit'>Crea</button>
-        </form>
+        </Form>
+        
       )}
     </Formik>
+    </div>
   );
 }

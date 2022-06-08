@@ -4,7 +4,7 @@ import Alerts from '../Alerts';
 import * as Yup from 'yup'
 import axios from 'axios';
 import logError from '../GeneralFuntions/logError';
-import styles from './styles/CarTypeCreate.module.css'
+import styles from './styles/Formulario.module.css'
 import Error from './Error'
 export default function CarCreate() {
 
