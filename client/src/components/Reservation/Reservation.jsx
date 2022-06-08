@@ -26,25 +26,27 @@ function Reservation() {
   const { User } = useSelector((state) => state.user);
   const { location, pickupDate, dropoffDate } = useSelector(
     (state) => state.searchBar
-  )
+  );
 
   const { booking } = useSelector((state) => state.booking);
-  const Pdate = new Date(pickupDate)
-  const Ddate = new Date(dropoffDate)
-  const PickDate = Pdate.getFullYear()+"/"+(Pdate.getMonth()+1)+"/"+Pdate.getDate()
-  const DropDate = Ddate.getFullYear()+"/"+(Ddate.getMonth()+1)+"/"+Ddate.getDate()
+  const Pdate = new Date(pickupDate);
+  const Ddate = new Date(dropoffDate);
+  const PickDate =
+    Pdate.getFullYear() + "/" + (Pdate.getMonth() + 1) + "/" + Pdate.getDate();
+  const DropDate =
+    Ddate.getFullYear() + "/" + (Ddate.getMonth() + 1) + "/" + Ddate.getDate();
 
   const navigate = useNavigate();
 
   const dateRange = (dropoffDate - pickupDate) / DAY_MILISECONDS;
 
-
-  async function CreateBooking(data){
+  async function CreateBooking(data) {
     try {
-     return await axios.post('/bookings', data);
+      return await axios.post("/bookings", data);
     } catch (error) {
       console.log(error);
-    }};
+    }
+  }
 
   const steps = [
     {
@@ -77,20 +79,19 @@ function Reservation() {
   };
 
   const onClick = () => {
- 
-    navigate("/");
+    navigate("/searchResult");
   };
 
-  const  handleSearch = async() => {
-  const book = await CreateBooking({
-      carTypeId: booking.carTypeId ,
-      customerId:User.id ,
-      locationId:booking.locationId,
-      pickUpDate:PickDate,
-      dropOffDate:DropDate
-    })
-    setbookin(book)
-      // navigate("/payment",{state:book.data});
+  const handleSearch = async () => {
+    const book = await CreateBooking({
+      carTypeId: booking.carTypeId,
+      customerId: User.id,
+      locationId: booking.locationId,
+      pickUpDate: PickDate,
+      dropOffDate: DropDate,
+    });
+    setbookin(book);
+    // navigate("/payment", { state: book.data });
   };
 
   return (
@@ -153,7 +154,7 @@ function Reservation() {
                       <Typography>{step.description}</Typography>
                       <Box sx={{ mb: 2 }}>
                         <div>
-                         <Button
+                          <Button
                             variant="contained"
                             onClick={
                               index === steps.length - 1
@@ -165,8 +166,8 @@ function Reservation() {
                             {index === steps.length - 1
                               ? "Reservar"
                               : "Continuar"}
-                          </Button> 
-                          {bookin.data && <Payment reserva={bookin.data}/>}
+                          </Button>
+                          {bookin.data && <Payment reserva={bookin.data} />}
                           <Button
                             disabled={index === 0}
                             onClick={handleBack}
