@@ -1,10 +1,11 @@
 
-import { Formik, Field } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import Alerts from '../Alerts';
-
+import * as Yup from 'yup'
 import axios from 'axios';
 import logError from '../GeneralFuntions/logError';
-
+import styles from './styles/CarTypeCreate.module.css'
+import Error from './Error'
 export default function CarCreate() {
 
 
@@ -16,18 +17,75 @@ export default function CarCreate() {
     }
   }
 
+  const newCarTypeSchema = Yup.object().shape({//Validar Formulario
+      make:Yup.string().matches(/^[A-Z]+$/i,'El campo solo debe contener letras')
+        .min(3,'El nombre de la  marca es muy corto')
+        .max(20,'El nombre de la marca es muy larga')
+        .required('La marca es requerida'),
+      
+      model:Yup.string().matches(/^[A-Z]+$/i,'El campo solo debe contener letras')
+           .min(3,'El modelo es muy corto')
+           .max(20,'El modelo es muy largo')
+           .required('El modelo es requerido'),
+
+      className:Yup.string().matches(/^[A-Z]+$/i,'El campo solo debe contener letras')
+      .min(3,'La clase es muy corta')
+      .max(20,'La clase es muy largo')
+      .required('La clase es requerida'),
+
+      transmission:Yup.string().max(10,'Debe seleccionar una transmision').required('Debe seleccionar una transmision'),
+
+      mpg:Yup.string().required('El campo es obligatorio'),
+
+      img:Yup.string()
+      .matches(/(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-])*((\.jpg)|(\.png)|(\.jpeg)|(\.svg))\/?(\.webp)?/,'Debe ser un formato de imagen')
+      .required('El campo es obligatorio'),
+
+      doors:Yup.number()
+      .positive('Numero no válido')
+      .integer('Numero no válido')
+      .typeError('El Campo no es válido')
+      .required('El campo es obligatorio'),
+      
+      seats:Yup.number()
+      .positive('Numero no válido')
+      .integer('Numero no válido')
+      .typeError('El Campo no es válido')
+      .required('El campo es obligatorio'),
+
+      airConditioning:Yup.boolean()
+      .required('Debe seleccionar un valor')
+      .typeError('El Campo no es válido'),
+
+      largeSuitcase:Yup.number()
+      .positive('Numero no válido')
+      .typeError('El Campo no es válido')
+      .required('El campo es obligatorio'),
+
+      smallSuitcase:Yup.number()
+      .positive('Numero no válido')
+      .typeError('El Campo no es válido')
+      .required('El campo es obligatorio'),
+      
+      price:Yup.number()
+      .positive('Numero no válido')
+      .typeError('El Campo no es válido')
+      .required('El Campo es obligatorio'),
+
+  })
+
       // constantes locales para el drop down de los selects
       const numbers = [ "---" , 1, 2, 3, 4, 5, 6, 7]
-      const baul = ["---", 0, 1, 2]
+      const baul = [0, 1, 2]
       const boolean = [{key:"Seleccione un valor", value:null}, {key:"Si", value:true}, {key:"No", value:false}]   
       const transmicion = ["Seleccione un valor", "Manual", "Automatico"]
 
-      // constante de error para la funcion validadora
-      const errormsg = 'Ingrese un valor valido'
   
 
 
   return (
+       <div className={styles.container}>
+    
     <Formik
       initialValues={{
         make: '',
@@ -38,66 +96,12 @@ export default function CarCreate() {
         img: '',
         doors: 0,
         seats: 0,
-        airConditioning: false,
+        airConditioning: null,
         largeSuitcase: 0,
         smallSuitcase: 0,
         price: 0,
       }}
-      validate={(valores) => {
-        // eslint-disable-next-line prefer-const
-        let errores = {};
-
-        if (!valores.make || valores.make.length > 15) {
-          errores.make = errormsg;
-        }
-
-        if (!valores.model || valores.model.length > 15) {
-          errores.model = errormsg;
-        }
-
-        if (!valores.className) {
-          errores.className = errormsg;
-        }
-
-        if (!valores.transmission || valores.transmission === transmicion[0] ) {
-          errores.transmission = errormsg;
-        }
-
-        if (!valores.mpg) {
-          errores.mpg = errormsg;
-        }
-
-        if (!valores.img.includes("https://") && !valores.img.includes("http://") ) {
-          errores.img = errormsg;
-        }
-
-        if ( !valores.doors || valores.doors === "---" ) {
-          errores.doors = 'Seleccione un valor por favor';
-        }
-
-        if ( !valores.airConditioning || valores.airConditioning === "null" ) {
-          errores.airConditioning = 'Seleccione un valor ';
-        }
-
-        if (!valores.seats || valores.seats === "---") {
-          errores.seats = 'Seleccione un valor por favor';
-        }
-
-       
-        if (!valores.largeSuitcase || valores.largeSuitcase === "---") {
-          errores.largeSuitcase = errormsg;
-        }
-
-        if (!valores.smallSuitcase || valores.smallSuitcase === "---") {
-          errores.smallSuitcase = errormsg;
-        }
-
-        if (!valores.price || valores.price > 25000 || typeof(valores.price) === "string") {
-          errores.price = errormsg;
-        }
-
-        return errores;
-      }}
+      
       onSubmit={(values) => {
                     
        
@@ -105,6 +109,8 @@ export default function CarCreate() {
 
         Alerts('success', 'Vehiculo creado');
       }}
+
+      validationSchema={newCarTypeSchema}
     >
       {({
         values,
@@ -112,256 +118,301 @@ export default function CarCreate() {
         touched,
         handleSubmit,
         handleChange,
-        handleBlur,
       }) => (
-        <form className='CarCreate' onSubmit={handleSubmit}>
-          <Field component="div">
-            <label htmlFor='make'>Marca</label>
+        <Form  onSubmit={handleSubmit}>
+          <div className={styles.content}>
+          <label 
+            htmlFor='make'
+            className={styles.label}
+            >Marca</label>
+         
+          <Field 
+            type='text'
+            id='make'
+            name='make'
+            placeholder='Marca del carro'
+            value={values.make}
+            className={styles.field}
+          />
+           {touched.make && errors.make ? 
+            (<Error>{errors.make}</Error>):null}
 
-            <input
-              type='text'
-              id='make'
-              name='make'
-              placeholder='Marca'
-              value={values.make}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-
-            {touched.make && errors.make && <div>{errors.make}</div>}
-          </Field>
-
-          <Field component="div">
-            <label htmlFor='model'>Modelo</label>
-
-            <input
-              type='text'
-              id='model'
-              name='model'
-              placeholder='Modelo'
-              value={values.model}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            {touched.model && errors.model && <div>{errors.model}</div>}
-            </Field>
-
-
-
-          <Field component="div">
-            <label htmlFor='className'>Clase</label>
-
-
-            <input
-              type='text'
-              id='className'
-              name='className'
-              placeholder='Small...'
-              value={values.className}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            {touched.className && errors.className && (
-              <div>{errors.className}</div>
-            )}
-          </Field>
-
-          <Field component="div">
-            <label htmlFor='transmission'>Transmision</label>
+          </div>
+       
+           <div className={styles.content}>
+           <label 
+           htmlFor='model'
+           className={styles.label}
+           >Modelo</label>
+          <Field 
+           type='text'
+           id='model'
+           name='model'
+           placeholder='Modelo'
+           value={values.model}
+           className={styles.field}
+           />
+    
+             {touched.model && errors.model ? 
+            (<Error>{errors.model}</Error>):null}
+           
+            </div>
+           <div className={styles.content}>
+           <label
+            htmlFor='className'
+            className={styles.label}
+            >Clase</label>
+          <Field 
+         type='text'
+         id='className'
+         name='className'
+         placeholder='Small...'
+         value={values.className}
+         className={styles.field}
+       
+           />
+             {touched.className && errors.className ? 
+            (<Error>{errors.className}</Error>):null}
+            </div>
 
 
-            <select name="transmission" id="transmission">
-            
+       
+           <div className={styles.content}>
+            <label 
+            htmlFor='transmission'
+            className={styles.label}
+            >Transmision</label>
 
-            {transmicion.map((d) => (
-              
+          <Field as='select'
+          name="transmission" 
+          id="transmission" 
+          className={styles.field}
+          value={values.transmission}>    
+                {transmicion.map((t) => (                  
               <option
-                    value={d}
-                    id={values.d}
-                    key={d}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
+                    value={t}
+                    id={values.t}
+                    key={t}     
                   >
-                    {`${d}`}
+                    {`${t}`}
                   </option>
                   ))}
-            </select>
-            {touched.transmission && errors.transmission && (
-              <div>{errors.transmission}</div>
-            )}
           </Field>
+           
+          {touched.transmission && errors.transmission ? 
+            (<Error>{errors.transmission}</Error>):null}
+          </div>
 
-          <Field component="div">
-            <label htmlFor='mpg'>Millas por galon</label>
-
-            <input
+           <div className={styles.content}>
+            <label htmlFor='mpg'
+            className={styles.label}
+            >Millas por galon</label>
+             
+          
+          <Field
               type='text'
               id='mpg'
               name='mpg'
               placeholder='Millas por galon'
               value={values.mpg}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            {touched.mpg && errors.mpg && <div>{errors.mpg}</div>}
-            </Field>
+              className={styles.field}
 
-          <Field component="div">
-            <label htmlFor='img'>Imagen</label>
+          / >
 
-            <input
-              type='text'
-              id='img'
-              name='img'
-              placeholder='www.imagenesbonitas.com'
-              value={values.img}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            {touched.img && errors.img && <div>{errors.img}</div>}
-            </Field>
+           
+            {touched.mpg && errors.mpg ? 
+            (<Error>{errors.mpg}</Error>):null}
+            </div>
 
-          <Field component="div">
-            <label htmlFor='doors'>Cantidad de puertas</label>
+
+           <div className={styles.content}>
+            <label htmlFor='img'
+            className={styles.label}
+            >Imagen</label>
 
           
+          <Field 
+            type='text'
+            id='img'
+            name='img'
+            placeholder='imagen'
+            value={values.img}
+          className={styles.field}
+
+          />
+
+         
+           {touched.img && errors.img ? 
+            (<Error>{errors.img}</Error>):null}
+            </div>
 
 
-            <select name="doors" id="doors">
-              
-            {numbers.map((d) => (
-              
+           <div className={styles.content}>
+            <label htmlFor='doors'
+            className={styles.label}
+            >Cantidad de puertas</label>
+
+          <Field 
+           as='select'
+           name="doors" 
+           id="doors"
+          className={styles.field}  
+          value={values.doors}
+          >
+          {numbers.map((d) => (  
             <option
                   value={d}
                   id={values.d}
                   key={d}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
+        
+
+                
                 >
                   {`${d} Puertas`}
                 </option>
                 ))}
-            </select>
-
-            {touched.doors && errors.doors && <div>{errors.doors}</div>}
             </Field>
+            {touched.doors && errors.doors ? 
+            (<Error>{errors.doors}</Error>):null}
+            </div>
 
-          <Field component="div">
-            <label htmlFor='seats'>Asientos</label>
-
-            {/* <input
-              type='text'
-              id='seats'
-              name='seats'
-              placeholder='4'
-              value={values.seats}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            /> */}
-
-            <select name="seats" id="seats">
+           <div className={styles.content}>
+            <label htmlFor='seats'
+            className={styles.label}
+            >Asientos</label>
+ 
+          <Field 
+           as='select'
+           name="seats" 
+           id="seats"
+          className={styles.field} 
+          value={values.seats} 
+          >
             {numbers.map((d) => (
             <option
                   value={d}
                   id={values.d}
                   key={d}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
                 >
                   {`${d} Asientos`}
                 </option>
                 ))}
-            </select>
-            {touched.seats && errors.seats && <div>{errors.seats}</div>}
+        
             </Field>
+            {touched.seats && errors.seats ? 
+            (<Error>{errors.seats}</Error>):null}
+            </div>
 
-          <Field component="div">
-            <label htmlFor='airConditioning'>Aire acondicionado</label>
+             <div className={styles.content}>
+            <label htmlFor='airConditioning'
+            className={styles.label}
+            >Aire acondicionado</label>
 
             
-            <select name="airConditioning" id="airConditioning">
+          <Field 
+           as='select'
+           name="airConditioning" 
+           id="airConditioning"
+           className={styles.field}
+           value={values.airConditioning}
+           
+          >
             {boolean.map((d) => (
             <option
                   value={d.value}
                   id={values.d}
                   key={d.value}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
+                
                 >
                   {`${d.key}`}
                 </option>
                 ))}
-            </select>
 
-            {touched.airConditioning && errors.airConditioning && <div>{errors.airConditioning}</div>}
+          </Field>
+          {touched.airConditioning && errors.airConditioning ? 
+            (<Error>{errors.airConditioning}</Error>):null}
+            </div>
+
+            <div className={styles.content}>
+            <label htmlFor='largeSuitcase'
+            className={styles.label}
+            >Baul grande</label>
+              
+            
+          <Field 
+             as='select'
+             name="largeSuitcase" 
+             id="largeSuitcase"
+            className={styles.field}
+            value={values.largeSuitcase}
+            
+          >
+            {baul.map((d) => (
+            <option
+                  value={d}
+                  id={values.d}
+                  key={d}    
+                >
+                  {`${d}`}
+                </option>
+                ))}
             
           </Field>
+          {touched.largeSuitcase && errors.largeSuitcase ? 
+            (<Error>{errors.largeSuitcase}</Error>):null}
+          </div>
 
-          <Field component="div">
-            <label htmlFor='largeSuitcase'>Baul grande</label>
-
+          <div className={styles.content}>
+            <label htmlFor='smallSuitcase'
+             className={styles.label}
+            >Baul chico</label>
+            
          
-
-            <select name="largeSuitcase" id="largeSuitcase">
+          <Field 
+           as='select'
+           name="smallSuitcase" 
+           id="smallSuitcase"
+          className={styles.field}
+          value={values.smallSuitcase}
+          >
             {baul.map((d) => (
             <option
                   value={d}
                   id={values.d}
                   key={d}
                   onChange={handleChange}
-                  onBlur={handleBlur}
+             
                 >
                   {`${d}`}
                 </option>
                 ))}
-            </select>
-            {touched.largeSuitcase && errors.largeSuitcase && (
-              <div>{errors.largeSuitcase}</div>
-            )}
-          </Field>
-
-          <Field component="div">
-            <label htmlFor='smallSuitcase'>Baul chico</label>
-
         
-
-        <select name="smallSuitcase" id="smallSuitcase">
-            {baul.map((d) => (
-            <option
-                  value={d}
-                  id={values.d}
-                  key={d}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                >
-                  {`${d}`}
-                </option>
-                ))}
-            </select> 
-            {touched.smallSuitcase && errors.smallSuitcase && (
-              <div>{errors.smallSuitcase}</div>
-            )}
           </Field>
+          {touched.smallSuitcase && errors.smallSuitcase ? 
+            (<Error>{errors.smallSuitcase}</Error>):null}
+          </div>
 
-          <Field component="div">
-            <label htmlFor='price'>Precio</label>
-
-            <input
-              
-              type='number'
-              id='price'
-              name='price'
-              placeholder='Solo numeros por favor'
-              value={parseInt(values.price)}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            {touched.price && errors.price && <div>{errors.price}</div>}
-          </Field>
-
+           <div className={styles.content}>
+            <label htmlFor='price'
+             className={styles.label}
+            >Precio</label>
+             
+          <Field 
+                 type='number'
+                 id='price'
+                 name='price'
+                 placeholder='0'
+                 value={parseInt(values.price)}
+                className={styles.field}
+          />
+            {touched.price && errors.price ? 
+            (<Error>{errors.price}</Error>):null}
+          
+            </div>
           <button type='Submit'>Crear</button>
-        </form>
+        </Form>
       )}
     </Formik>
+    </div>
   );
 }
