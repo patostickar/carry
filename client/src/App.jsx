@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchAllLocations } from './redux/searchBar';
@@ -21,8 +22,10 @@ import Reservation from './components/Reservation/Reservation';
 import AdminUsersManagement from './components/GestionDeUsuarios/AdminUsersManagement'
 import NotFound from './components/NotFound';
 
-import './App.css';
-import Payment from './pages/Payment';
+
+import "./App.css";
+import Payment from "./pages/Payment";
+import TermsAndConditions from "./components/TermsAndConditions/TermsAndConditions";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,7 +38,7 @@ function App() {
     } else {
       async function setCustomer() {
         try {
-          await axios.post('/customers', user);
+          await axios.post("/customers", user);
         } catch (error) {
           logError(error);
         }
@@ -55,6 +58,7 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
+          <Route path="/terminos-condiciones" element={<TermsAndConditions />} />
           <Route path='/' element={<Home />} />
           <Route path='/about' element={<About />} />
           <Route path='/adminPanel' element={<AdminPanel />} />
