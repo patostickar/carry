@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Button, Grid } from '@mui/material';
-import { Sidebar } from './Sidebar';
-import { PersonalInformation } from './PersonalInformation';
-import  Review from './Review';
+import { Sidebar } from '../components/Account/Sidebar';
+import { PersonalInformation } from '../components/Account/PersonalInformation';
+import  Review from '../components/Account/Review';
 import { NavLink } from 'react-router-dom';
-import {Booking} from './Booking';
-import { Security } from './Security';
+import {Booking} from '../components/Account/Booking'
+import { Security } from '../components/Account/Security';
 
 
 export default function Account() {

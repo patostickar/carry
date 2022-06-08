@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Formik, Form } from 'formik';
-import Alerts from '../Alerts';
+import Alerts from '../GeneralFuntions/Alerts';
 import axios from 'axios';
 import logError from '../GeneralFuntions/logError';
 import Table from "@mui/material/Table";
@@ -16,7 +16,8 @@ import 'sweetalert2/dist/sweetalert2.css';
 export default function Review() {
   const { User } = useSelector((state) => state.user);
   const {testimonials} = useSelector(state=>state.testimonials);
-  const userTestimonials = testimonials.filter(el=>el.customerId===User.id);
+  console.log(testimonials);
+  // const userTestimonials = testimonials.filter(el=>el.customerId===User.id);
   
   console.log(testimonials);
   async function postreview(values) {
@@ -97,13 +98,13 @@ export default function Review() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {userTestimonials?.length&& userTestimonials.map((row) => (
+          {/* {userTestimonials?.length&& userTestimonials.map((row) => (
             <TableRow key={row.id}>
               <TableCell align="center" >{row.id}</TableCell> 
               <TableCell align="center">{row.review}</TableCell>
               
             </TableRow>
-          ))}
+          ))} */}
         </TableBody>
       </Table>
     </TableContainer>

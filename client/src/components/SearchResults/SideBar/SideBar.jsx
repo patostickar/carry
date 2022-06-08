@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { clearAllFilters } from '../../../redux/carsResults';
 import Box from '@mui/material/Box';
-import BasicModal from '../../BasicModal';
+import BasicModal from '../../GeneralFuntions/BasicModal';
 import Transmission from './transmission';
 import CarCategory from './carCategory';
 import CarSpecs from './carSpecs';
