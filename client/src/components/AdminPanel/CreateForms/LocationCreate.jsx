@@ -1,12 +1,12 @@
 
 import { Form, Formik,Field } from 'formik';
 
-import Alerts from '../Alerts';
+import Alerts from '../../GeneralFuntions/Alerts';
 import axios from 'axios';
 import * as Yup from 'yup';
 import Error from './Error';
 import styles from './styles/Formulario.module.css'
-import logError from '../GeneralFuntions/logError';
+import logError from '../../GeneralFuntions/logError';
 
 export default function LocationCreate() {
   async function postLocation(values) {

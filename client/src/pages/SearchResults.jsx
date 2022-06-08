@@ -1,7 +1,7 @@
 import SideBar from '../components/SearchResults/SideBar/SideBar';
 import ListResult from '../components/SearchResults/ListResults/ListResult';
 import styles from './styles/SearchResults.module.css';
-import TabTitle from '../components/TabTitle';
+import TabTitle from '../components/GeneralFuntions/TabTitle';
 
 export const SearchList = () => {
   TabTitle('Busquedas - Carry');

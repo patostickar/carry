@@ -10,20 +10,20 @@ import axios from 'axios';
 import logError from './components/GeneralFuntions/logError';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
-import About from './components/About';
+import About from './pages/About';
 import SearchResults from './pages/SearchResults';
 import Footer from './components/Footer';
 import AdminPanel from './pages/AdminPanel';
-import CarCreate from './components/CarCreateForm/CarCreate';
-import CarTypeCreate from './components/CarCreateForm/CarTypeCreate';
-import LocationCreate from './components/CarCreateForm/LocationCreate';
-import Account from './components/Account/Account';
-import Reservation from './components/Reservation/Reservation';
-import AdminUsersManagement from './components/GestionDeUsuarios/AdminUsersManagement'
-import NotFound from './components/NotFound';
+import CarCreate from './components/AdminPanel/CreateForms/CarCreate';
+import CarTypeCreate from './components/AdminPanel/CreateForms/CarTypeCreate';
+import LocationCreate from './components/AdminPanel/CreateForms/LocationCreate';
+import Account from './pages/Account';
+import Reservation from './pages/Reservation/Reservation';
+import AdminUsersManagement from './components/AdminPanel/AdminUsersManagement'
+import NotFound from './pages/NotFound';
 import "./App.css";
-import TermsAndConditions from "./components/TermsAndConditions/TermsAndConditions";
-import Response from './components/MPrespose';
+import TermsAndConditions from "./pages/TermsAndConditions/TermsAndConditions";
+import Response from './pages/MPrespose';
 
 
 function App() {
@@ -61,14 +61,14 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/about' element={<About />} />
           <Route path='/adminPanel' element={<AdminPanel />} />
-          <Route path='/carcreate' element={<CarCreate />} />
-          <Route path='/cartypecreate' element={<CarTypeCreate />} />
-          <Route path='/locationcreate' element={<LocationCreate />} />
+          <Route path='/carcreate' element={<CarCreate />} /> {/* componenete de adminPanel*/}
+          <Route path='/cartypecreate' element={<CarTypeCreate />} />{/*  componenete de adminPanel*/}
+          <Route path='/locationcreate' element={<LocationCreate />} />{/*  componenete de adminPanel*/}
+          <Route path="/usermanagement" element={<AdminUsersManagement />} />{/*  componenete de adminPanel*/}
           <Route path='/profile' element={<Account />} />
           <Route path='/reservation' element={<Reservation />} />
           <Route path='/searchResult' element={<SearchResults />} />
           <Route path="/Response" element={<Response/>} />
-          <Route path="/usermanagement" element={<AdminUsersManagement />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
         <Footer />
