@@ -27,7 +27,6 @@ import TermsAndConditions from './pages/TermsAndConditions/';
 function App() {
   const dispatch = useDispatch();
   const { user, isAuthenticated } = useAuth0();
-  console.log(user);
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -58,7 +57,7 @@ function App() {
         <Route path='/about' element={<About />} />
         <Route
           path='/adminPanel'
-          element={<ProtectedRoute component={AdminPanel} />}
+          element={<ProtectedRoute component={AdminPanel} role='admin' />}
         />
         {/* componenete de adminPanel */}
         <Route
