@@ -19,7 +19,6 @@ import Home from './pages/Home';
 import LocationCreate from './components/CarCreateForm/LocationCreate';
 import Navbar from './components/Navbar';
 import NotFound from './components/NotFound';
-import Payment from './pages/Payment';
 import Reservation from './components/Reservation/Reservation';
 import Response from './components/MPrespose';
 import SearchResults from './pages/SearchResults';
@@ -73,10 +72,6 @@ function App() {
         <Route
           path='/locationcreate'
           element={<ProtectedRoute component={LocationCreate} />}
-        />
-        <Route
-          path='/payment'
-          element={<ProtectedRoute component={Payment} />}
         />
         <Route
           path='/profile'
