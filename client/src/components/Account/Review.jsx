@@ -12,11 +12,14 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Grid, TextField, Button, Typography } from '@mui/material';
 import 'sweetalert2/dist/sweetalert2.css';
+import { useEffect, useState } from 'react';
 
 export default function Review() {
   const { User } = useSelector((state) => state.user);
-  // const { testimonials } = useSelector((state) => state.testimonials);
-  // const userTestimonials = testimonials.filter(el=>el.customerId===User.id);
+  const [reviews, SetReviews] = useState();
+  const getReviews = async () => {
+    SetReviews(await axios.get(`/customers/reviews/${User.id}`));
+  };
 
   async function postreview(values) {
     try {
@@ -25,6 +28,9 @@ export default function Review() {
       logError(error);
     }
   }
+  useEffect(() => {
+    getReviews();
+  }, []);
 
   return (
     <>
@@ -94,13 +100,13 @@ export default function Review() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {/* {userTestimonials?.length&& userTestimonials.map((row) => (
-            <TableRow key={row.id}>
-              <TableCell align="center" >{row.id}</TableCell> 
-              <TableCell align="center">{row.review}</TableCell>
-              
-            </TableRow>
-          ))} */}
+              {reviews?.data?.length &&
+                reviews?.data.map((row) => (
+                  <TableRow key={row.id}>
+                    <TableCell align='center'>{row.id}</TableCell>
+                    <TableCell align='center'>{row.review}</TableCell>
+                  </TableRow>
+                ))}
             </TableBody>
           </Table>
         </TableContainer>
