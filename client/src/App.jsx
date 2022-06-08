@@ -64,16 +64,16 @@ function App() {
         />
         <Route
           path='/carcreate'
-          element={<ProtectedRoute component={CarCreate} />}{/* componenete de adminPanel*/}
-        />
+          element={<ProtectedRoute component={CarCreate} />}
+        />{/* componenete de adminPanel*/}
         <Route
           path='/cartypecreate'
-          element={<ProtectedRoute component={CarTypeCreate} />}{/* componenete de adminPanel*/}
-        />
+          element={<ProtectedRoute component={CarTypeCreate} />}
+        />{/* componenete de adminPanel*/}
         <Route
           path='/locationcreate'
-          element={<ProtectedRoute component={LocationCreate} />}{/* componenete de adminPanel*/}
-        />
+          element={<ProtectedRoute component={LocationCreate} />}
+        />{/* componenete de adminPanel*/}
         <Route
           path='/profile'
           element={<ProtectedRoute component={Account} />}
@@ -87,8 +87,8 @@ function App() {
         <Route path='/terminos-condiciones' element={<TermsAndConditions />} />
         <Route
           path='/usermanagement'
-          element={<ProtectedRoute component={AdminUsersManagement} />}{/* componenete de adminPanel*/}
-        />
+          element={<ProtectedRoute component={AdminUsersManagement} />}
+        />{/* componenete de adminPanel*/}
         <Route path='*' element={<NotFound />} />
       </Routes>
       <Footer />
