@@ -94,6 +94,15 @@ const getReviews = async (_req, res, next) => {
     next(error);
   }
 };
+const getUserReviews = async (_req, res, next) => {
+  const { id } = _req.params;
+
+  try {
+    res.send(await Review.findAll({where:{customerId : id}}));
+  } catch (error) {
+    next(error);
+  }
+};
 
 const postReview = async (req, res, next) => {
   const { id } = req.params;
@@ -118,6 +127,7 @@ module.exports = {
   getCustomers,
   getCustomerByemail,
   getReviews,
+  getUserReviews,
   postCustomer,
   postReview,
   putCustomer,
