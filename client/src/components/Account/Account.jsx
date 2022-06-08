@@ -13,7 +13,7 @@ export default function Account() {
     personalInfo: false,
     security: false,
     payment: false,
-    booking: false,
+    review: false,
   });
   return (<>
       <NavLink to='/AdminPanel'><Button variant='contained'>opciones de admin</Button>  </NavLink>
@@ -31,9 +31,12 @@ export default function Account() {
 {renderControl.security&&<Security />
 
 }
+{renderControl.review&&<Review/>
+
+}
 
     </Grid>
-    <Review/>
+   
         </>
   );
 }
