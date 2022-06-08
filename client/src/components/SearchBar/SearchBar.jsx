@@ -6,7 +6,7 @@ import Location from './locationInput';
 import Calendar from './calendar';
 import styles from './styles/SearchBar.module.css';
 import 'sweetalert2/dist/sweetalert2.css';
-import Alerts from '../Alerts';
+import Alerts from '../GeneralFuntions/Alerts';
 
 function SearchBar() {
   const { pickupDate, dropoffDate, location, popLocation } = useSelector(

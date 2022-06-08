@@ -17,10 +17,10 @@ import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import { useSelector } from "react-redux";
-import { DAY_MILISECONDS } from "../GeneralFuntions/constants";
-import LinearIndeterminate from "../GeneralFuntions/LinearIndeterminate";
+import { DAY_MILISECONDS } from "../../components/GeneralFuntions/constants";
+import LinearIndeterminate from "../../components/GeneralFuntions/LinearIndeterminate";
 // import axios from "axios";
-import Payment from "../../components/Payment";
+import Payment from "../../components/MercadoPago/Payment";
 
 function Reservation() {
   // const { User } = useSelector((state) => state.user);

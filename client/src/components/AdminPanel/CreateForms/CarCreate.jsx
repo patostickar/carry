@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchAllCarTypes } from '../../redux/carsResults';
-import { fetchAllLocations } from '../../redux/searchBar';
+import { fetchAllCarTypes } from '../../../redux/carsResults';
+import { fetchAllLocations } from '../../../redux/searchBar';
 import { Formik, Form, Field } from 'formik';
-import Alerts from '../Alerts';
+import Alerts from '../../GeneralFuntions/Alerts';
 import axios from 'axios';
-import logError from '../GeneralFuntions/logError';
+import logError from '../../GeneralFuntions/logError';
 import 'sweetalert2/dist/sweetalert2.css';
 
 export default function CarTypeCreate() {
