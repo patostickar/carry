@@ -19,11 +19,10 @@ import Home from './pages/Home';
 import LocationCreate from './components/AdminPanel/CreateForms/LocationCreate';
 import Navbar from './components/Navbar';
 import NotFound from './pages/NotFound';
-import Reservation from './pages/Reservation/Reservation';
+import Reservation from './pages/Reservation';
 import Response from './pages/MPrespose';
 import SearchResults from './pages/SearchResults';
-import TermsAndConditions from './pages/TermsAndConditions/TermsAndConditions';
-import './App.css';
+import TermsAndConditions from './pages/TermsAndConditions/';
 
 function App() {
   const dispatch = useDispatch();
@@ -61,14 +60,17 @@ function App() {
           path='/adminPanel'
           element={<ProtectedRoute component={AdminPanel} />}
         />
+        {/* componenete de adminPanel */}
         <Route
           path='/carcreate'
           element={<ProtectedRoute component={CarCreate} />}
         />
+        {/* componenete de adminPanel */}
         <Route
           path='/cartypecreate'
           element={<ProtectedRoute component={CarTypeCreate} />}
         />
+        {/* componenete de adminPanel */}
         <Route
           path='/locationcreate'
           element={<ProtectedRoute component={LocationCreate} />}
