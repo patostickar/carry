@@ -1,9 +1,9 @@
 
 import { Formik, Form, Field } from 'formik';
-import Alerts from '../Alerts';
+import Alerts from '../../GeneralFuntions/Alerts';
 import * as Yup from 'yup'
 import axios from 'axios';
-import logError from '../GeneralFuntions/logError';
+import logError from '../../GeneralFuntions/logError';
 import styles from './styles/Formulario.module.css'
 import Error from './Error'
 export default function CarCreate() {

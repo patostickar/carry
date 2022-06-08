@@ -1,7 +1,7 @@
 import axios from 'axios'
-import {useEffect,useState} from 'react'
+import {useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ClearBookingState } from '../redux/booking';
 
 
