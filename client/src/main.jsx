@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import { Auth0ProviderWithHistory } from './auth0-provider-with-history';
+import { Auth0ProviderWithHistory } from './Auth0ProviderWithHistory';
 import { Provider } from 'react-redux';
 import { store, persistor } from './redux/store';
 import { PersistGate } from 'redux-persist/integration/react';

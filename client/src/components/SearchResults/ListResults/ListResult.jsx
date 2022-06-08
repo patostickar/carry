@@ -21,8 +21,6 @@ function ListResult() {
     },
   } = useSelector((state) => state.carsResults);
 
-  console.log(carTypes);
-
   const { location } = useSelector((state) => state.searchBar);
 
   const categories = [];
