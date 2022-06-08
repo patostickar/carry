@@ -13,7 +13,7 @@ import './index.css';
 axios.defaults.baseURL = import.meta.env.VITE_CARRY_API;
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  // <React.StrictMode>   !!!!ESTO HACE QUE SE EJECUTEN TODAS LAS FUNCIONES DOS VECES 
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <CssBaseline />
@@ -24,5 +24,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         </BrowserRouter>
       </PersistGate>
     </Provider>
-  </React.StrictMode>
+  // </React.StrictMode> 
 );

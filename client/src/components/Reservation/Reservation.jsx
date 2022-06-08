@@ -19,34 +19,38 @@ import Typography from "@mui/material/Typography";
 import { useSelector } from "react-redux";
 import { DAY_MILISECONDS } from "../GeneralFuntions/constants";
 import LinearIndeterminate from "../GeneralFuntions/LinearIndeterminate";
-import axios from "axios";
-import Payment from "../../pages/Payment";
+// import axios from "axios";
+import Payment from "../../components/Payment";
 
 function Reservation() {
-  const { User } = useSelector((state) => state.user);
+  // const { User } = useSelector((state) => state.user);
   const { location, pickupDate, dropoffDate } = useSelector(
     (state) => state.searchBar
   );
 
+  // const [bookin, setbookin] = React.useState(0);
+
   const { booking } = useSelector((state) => state.booking);
-  const Pdate = new Date(pickupDate);
-  const Ddate = new Date(dropoffDate);
-  const PickDate =
-    Pdate.getFullYear() + "/" + (Pdate.getMonth() + 1) + "/" + Pdate.getDate();
-  const DropDate =
-    Ddate.getFullYear() + "/" + (Ddate.getMonth() + 1) + "/" + Ddate.getDate();
+  // const Pdate = new Date(pickupDate);
+  // const Ddate = new Date(dropoffDate);
+  // // const PickDate =
+  // Pdate.getFullYear() + "/" + (Pdate.getMonth() + 1) + "/" + Pdate.getDate();
+  // const DropDate =
+  // Ddate.getFullYear() + "/" + (Ddate.getMonth() + 1) + "/" + Ddate.getDate();
+  
+    const navigate = useNavigate();
+    const dateRange = (dropoffDate - pickupDate) / DAY_MILISECONDS;
 
-  const navigate = useNavigate();
 
-  const dateRange = (dropoffDate - pickupDate) / DAY_MILISECONDS;
 
-  async function CreateBooking(data) {
-    try {
-      return await axios.post("/bookings", data);
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  // async function CreateBooking(data) {
+  //   try {
+  //     return await axios.post("/bookings", data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
+
 
   const steps = [
     {
@@ -64,7 +68,6 @@ function Reservation() {
   ];
 
   const [activeStep, setActiveStep] = React.useState(0);
-  const [bookin, setbookin] = React.useState(0);
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -82,17 +85,10 @@ function Reservation() {
     navigate("/searchResult");
   };
 
-  const handleSearch = async () => {
-    const book = await CreateBooking({
-      carTypeId: booking.carTypeId,
-      customerId: User.id,
-      locationId: booking.locationId,
-      pickUpDate: PickDate,
-      dropOffDate: DropDate,
-    });
-    setbookin(book);
-    // navigate("/payment", { state: book.data });
-  };
+
+  // const handleSearch = async () => {
+  //   // setbookin(book);
+  // };
 
   return (
     <div className={styles.all}>
@@ -154,20 +150,16 @@ function Reservation() {
                       <Typography>{step.description}</Typography>
                       <Box sx={{ mb: 2 }}>
                         <div>
-                          <Button
+
+                          {index !== steps.length - 1 ? <Button
                             variant="contained"
                             onClick={
-                              index === steps.length - 1
-                                ? handleSearch
-                                : handleNext
-                            }
+                              index !== steps.length - 1 && handleNext}
                             sx={{ mt: 1, mr: 1 }}
                           >
-                            {index === steps.length - 1
-                              ? "Reservar"
-                              : "Continuar"}
-                          </Button>
-                          {bookin.data && <Payment reserva={bookin.data} />}
+                            {index !== steps.length - 1 && "Continuar"}
+                          </Button>:<Payment price ={booking.carPrice} />}
+
                           <Button
                             disabled={index === 0}
                             onClick={handleBack}

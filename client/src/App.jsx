@@ -8,23 +8,23 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { ProtectedRoute } from './components/protected-route';
 import axios from 'axios';
 import logError from './components/GeneralFuntions/logError';
-import Navbar from './components/Navbar';
-import Home from './pages/Home';
 import About from './components/About';
-import SearchResults from './pages/SearchResults';
-import Footer from './components/Footer';
+import Account from './components/Account/Account';
 import AdminPanel from './pages/AdminPanel';
+import AdminUsersManagement from './components/GestionDeUsuarios/AdminUsersManagement';
 import CarCreate from './components/CarCreateForm/CarCreate';
 import CarTypeCreate from './components/CarCreateForm/CarTypeCreate';
+import Footer from './components/Footer';
+import Home from './pages/Home';
 import LocationCreate from './components/CarCreateForm/LocationCreate';
-import Account from './components/Account/Account';
-import Reservation from './components/Reservation/Reservation';
-import AdminUsersManagement from './components/GestionDeUsuarios/AdminUsersManagement';
+import Navbar from './components/Navbar';
 import NotFound from './components/NotFound';
-
-import './App.css';
 import Payment from './pages/Payment';
+import Reservation from './components/Reservation/Reservation';
+import Response from './components/MPrespose';
+import SearchResults from './pages/SearchResults';
 import TermsAndConditions from './components/TermsAndConditions/TermsAndConditions';
+import './App.css';
 
 function App() {
   const dispatch = useDispatch();
@@ -75,15 +75,19 @@ function App() {
           element={<ProtectedRoute component={LocationCreate} />}
         />
         <Route
+          path='/payment'
+          element={<ProtectedRoute component={Payment} />}
+        />
+        <Route
           path='/profile'
           element={<ProtectedRoute component={Account} />}
         />
         <Route path='/reservation' element={<Reservation />} />
-        <Route path='/searchResult' element={<SearchResults />} />
         <Route
-          path='/payment'
-          element={<ProtectedRoute component={Payment} />}
+          path='/Response'
+          element={<ProtectedRoute component={Response} />}
         />
+        <Route path='/searchResult' element={<SearchResults />} />
         <Route path='/terminos-condiciones' element={<TermsAndConditions />} />
         <Route
           path='/usermanagement'
