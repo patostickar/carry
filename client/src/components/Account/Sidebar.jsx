@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import {useSelector, useDispatch} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Grid, Button, Box, Typography } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import SecurityIcon from '@mui/icons-material/Security';
@@ -13,29 +13,27 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { putUser } from '../../redux/user';
 
 export const Sidebar = ({ setRenderControl, renderControl }) => {
-  const user = useSelector(state=>state.user.User);
-  const dispatch= useDispatch();
-  console.log(user);
+  const user = useSelector((state) => state.user.User);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const {logout} = useAuth0();
+  const { logout } = useAuth0();
 
-const handleDeleteAccount = ()=>{
-  Swal.fire({
-    title: 'Esta seguro de Eliminar su cuenta?',
-    text: "Usted no podra revertir esta Accion!",
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Si'
-  }).then((result) => {
-    if (result.isConfirmed) {
-      
-        dispatch(putUser(user.id,{isBanned:true}));
-      logout()
-    }
-  })
-}
+  const handleDeleteAccount = () => {
+    Swal.fire({
+      title: 'Esta seguro de Eliminar su cuenta?',
+      text: 'Usted no podra revertir esta Accion!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(putUser(user.id, { isBanned: true }));
+        logout();
+      }
+    });
+  };
 
   return (
     <>
@@ -62,22 +60,19 @@ const handleDeleteAccount = ()=>{
           >
             <PersonIcon color='primary' />
             <Typography
-              onClick={() =>{
-                
+              onClick={() => {
                 setRenderControl({
                   personalInfo: true,
                   review: false,
-                  booking: false
-                   })
-                }}
+                  booking: false,
+                });
+              }}
               style={{ fontWeight: 'lighter' }}
             >
               Informacion Personal
             </Typography>
           </Box>
 
-          
-          
           <Box
             p={2}
             style={{
@@ -94,8 +89,8 @@ const handleDeleteAccount = ()=>{
                 setRenderControl({
                   personalInfo: false,
                   review: false,
-                  booking: true
-                   })
+                  booking: true,
+                })
               }
             >
               Mis Reservas
@@ -117,8 +112,8 @@ const handleDeleteAccount = ()=>{
                 setRenderControl({
                   personalInfo: false,
                   security: false,
-                  review: true
-                   })
+                  review: true,
+                })
               }
             >
               Mis Review
