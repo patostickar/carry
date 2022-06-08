@@ -1,9 +1,5 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { DAY_MILISECONDS } from '../GeneralFuntions/constants';
-import LinearIndeterminate from '../GeneralFuntions/LinearIndeterminate';
-import Steps from './Step2';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import PersonIcon from '@mui/icons-material/Person';
 import SpeedIcon from '@mui/icons-material/Speed';
@@ -19,34 +15,53 @@ import StepContent from '@mui/material/StepContent';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import axios from 'axios';
-import logError from '../GeneralFuntions/logError';
+import { useSelector } from 'react-redux';
+import { DAY_MILISECONDS } from '../components/GeneralFuntions/constants';
+import LinearIndeterminate from '../components/GeneralFuntions/LinearIndeterminate';
+// import axios from "axios";
+import Payment from '../components/MercadoPago/Payment';
 
-function Reservation(props) {
-  const { User } = useSelector((state) => state.user);
+function Steps2() {
+  const steps = ['Elegir un auto', 'Confirmar reserva', 'Disfrutar'];
+  return (
+    <Box sx={{ width: '100%' }}>
+      <Stepper activeStep={1} alternativeLabel>
+        {steps.map((label) => (
+          <Step style={{ 'z-index': '-1' }} key={label}>
+            <StepLabel>{label}</StepLabel>
+          </Step>
+        ))}
+      </Stepper>
+    </Box>
+  );
+}
+
+function Reservation() {
+  // const { User } = useSelector((state) => state.user);
   const { location, pickupDate, dropoffDate } = useSelector(
     (state) => state.searchBar
   );
 
+  // const [bookin, setbookin] = React.useState(0);
+
   const { booking } = useSelector((state) => state.booking);
-  const Pdate = new Date(pickupDate);
-  const Ddate = new Date(dropoffDate);
-  const PickDate =
-    Pdate.getFullYear() + '/' + (Pdate.getMonth() + 1) + '/' + Pdate.getDate();
-  const DropDate =
-    Ddate.getFullYear() + '/' + (Ddate.getMonth() + 1) + '/' + Ddate.getDate();
+  // const Pdate = new Date(pickupDate);
+  // const Ddate = new Date(dropoffDate);
+  // // const PickDate =
+  // Pdate.getFullYear() + "/" + (Pdate.getMonth() + 1) + "/" + Pdate.getDate();
+  // const DropDate =
+  // Ddate.getFullYear() + "/" + (Ddate.getMonth() + 1) + "/" + Ddate.getDate();
 
   const navigate = useNavigate();
-
   const dateRange = (dropoffDate - pickupDate) / DAY_MILISECONDS;
 
-  async function CreateBooking(data) {
-    try {
-      await axios.post('/bookings', data);
-    } catch (error) {
-      logError(error);
-    }
-  }
+  // async function CreateBooking(data) {
+  //   try {
+  //     return await axios.post("/bookings", data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 
   const steps = [
     {
@@ -78,19 +93,12 @@ function Reservation(props) {
   };
 
   const onClick = () => {
-    navigate('/');
+    navigate('/searchResult');
   };
 
-  const handleSearch = () => {
-    CreateBooking({
-      carTypeId: booking.carTypeId,
-      customerId: User.id,
-      locationId: booking.locationId,
-      pickUpDate: PickDate,
-      dropOffDate: DropDate,
-    });
-    navigate('/');
-  };
+  // const handleSearch = async () => {
+  //   // setbookin(book);
+  // };
 
   return (
     <div className={styles.all}>
@@ -114,7 +122,7 @@ function Reservation(props) {
           </div>
         </div>
         <div>
-          <Steps />
+          <Steps2 />
         </div>
 
         <div className={styles.title}>
@@ -152,19 +160,18 @@ function Reservation(props) {
                       <Typography>{step.description}</Typography>
                       <Box sx={{ mb: 2 }}>
                         <div>
-                          <Button
-                            variant='contained'
-                            onClick={
-                              index === steps.length - 1
-                                ? handleSearch
-                                : handleNext
-                            }
-                            sx={{ mt: 1, mr: 1 }}
-                          >
-                            {index === steps.length - 1
-                              ? 'Reservar'
-                              : 'Continuar'}
-                          </Button>
+                          {index !== steps.length - 1 ? (
+                            <Button
+                              variant='contained'
+                              onClick={index !== steps.length - 1 && handleNext}
+                              sx={{ mt: 1, mr: 1 }}
+                            >
+                              {index !== steps.length - 1 && 'Continuar'}
+                            </Button>
+                          ) : (
+                            <Payment price={booking.carPrice} />
+                          )}
+
                           <Button
                             disabled={index === 0}
                             onClick={handleBack}

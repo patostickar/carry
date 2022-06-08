@@ -35,11 +35,16 @@ const carsResultsPersistConfig = {
   version: 1,
   storage: storageSession,
 };
+const bookingPersistConfig = {
+  key: 'booking',
+  version: 1,
+  storage: storageSession,
+};
 
 const rootReducer = combineReducers({
   searchBar: persistReducer(searchBarPersistConfig, searchBarReducer),
   carsResults: persistReducer(carsResultsPersistConfig, carsResultsReducer),
-  booking: bookingReducer,
+  booking: persistReducer(bookingPersistConfig,bookingReducer),
   testimonials: testimonialsReducer,
   user: userReducer,
 });

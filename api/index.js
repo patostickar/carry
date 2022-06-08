@@ -29,16 +29,6 @@ conn
     //   img: l.img,
     // }));
 
-    // const customers = data.customers.map((c) => ({
-    //   email: c.email,
-    //   firstName: c.first_name,
-    //   lastName: c.last_name,
-    //   street: c.street,
-    //   city: c.city,
-    //   postalCode: c.postcal_code,
-    //   phone: c.phone,
-    //   password: c.password,
-    // }));
 
     // const carTypes = data.car_types.map((c) => ({
     //   make: c.make,
@@ -60,27 +50,12 @@ conn
     //   Location.bulkCreate(locations, {
     //     ignoreDuplicates: true,
     //   }),
-    //   Customer.bulkCreate(customers, {
-    //     ignoreDuplicates: true,
-    //   }),
+
     //   Cartype.bulkCreate(carTypes, {
     //     ignoreDuplicates: true,
     //   }),
     // ]);
 
-    // const user = await Customer.findOne({
-    //   where: { email: 'amya.keeling@gmail.com' },
-    // });
-    // const review = await Review.create({
-    //   review:
-    //     'Trabajamos con Carry hace un año, nos sentimos satisfechos con su servicio además cuentan con vehiculos de alta gama.',
-    // });
-    // const review2 = await Review.create({
-    //   review:
-    //     'Trabajamos con Carry hace un año, nos sentimos satisfechos con su servicio además cuentan con vehiculos de alta gama.',
-    // });
-    // review.setCustomer(user);
-    // review2.setCustomer(user);
 
     // const cordoba = await Location.findOne({
     //   where: { name: 'Córdoba Cars' },

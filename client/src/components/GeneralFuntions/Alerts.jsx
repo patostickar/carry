@@ -8,7 +8,7 @@ export default (icon, title) => {
     icon,
     title,
     showConfirmButton: false,
-    timer: 1500,
+    timer: 2000,
     timerProgressBar: true,
     didOpen: (toast) => {
       toast.addEventListener('mouseenter', Swal.stopTimer);
