@@ -27,6 +27,7 @@ function Reservation() {
   const { location, pickupDate, dropoffDate } = useSelector(
     (state) => state.searchBar
   );
+
   // const [bookin, setbookin] = React.useState(0);
 
   const { booking } = useSelector((state) => state.booking);
@@ -41,6 +42,7 @@ function Reservation() {
     const dateRange = (dropoffDate - pickupDate) / DAY_MILISECONDS;
 
 
+
   // async function CreateBooking(data) {
   //   try {
   //     return await axios.post("/bookings", data);
@@ -48,6 +50,7 @@ function Reservation() {
   //     console.log(error);
   //   }
   // }
+
 
   const steps = [
     {
@@ -79,9 +82,9 @@ function Reservation() {
   };
 
   const onClick = () => {
- 
-    navigate("/");
+    navigate("/searchResult");
   };
+
 
   // const handleSearch = async () => {
   //   // setbookin(book);
@@ -147,6 +150,7 @@ function Reservation() {
                       <Typography>{step.description}</Typography>
                       <Box sx={{ mb: 2 }}>
                         <div>
+
                           {index !== steps.length - 1 ? <Button
                             variant="contained"
                             onClick={
@@ -155,7 +159,7 @@ function Reservation() {
                           >
                             {index !== steps.length - 1 && "Continuar"}
                           </Button>:<Payment price ={booking.carPrice} />}
-                      
+
                           <Button
                             disabled={index === 0}
                             onClick={handleBack}
