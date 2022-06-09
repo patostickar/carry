@@ -8,7 +8,7 @@ import axios from 'axios';
 import logError from '../../GeneralFuntions/logError';
 import 'sweetalert2/dist/sweetalert2.css';
 
-export default function CarTypeCreate() {
+export default function CarTypeCreate({ setRenderControl, renderControl }) {
   async function postCarType(values) {
     try {
       await axios.post('/cars', values);

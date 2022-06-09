@@ -3,6 +3,8 @@ import { fetchAllCarTypes } from "../../../redux/carsResults";
 import { fetchAllLocations } from "../../../redux/searchBar";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import CarCreate from "../CreateForms/CarCreate"
+import { Routes, Route } from "react-router-dom";
 
 
 import { faker } from '@faker-js/faker';
@@ -17,6 +19,7 @@ import {
   AppTasks,
 //   AppNewsUpdate,
 //   AppOrderTimeline,
+
   AppCurrentVisits,
    AppWebsiteVisits,
 //   AppTrafficBySite,
@@ -28,15 +31,25 @@ import {
 // ----------------------------------------------------------------------
 
 export default function DashboardApp() {
+
+  const [renderControl, setRenderControl] = useState({
+    carCreate: true,
+  
+  });
+
+
+
 const dispatch = useDispatch()
     const [currentCustomers, setCurrentCustomers] = useState([])
     const [carsStock, setCarStocks] = useState([])
 
 
-    const quantityCustomers = currentCustomers.data
+    // eslint-disable-next-line prefer-const
+    let quantityCustomers = currentCustomers.data
     let totalCustomers = 0 
 
-    const stockCars = carsStock.data
+    // eslint-disable-next-line prefer-const
+    let stockCars = carsStock.data
     let totalStockCars = 0 
 
     const getUsers = async () =>{    
@@ -98,8 +111,10 @@ const dispatch = useDispatch()
 
     
 
-      const cars = AllcarTypes.length
-      const locationAviable = locations.length
+      // eslint-disable-next-line prefer-const
+      let cars = AllcarTypes.length
+      // eslint-disable-next-line prefer-const
+      let locationAviable = locations.length
 
       
 
@@ -112,6 +127,21 @@ const dispatch = useDispatch()
         <Typography variant="h4" sx={{ mb: 5 }}>
           Bienvenido al panel de administracion
         </Typography>
+
+        <Routes>
+            <Route
+          path='/carcreate'
+          element={<CarCreate  />}
+        />
+        </Routes>
+
+       
+        {renderControl.carCreate && (
+          <CarCreate
+            setRenderControl={setRenderControl}
+            renderControl={renderControl}
+          />
+        )}
 
         <Grid container spacing={3}>
            <><><Grid item xs={12} sm={6} md={3}>
