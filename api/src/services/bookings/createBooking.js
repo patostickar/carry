@@ -37,7 +37,7 @@ module.exports.createBooking = async (data) => {
   booking.setCar(findAvailableCarOfType.id);
   booking.setCartype(findAvailableCarOfType.cartypeId);
   booking.setLocation(locationId);
-  console.log(await sendMAil(email))
+  await sendMAil(email)
 
   return booking;
 };
