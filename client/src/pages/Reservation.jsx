@@ -28,7 +28,7 @@ function Steps2() {
     <Box sx={{ width: '100%' }}>
       <Stepper activeStep={1} alternativeLabel>
         {steps.map((label) => (
-          <Step style={{ 'z-index': '-1' }} key={label}>
+          <Step style={{ zIndex: '-1' }} key={label}>
             <StepLabel>{label}</StepLabel>
           </Step>
         ))}
