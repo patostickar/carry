@@ -110,6 +110,7 @@ container {
   position: sticky;
   display: flex;
   justify-content: center;
+  border-radius: 0.5rem;
   box-shadow: 6px 5px 3px 6px hsla(var(--second-hue), 48%, 8%, 0.05);
 }
 .imageContainer {
