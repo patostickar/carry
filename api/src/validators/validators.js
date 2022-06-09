@@ -41,9 +41,7 @@ const validateCreateLocation=[
        .isNumeric().withMessage('No debe contener letras ni simbolos')
        .isLength({min:4, max:4}).withMessage('El còdigo debe tener 4 dígitos ')
        .exists().not().isEmpty(),
-       
-       check('geo','Por favor ingresa una latitud y longitud')
-       .exists().not().isEmpty(),
+      
 
        check('phone','Por favor ingresa un teléfono')
        .matches(/^(\(\+?\d{2,3}\)[\*|\s|\-|\.]?(([\d][\*|\s|\-|\.]?){6})(([\d][\s|\-|\.]?){2})?|(\+?[\d][\s|\-|\.]?){8}(([\d][\s|\-|\.]?){2}(([\d][\s|\-|\.]?){2})?)?)$/)
