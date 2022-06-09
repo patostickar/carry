@@ -1,10 +1,12 @@
 
 import {React,  } from "react";
 import { styled } from '@mui/material/styles';
-
-import DashboardApp from "./AdminPages/Dashboard";
+import { Outlet, Routes, Route } from 'react-router-dom';
+ import DashboardApp from "./AdminPages/Dashboard";
 import DashboardSidebar from "./AdminPages/AdminComponents/sections/layouts/DashboardSidebar";
-import Navbar from "../Navbar";
+ import DashboardNavBar from "./AdminPages/AdminComponents/sections/layouts/DashboardNavBar"
+ 
+ import CarCreate from "./CreateForms/CarTypeCreate";
 
 
 
@@ -58,17 +60,17 @@ export default function AdminCard(){
 
             
             <DashboardSidebar />
+            <DashboardNavBar />
             
             
             
 
-          
+         
 
             <MainStyle>
-
-            <Navbar />
+         
             <DashboardApp />
-            
+            <Outlet />
             </MainStyle>
 
             </RootStyle>

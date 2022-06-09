@@ -67,10 +67,10 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
 
-        <Route
+        {/* <Route
           path='/carcreate'
           element={<ProtectedRoute component={CarCreate} role='admin' />}
-        /> {/* componenete de adminPanel */}
+        /> componenete de adminPanel */}
         <Route
           path='/cartypecreate'
           element={<ProtectedRoute component={CarTypeCreate} role='admin' />}
