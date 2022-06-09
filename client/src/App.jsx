@@ -5,7 +5,7 @@ import { fetchTestimonials } from './redux/testimonials';
 import { ClearUser, fetchUser } from './redux/user.js';
 import { Routes, Route } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
-import { ProtectedRoute } from './components/protected-route';
+import { ProtectedRoute } from './protected-route';
 import axios from 'axios';
 import logError from './components/GeneralFuntions/logError';
 import About from './pages/About';
@@ -18,6 +18,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import LocationCreate from './components/AdminPanel/CreateForms/LocationCreate';
 import Navbar from './components/Navbar';
+import NotAllowed from './pages/NotAllowed';
 import NotFound from './pages/NotFound';
 import Reservation from './pages/Reservation';
 import Response from './pages/MPrespose';
@@ -27,7 +28,6 @@ import TermsAndConditions from './pages/TermsAndConditions/';
 function App() {
   const dispatch = useDispatch();
   const { user, isAuthenticated } = useAuth0();
-  console.log(user);
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -52,29 +52,34 @@ function App() {
 
   return (
     <>
+
+     <Routes>
+
+     <Route
+          path='/adminPanel'
+          element={<ProtectedRoute component={AdminPanel} />}
+        />
+
+     </Routes>
+     
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
-        <Route
-          path='/adminPanel'
-          element={<ProtectedRoute component={AdminPanel} />}
-        />
-        {/* componenete de adminPanel */}
+
         <Route
           path='/carcreate'
-          element={<ProtectedRoute component={CarCreate} />}
-        />
-        {/* componenete de adminPanel */}
+          element={<ProtectedRoute component={CarCreate} role='admin' />}
+        /> {/* componenete de adminPanel */}
         <Route
           path='/cartypecreate'
-          element={<ProtectedRoute component={CarTypeCreate} />}
-        />
-        {/* componenete de adminPanel */}
+          element={<ProtectedRoute component={CarTypeCreate} role='admin' />}
+        /> {/* componenete de adminPanel */}
         <Route
           path='/locationcreate'
-          element={<ProtectedRoute component={LocationCreate} />}
-        />
+          element={<ProtectedRoute component={LocationCreate} role='admin' />}
+          /> {/* componenete de adminPanel */}
+        <Route path='/notAllowed' element={<NotAllowed />} />
         <Route
           path='/profile'
           element={<ProtectedRoute component={Account} />}

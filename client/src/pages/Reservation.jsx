@@ -20,6 +20,7 @@ import { DAY_MILISECONDS } from '../components/GeneralFuntions/constants';
 import LinearIndeterminate from '../components/GeneralFuntions/LinearIndeterminate';
 // import axios from "axios";
 import Payment from '../components/MercadoPago/Payment';
+import { useAuth0 } from '@auth0/auth0-react';
 
 function Steps2() {
   const steps = ['Elegir un auto', 'Confirmar reserva', 'Disfrutar'];
@@ -27,7 +28,7 @@ function Steps2() {
     <Box sx={{ width: '100%' }}>
       <Stepper activeStep={1} alternativeLabel>
         {steps.map((label) => (
-          <Step style={{ 'z-index': '-1' }} key={label}>
+          <Step style={{ zIndex: '-1' }} key={label}>
             <StepLabel>{label}</StepLabel>
           </Step>
         ))}
@@ -41,6 +42,7 @@ function Reservation() {
   const { location, pickupDate, dropoffDate } = useSelector(
     (state) => state.searchBar
   );
+  const { loginWithRedirect, isAuthenticated } = useAuth0();
 
   // const [bookin, setbookin] = React.useState(0);
 
@@ -82,6 +84,7 @@ function Reservation() {
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    if(activeStep===1 && !isAuthenticated ){loginWithRedirect()}
   };
 
   const handleBack = () => {
@@ -168,8 +171,7 @@ function Reservation() {
                             >
                               {index !== steps.length - 1 && 'Continuar'}
                             </Button>
-                          ) : (
-                            <Payment price={booking.carPrice} />
+                          ) : (isAuthenticated && <Payment price={booking.carPrice} />
                           )}
 
                           <Button

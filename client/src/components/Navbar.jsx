@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
 import {
   AppBar,
   Toolbar,
@@ -19,13 +20,16 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import Logout from '@mui/icons-material/Logout';
 import logo from '../assets/logo.png';
+import { useSelector } from 'react-redux';
 
 export default function Navbar() {
+  const User = useSelector((state) => state.user.User);
+console.log(User);
   const [selectedItem, setSelectedItem] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-  const { isAuthenticated, user, loginWithRedirect, logout, isLoading } =
-    useAuth0();
+  const { isAuthenticated, user, loginWithRedirect, logout, isLoading } = useAuth0();
+  const navigate = useNavigate() 
 
   const handleClick = (e) => {
     setAnchorEl(e.currentTarget);
@@ -34,7 +38,9 @@ export default function Navbar() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
+  const GoToAdmin = ()=>{ 
+    navigate('/AdminPanel')
+  };
   const handleChange = (event, newValue) => {
     setSelectedItem(newValue);
   };
@@ -131,6 +137,12 @@ export default function Navbar() {
           <MenuItem to='/profile' component={Link}>
             <Avatar src={user?.picture} /> {user?.name}
           </MenuItem>
+          {User?.isAdmin && <MenuItem onClick={GoToAdmin}>
+            <ListItemIcon>
+              
+            </ListItemIcon>
+            Administrar
+          </MenuItem>}
           <Divider />
           <MenuItem onClick={logout}>
             <ListItemIcon>

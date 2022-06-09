@@ -19,35 +19,8 @@ const createCartype = async (req, res, next) => {
   const {
     make,
     model,
-    className,
-    transmission,
-    mpg,
-    img,
-    doors,
-    seats,
-    airConditioning,
-    largeSuitcase,
-    smallSuitcase,
-    price,
   } = req.body;
 
-  if (
-    !make ||
-    !model ||
-    !className ||
-    !transmission ||
-    !mpg ||
-    !img ||
-    !doors ||
-    !seats ||
-    !airConditioning ||
-    !largeSuitcase ||
-    !smallSuitcase ||
-    !price
-  )
-    return res
-      .status(400)
-      .send('Se requiere enviar todos los parámetros para crear un auto');
 
   try {
     const [carType, created] = await Cartype.findOrCreate({

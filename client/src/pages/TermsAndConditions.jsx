@@ -1,6 +1,4 @@
-/* eslint-disable react/no-unescaped-entities */
-import React from "react";
-import styles from "./styles/TermsAndConditios.module.css";
+import styles from './styles/TermsAndConditios.module.css';
 
 function TermsAndConditions() {
   return (
@@ -18,10 +16,10 @@ function TermsAndConditions() {
         </p>
 
         <p>
-          Los servicios que ofrece{" "}
-          <a href="www.carry.com" target="_blank" rel="noopener">
+          Los servicios que ofrece{' '}
+          <a href='www.carry.com' target='_blank' rel='noopener'>
             www.carry.com
-          </a>{" "}
+          </a>{' '}
           (de ahora en más: “Sitio”) están diseñados para formar un ecosistema
           que permita a las personas buscar, reservar y pagar un auto.
         </p>
@@ -30,7 +28,7 @@ function TermsAndConditions() {
         <p>
           Estos términos y condiciones (de ahora en más: “Términos y
           Condiciones”) regulan la relación entre el Sitio y las personas que
-          usan sus servicios (“Personas Usuarias”).{" "}
+          usan sus servicios (“Personas Usuarias”).{' '}
         </p>
 
         <p>
@@ -55,13 +53,13 @@ function TermsAndConditions() {
         <h2>3- Capacidad</h2>
         <p>
           Podrán usar nuestros servicios las personas mayores de edad que tengan
-          capacidad legal para contratar y/o menores autorizados a conducir.{" "}
+          capacidad legal para contratar y/o menores autorizados a conducir.{' '}
         </p>
 
         <p>
           Quien use la plataforma en representación de una empresa deberá tener
           capacidad para contratar a nombre de ella. Además, para poder usar la
-          cuenta, la Persona Usuaria debe encontrarse activa.{" "}
+          cuenta, la Persona Usuaria debe encontrarse activa.{' '}
         </p>
 
         <h2>4- Registro y Cuenta</h2>
@@ -73,7 +71,7 @@ function TermsAndConditions() {
           única responsable de la certeza de sus datos de registro. Sin
           perjuicio de la información brindada en el formulario, podremos
           solicitar y/o consultar información adicional para corroborar la
-          identidad de la Persona Usuaria.{" "}
+          identidad de la Persona Usuaria.{' '}
         </p>
         <p>
           La cuenta es personal, única e intransferible, es decir que bajo
@@ -82,7 +80,7 @@ function TermsAndConditions() {
           mantener bajo estricta confidencialidad. Por eso, la Persona Usuaria
           será la única responsable por las operaciones que se realicen en su
           cuenta. En caso de detectar un uso no autorizado de su cuenta,deberá
-          notificar de forma inmediata y fehaciente a Carry.{" "}
+          notificar de forma inmediata y fehaciente a Carry.{' '}
         </p>
         <p>
           Podremos rechazar una solicitud de registro o bien cancelar un
@@ -90,13 +88,13 @@ function TermsAndConditions() {
           No podrán registrarse nuevamente en el Sitio las Personas Usuarias que
           hayan sido inhabilitadas previamente. Tampoco podrán registrarse
           quienes estén incluidos o relacionados a personas incluidas en listas
-          nacionales o internacionales de sanciones.{" "}
+          nacionales o internacionales de sanciones.{' '}
         </p>
         <p>
           Además, en caso de detectar el uso de más de una cuenta, podremos
           aplicar retenciones, débitos y/o cualquier otra medida si consideramos
           que ese accionar puede perjudicar al resto de las personas que usan el
-          Sitio o a Carry, más allá de las sanciones que pudieran corresponder.{" "}
+          Sitio o a Carry, más allá de las sanciones que pudieran corresponder.{' '}
         </p>
 
         <h2>5- Privacidad de datos</h2>
@@ -113,41 +111,41 @@ function TermsAndConditions() {
           Condiciones, podremos advertir, suspender, restringir o inhabilitar
           temporal o definitivamente su cuenta, sin perjuicio de otras sanciones
           que se establezcan en las reglas de uso particulares de los servicios
-          de Carry.{" "}
+          de Carry.{' '}
         </p>
 
         <h2>7- Responsabilidad</h2>
         <p>
           Mercado Libre será responsable por cualquier defecto en la prestación
           de su servicio, en la medida en que le sea imputable y con el alcance
-          previsto en las leyes vigentes.{" "}
+          previsto en las leyes vigentes.{' '}
         </p>
 
         <h2>8- Tarifas</h2>
         <p>
           Mercado Libre podrá cobrar por sus servicios y la Persona Usuaria se
-          compromete a pagarlos a tiempo.{" "}
+          compromete a pagarlos a tiempo.{' '}
         </p>
         <p>
           Podremos modificar o eliminar las tarifas en cualquier momento con el
           debido preaviso establecido en la cláusula 2 de estos Términos y
           Condiciones. De la misma manera, podremos modificar las tarifas
-          temporalmente por promociones en favor de las Personas Usuarias.{" "}
+          temporalmente por promociones en favor de las Personas Usuarias.{' '}
         </p>
         <p>
           La Persona Usuaria autoriza a Mercado Libre a retener y/o debitar los
           fondos existentes y/o futuros de su cuenta de Mercado Pago y/o de las
           cuentas bancarias que haya registrado en ella, para saldar las tarifas
-          impagas o cualquier otra deuda que pudiera tener.{" "}
+          impagas o cualquier otra deuda que pudiera tener.{' '}
         </p>
         <p>
           Para conocer el detalle de las tarifas de cada servicio, las Personas
           Usuarias deberán consultar los términos y condiciones
-          correspondientes.{" "}
+          correspondientes.{' '}
         </p>
         <p>
           En todos los casos se emitirá la factura de conformidad con los datos
-          fiscales que las personas tengan cargados en su cuenta.{" "}
+          fiscales que las personas tengan cargados en su cuenta.{' '}
         </p>
 
         <h2>9- Propiedad Intelectual</h2>

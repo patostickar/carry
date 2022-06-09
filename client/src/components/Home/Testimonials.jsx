@@ -1,15 +1,10 @@
 import { Pagination, Navigation } from 'swiper';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
-import Testimonial1 from '../../assets/testimonial1.png';
-// import Testimonial2 from "../../assets/testimonial2.png";
-// import Testimonial3 from "../../assets/testimonial3.png";
 import 'swiper/css';
 import 'swiper/css/pagination';
 import './styles/Testimonials.css';
 
 import { useSelector } from 'react-redux';
-import { useEffect } from 'react';
 
 function Testimonials() {
   const { testimonials } = useSelector((state) => state.testimonials);
@@ -41,21 +36,19 @@ function Testimonials() {
           className='mySwiper'
         >
           {testimonials?.map((testimonial, i) => (
-            <SwiperSlide key={i}>
+            testimonial?.review && <SwiperSlide key={i}>
               <div className='testimonial__card'>
-                <img
+                {!testimonial?.customer?.firstName || !testimonial?.customer?.lastName ? null :<img
                   src={testimonial?.customer?.img}
                   alt='img'
                   className='testimonial__img'
-                />
+                />}
 
-                <h3 className='testimonial__name'>
-                  {testimonial?.customer?.firstName +
-                    ' ' +
-                    testimonial?.customer?.lastName}
+                <h3 className='testimonial__name'> {testimonial?.customer?.firstName?
+                `${testimonial?.customer?.firstName} ${testimonial?.customer?.lastName}`: "Anonimo" }
                 </h3>
                 <p className='testimonial__description'>
-                  {testimonial?.review}
+                  {testimonial?.review }
                 </p>
               </div>
             </SwiperSlide>

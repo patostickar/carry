@@ -1,34 +1,28 @@
-import axios from 'axios'
-import {useEffect,useState} from 'react'
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import Checkout from './Checkout'
+import Checkout from './Checkout';
 
-const Payment = ({price}) => {
+const Payment = ({ price }) => {
   const { booking } = useSelector((state) => state.booking);
-const [datos,setDatos] = useState('')
+  const [datos, setDatos] = useState('');
 
- console.log(price);
- console.log(booking);
-  
   useEffect(() => {
- axios.post('/payment/payment',{
-       total:price,
-       id: `${booking.carType} + ${price}`
-    })
-     .then((res)=>{
-      setDatos(res.data)
-      console.info('Contenido de la data: ',res); 
-     }) 
-     .catch(err=>console.log(err))
-}, [])
+    axios
+      .post('/payment/payment', {
+        total: price,
+        id: `${booking.carType} + ${price}`,
+      })
+      .then((res) => {
+        setDatos(res.data);
+        console.info('Contenido de la data: ', res);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
-    <>
-         {!datos
-        ?<p>Aguarde un momento...</p>
-        : <Checkout data={datos}/>} 
-    </>
-  )
-}
+    <>{!datos ? <p>Aguarde un momento...</p> : <Checkout data={datos} />}</>
+  );
+};
 
-export default Payment
+export default Payment;
