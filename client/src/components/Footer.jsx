@@ -1,95 +1,46 @@
-import { Grid, Box, Container, Link } from "@mui/material";
+import { Grid, Box, Container, Link, Typography } from "@mui/material";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import PhoneIphoneOutlinedIcon from "@mui/icons-material/PhoneIphoneOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import {Link as Link1} from 'react-router-dom';
 import styles from "./styles/Footer.module.css";
 
 export default function Footer() {
   return (
-    <Box
-      sx={{
-        backgroundColor: "#1976d2",
-        marginTop: "40px",
-        color: "white",
-        justifyItems: "center",
-      }}
+    
+    <Grid container
+    sx={{
+      backgroundColor: "#1976d2",
+      marginTop: "40px",
+      color: "white",
+      justifyItems: "center",
+    }}
+    style={{backgroundColor:"#1976d2"}}
     >
-      <Container maxwidth="lg">
-        <Grid
-          container
-          spacing={5}
-          style={{
-            paddingTop: "30px",
-            paddingBottom: "30px",
-            paddingLeft: "0px",
-            paddingRight: "0px",
-          }}
-        >
-          <Grid
-            item
-            xs={12}
-            sm={3}
-            style={{ padding: "30px", borderRight: "solid 0.5px" }}
-          >
-            <Box sx={{ textAlign: "center", fontSize: "16px" }}>
-              HORARIO DE ATENCION
-            </Box>
-            <Box sx={{ textAlign: "center" }}>
-              <p style={{ fontSize: "12px" }}>DPTO DE VENTAS</p>
-              <p style={{ fontSize: "11px", marginTop: "0px" }}>
-                Lunes a Sabado 08:00 a 18:00h
-              </p>
-              <p style={{ fontSize: "12px" }}>DPTO DE SOPORTE</p>
-              <p style={{ fontSize: "11px", marginTop: "0px" }}>
-                Lunes a Viernes 08:00 a 18:00h
-              </p>
-            </Box>
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            sm={3}
-            style={{ padding: "30px", borderRight: "solid 0.5px" }}
-          >
-            <Box sx={{ textAlign: "center", fontSize: "16px" }}>
-              ENLACES ÚTILES{" "}
-            </Box>
-            <Box sx={{ textAlign: "center" }}>
-              <Link
-                href={"/"}
-                color="inherit"
-                sx={{ textDecoration: "none", fontSize: "12px" }}
-              >
-                Inicio
-              </Link>
-            </Box>
-            <Box sx={{ textAlign: "center" }}>
-              <Link
-                href={"/about"}
-                color="inherit"
-                sx={{ textDecoration: "none", fontSize: "12px" }}
-              >
-                Nosotros
-              </Link>
-            </Box>
-            <Box sx={{ textAlign: "center" }}>
-              <Link
-                href={"/terminos-condiciones"}
-                color="inherit"
-                sx={{ textDecoration: "none", fontSize: "12px" }}
-              >
-                Terminos y Condiciones
-              </Link>
-            </Box>
-          </Grid>
-          <Grid item xs={12} sm={3} style={{ paddingTop: "30px" }}>
-            <Box sx={{ textAlign: "center", fontSize: "16px" }}>
-              CONTÁCTANOS
-            </Box>
-            <Box
+      
+       <Grid item xs={4} style={{padding:'20px', borderRight:'solid 1px white'}}>
+        <Typography variant='body2' style={{textAlign:'center', fontWeight:'bolder'}}>ATENCION AL PUBLICO</Typography> 
+        <Typography style={{fontSize:'12px', textAlign:'center'}}>
+          DPTO DE VENTAS<br />
+          Lunes a Sabado 08:00 a 18:00h<br />
+          DPTO DE SOPORTE<br />
+          Lunes a Viernes 08:00 a 18:00h
+         </Typography> 
+        </Grid>
+       <Grid item xs={4} style={{padding:'20px', borderRight:'solid 1px white',textAlign:'center' }}>
+       <Typography variant='body2' style={{textAlign:'center', fontWeight:'bolder'}}>ENLACES UTILES</Typography>
+       <Link href={"/home"} color="inherit" sx={{ textDecoration: "none", fontSize: "12px"}} >Inicio <br /></Link>
+       <Link href={"/about"} color="inherit" sx={{ textDecoration: "none", fontSize: "12px"}} >Nosotros <br /></Link>
+       <Link href={"/about"} color="inherit" sx={{ textDecoration: "none", fontSize: "12px"}} >Terminos y Condiciones <br /></Link>
+       
+       
+       </Grid>
+       <Grid item xs={4} style={{padding:'20px'}}>
+       <Typography variant='body2' style={{textAlign:'center', fontWeight:'bolder'}}>CONTÁCTENOS</Typography>  
+       <Box
               sx={{
                 display: "flex",
                 justifyContent: "center",
@@ -181,12 +132,17 @@ export default function Footer() {
               <FacebookIcon />
               <LinkedInIcon />
             </Box>
-          </Grid>
-        </Grid>
-        <span className={styles.footer__copy}>
-          Copyright &#169; Carry 2022. Todos los derechos reservados.
-        </span>
-      </Container>
-    </Box>
+       </Grid>
+       
+                                                                                                                                                                                                   
+    </Grid>
+    
+    
+    
+    
+    
+    
+    
+
   );
 }
