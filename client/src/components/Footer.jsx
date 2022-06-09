@@ -55,34 +55,6 @@ export default function Footer() {
             style={{ padding: "30px", borderRight: "solid 0.5px" }}
           >
             <Box sx={{ textAlign: "center", fontSize: "16px" }}>
-              PREGUNTAS FRECUENTES
-            </Box>
-            <Box sx={{ textAlign: "center" }}>
-              <Link
-                href={"/"}
-                color="inherit"
-                sx={{ textDecoration: "none", fontSize: "12px" }}
-              >
-                Como alquilo un vehiculo?
-              </Link>
-            </Box>
-            <Box sx={{ textAlign: "center" }}>
-              <Link
-                href={"/"}
-                color="inherit"
-                sx={{ textDecoration: "none", fontSize: "12px" }}
-              >
-                Donde puedo recoger y Entregar el vehiculo Alquilado?
-              </Link>
-            </Box>
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            sm={3}
-            style={{ padding: "30px", borderRight: "solid 0.5px" }}
-          >
-            <Box sx={{ textAlign: "center", fontSize: "16px" }}>
               ENLACES ÚTILES{" "}
             </Box>
             <Box sx={{ textAlign: "center" }}>
