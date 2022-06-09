@@ -38,7 +38,7 @@ function Testimonials() {
           {testimonials?.map((testimonial, i) => (
             testimonial?.review && <SwiperSlide key={i}>
               <div className='testimonial__card'>
-                {testimonial?.customer?.firstName && <img
+                {!testimonial?.customer?.firstName || !testimonial?.customer?.lastName ? null :<img
                   src={testimonial?.customer?.img}
                   alt='img'
                   className='testimonial__img'
