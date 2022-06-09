@@ -1,3 +1,4 @@
+const { validationResult } = require('express-validator');
 const { Booking } = require('../db');
 const { createBooking } = require('../services/bookings/createBooking');
 const { getBookings } = require('../services/bookings/getBookings');
@@ -29,11 +30,9 @@ const getCustomerBookings = async (req, res, next) => {
 };
 
 const dbCreateBooking = async (req, res, next) => {
-  const { carTypeId, customerId, locationId, pickUpDate, dropOffDate } =
-    req.body;
 
-  if (!carTypeId || !customerId || !locationId || !pickUpDate || !dropOffDate)
-    return res.status(400).send('Se requiere enviar todos los parámetros');
+  const { pickUpDate, dropOffDate } =
+    req.body;
 
   if (new Date(dropOffDate) <= new Date(pickUpDate)) {
     return res.status(400).send('La reserva mínima es de 24hs');
@@ -44,7 +43,6 @@ const dbCreateBooking = async (req, res, next) => {
       .status(400)
       .send(`Fecha de retiro no puede ser anterior a ${new Date().toString()}`);
   }
-
   try {
     const booking = await createBooking(req.body);
     res.status(201).send({ msg: 'Reserva confirmada', booking });

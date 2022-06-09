@@ -39,20 +39,6 @@ const createLocation = async (req, res, next) => {
     airportLocation,
   } = req.body;
 
-  if (
-    !name ||
-    !street ||
-    !city ||
-    !stateName ||
-    !postalCode ||
-    !lat ||
-    !lon ||
-    !phone ||
-    !timeOpen ||
-    !timeClose ||
-    !airportLocation
-  )
-    return res.status(400).send('Se requiere enviar todos los parámetros');
 
   try {
     const geo = [lat, lon];
