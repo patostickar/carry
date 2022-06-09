@@ -17,19 +17,19 @@ export default function CarCreate() {
   const newCarTypeSchema = Yup.object().shape({
     // Validar Formulario
     make: Yup.string()
-      .matches(/^[A-Z]+$/i, 'El campo solo debe contener letras')
+      .matches(/^[A-Z _]+$/i, 'El campo solo debe contener letras')
       .min(3, 'El nombre de la  marca es muy corto')
       .max(20, 'El nombre de la marca es muy larga')
       .required('La marca es requerida'),
 
     model: Yup.string()
-      .matches(/^[A-Z]+$/i, 'El campo solo debe contener letras')
+      .matches(/^[A-Z _]+$/i, 'El campo solo debe contener letras')
       .min(3, 'El modelo es muy corto')
       .max(20, 'El modelo es muy largo')
       .required('El modelo es requerido'),
 
     className: Yup.string()
-      .matches(/^[A-Z]+$/i, 'El campo solo debe contener letras')
+      .matches(/^[A-Z _]+$/i, 'El campo solo debe contener letras')
       .min(3, 'La clase es muy corta')
       .max(20, 'La clase es muy largo')
       .required('La clase es requerida'),
