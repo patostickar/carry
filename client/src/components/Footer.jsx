@@ -48,7 +48,7 @@ export default function Footer() {
               </p>
             </Box>
           </Grid>
-          <Grid
+          {/* <Grid
             item
             xs={12}
             sm={3}
@@ -75,7 +75,7 @@ export default function Footer() {
                 Donde puedo recoger y Entregar el vehiculo Alquilado?
               </Link>
             </Box>
-          </Grid>
+          </Grid> */}
           <Grid
             item
             xs={12}
