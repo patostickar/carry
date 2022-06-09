@@ -7,12 +7,12 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
+// import Typography from '@mui/material/Typography';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchUserBokings, putUserBookings } from '../../redux/booking';
-import { Button } from '@mui/material';
+// import { Button } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
-import ReviewsIcon from '@mui/icons-material/Reviews';
+// import ReviewsIcon from '@mui/icons-material/Reviews';
 
 export const Booking = () => {
   const { Userbokings } = useSelector((state) => state.booking);
