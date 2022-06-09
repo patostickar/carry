@@ -1,0 +1,14 @@
+.numero {
+  font-size: 7rem;
+  display: flex;
+  justify-content: center;
+  margin-bottom: -3rem;
+  margin-top: 3rem;
+}
+
+.letras {
+  font-size: 5rem;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 22rem;
+}
