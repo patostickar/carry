@@ -5,7 +5,6 @@ const { DAY_MILISECONDS } = require('../../constants.js');
 module.exports.createBooking = async (data) => {
   const { carTypeId, customerId, locationId, pickUpDate, dropOffDate } = data;
 
-  
   const availableCars = await getAvailableCars(
     locationId,
     pickUpDate,

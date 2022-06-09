@@ -56,7 +56,6 @@ export default function LocationCreate() {
 
   const newLocationSchema = Yup.object().shape({
     name: Yup.string()
-      .matches(/^[A-Z]+$/i, 'El nombre solo debe contener letras')
       .min(3, 'El nombre de la  localidad es muy corto')
       .max(50, 'El nombre de la localidad es muy larga')
       .required('El nombre es requerido'),
