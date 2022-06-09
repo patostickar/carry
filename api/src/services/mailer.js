@@ -6,10 +6,10 @@ const {MAIL_APP_PASS } = process.env;
  const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 465,
-    secure: true, // true for 465, false for other ports
+    secure: true, 
     auth: {
-      user: "carrycars.info@gmail.com", // generated ethereal user
-      pass: MAIL_APP_PASS, // generated ethereal password
+      user: "carrycars.info@gmail.com", 
+      pass: MAIL_APP_PASS, 
     },
   });
 
