@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const router = Router();
+const { validateCreateLocation } = require('../validators/validators');
 
 const {
   getAllLocations,
@@ -10,6 +11,6 @@ const {
 router.get('/', getAllLocations);
 router.get('/:id', getLocationById);
 
-router.post('/', createLocation);
+router.post('/',validateCreateLocation, createLocation);
 
 module.exports = router;

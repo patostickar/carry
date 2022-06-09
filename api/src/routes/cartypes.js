@@ -1,4 +1,5 @@
 const { Router } = require('express');
+const { validateCreateCarType } = require('../validators/validators');
 const {
   getCarType,
   getCarTypeCount,
@@ -10,7 +11,7 @@ router.get('/', getCarType);
 router.get('/:id', getCarType);
 router.get('/count/:locationId', getCarTypeCount);
 
-router.post('/', createCartype);
+router.post('/',validateCreateCarType, createCartype);
 
 router.put('/:id');
 router.patch('/:id');
