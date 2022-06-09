@@ -1,5 +1,6 @@
 const nodemailer = require("nodemailer");
 
+const {MAIL_APP_PASS } = process.env;
 
 
  const transporter = nodemailer.createTransport({
@@ -8,7 +9,7 @@ const nodemailer = require("nodemailer");
     secure: true, // true for 465, false for other ports
     auth: {
       user: "carrycars.info@gmail.com", // generated ethereal user
-      pass: "zramdabonklxcdst", // generated ethereal password
+      pass: MAIL_APP_PASS, // generated ethereal password
     },
   });
 
