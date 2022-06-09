@@ -101,10 +101,10 @@ function TermsAndConditions() {
 
         <h2>5- Privacidad de datos</h2>
         <p>
-          En Mercado Libre hacemos un uso responsable de la información
-          personal, protegiendo la privacidad de las Personas Usuarias que nos
-          confiaron sus datos y tomando las medidas necesarias para garantizar
-          la seguridad en nuestro sitio web.{" "}
+          En Carry hacemos un uso responsable de la información personal,
+          protegiendo la privacidad de las Personas Usuarias que nos confiaron
+          sus datos y tomando las medidas necesarias para garantizar la
+          seguridad en nuestro sitio web.{" "}
         </p>
 
         <h2>6- Sanciones</h2>
