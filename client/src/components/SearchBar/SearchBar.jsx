@@ -7,6 +7,7 @@ import Calendar from './calendar';
 import styles from './styles/SearchBar.module.css';
 import 'sweetalert2/dist/sweetalert2.css';
 import Alerts from '../GeneralFuntions/Alerts';
+import { useState } from 'react';
 
 function SearchBar() {
   const { pickupDate, dropoffDate, location, popLocation } = useSelector(
@@ -16,7 +17,10 @@ function SearchBar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+
+
   const handleSearch = () => {
+ 
     if (!location) {
       return Alerts('warning', 'Por favor elija una ubicación');
     }
@@ -24,7 +28,7 @@ function SearchBar() {
       return Alerts('info', 'El alquiler mínimo es de 24 hs');
     }
     dispatch(fetchCarTypes(location.id, pickupDate, dropoffDate));
-    navigate('/searchResult');
+    navigate('/searchResult',{state:location});
   };
 
   return (

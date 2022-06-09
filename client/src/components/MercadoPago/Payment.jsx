@@ -5,7 +5,7 @@ import Checkout from './Checkout';
 
 const Payment = ({ price }) => {
   const { booking } = useSelector((state) => state.booking);
-  const [datos, setDatos] = useState('')(price);
+  const [datos, setDatos] = useState('');
 
   useEffect(() => {
     axios

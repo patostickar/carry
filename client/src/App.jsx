@@ -67,21 +67,18 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
 
-        {/* componenete de adminPanel */}
         <Route
           path='/carcreate'
           element={<ProtectedRoute component={CarCreate} role='admin' />}
-        />
-        {/* componenete de adminPanel */}
+        /> {/* componenete de adminPanel */}
         <Route
           path='/cartypecreate'
           element={<ProtectedRoute component={CarTypeCreate} role='admin' />}
-        />
-        {/* componenete de adminPanel */}
+        /> {/* componenete de adminPanel */}
         <Route
           path='/locationcreate'
           element={<ProtectedRoute component={LocationCreate} role='admin' />}
-        />
+          /> {/* componenete de adminPanel */}
         <Route path='/notAllowed' element={<NotAllowed />} />
         <Route
           path='/profile'
