@@ -36,21 +36,19 @@ function Testimonials() {
           className='mySwiper'
         >
           {testimonials?.map((testimonial, i) => (
-            <SwiperSlide key={i}>
+            testimonial?.review && <SwiperSlide key={i}>
               <div className='testimonial__card'>
-                <img
+                {testimonial?.customer?.firstName && <img
                   src={testimonial?.customer?.img}
                   alt='img'
                   className='testimonial__img'
-                />
+                />}
 
-                <h3 className='testimonial__name'>
-                  {testimonial?.customer?.firstName +
-                    ' ' +
-                    testimonial?.customer?.lastName}
+                <h3 className='testimonial__name'> {testimonial?.customer?.firstName?
+                `${testimonial?.customer?.firstName} ${testimonial?.customer?.lastName}`: "Anonimo" }
                 </h3>
                 <p className='testimonial__description'>
-                  {testimonial?.review}
+                  {testimonial?.review }
                 </p>
               </div>
             </SwiperSlide>
