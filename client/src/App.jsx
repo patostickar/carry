@@ -52,14 +52,21 @@ function App() {
 
   return (
     <>
+
+     <Routes>
+
+     <Route
+          path='/adminPanel'
+          element={<ProtectedRoute component={AdminPanel} />}
+        />
+
+     </Routes>
+     
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
-        <Route
-          path='/adminPanel'
-          element={<ProtectedRoute component={AdminPanel} role='admin' />}
-        />
+
         {/* componenete de adminPanel */}
         <Route
           path='/carcreate'

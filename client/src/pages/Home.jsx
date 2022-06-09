@@ -7,8 +7,10 @@ import styles from './styles/Home.module.css';
 
 const Home = () => {
   TabTitle('Inicio - Carry');
+  console.log("hola")
   return (
     <div className={styles.homeContainer}>
+      
       <SearchBarJumbo />
       <PopularLocations />
       <Testimonials />
