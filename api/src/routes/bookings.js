@@ -1,6 +1,8 @@
 const { Router } = require('express');
 const router = Router();
 const { validateCreateBooking } = require('../validators/validators');
+const auth = require('../middleware/auth');
+const admin = require('../middleware/admin');
 
 const {
   dbCreateBooking,
@@ -9,15 +11,12 @@ const {
   editBooking,
 } = require('../controllers/bookings');
 
+router.get('/', [auth, admin], getAllBookings);
+router.get('/customer/:id', auth, getCustomerBookings);
+router.get('/:id', auth, getAllBookings);
 
-router.get('/', getAllBookings);
-router.get('/customer/:id', getCustomerBookings);
-router.get('/:id', getAllBookings);
+router.post('/', [auth, validateCreateBooking], dbCreateBooking);
 
-router.post('/',validateCreateBooking, dbCreateBooking);
-
-router.put('/:id', editBooking);
+router.put('/:id', auth, editBooking);
 
 module.exports = router;
-
-

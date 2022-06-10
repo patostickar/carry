@@ -48,7 +48,6 @@ const postCustomer = async (req, res, next) => {
     });
 
     const customerDetails = {
-      token: customer.token,
       id: customer.id,
       email: customer.email,
       firstName: customer.firstName,
@@ -62,11 +61,13 @@ const postCustomer = async (req, res, next) => {
     };
 
     created
-      ? res.status(201).send({
+      ? res.header('Authorization', customer.token).status(201).send({
           msg: 'Cliente registrado satisfactoriamente',
           customerDetails,
         })
-      : res.send({ msg: 'Bienvenido de vuelta a Carry', customerDetails });
+      : res
+          .header('Authorization', customer.token)
+          .send({ msg: 'Bienvenido de vuelta a Carry', customerDetails });
   } catch (error) {
     next(error);
   }
