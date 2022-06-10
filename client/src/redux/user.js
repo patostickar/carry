@@ -3,18 +3,18 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 
 const initialState = {
-  User: null,
+  user: null,
 };
 
-export const User = createSlice({
-  name: 'User',
+export const user = createSlice({
+  name: 'user',
   initialState,
   reducers: {
     setUser: (state, action) => {
-      state.User = action.payload;
+      state.user = action.payload.data.customer;
     },
     clearUser: (state, action) => {
-      state.User = null;
+      state.user = null;
     },
   },
 });
@@ -31,6 +31,6 @@ export const putUser = (id, data) => async (dispatch) => {
   }
 };
 
-export const { setUser, clearUser } = User.actions;
+export const { setUser, clearUser } = user.actions;
 
-export default User.reducer;
+export default user.reducer;

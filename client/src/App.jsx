@@ -26,6 +26,7 @@ import TermsAndConditions from './pages/TermsAndConditions/';
 function App() {
   const dispatch = useDispatch();
   const { user, isAuthenticated } = useAuth0();
+  console.log('useAuth0 user: ', user);
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -34,7 +35,7 @@ function App() {
       async function setCustomer() {
         try {
           const customer = await axios.post('/customers', user);
-          setUser(customer);
+          dispatch(setUser(customer));
         } catch (error) {
           logError(error);
         }

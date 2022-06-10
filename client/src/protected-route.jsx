@@ -9,7 +9,7 @@ export const ProtectedRoute = ({ component, role }) => {
     onRedirecting: () => <Loader />,
   });
 
-  const user = useSelector((state) => state.user.User);
+  const user = useSelector((state) => state.user.user);
   const navigate = useNavigate();
 
   useEffect(() => {

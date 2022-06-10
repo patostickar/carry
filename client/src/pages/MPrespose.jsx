@@ -6,7 +6,7 @@ import { ClearBookingState } from '../redux/booking';
 
 const Response = () => {
   const dispatch = useDispatch();
-  const { User } = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.user);
   const { pickupDate, dropoffDate } = useSelector((state) => state.searchBar);
   const { booking } = useSelector((state) => state.booking);
 
@@ -28,7 +28,7 @@ const Response = () => {
   const handleSearch = async () => {
     await CreateBooking({
       carTypeId: booking.carTypeId,
-      customerId: User.id,
+      customerId: user.id,
       locationId: booking.locationId,
       pickUpDate: PickDate,
       dropOffDate: DropDate,

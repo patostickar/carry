@@ -10,7 +10,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { putUser } from '../../redux/user';
 
 export const Sidebar = ({ setRenderControl, renderControl }) => {
-  const user = useSelector((state) => state.user.User);
+  const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { logout } = useAuth0();

@@ -38,7 +38,7 @@ function Steps2() {
 }
 
 function Reservation() {
-  // const { User } = useSelector((state) => state.user);
+  // const { user } = useSelector((state) => state.user);
   const { location, pickupDate, dropoffDate } = useSelector(
     (state) => state.searchBar
   );
@@ -84,7 +84,9 @@ function Reservation() {
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    if(activeStep===1 && !isAuthenticated ){loginWithRedirect()}
+    if (activeStep === 1 && !isAuthenticated) {
+      loginWithRedirect();
+    }
   };
 
   const handleBack = () => {
@@ -171,7 +173,10 @@ function Reservation() {
                             >
                               {index !== steps.length - 1 && 'Continuar'}
                             </Button>
-                          ) : (isAuthenticated && <Payment price={booking.carPrice} />
+                          ) : (
+                            isAuthenticated && (
+                              <Payment price={booking.carPrice} />
+                            )
                           )}
 
                           <Button

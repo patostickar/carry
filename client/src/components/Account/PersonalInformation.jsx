@@ -15,17 +15,17 @@ import { putUser } from '../../redux/user';
 
 export const PersonalInformation = ({ setRenderControl, renderControl }) => {
   const dispatch = useDispatch();
-  const { User } = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.user);
 
   const [values, setValues] = useState({
-    firstName: User?.firstName,
-    lastName: User?.lastName,
-    email: User?.email,
-    phone: User?.phone,
-    city: User?.city,
-    street: User?.street,
-    postalCode: User?.postalCode,
-    avatar: User?.img,
+    firstName: user?.firstName,
+    lastName: user?.lastName,
+    email: user?.email,
+    phone: user?.phone,
+    city: user?.city,
+    street: user?.street,
+    postalCode: user?.postalCode,
+    avatar: user?.img,
   });
 
   const handleChange = (event) => {
@@ -37,7 +37,7 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
 
   const handleSubmit = (e) => {
     // setRenderControl({ ...renderControl, personalInfo: !renderControl.personalInfo })
-    dispatch(putUser(User.id, values));
+    dispatch(putUser(user.id, values));
   };
 
   return (

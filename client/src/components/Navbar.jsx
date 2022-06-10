@@ -23,13 +23,13 @@ import logo from '../assets/logo.png';
 import { useSelector } from 'react-redux';
 
 export default function Navbar() {
-  const User = useSelector((state) => state.user.User);
-console.log(User);
+  const user = useSelector((state) => state.user.user);
   const [selectedItem, setSelectedItem] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-  const { isAuthenticated, user, loginWithRedirect, logout, isLoading } = useAuth0();
-  const navigate = useNavigate() 
+  const { isAuthenticated, user, loginWithRedirect, logout, isLoading } =
+    useAuth0();
+  const navigate = useNavigate();
 
   const handleClick = (e) => {
     setAnchorEl(e.currentTarget);
@@ -38,8 +38,8 @@ console.log(User);
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const GoToAdmin = ()=>{ 
-    navigate('/AdminPanel')
+  const GoToAdmin = () => {
+    navigate('/AdminPanel');
   };
   const handleChange = (event, newValue) => {
     setSelectedItem(newValue);
@@ -137,12 +137,12 @@ console.log(User);
           <MenuItem to='/profile' component={Link}>
             <Avatar src={user?.picture} /> {user?.name}
           </MenuItem>
-          {User?.isAdmin && <MenuItem onClick={GoToAdmin}>
-            <ListItemIcon>
-              
-            </ListItemIcon>
-            Administrar
-          </MenuItem>}
+          {user?.isAdmin && (
+            <MenuItem onClick={GoToAdmin}>
+              <ListItemIcon></ListItemIcon>
+              Administrar
+            </MenuItem>
+          )}
           <Divider />
           <MenuItem onClick={logout}>
             <ListItemIcon>
