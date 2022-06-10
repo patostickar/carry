@@ -23,7 +23,7 @@ import logo from '../assets/logo.png';
 import { useSelector } from 'react-redux';
 
 export default function Navbar() {
-  const { picture, name, isAdmin } = useSelector((state) => state.user);
+  const { img, name, isAdmin } = useSelector((state) => state.user);
   const [selectedItem, setSelectedItem] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -80,7 +80,7 @@ export default function Navbar() {
             <Avatar
               alt='Remy Sharp'
               sx={{ marginLeft: 'auto' }}
-              src={picture}
+              src={img}
               to='/profile'
               component={Link}
             />
@@ -134,7 +134,7 @@ export default function Navbar() {
           anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
         >
           <MenuItem to='/profile' component={Link}>
-            <Avatar src={picture} /> {name}
+            <Avatar src={img} /> {name}
           </MenuItem>
           {isAdmin && (
             <MenuItem onClick={GoToAdmin}>
