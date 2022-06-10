@@ -47,11 +47,24 @@ const postCustomer = async (req, res, next) => {
       },
     });
 
+    const customerDetails = {
+      token: customer.token,
+      email: customer.email,
+      firstName: customer.firstName,
+      lastName: customer.lastName,
+      street: customer.street,
+      city: customer.city,
+      postalCode: customer.postalCode,
+      phone: customer.phone,
+      img: customer.img,
+    };
+
     created
-      ? res
-          .status(201)
-          .send({ msg: 'Cliente registrado satisfactoriamente', customer })
-      : res.send({ msg: 'Ya existe un cliente con este correo', customer });
+      ? res.status(201).send({
+          msg: 'Cliente registrado satisfactoriamente',
+          customerDetails,
+        })
+      : res.send({ msg: 'Bienvenido de vuelta a Carry', customerDetails });
   } catch (error) {
     next(error);
   }
@@ -98,7 +111,7 @@ const getUserReviews = async (_req, res, next) => {
   const { id } = _req.params;
 
   try {
-    res.send(await Review.findAll({where:{customerId : id}}));
+    res.send(await Review.findAll({ where: { customerId: id } }));
   } catch (error) {
     next(error);
   }
