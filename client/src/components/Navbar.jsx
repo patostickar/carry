@@ -23,12 +23,11 @@ import logo from '../assets/logo.png';
 import { useSelector } from 'react-redux';
 
 export default function Navbar() {
-  const user = useSelector((state) => state.user.user);
+  const { picture, name, isAdmin } = useSelector((state) => state.user);
   const [selectedItem, setSelectedItem] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-  const { isAuthenticated, user, loginWithRedirect, logout, isLoading } =
-    useAuth0();
+  const { isAuthenticated, loginWithRedirect, logout, isLoading } = useAuth0();
   const navigate = useNavigate();
 
   const handleClick = (e) => {
@@ -81,7 +80,7 @@ export default function Navbar() {
             <Avatar
               alt='Remy Sharp'
               sx={{ marginLeft: 'auto' }}
-              src={user?.picture}
+              src={picture}
               to='/profile'
               component={Link}
             />
@@ -135,9 +134,9 @@ export default function Navbar() {
           anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
         >
           <MenuItem to='/profile' component={Link}>
-            <Avatar src={user?.picture} /> {user?.name}
+            <Avatar src={picture} /> {name}
           </MenuItem>
-          {user?.isAdmin && (
+          {isAdmin && (
             <MenuItem onClick={GoToAdmin}>
               <ListItemIcon></ListItemIcon>
               Administrar

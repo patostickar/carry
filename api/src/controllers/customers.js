@@ -49,6 +49,7 @@ const postCustomer = async (req, res, next) => {
 
     const customerDetails = {
       token: customer.token,
+      id: customer.id,
       email: customer.email,
       firstName: customer.firstName,
       lastName: customer.lastName,
@@ -57,6 +58,7 @@ const postCustomer = async (req, res, next) => {
       postalCode: customer.postalCode,
       phone: customer.phone,
       img: customer.img,
+      isAdmin: customer.isAdmin,
     };
 
     created

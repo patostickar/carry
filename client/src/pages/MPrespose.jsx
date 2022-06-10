@@ -6,7 +6,7 @@ import { ClearBookingState } from '../redux/booking';
 
 const Response = () => {
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.user);
+  const user = useSelector((state) => state.user);
   const { pickupDate, dropoffDate } = useSelector((state) => state.searchBar);
   const { booking } = useSelector((state) => state.booking);
 

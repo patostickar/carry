@@ -15,15 +15,15 @@ import 'sweetalert2/dist/sweetalert2.css';
 import { useEffect, useState } from 'react';
 
 export default function Review() {
-  const { user } = useSelector((state) => state.user);
+  const { id } = useSelector((state) => state.user);
   const [reviews, SetReviews] = useState();
   const getReviews = async () => {
-    SetReviews(await axios.get(`/customers/reviews/${user.id}`));
+    SetReviews(await axios.get(`/customers/reviews/${id}`));
   };
 
   async function postreview(values) {
     try {
-      await axios.post(`/customers/reviews/${user.id}`, values);
+      await axios.post(`/customers/reviews/${id}`, values);
     } catch (error) {
       logError(error);
     }

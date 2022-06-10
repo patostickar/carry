@@ -10,7 +10,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { putUser } from '../../redux/user';
 
 export const Sidebar = ({ setRenderControl, renderControl }) => {
-  const user = useSelector((state) => state.user.user);
+  const { id } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { logout } = useAuth0();
@@ -26,7 +26,7 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
       confirmButtonText: 'Si',
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch(putUser(user.id, { isBanned: true }));
+        dispatch(putUser(id, { isBanned: true }));
         logout();
       }
     });

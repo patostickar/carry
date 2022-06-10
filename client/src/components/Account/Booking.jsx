@@ -16,18 +16,18 @@ import CancelIcon from '@mui/icons-material/Cancel';
 
 export const Booking = () => {
   const { Userbokings } = useSelector((state) => state.booking);
-  const { user } = useSelector((state) => state.user);
+  const { id } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   const handleCancellBooking = (id) => {
     const data = Userbokings.bookings.filter((el) => el.id === id);
     const putData = { ...data[0], status: 'inactive' };
     dispatch(putUserBookings(id, putData));
-    dispatch(fetchUserBokings(user.id));
+    dispatch(fetchUserBokings(id));
   };
 
   useEffect(() => {
-    dispatch(fetchUserBokings(user.id));
+    dispatch(fetchUserBokings(id));
   }, []);
   return (
     <>
