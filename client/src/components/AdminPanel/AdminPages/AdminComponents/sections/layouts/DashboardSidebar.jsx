@@ -2,12 +2,14 @@ import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 // material
-
+import { useSelector } from 'react-redux';
 import { styled } from '@mui/material/styles';
-import { Box, Link,  Drawer, Typography,  Stack } from '@mui/material';
+import { Box, Link,  Drawer, Typography,  Stack, Avatar } from '@mui/material';
 // mock
 // import account from '../../_mock/account';
 // hooks
+
+import logo from"../../../../../../assets/logo.png"
 
 import useResponsive from '../../hooks/useResponsive';
 
@@ -54,6 +56,10 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
 
   const isDesktop = useResponsive('up', 'lg');
 
+  const User = useSelector((state) => state.user.User);
+
+  console.log(User.firstName)
+
   useEffect(() => {
     if (isOpenSidebar) {
       onCloseSidebar();
@@ -69,19 +75,19 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
       }}
     >
       <Box sx={{ px: 2.5, py: 3, display: 'inline-flex' }}>
-        {/* <Logo /> */}
+        {"Carry Admin Panel"}
       </Box>
 
       <Box sx={{ mb: 5, mx: 2.5 }}>
         <Link underline="none" component={RouterLink} to="#">
           <AccountStyle>
-            {/* <Avatar src={account.photoURL} alt="photoURL" /> */}
+            <Avatar src={User.img} alt="userPic" />
             <Box sx={{ ml: 2 }}>
               <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
-                {/* {account.displayName} */}
+                {User.firstName }
               </Typography>
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                {/* {account.role} */}
+                {User.lastName}
               </Typography>
             </Box>
           </AccountStyle>
@@ -96,7 +102,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
         <Stack alignItems="center" spacing={3} sx={{ pt: 5, borderRadius: 2, position: 'relative' }}>
           <Box
             component="img"
-            src="/static/illustrations/illustration_avatar.png"
+            src={logo}
             sx={{ width: 100, position: 'absolute', top: -50 }}
           />
 
