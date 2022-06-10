@@ -18,7 +18,7 @@ router.get('/reviews', getReviews);
 router.get('/reviews/:id', auth, getUserReviews);
 // router.get('/:email', getCustomerByemail);
 
-router.post('/', auth, postCustomer);
+router.post('/', postCustomer);
 router.post('/reviews/:id', auth, postReview);
 
 router.put('/:id', auth, putCustomer);
