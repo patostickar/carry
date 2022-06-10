@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchAllLocations } from './redux/searchBar';
 import { fetchTestimonials } from './redux/testimonials';
-import { ClearUser, fetchUser } from './redux/user.js';
+import { clearUser, setUser } from './redux/user.js';
 import { Routes, Route } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import { ProtectedRoute } from './protected-route';
@@ -11,8 +11,6 @@ import logError from './components/GeneralFuntions/logError';
 import About from './pages/About';
 import Account from './pages/Account';
 import AdminPanel from './pages/AdminPanel';
-// import AdminUsersManagement from './components/AdminPanel/AdminUsersManagement'
-import CarCreate from './components/AdminPanel/CreateForms/CarCreate';
 import CarTypeCreate from './components/AdminPanel/CreateForms/CarTypeCreate';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -31,15 +29,15 @@ function App() {
 
   useEffect(() => {
     if (!isAuthenticated) {
-      dispatch(ClearUser());
+      dispatch(clearUser());
     } else {
       async function setCustomer() {
         try {
-          await axios.post('/customers', user);
+          const customer = await axios.post('/customers', user);
+          setUser(customer);
         } catch (error) {
           logError(error);
         }
-        dispatch(fetchUser(user.email));
       }
       setCustomer();
     }
@@ -52,21 +50,17 @@ function App() {
 
   return (
     <>
-
-     <Routes>
-
-     <Route
+      <Routes>
+        <Route
           path='/adminPanel'
           element={<ProtectedRoute component={AdminPanel} />}
         />
+      </Routes>
 
-     </Routes>
-     
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
-
         {/* <Route
           path='/carcreate'
           element={<ProtectedRoute component={CarCreate} role='admin' />}
@@ -74,11 +68,13 @@ function App() {
         <Route
           path='/cartypecreate'
           element={<ProtectedRoute component={CarTypeCreate} role='admin' />}
-        /> {/* componenete de adminPanel */}
+        />{' '}
+        {/* componenete de adminPanel */}
         <Route
           path='/locationcreate'
           element={<ProtectedRoute component={LocationCreate} role='admin' />}
-          /> {/* componenete de adminPanel */}
+        />{' '}
+        {/* componenete de adminPanel */}
         <Route path='/notAllowed' element={<NotAllowed />} />
         <Route
           path='/profile'
