@@ -56,6 +56,7 @@ export default function Review() {
             <Form className='PostReview' onSubmit={handleSubmit}>
               <TextField
                 fullWidth
+                inputProps={{ maxLength: 255 }}
                 label='New Review'
                 name='review'
                 onChange={handleChange}

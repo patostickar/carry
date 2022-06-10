@@ -45,6 +45,7 @@
 }
 
 .testimonial__description {
+  overflow-wrap: break-word;
   font-size: var(--small-font-size);
 }
 
