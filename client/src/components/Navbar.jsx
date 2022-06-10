@@ -24,6 +24,7 @@ import { useSelector } from 'react-redux';
 
 export default function Navbar() {
   const User = useSelector((state) => state.user.User);
+  
   const [selectedItem, setSelectedItem] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);

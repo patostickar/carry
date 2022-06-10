@@ -5,6 +5,43 @@ import axios from 'axios';
 import logError from '../../GeneralFuntions/logError';
 import styles from './styles/Formulario.module.css';
 import Error from './Error';
+import { styled } from '@mui/material/styles';
+import DashboardSideBar from "../AdminPages/AdminComponents/sections/layouts/DashboardSidebar"
+import DashboardNavBar from "../AdminPages/AdminComponents/sections/layouts/DashboardNavBar"
+
+
+
+const APP_BAR_MOBILE = 64;
+const APP_BAR_DESKTOP = 0;
+
+const RootStyle = styled('div')({
+    display: 'flex',
+    minHeight: '100%',
+    overflow: 'hidden',
+   
+    
+  });
+
+  
+
+  const MainStyle = styled('div')(({ theme }) => ({
+    flexGrow: 1,
+    overflow: 'auto',
+    minHeight: '100%',
+    paddingTop: APP_BAR_MOBILE + 24,
+    paddingBottom: theme.spacing(10),
+    [theme.breakpoints.up('lg')]: {
+      paddingTop: APP_BAR_DESKTOP,
+      paddingLeft: theme.spacing(2),
+      paddingRight: theme.spacing(2)
+    }
+  }));
+  
+  
+
+
+
+
 export default function CarCreate() {
   async function postCar(values) {
     try {
@@ -90,6 +127,10 @@ export default function CarCreate() {
   const transmicion = ['Seleccione un valor', 'Manual', 'Automatico'];
 
   return (
+    <RootStyle>
+    <DashboardNavBar />
+    <DashboardSideBar />
+    <MainStyle>
     <div className={styles.container}>
       <Formik
         initialValues={{
@@ -367,5 +408,7 @@ export default function CarCreate() {
         )}
       </Formik>
     </div>
+    </MainStyle>
+    </RootStyle>
   );
 }

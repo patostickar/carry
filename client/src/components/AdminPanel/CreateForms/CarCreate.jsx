@@ -7,8 +7,12 @@ import Alerts from '../../GeneralFuntions/Alerts';
 import axios from 'axios';
 import logError from '../../GeneralFuntions/logError';
 import 'sweetalert2/dist/sweetalert2.css';
+import DashboardSidebar from '../AdminPages/AdminComponents/sections/layouts/DashboardSidebar';
+import DashboardNavbar from '../AdminPages/AdminComponents/sections/layouts/DashboardNavBar';
 
-export default function CarTypeCreate({ setRenderControl, renderControl }) {
+import { styled } from '@mui/material/styles';
+
+export default function CarTypeCreate() {
   async function postCarType(values) {
     try {
       await axios.post('/cars', values);
@@ -30,7 +34,38 @@ export default function CarTypeCreate({ setRenderControl, renderControl }) {
   const { AllcarTypes } = useSelector((state) => state.carsResults);
   const { locations } = useSelector((state) => state.searchBar);
 
+
+   
+const APP_BAR_MOBILE = 64;
+const APP_BAR_DESKTOP = 0;
+
+const RootStyle = styled('div')({
+  display: 'flex',
+  minHeight: '100%',
+  overflow: 'hidden',
+ 
+  
+});
+
+const MainStyle = styled('div')(({ theme }) => ({
+  flexGrow: 1,
+  overflow: 'auto',
+  minHeight: '100%',
+  paddingTop: APP_BAR_MOBILE + 24,
+  paddingBottom: theme.spacing(10),
+  [theme.breakpoints.up('lg')]: {
+    paddingTop: APP_BAR_DESKTOP,
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2)
+  }
+}));
+
   return (
+    <><RootStyle>
+    <DashboardSidebar />
+    <DashboardNavbar />
+   
+   <MainStyle>
     <Formik
       initialValues={{
         carTypeId: '',
@@ -40,7 +75,7 @@ export default function CarTypeCreate({ setRenderControl, renderControl }) {
         postCarType(values);
         // alert(JSON.stringify(values))
         Alerts('success', 'Vehiculo creado');
-      }}
+      } }
     >
       {({ values, handleSubmit, handleChange, handleBlur }) => (
         <Form className='carTypeCreate' onSubmit={handleSubmit}>
@@ -87,5 +122,7 @@ export default function CarTypeCreate({ setRenderControl, renderControl }) {
         </Form>
       )}
     </Formik>
+    </MainStyle>
+    </RootStyle></>
   );
 }
