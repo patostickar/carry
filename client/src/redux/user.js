@@ -3,7 +3,15 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 
 const initialState = {
-  user: null,
+  token: null,
+  email: null,
+  firstName: null,
+  lastName: null,
+  street: null,
+  city: null,
+  postalCode: null,
+  phone: null,
+  img: null,
 };
 
 export const user = createSlice({
@@ -11,10 +19,10 @@ export const user = createSlice({
   initialState,
   reducers: {
     setUser: (state, action) => {
-      state.user = action.payload.data.customer;
+      return action.payload;
     },
     clearUser: (state, action) => {
-      state.user = null;
+      return initialState;
     },
   },
 });
