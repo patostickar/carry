@@ -42,7 +42,7 @@ module.exports.getAvailableCars = async (
 
   // console.log('Cars in location: ', carsInLocation.length);
   // console.log('Unavailable cars: ', unavailableCarsId.length);
-  console.log('Unavailable cars id: ', unavailableCarsId);
+  // console.log('Unavailable cars id: ', unavailableCarsId);
   // console.log('Available cars: ', availableCars.length);
   // console.log('Available cars id: ', availableCarsId);
 

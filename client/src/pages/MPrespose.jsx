@@ -9,14 +9,14 @@ const Response = () => {
   const { User } = useSelector((state) => state.user);
   const { pickupDate, dropoffDate } = useSelector((state) => state.searchBar);
   const { booking } = useSelector((state) => state.booking);
-
+  
   const Pdate = new Date(pickupDate);
   const Ddate = new Date(dropoffDate);
   const PickDate =
     Pdate.getFullYear() + '/' + (Pdate.getMonth() + 1) + '/' + Pdate.getDate();
   const DropDate =
     Ddate.getFullYear() + '/' + (Ddate.getMonth() + 1) + '/' + Ddate.getDate();
-
+    
   async function CreateBooking(data) {
     try {
       await axios.post('/bookings', data);
@@ -37,10 +37,11 @@ const Response = () => {
 
   // console.log(data);
   useEffect(() => {
+    if(User){
     (async () => {
       await handleSearch();
-    })();
-    return () => {};
+    })()}
+  
   }, []);
 
   const onClick = () => {
