@@ -43,7 +43,7 @@ export default function Calendar() {
       {openDate && (
         <DateRange
           className={styles.headerSearchDate}
-          editableDateInputs={true}
+          editableDateInputs={false}
           onChange={(item) => {
             setDate([item.selection]);
             const { endDate, startDate } = item.selection;

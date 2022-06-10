@@ -42,11 +42,11 @@ export default function MapView() {
           // attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url='https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png'
         />
-        {markers?.map((location) => (
+        {markers?.map((location,i) => (
           <>
             {location && (
               <Marker
-                key={location?.id}
+                key={i}
                 position={[location?.geo[0] || 0, location?.geo[1] || 0]}
                 icon={LocationIcon}
               >

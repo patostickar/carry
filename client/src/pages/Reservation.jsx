@@ -20,9 +20,7 @@ import { DAY_MILISECONDS } from '../components/GeneralFuntions/constants';
 import LinearIndeterminate from '../components/GeneralFuntions/LinearIndeterminate';
 // import axios from "axios";
 import Payment from '../components/MercadoPago/Payment';
-import { useAuth0 } from '@auth0/auth0-react';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import { useAuth0, User } from '@auth0/auth0-react';
 
 function Steps2() {
   const steps = ['Elegir un auto', 'Confirmar reserva', 'Disfrutar'];
@@ -44,6 +42,8 @@ function Reservation() {
   const { location, pickupDate, dropoffDate } = useSelector(
     (state) => state.searchBar
   );
+  const user = useSelector((state) => state.user.User);
+
   const { loginWithRedirect, isAuthenticated } = useAuth0();
 
   // const [bookin, setbookin] = React.useState(0);
@@ -106,7 +106,6 @@ function Reservation() {
   // };
 
   return (
-   <> <Navbar/>
     <div className={styles.all}>
       <div className={styles.container}>
         <div className={styles.date}>
@@ -174,8 +173,7 @@ function Reservation() {
                             >
                               {index !== steps.length - 1 && 'Continuar'}
                             </Button>
-                          ) : (isAuthenticated && <Payment price={booking.carPrice} />
-                          )}
+                          ) : (isAuthenticated && !user?.isBanned ? <Payment price={booking.carPrice} />:( !user?.isBanned? <div>inicie sesion par continuar</div>:<div>su cuenta fue eliminada</div>))}
 
                           <Button
                             disabled={index === 0}
@@ -273,7 +271,6 @@ function Reservation() {
         </div>
       )}
     </div>
-    <Footer/></>
   );
 }
 export default Reservation;
