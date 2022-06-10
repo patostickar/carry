@@ -31,7 +31,7 @@ export default function Footer() {
         >
           ATENCION AL PUBLICO
         </Typography>
-        <Typography style={{ fontSize: "12px", textAlign: "center" }}>
+        <Typography style={{ fontSize: "13px", textAlign: "center" }}>
           DPTO DE VENTAS
           <br />
           Lunes a Sabado 08:00 a 18:00h
@@ -59,21 +59,21 @@ export default function Footer() {
         <Link
           href={"/home"}
           color="inherit"
-          sx={{ textDecoration: "none", fontSize: "12px" }}
+          sx={{ textDecoration: "none", fontSize: "13px" }}
         >
           Inicio <br />
         </Link>
         <Link
           href={"/about"}
           color="inherit"
-          sx={{ textDecoration: "none", fontSize: "12px" }}
+          sx={{ textDecoration: "none", fontSize: "13px" }}
         >
           Nosotros <br />
         </Link>
         <Link
           href={"/terminos-condiciones"}
           color="inherit"
-          sx={{ textDecoration: "none", fontSize: "12px" }}
+          sx={{ textDecoration: "none", fontSize: "13px" }}
         >
           Terminos y Condiciones <br />
         </Link>
@@ -83,7 +83,7 @@ export default function Footer() {
           variant="body2"
           style={{ textAlign: "center", fontWeight: "bolder" }}
         >
-          CONTÁCTENOS
+          CONTACTENOS
         </Typography>
         <Box
           sx={{
@@ -98,7 +98,7 @@ export default function Footer() {
             color="inherit"
             sx={{
               textDecoration: "none",
-              fontSize: "12px",
+              fontSize: "13px",
               marginLeft: "5px",
             }}
           >
@@ -118,7 +118,7 @@ export default function Footer() {
             color="inherit"
             sx={{
               textDecoration: "none",
-              fontSize: "12px",
+              fontSize: "13px",
               marginLeft: "5px",
             }}
           >
@@ -138,7 +138,7 @@ export default function Footer() {
             color="inherit"
             sx={{
               textDecoration: "none",
-              fontSize: "12px",
+              fontSize: "13px",
               marginLeft: "5px",
             }}
           >
@@ -158,7 +158,7 @@ export default function Footer() {
             color="inherit"
             sx={{
               textDecoration: "none",
-              fontSize: "12px",
+              fontSize: "13px",
               marginLeft: "5px",
             }}
           >

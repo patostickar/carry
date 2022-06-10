@@ -64,7 +64,7 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
                   booking: false,
                 });
               }}
-              style={{ fontWeight: 'lighter' }}
+              style={{ fontWeight: 'lighter', padding:'0px' }}
             >
               Informacion Personal
             </Typography>
@@ -89,6 +89,7 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
                   booking: true,
                 })
               }
+              style={{ fontWeight: 'lighter', padding:'0px' }}
             >
               Mis Reservas
             </Typography>
@@ -112,6 +113,7 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
                   review: true,
                 })
               }
+              style={{ fontWeight: 'lighter', padding:'0px' }}
             >
               Mis Review
             </Typography>
@@ -128,7 +130,7 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
             }}
           >
             <DeleteIcon color='primary' />
-            <Typography onClick={handleDeleteAccount}>
+            <Typography onClick={handleDeleteAccount} style={{ fontWeight: 'lighter', padding:'0px' }}>
               Eliminar Cuenta
             </Typography>
           </Box>
@@ -144,7 +146,7 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
             }}
           >
             <ExitToAppIcon color='primary' />
-            <Typography onClick={() => navigate('/')}>Salir</Typography>
+            <Typography onClick={() => navigate('/')} style={{ fontWeight: 'lighter', padding:'0px' }}>Salir</Typography>
           </Box>
         </Grid>
       </Grid>
