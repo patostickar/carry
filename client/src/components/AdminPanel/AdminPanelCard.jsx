@@ -60,7 +60,7 @@ export default function AdminCard(){
 
             
             <DashboardSidebar />
-            <DashboardNavBar />
+           
             
             
             
@@ -70,7 +70,7 @@ export default function AdminCard(){
             <MainStyle>
          
             <DashboardApp />
-            <Outlet />
+            
             </MainStyle>
 
             </RootStyle>

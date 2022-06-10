@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { ClearBookingState } from '../redux/booking';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 const Response = () => {
   const dispatch = useDispatch();
@@ -49,11 +51,12 @@ const Response = () => {
   };
 
   return (
-    <>
+    <><Navbar/>
       <div>gracias por su compra </div>
       <Link to='/profile'>
         <button onClick={onClick}>Mis reservas</button>
       </Link>
+      <Footer/>
     </>
   );
 };

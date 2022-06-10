@@ -21,6 +21,8 @@ import LinearIndeterminate from '../components/GeneralFuntions/LinearIndetermina
 // import axios from "axios";
 import Payment from '../components/MercadoPago/Payment';
 import { useAuth0 } from '@auth0/auth0-react';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 function Steps2() {
   const steps = ['Elegir un auto', 'Confirmar reserva', 'Disfrutar'];
@@ -104,6 +106,7 @@ function Reservation() {
   // };
 
   return (
+   <> <Navbar/>
     <div className={styles.all}>
       <div className={styles.container}>
         <div className={styles.date}>
@@ -270,6 +273,7 @@ function Reservation() {
         </div>
       )}
     </div>
+    <Footer/></>
   );
 }
 export default Reservation;

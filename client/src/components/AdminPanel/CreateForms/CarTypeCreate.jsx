@@ -12,7 +12,7 @@ import DashboardNavBar from "../AdminPages/AdminComponents/sections/layouts/Dash
 
 
 const APP_BAR_MOBILE = 64;
-const APP_BAR_DESKTOP = 0;
+const APP_BAR_DESKTOP = 75;
 
 const RootStyle = styled('div')({
     display: 'flex',
@@ -28,6 +28,7 @@ const RootStyle = styled('div')({
     flexGrow: 1,
     overflow: 'auto',
     minHeight: '100%',
+    marginLeft: "25%",
     paddingTop: APP_BAR_MOBILE + 24,
     paddingBottom: theme.spacing(10),
     [theme.breakpoints.up('lg')]: {
@@ -128,7 +129,7 @@ export default function CarCreate() {
 
   return (
     <RootStyle>
-    <DashboardNavBar />
+   
     <DashboardSideBar />
     <MainStyle>
     <div className={styles.container}>
