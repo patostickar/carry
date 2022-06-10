@@ -43,13 +43,8 @@ function NavItem({ item, active }) {
 
   const [open, setOpen] = useState(isActiveRoot);
 
-  const [renderControl, setRenderControl] = useState({
-    carCreate: false,
-  
-  });
-
   const handleOpen = () => {
-    setRenderControl((prev) => !prev);
+    setOpen((prev) => !prev);
   };
 
   const activeRootStyle = {

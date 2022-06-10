@@ -11,7 +11,7 @@ import logError from './components/GeneralFuntions/logError';
 import About from './pages/About';
 import Account from './pages/Account';
 import AdminPanel from './pages/AdminPanel';
-// import AdminUsersManagement from './components/AdminPanel/AdminUsersManagement'
+import DataTable from './components/AdminPanel/GestionDeUsuarios/AdminUsersManagement'
 import CarCreate from './components/AdminPanel/CreateForms/CarCreate';
 import CarTypeCreate from './components/AdminPanel/CreateForms/CarTypeCreate';
 import Footer from './components/Footer';
@@ -24,6 +24,8 @@ import Reservation from './pages/Reservation';
 import Response from './pages/MPrespose';
 import SearchResults from './pages/SearchResults';
 import TermsAndConditions from './pages/TermsAndConditions/';
+import User from './components/AdminPanel/AdminPages/AdminComponents/sections/User';
+
 
 function App() {
   const dispatch = useDispatch();
@@ -60,17 +62,28 @@ function App() {
           element={<ProtectedRoute component={AdminPanel} />}
         />
 
+<Route path='/user' element={<User />} />
+
      </Routes>
      
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
+
         <Route path='/about' element={<About />} />
 
-        {/* <Route
+
+        <Route
           path='/carcreate'
           element={<ProtectedRoute component={CarCreate} role='admin' />}
-        /> componenete de adminPanel */}
+        /> 
+        
+        <Route
+          path='/usermanagement'
+          element={<ProtectedRoute component={DataTable} role='admin' />}
+        /> 
+     
+
         <Route
           path='/cartypecreate'
           element={<ProtectedRoute component={CarTypeCreate} role='admin' />}
