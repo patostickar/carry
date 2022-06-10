@@ -5,7 +5,8 @@ import { PersonalInformation } from '../components/Account/PersonalInformation';
 import Review from '../components/Account/Review';
 import { Booking } from '../components/Account/Booking';
 import { Security } from '../components/Account/Security';
-
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 export default function Account() {
   const [renderControl, setRenderControl] = useState({
     personalInfo: false,
@@ -15,6 +16,7 @@ export default function Account() {
   });
   return (
     <>
+    <Navbar />
       <Grid container my={4}>
         <Sidebar
           setRenderControl={setRenderControl}
@@ -30,6 +32,7 @@ export default function Account() {
         {renderControl.security && <Security />}
         {renderControl.review && <Review />}
       </Grid>
+      <Footer/>
     </>
   );
 }

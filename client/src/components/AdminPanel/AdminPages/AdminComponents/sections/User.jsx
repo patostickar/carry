@@ -1,5 +1,5 @@
 import { filter } from 'lodash';
-import { sentenceCase } from 'change-case';
+
 // import { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 // material
@@ -21,7 +21,7 @@ import {
 import { styled } from '@mui/material/styles';
 // components
 import Page from '../Page'
-import Label from '../Label';
+
 import Scrollbar from '../Scrollbar'
 import Iconify from '../Iconify';
 import SearchNotFound from '../SearchNotFound';
@@ -38,7 +38,7 @@ import { React, useState, useEffect } from 'react';
 
 
 const APP_BAR_MOBILE = 64;
-const APP_BAR_DESKTOP = 0;
+const APP_BAR_DESKTOP = 115;
 
 const RootStyle = styled('div')({
   display: 'flex',
@@ -172,11 +172,11 @@ export default function User() {
     setSelected([]);
   };
 
-  const handleClick = (event, name) => {
-    const selectedIndex = selected.indexOf(name);
+  const handleClick = (event, firstName) => {
+    const selectedIndex = selected.indexOf(firstName);
     let newSelected = [];
     if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name);
+      newSelected = newSelected.concat(selected, firstName);
     } else if (selectedIndex === 0) {
       newSelected = newSelected.concat(selected.slice(1));
     } else if (selectedIndex === selected.length - 1) {
@@ -185,6 +185,7 @@ export default function User() {
       newSelected = newSelected.concat(selected.slice(0, selectedIndex), selected.slice(selectedIndex + 1));
     }
     setSelected(newSelected);
+    console.log(newSelected)
   };
 
   const handleChangePage = (event, newPage) => {
@@ -209,7 +210,7 @@ export default function User() {
   return (
 
     <RootStyle>
-       <DashboardNavbar/>
+      
        <DashboardSidebar/>
 
       <MainStyle>

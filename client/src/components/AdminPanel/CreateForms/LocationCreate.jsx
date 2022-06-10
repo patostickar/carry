@@ -12,7 +12,7 @@ import DashboardSidebar from "../AdminPages/AdminComponents/sections/layouts/Das
  
 
  const APP_BAR_MOBILE = 64;
- const APP_BAR_DESKTOP = 0;
+ const APP_BAR_DESKTOP = 75;
  
  const RootStyle = styled('div')({
      display: 'flex',
@@ -28,6 +28,7 @@ import DashboardSidebar from "../AdminPages/AdminComponents/sections/layouts/Das
      flexGrow: 1,
      overflow: 'auto',
      minHeight: '100%',
+     marginLeft: "25%",
      paddingTop: APP_BAR_MOBILE + 24,
      paddingBottom: theme.spacing(10),
      [theme.breakpoints.up('lg')]: {
@@ -138,7 +139,7 @@ export default function LocationCreate() {
 
   return (
     <RootStyle>
-      <DashboardNavBar />
+
       <DashboardSidebar />
       <MainStyle>
     <div className={styles.container}>

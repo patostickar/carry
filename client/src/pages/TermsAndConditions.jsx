@@ -1,8 +1,10 @@
 import styles from './styles/TermsAndConditios.module.css';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 function TermsAndConditions() {
   return (
-    <div className={styles.all}>
+    <><Navbar /><div className={styles.all}>
       <div className={styles.title}>
         <h1>Términos y condiciones de uso del sitio</h1>
       </div>
@@ -217,7 +219,7 @@ function TermsAndConditions() {
           Caseros 3039, Piso 2 Ciudad Autónoma de Buenos Aires, Argentina.
         </p>
       </div>
-    </div>
+    </div><Footer /></>
   );
 }
 
