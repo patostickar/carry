@@ -205,7 +205,7 @@ function Reservation() {
           <div className={styles.conTenedor}>
             <div>
               <h2>
-                Este vehiculo cuesta tan solo {booking.carPrice}, ¡Una verdadera
+                Este vehiculo cuesta tan solo ${booking.carPrice} ¡Una verdadera
                 ganga!
               </h2>
             </div>
