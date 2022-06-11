@@ -128,11 +128,14 @@ export default function CarCreate() {
   const transmicion = ['Seleccione un valor', 'Manual', 'Automatico'];
 
   return (
-    <RootStyle>
+
+    // <RootStyle>
    
-    <DashboardSideBar />
-    <MainStyle>
+    // <MainStyle>
+    <div className={styles.body}>
     <div className={styles.container}>
+      <DashboardSideBar />
+       <h1>Crea tu Auto</h1>
       <Formik
         initialValues={{
           make: '',
@@ -409,7 +412,10 @@ export default function CarCreate() {
         )}
       </Formik>
     </div>
-    </MainStyle>
-    </RootStyle>
+    </div> 
+    // </MainStyle>
+    // </RootStyle>
+    
+
   );
 }

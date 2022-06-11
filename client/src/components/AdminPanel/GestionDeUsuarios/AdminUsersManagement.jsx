@@ -79,10 +79,10 @@ const MainStyle = styled('div')(({ theme }) => ({
     <CardHeader title={"Gestion de usuarios"} subheader={"panel de administracion de usuarios"} />
     { totalCustomers?.map((c)=>(
       
-      <Card key={c.id}>
-        Email: {c.email},
-        Nombre: {c.firstName},
-        Apellido: {c.lastName}
+      <Card key={c?.id}>
+        Email: {c?.email},
+        Nombre: {c?.firstName},
+        Apellido: {c?.lastName}
         <input type="checkbox"/>
       </Card>
     ))}

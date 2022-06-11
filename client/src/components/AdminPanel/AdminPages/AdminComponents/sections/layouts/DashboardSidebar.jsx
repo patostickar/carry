@@ -54,6 +54,10 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
 
   const isDesktop = useResponsive('up', 'lg');
 
+  const User = useSelector((state) => state.user.User);
+
+  console.log(User?.firstName)
+
   useEffect(() => {
     if (isOpenSidebar) {
       onCloseSidebar();
@@ -75,13 +79,13 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
       <Box sx={{ mb: 5, mx: 2.5 }}>
         <Link underline="none" component={RouterLink} to="#">
           <AccountStyle>
-            {/* <Avatar src={account.photoURL} alt="photoURL" /> */}
+            <Avatar src={User?.img} alt="userPic" />
             <Box sx={{ ml: 2 }}>
               <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
-                {/* {account.displayName} */}
+                {User?.firstName }
               </Typography>
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                {/* {account.role} */}
+                {User?.lastName}
               </Typography>
             </Box>
           </AccountStyle>

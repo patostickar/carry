@@ -7,6 +7,8 @@ import Alerts from "../../GeneralFuntions/Alerts";
 import axios from "axios";
 import logError from "../../GeneralFuntions/logError";
 import "sweetalert2/dist/sweetalert2.css";
+import styles from './styles/Formulario.module.css';
+
 import DashboardSidebar from "../AdminPages/AdminComponents/sections/layouts/DashboardSidebar";
 import DashboardNavbar from "../AdminPages/AdminComponents/sections/layouts/DashboardNavBar";
 
@@ -59,11 +61,12 @@ export default function CarTypeCreate() {
 
   return (
     <>
-      <RootStyle>
-        <DashboardSidebar />
+      {/* <RootStyle>
+        <MainStyle> */}
        
-
-        <MainStyle>
+        <div className={styles.body}>
+    <div className={styles.container}>
+        <DashboardSidebar />
           <Formik
             initialValues={{
               carTypeId: "",
@@ -78,12 +81,13 @@ export default function CarTypeCreate() {
             {({ values, handleSubmit, handleChange, handleBlur }) => (
               <Form className="carTypeCreate" onSubmit={handleSubmit}>
                 <div>
-                  <label htmlFor="carType">Seleccione el vehiculo</label>
+                  <label className={styles.input_box} htmlFor="carType">Seleccione el vehiculo</label>
 
-                  <Field component="div" id="carTypeId">
-                    <select name="carTypeId" id="carTypeId">
+                  <Field className={styles.field} component="div" id="carTypeId">
+                    <select className={styles.field} name="carTypeId" id="carTypeId">
                       {AllcarTypes.map((d) => (
                         <option
+                        
                           value={d.id}
                           id={values.carTypeId}
                           key={d.id}
@@ -98,9 +102,9 @@ export default function CarTypeCreate() {
                 </div>
 
                 <div>
-                  <label htmlFor="locationId">Seleccione la ubicacion</label>
-                  <Field component="div" id="locationId">
-                    <select name="locationId" id="locationId">
+                  <label className={styles.input_box} htmlFor="locationId">Seleccione la ubicacion</label>
+                  <Field className={styles.field} component="div" id="locationId">
+                    <select className={styles.field} name="locationId" id="locationId">
                       {locations.map((d) => (
                         <option
                           value={d.id}
@@ -120,8 +124,10 @@ export default function CarTypeCreate() {
               </Form>
             )}
           </Formik>
-        </MainStyle>
-      </RootStyle>
+        {/* </MainStyle>
+      </RootStyle> */}
+      </div>
+      </div>
     </>
   );
 }
