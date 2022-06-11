@@ -130,13 +130,13 @@ const dispatch = useDispatch()
 
         <Grid container spacing={3}>
            <><><Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Vehiculos en stock" total={totalStockCars} icon={'ant-design:android-filled'} />
+            <AppWidgetSummary title="Vehiculos en stock" total={totalStockCars} icon={'clarity:car-line'} />
           </Grid><Grid item xs={12} sm={6} md={3}>
-              <AppWidgetSummary title="Usuarios registrados" total={totalCustomers} color="info" icon={'ant-design:apple-filled'} />
+              <AppWidgetSummary title="Usuarios registrados" total={totalCustomers} color="info" icon={'clarity:users-solid'} />
             </Grid><Grid item xs={12} sm={6} md={3}>
-              <AppWidgetSummary title="Agencias disponibles" total={locationAviable} color="warning" icon={'ant-design:windows-filled'} />
+              <AppWidgetSummary title="Agencias disponibles" total={locationAviable} color="warning" icon={'material-symbols:car-rental'} />
             </Grid><Grid item xs={12} sm={6} md={3}>
-              <AppWidgetSummary title="Modelos de vehiculos disponibles" total={cars} color="error" icon={'ant-design:bug-filled'} />
+              <AppWidgetSummary title="Modelos de vehiculos disponibles" total={cars} color="error" icon={'clarity:car-solid'} />
             </Grid></><Grid item xs={12} md={6} lg={8}>
               <AppWebsiteVisits
                 title="Visitas a la pagina"
