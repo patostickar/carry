@@ -14,7 +14,6 @@ export default function Footer() {
       container
       sx={{
         backgroundColor: "#1976d2",
-        marginTop: "40px",
         color: "white",
         justifyItems: "center",
       }}
@@ -57,7 +56,7 @@ export default function Footer() {
           ENLACES UTILES
         </Typography>
         <Link
-          href={"/home"}
+          href={"/"}
           color="inherit"
           sx={{ textDecoration: "none", fontSize: "13px" }}
         >
@@ -178,6 +177,9 @@ export default function Footer() {
           <LinkedInIcon />
         </Box>
       </Grid>
+      <span className={styles.footer__copy}>
+        &#169; Carry 2022. Todos los derechos reservados.
+      </span>
     </Grid>
   );
 }
