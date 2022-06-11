@@ -94,7 +94,7 @@ export default function CarTypeCreate() {
                       {AllcarTypes.map((d) => (
                         <option
                         
-                          value={d.id}
+                          value={d.id || " " }
                           id={values.carTypeId}
                           key={d.id}
                           onChange={handleChange}
@@ -115,7 +115,7 @@ export default function CarTypeCreate() {
 
                       {locations.map((d) => (
                         <option
-                          value={d.id}
+                          value={d.id || " " }
                           id={values.locationId}
                           key={d.id}
                           onChange={handleChange}
