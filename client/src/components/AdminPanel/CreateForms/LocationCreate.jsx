@@ -139,12 +139,14 @@ export default function LocationCreate() {
 
   return (
 
-    <RootStyle>
 
-      <DashboardSidebar />
-      <MainStyle>
-  <div className={styles.body}>
+    // <RootStyle>
+
+    // <MainStyle> 
+    <div className={styles.body}>
     <div className={styles.container}>
+    <DashboardSidebar />
+
        <h1>Crea tu Agencia</h1>
 
       <Formik
@@ -379,7 +381,8 @@ export default function LocationCreate() {
       </Formik>
       </div>
     </div>
-    </MainStyle>
-    </RootStyle>
+    </div>
+    // </RootStyle>
+     // </MainStyle>
   );
 }

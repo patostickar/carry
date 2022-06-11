@@ -20,6 +20,7 @@ import Scrollbar from '../../Scrollbar';
 import NavSection from '../../NavSection';
 //
 import navConfig from '../../../AdminComponents/NavConfig';
+import { useSelector } from 'react-redux';
 
 
 // ----------------------------------------------------------------------
@@ -58,7 +59,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
 
   const User = useSelector((state) => state.user.User);
 
-  console.log(User.firstName)
+
 
   useEffect(() => {
     if (isOpenSidebar) {
@@ -81,13 +82,14 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
       <Box sx={{ mb: 5, mx: 2.5 }}>
         <Link underline="none" component={RouterLink} to="#">
           <AccountStyle>
-            <Avatar src={User.img} alt="userPic" />
+            <Avatar src={User?.img} alt="userPic" />
             <Box sx={{ ml: 2 }}>
               <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
-                {User.firstName }
+                {User?.firstName }
               </Typography>
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                {User.lastName}
+                {User?.lastName}
+
               </Typography>
             </Box>
           </AccountStyle>

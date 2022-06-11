@@ -129,12 +129,14 @@ export default function CarCreate() {
 
   return (
 
-    <RootStyle>
+
+    // <RootStyle>
    
-    <DashboardSideBar />
-    <MainStyle>
+    // <MainStyle>
     <div className={styles.body}>
     <div className={styles.container}>
+      <DashboardSideBar />
+
        <h1>Crea tu Auto</h1>
       <Formik
 
@@ -423,8 +425,10 @@ export default function CarCreate() {
 
     </div>
     </div> 
-    </MainStyle>
-    </RootStyle>
+
+    // </MainStyle>
+    // </RootStyle>
+
     
 
   );

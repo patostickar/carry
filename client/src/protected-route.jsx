@@ -19,7 +19,7 @@ export const ProtectedRoute = ({ component, role }) => {
       }
     }
     if (user) {
-      if (user.isBanned) {
+      if (user?.isBanned) {
         navigate('/notAllowed');
       }
     }

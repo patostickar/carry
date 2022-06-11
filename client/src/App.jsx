@@ -58,7 +58,7 @@ function App() {
       <Routes>
         <Route
           exact path="/adminPanel"
-          element={<ProtectedRoute component={AdminCard} />}
+          element={<ProtectedRoute component={AdminCard} role={"admin"} />}
         />
         <Route
           path="/cartypecreate"

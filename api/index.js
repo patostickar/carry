@@ -5,56 +5,56 @@ const { addCar } = require('./src/services/cars/addCar');
 const { PORT } = process.env;
 
 conn
-  .sync({ force: false })
+  .sync({ force: true })
   .then(async () => {
     server.listen(PORT, () => {
       console.log(`%s listening at ${PORT}`);
     });
 
-    // const bufferData = fs.readFileSync('./src/DB.json');
-    // const stData = bufferData.toString();
-    // const data = JSON.parse(stData);
+    const bufferData = fs.readFileSync('./src/DB.json');
+    const stData = bufferData.toString();
+    const data = JSON.parse(stData);
 
-    // const locations = data.locations.map((l) => ({
-    //   name: l.name,
-    //   street: l.street,
-    //   city: l.city,
-    //   stateName: l.stateName,
-    //   postalCode: l.postalCode,
-    //   geo: l.geo,
-    //   phone: l.telephone,
-    //   timeOpen: l.timeOpen,
-    //   timeClose: l.timeClose,
-    //   airportLocation: l.airportLocation,
-    //   img: l.img,
-    // }));
+    const locations = data.locations.map((l) => ({
+      name: l.name,
+      street: l.street,
+      city: l.city,
+      stateName: l.stateName,
+      postalCode: l.postalCode,
+      geo: l.geo,
+      phone: l.telephone,
+      timeOpen: l.timeOpen,
+      timeClose: l.timeClose,
+      airportLocation: l.airportLocation,
+      img: l.img,
+    }));
 
 
-    // const carTypes = data.car_types.map((c) => ({
-    //   make: c.make,
-    //   model: c.model,
-    //   classCode: c.vehicle_classCode,
-    //   className: c.vehicle_className,
-    //   transmission: c.vehicle_transmission,
-    //   mpg: c.mpg,
-    //   img: c.image_url,
-    //   doors: c.doors,
-    //   seats: c.seats,
-    //   airConditioning: c.air_conditioned,
-    //   largeSuitcase: c.largeSuitcase,
-    //   smallSuitcase: c.smallSuitcase,
-    //   price: c.price,
-    // }));
+    const carTypes = data.car_types.map((c) => ({
+      make: c.make,
+      model: c.model,
+      classCode: c.vehicle_classCode,
+      className: c.vehicle_className,
+      transmission: c.vehicle_transmission,
+      mpg: c.mpg,
+      img: c.image_url,
+      doors: c.doors,
+      seats: c.seats,
+      airConditioning: c.air_conditioned,
+      largeSuitcase: c.largeSuitcase,
+      smallSuitcase: c.smallSuitcase,
+      price: c.price,
+    }));
 
-    // await Promise.all([
-    //   Location.bulkCreate(locations, {
-    //     ignoreDuplicates: true,
-    //   }),
+    await Promise.all([
+      Location.bulkCreate(locations, {
+        ignoreDuplicates: true,
+      }),
 
-    //   Cartype.bulkCreate(carTypes, {
-    //     ignoreDuplicates: true,
-    //   }),
-    // ]);
+      Cartype.bulkCreate(carTypes, {
+        ignoreDuplicates: true,
+      }),
+    ]);
 
 
     // const cordoba = await Location.findOne({
