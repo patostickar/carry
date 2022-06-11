@@ -2,12 +2,14 @@ import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 // material
-
+import { useSelector } from 'react-redux';
 import { styled } from '@mui/material/styles';
 import { Box, Link,  Drawer, Typography,  Stack, Avatar } from '@mui/material';
 // mock
 // import account from '../../_mock/account';
 // hooks
+
+import logo from"../../../../../../assets/logo.png"
 
 import useResponsive from '../../hooks/useResponsive';
 
@@ -18,7 +20,7 @@ import Scrollbar from '../../Scrollbar';
 import NavSection from '../../NavSection';
 //
 import navConfig from '../../../AdminComponents/NavConfig';
-import { useSelector } from 'react-redux';
+
 
 
 
@@ -58,7 +60,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
 
   const User = useSelector((state) => state.user.User);
 
-  console.log(User?.firstName)
+
 
   useEffect(() => {
     if (isOpenSidebar) {
@@ -75,7 +77,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
       }}
     >
       <Box sx={{ px: 2.5, py: 3, display: 'inline-flex' }}>
-        {/* <Logo /> */}
+        {"Carry Admin Panel"}
       </Box>
 
       <Box sx={{ mb: 5, mx: 2.5 }}>
@@ -88,6 +90,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
               </Typography>
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                 {User?.lastName}
+
               </Typography>
             </Box>
           </AccountStyle>
@@ -102,7 +105,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
         <Stack alignItems="center" spacing={3} sx={{ pt: 5, borderRadius: 2, position: 'relative' }}>
           <Box
             component="img"
-            src="/static/illustrations/illustration_avatar.png"
+            src={logo}
             sx={{ width: 100, position: 'absolute', top: -50 }}
           />
 
