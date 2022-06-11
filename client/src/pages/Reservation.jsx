@@ -18,6 +18,7 @@ import Typography from "@mui/material/Typography";
 import { useSelector } from "react-redux";
 import { DAY_MILISECONDS } from "../components/GeneralFuntions/constants";
 import LinearIndeterminate from "../components/GeneralFuntions/LinearIndeterminate";
+import CheckIcon from "@mui/icons-material/Check";
 // import axios from "axios";
 import Payment from "../components/MercadoPago/Payment";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -76,10 +77,10 @@ function Reservation() {
       label: "Lugar de devolución",
       description: `${location.street}, ${location.city}`,
     },
-    {
-      label: "Disfrutar",
-      description: "",
-    },
+    // {
+    //   label: "Disfrutar",
+    //   description: "",
+    // },
   ];
 
   const [activeStep, setActiveStep] = useState(0);
@@ -136,7 +137,6 @@ function Reservation() {
           <h1>Tu Oferta</h1>
         </div>
       </div>
-
       {!booking.locationId ? (
         <div className={styles.loader}>
           <LinearIndeterminate />
@@ -175,12 +175,8 @@ function Reservation() {
                             >
                               {index !== steps.length - 1 && "Continuar"}
                             </Button>
-                          ) : isAuthenticated && !user?.isBanned ? (
-                            <Payment price={booking.carPrice} />
-                          ) : !user?.isBanned ? (
-                            <div>inicie sesion par continuar</div>
                           ) : (
-                            <div>su cuenta fue eliminada</div>
+                            <div></div>
                           )}
 
                           <Button
@@ -205,6 +201,20 @@ function Reservation() {
                 </Paper>
               )}
             </Box>
+          </div>
+          <div className={styles.conTenedor}>
+            <div>
+              <h2>
+                Este vehiculo cuesta tan solo {booking.carPrice}, ¡Una verdadera
+                ganga!
+              </h2>
+            </div>
+            <div>
+              <h3>
+                En esta epoca del año, un coche {booking.carClass} en{" "}
+                {location.city} suele costar $ {(booking.carPrice / 100) * 150}
+              </h3>
+            </div>
           </div>
           <div className={styles.izquierda}>
             <div>
@@ -278,6 +288,161 @@ function Reservation() {
           </div>
         </div>
       )}
+      <div className={styles.ultimo}>
+        <div className={styles.primero}>
+          <div className={styles.tercer}>
+            <div className={styles.title}>
+              <h2>Un seguro... para mayor tranquilidad</h2>
+            </div>
+            <div className={styles.subTitle}>
+              <h2>
+                <CheckIcon /> Cancelación GRATIS
+              </h2>
+            </div>
+          </div>
+          <div className={styles.conditions}>
+            <p>
+              Durante la recogida, la empresa de alquiler de coches bloqueará el
+              importe del pago inicial en tu tarjeta de crédito. Puedes perder
+              el pago inicial completo si el coche se dañara o te lo robaran.
+              Sin embargo, si tienes Cobertura Premium, ¡Rentalcover.com te lo
+              reembolsará! (El precio que ves incluye todos los impuestos y
+              cargos correspondientes). Sujeto a los Términos y condiciones y a
+              las exclusiones estándar. Lee con atención:{" "}
+              <a
+                href="https://www.rentalcover.com/pds/18I0-62XT-INS"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Condiciones de la póliza
+              </a>
+            </p>
+          </div>
+          <div className={styles.incluye}>
+            <div className={styles.incluye1}>
+              <div className={styles.que}>
+                <h2>¿Qué incluye?</h2>
+              </div>
+              <div className={styles.hola}>
+                <h2>Sin cobertura</h2>
+              </div>
+
+              <div className={styles.cobertura}>
+                <h2>Precio</h2>
+                <h4>$ {(booking.carPrice / 100) * 30}</h4>
+              </div>
+            </div>
+            <div className={styles.incluye1}>
+              <div className={styles.que}>
+                <div>La franquicia del coche</div>
+              </div>
+              <div className={styles.hola}>
+                <h3>❌</h3>
+              </div>
+              <div className={styles.cobertura}>
+                <h3>✅</h3>
+              </div>
+            </div>
+
+            <div className={styles.incluye1}>
+              <div className={styles.que}>
+                <div>Ruedas y neumáticos</div>
+              </div>
+              <div className={styles.hola}>
+                <h3>❌</h3>
+              </div>
+              <div className={styles.cobertura}>
+                <h3>✅</h3>
+              </div>
+            </div>
+
+            <div className={styles.incluye1}>
+              <div className={styles.que}>
+                <div>Gastos administrativos</div>
+              </div>
+              <div className={styles.hola}>
+                <h3>❌</h3>
+              </div>
+              <div className={styles.cobertura}>
+                <h3>✅</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={styles.segundo}>
+          <div className={styles.title2}>
+            <h2>DETALLE</h2>
+          </div>
+
+          <div className={styles.tabla}>
+            <div className={styles.tabla1}>
+              <h5>🚘 Auto</h5>
+            </div>
+            <div className={styles.tabla2}>
+              <h3>${booking.carPrice}</h3>
+            </div>
+          </div>
+          <div className={styles.tabla}>
+            <div className={styles.tabla1}>
+              <h5>✅ Seguro</h5>
+            </div>
+            <div className={styles.tabla2}>
+              <h3>${(booking.carPrice / 100) * 30}</h3>
+            </div>
+          </div>
+          <div className={styles.tabla}>
+            <div className={styles.tabla1}>
+              <h5>
+                📆 {dateRange} {dateRange === 1 ? "día" : "días"}:{" "}
+              </h5>
+            </div>
+            <div className={styles.tabla2}>
+              <h3>${(booking.carPrice / 100) * 130}</h3>
+            </div>
+          </div>
+          <div className={styles.divButtons}>
+            <div className={styles.buttons1}>
+              {isAuthenticated && !user?.isBanned ? (
+                <div>
+                  <div>
+                    {" "}
+                    <h3>Con seguro</h3>
+                    <Payment price={(booking.carPrice / 100) * 130} />
+                  </div>
+                </div>
+              ) : !user?.isBanned ? (
+                <button className={styles.button} onClick={loginWithRedirect}>
+                  Reservar con seguro
+                </button>
+              ) : (
+                // <div>inicie sesion par continuar</div>
+                <button className={styles.button} onClick={loginWithRedirect}>
+                  Su cuenta fue eliminada
+                </button>
+              )}
+            </div>
+            <div className={styles.buttons2}>
+              {isAuthenticated && !user?.isBanned ? (
+                <div>
+                  <div>
+                    <h3>Sin seguro</h3>
+                    <Payment price={booking.carPrice} />
+                  </div>
+                </div>
+              ) : !user?.isBanned ? (
+                <button className={styles.buttons} onClick={loginWithRedirect}>
+                  Reservar sin seguro
+                </button>
+              ) : (
+                // <div>inicie sesion par continuar</div>
+                <button className={styles.button} onClick={loginWithRedirect}>
+                  Su cuenta fue eliminada
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
