@@ -6,6 +6,39 @@ import * as Yup from 'yup';
 import Error from './Error';
 import styles from './styles/Formulario.module.css';
 import logError from '../../GeneralFuntions/logError';
+import { styled } from '@mui/material/styles';
+import DashboardSidebar from "../AdminPages/AdminComponents/sections/layouts/DashboardSidebar";
+ import DashboardNavBar from "../AdminPages/AdminComponents/sections/layouts/DashboardNavBar"
+ 
+
+ const APP_BAR_MOBILE = 64;
+ const APP_BAR_DESKTOP = 75;
+ 
+ const RootStyle = styled('div')({
+     display: 'flex',
+     minHeight: '100%',
+     overflow: 'hidden',
+    
+     
+   });
+ 
+   
+ 
+   const MainStyle = styled('div')(({ theme }) => ({
+     flexGrow: 1,
+     overflow: 'auto',
+     minHeight: '100%',
+     marginLeft: "25%",
+     paddingTop: APP_BAR_MOBILE + 24,
+     paddingBottom: theme.spacing(10),
+     [theme.breakpoints.up('lg')]: {
+       paddingTop: APP_BAR_DESKTOP,
+       paddingLeft: theme.spacing(2),
+       paddingRight: theme.spacing(2)
+     }
+   }));
+
+
 
 export default function LocationCreate() {
   async function postLocation(values) {
@@ -105,9 +138,15 @@ export default function LocationCreate() {
   });
 
   return (
-    <div className={styles.body}>
-      <div className={styles.container}>
-      <h1>Crea tu Agencia</h1>
+
+    <RootStyle>
+
+      <DashboardSidebar />
+      <MainStyle>
+  <div className={styles.body}>
+    <div className={styles.container}>
+       <h1>Crea tu Agencia</h1>
+
       <Formik
         initialValues={{
           name: '',
@@ -340,5 +379,7 @@ export default function LocationCreate() {
       </Formik>
       </div>
     </div>
+    </MainStyle>
+    </RootStyle>
   );
 }

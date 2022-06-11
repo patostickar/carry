@@ -4,7 +4,8 @@ import { styled } from '@mui/material/styles';
 
 import DashboardApp from "./AdminPages/Dashboard";
 import DashboardSidebar from "./AdminPages/AdminComponents/sections/layouts/DashboardSidebar";
-import Navbar from "../Navbar";
+ 
+ // import CarCreate from "./CreateForms/CarTypeCreate";
 
 
 
@@ -13,7 +14,7 @@ import Navbar from "../Navbar";
 
  
 const APP_BAR_MOBILE = 64;
-const APP_BAR_DESKTOP = 0;
+const APP_BAR_DESKTOP = 115;
 
 const RootStyle = styled('div')({
     display: 'flex',
@@ -58,15 +59,15 @@ export default function AdminCard(){
 
             
             <DashboardSidebar />
+           
             
             
             
 
-          
+         
 
             <MainStyle>
-
-            <Navbar />
+         
             <DashboardApp />
             
             </MainStyle>

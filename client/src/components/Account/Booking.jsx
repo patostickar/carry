@@ -7,6 +7,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
+import {Typography} from '@mui/material';
+
 // import Typography from '@mui/material/Typography';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchUserBokings, putUserBookings } from '../../redux/booking';
@@ -23,22 +25,25 @@ export const Booking = () => {
     const data = Userbokings.bookings.filter((el) => el.id === id);
     const putData = { ...data[0], status: 'inactive' };
     dispatch(putUserBookings(id, putData));
-    dispatch(fetchUserBokings(User.id));
+    
   };
 
   useEffect(() => {
     dispatch(fetchUserBokings(User.id));
-  }, []);
+  }, [Userbokings]);
   return (
     <>
-      <Grid item xs={1}></Grid>
-
+      <Grid item xs={0.5}></Grid>
+     
       <Grid
         item
         xs={8}
-        style={{ border: 'solid 1px lightgrey', borderRadius: '8px' }}
-      >
-        <TableContainer component={Paper}>
+        >
+        <>
+        <Typography gutterBottom variant='h4'>
+         Mis Reservas
+         </Typography>        
+        <TableContainer component={Paper} style={{ border: 'solid 1px lightgrey', borderRadius: '8px' }}>
           <Table aria-label='simple table' stickyHeader>
             <TableHead>
               <TableRow>
@@ -52,25 +57,25 @@ export const Booking = () => {
                   align='center'
                   style={{ color: '#1565C0', fontWeight: 'bolder' }}
                 >
-                  PickUp Date
+                  Fecha Recogida
                 </TableCell>
                 <TableCell
                   align='center'
                   style={{ color: '#1565C0', fontWeight: 'bolder' }}
                 >
-                  DropOff Date
+                  Fecha Entrega
                 </TableCell>
                 <TableCell
                   align='center'
                   style={{ color: '#1565C0', fontWeight: 'bolder' }}
                 >
-                  Reservation Total
+                  Costo Total (USD)
                 </TableCell>
                 <TableCell
                   align='center'
                   style={{ color: '#1565C0', fontWeight: 'bolder' }}
                 >
-                  Status
+                  Estado
                 </TableCell>
                 <TableCell
                   align='center'
@@ -91,12 +96,14 @@ export const Booking = () => {
                       style={{ display: 'flex', 'align-items': 'center' }}
                       align='center'
                     >
+                     <div style={{display:'flex', flexDirection:'column', justifyContent:'center', padding:'0px'}}>
                       <img
                         src={row.cartype.img}
                         alt=''
                         style={{ height: 60, width: 110 }}
-                      />{' '}
-                      {`${row.cartype.make} ${row.cartype.model} `}
+                        />
+                        <label>{row.cartype.make} {row.cartype.model} </label>
+                       </div>
                     </TableCell>
                     <TableCell align='center'>{row.pickUpDate}</TableCell>
                     <TableCell align='center'>{row.dropOffDate}</TableCell>
@@ -116,6 +123,7 @@ export const Booking = () => {
             </TableBody>
           </Table>
         </TableContainer>
+        </>
       </Grid>
     </>
   );
