@@ -236,6 +236,7 @@ export default function LocationCreate() {
                 value={values.stateName}
                 className={styles.field}
               >
+                <option value="">seleccione</option>
                 {provincias.map((t) => (
                   <option value={t} id={values.t} key={t}>
                     {`${t}`}
@@ -320,6 +321,8 @@ export default function LocationCreate() {
                 value={values.timeOpen}
                 className={styles.field}
               >
+                <option value="">seleccione</option>
+
                 {horarios.map((d) => (
                   <option value={d} id={values.d} key={d}>
                     {`${d} HS`}
@@ -342,6 +345,8 @@ export default function LocationCreate() {
                 value={values.timeClose}
                 className={styles.field}
               >
+                <option value="">seleccione</option>
+
                 {horarios.map((d) => (
                   <option value={d} id={values.d} key={d}>
                     {`${d} HS`}

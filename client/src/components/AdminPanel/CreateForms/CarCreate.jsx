@@ -73,9 +73,14 @@ export default function CarTypeCreate() {
               locationId: "",
             }}
             onSubmit={(values) => {
-              postCarType(values);
+              console.log(values);
+              if(values.carTypeId !== '' && values.locationId !== ''){
+                postCarType(values);
+                Alerts("success", "Vehiculo creado");
+              }else{
+                Alerts("error","complete todos los campos")
+              }
               // alert(JSON.stringify(values))
-              Alerts("success", "Vehiculo creado");
             }}
           >
             {({ values, handleSubmit, handleChange, handleBlur }) => (
@@ -85,6 +90,7 @@ export default function CarTypeCreate() {
 
                   <Field className={styles.field} component="div" id="carTypeId">
                     <select className={styles.field} name="carTypeId" id="carTypeId">
+                      <option value="">Seleccione un tipo de auto</option>
                       {AllcarTypes.map((d) => (
                         <option
                         
@@ -105,6 +111,8 @@ export default function CarTypeCreate() {
                   <label className={styles.input_box} htmlFor="locationId">Seleccione la ubicacion</label>
                   <Field className={styles.field} component="div" id="locationId">
                     <select className={styles.field} name="locationId" id="locationId">
+                    <option value="">Seleccione una agencia</option>
+
                       {locations.map((d) => (
                         <option
                           value={d.id}
