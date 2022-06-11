@@ -102,12 +102,12 @@ export default function CarCreate() {
       .typeError('El Campo no es válido'),
 
     largeSuitcase: Yup.number()
-      .positive('Numero no válido')
+      // .positive('Numero no válido')
       .typeError('El Campo no es válido')
       .required('El campo es obligatorio'),
 
     smallSuitcase: Yup.number()
-      .positive('Numero no válido')
+      // .positive('Numero no válido')
       .typeError('El Campo no es válido')
       .required('El campo es obligatorio'),
 
@@ -348,7 +348,7 @@ export default function CarCreate() {
 
             <div className={styles.input_box}>
               <label htmlFor='largeSuitcase' className={styles.label}>
-                Baul grande
+                 Cantidad maletas grandes
               </label>
 
               <Field
@@ -358,6 +358,8 @@ export default function CarCreate() {
                 className={styles.field}
                 value={values.largeSuitcase}
               >
+                <option value="">Seleccione</option>
+
                 {baul.map((d) => (
                   <option value={d} id={values.d} key={d}>
                     {`${d}`}
@@ -371,7 +373,7 @@ export default function CarCreate() {
 
             <div className={styles.input_box}>
               <label htmlFor='smallSuitcase' className={styles.label}>
-                Baul chico
+                Cantidad de maletas chicas
               </label>
 
               <Field
@@ -381,6 +383,7 @@ export default function CarCreate() {
                 className={styles.field}
                 value={values.smallSuitcase}
               >
+                <option value="">Seleccione</option>
                 {baul.map((d) => (
                   <option
                     value={d}
