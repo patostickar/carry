@@ -4,10 +4,11 @@
 }
 .main {
   display: flex;
-  padding: 5em;
+  padding: 7em;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  margin-bottom: 3rem;
 }
 .profile_card {
   position: relative;
@@ -77,5 +78,5 @@
 .team {
   font-size: 5rem;
   text-align: center;
-  margin-top: 5rem;
+  margin-top: 3rem;
 }
