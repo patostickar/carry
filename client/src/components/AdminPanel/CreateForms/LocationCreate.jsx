@@ -105,7 +105,9 @@ export default function LocationCreate() {
   });
 
   return (
-    <div className={styles.container}>
+    <div className={styles.body}>
+      <div className={styles.container}>
+      <h1>Crea tu Agencia</h1>
       <Formik
         initialValues={{
           name: '',
@@ -128,8 +130,10 @@ export default function LocationCreate() {
         validationSchema={newLocationSchema}
       >
         {({ values, errors, touched, handleSubmit }) => (
-          <Form onSubmit={handleSubmit}>
-            <div className={styles.content}>
+          <Form onSubmit={handleSubmit}
+            className={styles.form}
+          >
+            <div className={styles.input_box}>
               <label htmlFor='name' className={styles.label}>
                 Nombre
               </label>
@@ -146,7 +150,7 @@ export default function LocationCreate() {
               ) : null}
             </div>
 
-            <div className={styles.content}>
+            <div className={styles.input_box}>
               <label htmlFor='street' className={styles.label}>
                 Dirección
               </label>
@@ -162,7 +166,7 @@ export default function LocationCreate() {
                 <Error>{errors.street}</Error>
               ) : null}
             </div>
-            <div className={styles.content}>
+            <div className={styles.input_box}>
               <label htmlFor='city' className={styles.label}>
                 Ciudad
               </label>
@@ -179,7 +183,7 @@ export default function LocationCreate() {
               ) : null}
             </div>
 
-            <div className={styles.content}>
+            <div className={styles.input_box}>
               <label htmlFor='city' className={styles.label}>
                 Provincia
               </label>
@@ -201,7 +205,7 @@ export default function LocationCreate() {
               ) : null}
             </div>
 
-            <div className={styles.content}>
+            <div className={styles.input_box}>
               <label htmlFor='lat' className={styles.label}>
                 Latitud{' '}
               </label>
@@ -215,7 +219,7 @@ export default function LocationCreate() {
               />
               {touched.lat && errors.lat ? <Error>{errors.lat}</Error> : null}
             </div>
-            <div className={styles.content}>
+            <div className={styles.input_box}>
               <label htmlFor='lon' className={styles.label}>
                 Longitud{' '}
               </label>
@@ -229,7 +233,7 @@ export default function LocationCreate() {
               />
               {touched.lon && errors.lon ? <Error>{errors.lon}</Error> : null}
             </div>
-            <div className={styles.content}>
+            <div className={styles.input_box}>
               <label htmlFor='postalCode' className={styles.label}>
                 Código postal
               </label>
@@ -246,7 +250,7 @@ export default function LocationCreate() {
               ) : null}
             </div>
 
-            <div className={styles.content}>
+            <div className={styles.input_box}>
               <label htmlFor='phone' className={styles.label}>
                 Teléfono
               </label>
@@ -263,7 +267,7 @@ export default function LocationCreate() {
               ) : null}
             </div>
 
-            <div className={styles.content}>
+            <div className={styles.input_box}>
               <label htmlFor='timeOpen' className={styles.label}>
                 Horario de apertura
               </label>
@@ -285,7 +289,7 @@ export default function LocationCreate() {
               ) : null}
             </div>
 
-            <div className={styles.content}>
+            <div className={styles.input_box}>
               <label htmlFor='timeClose' className={styles.label}>
                 Horario de cierre
               </label>
@@ -307,7 +311,7 @@ export default function LocationCreate() {
               ) : null}
             </div>
 
-            <div className={styles.content}>
+            <div className={styles.input_box}>
               <label htmlFor='airportLocation' className={styles.label}>
                 {' '}
                 Es aeropuerto?
@@ -330,10 +334,11 @@ export default function LocationCreate() {
               ) : null}
             </div>
 
-            <button type='submit'>Crea</button>
+            <button className={styles.btn} type='submit'>Crea</button>
           </Form>
         )}
       </Formik>
+      </div>
     </div>
   );
 }
