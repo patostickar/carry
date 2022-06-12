@@ -62,7 +62,10 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
                   personalInfo: false,
                   review: false,
                   booking: false,
-                  useCard: true,
+
+                  userCard: !renderControl.userCard
+
+
                 });
               }}
               style={{ fontWeight: 'lighter', padding: '0px' }}
@@ -87,8 +90,10 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
                 setRenderControl({
                   personalInfo: false,
                   review: false,
-                  booking: true,
-                  useCard: false,
+
+                  booking:!renderControl.booking,
+                  useCard: false
+
                 })
               }
               style={{ fontWeight: 'lighter', padding: '0px' }}
@@ -112,8 +117,9 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
                 setRenderControl({
                   personalInfo: false,
                   security: false,
-                  review: true,
-                  useCard: false,
+                  review:!renderControl.review,
+                  useCard: false
+
                 })
               }
               style={{ fontWeight: 'lighter', padding: '0px' }}

@@ -17,40 +17,44 @@ router.post('/payment', (req, res, next) => {
     {
       title: 'reserva Carry',
       unit_price: parseInt(total),
-      quantity: 1,
-    },
-  ];
+      quantity:1,
+  }]
 
-  const preference = {
-    items,
-    external_reference: `${id}`,
-    payment_methods: {
-      excluded_payment_types: [
-        {
-          id: 'atm',
-        },
-      ],
-      installments: 1,
-    },
-    back_urls: {
-      pending: 'http://localhost:3000/response',
-      success: 'http://localhost:3000/response',
-    },
-    auto_return: 'approved',
-    binary_mode: true,
-  };
+  const preference={
+      items,
+      external_reference:`${id}`,
+      payment_methods:{
+          excluded_payment_types:[
+              {
+                  id:'atm'
+              },
+             {id: "ticket"}
+          ],
+          installments:1
+      },
+      back_urls: {
+        pending: "http://localhost:3000/response",
+        success: "http://localhost:3000/response",
+      },
+      auto_return: "approved",
+      binary_mode: true
+  }
 
-  mercadopago.preferences
-    .create(preference)
-    .then(function (response) {
-      console.info('respondio');
-      global.id = response.body.id;
-      console.log(response.body, 'body');
-      res.json({ id: global.id });
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-});
+ mercadopago.preferences.create(preference)
+ .then(function(response){
+     console.info('respondio')
+     global.id=response.body.id
+     console.log(response.body,'body')
+     res.json({id:global.id})
+ })
+ .catch(function(error){
+     console.log(error)
+ })
+  
+
+
+
+})
+
 
 module.exports = router;

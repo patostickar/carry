@@ -8,6 +8,7 @@ const initialState = {
     locationId: null,
     pickUpDate: null,
     dropOffDate: null,
+    PremiumSecure: false
   },
   Userbokings: [],
 };
@@ -46,7 +47,8 @@ export const fetchUserBokings = (id) => async (dispatch) => {
 export const putUserBookings = (id, data) => async (dispatch) => {
   try {
     const res = await axios.put(`/bookings/${id}`, data);
-    dispatch(fetchUserBokings(id));
+    //  dispatch(fetchUserBokings(id));
+
     // dispatch(setBookingDetails(res.data));
   } catch (error) {
     console.log(error);

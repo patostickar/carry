@@ -18,11 +18,14 @@ export const UserCard = ({ setRenderControl, renderControl }) => {
   const handleEdit = (event) => {
     console.log('Evento click Editar');
     setRenderControl({
-      personalInfo: true,
-      review: false,
-      booking: false,
-      useCard: false,
-    });
+
+                  personalInfo: true,
+                  review: false,
+                  booking: false,
+                  userCard:false
+     })
+    
+
   };
 
   return (

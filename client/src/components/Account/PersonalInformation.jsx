@@ -125,13 +125,11 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
                     variant='outlined'
                     value={formik.values.firstName}
                     onChange={formik.handleChange}
-                    error={
-                      formik.touched.first_name &&
-                      Boolean(formik.errors.first_name)
-                    }
-                    helperText={
-                      formik.touched.first_name && formik.errors.first_name
-                    }
+
+                    error={formik.touched.firstName && Boolean(formik.errors.firstName)}
+                    helperText={formik.touched.firstName && formik.errors.firstName}
+          
+
                   />
                 </Grid>
                 <Grid item md={6} xs={12}>
@@ -143,13 +141,10 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
                     variant='outlined'
                     value={formik.values.lastName}
                     onChange={formik.handleChange}
-                    error={
-                      formik.touched.last_name &&
-                      Boolean(formik.errors.last_name)
-                    }
-                    helperText={
-                      formik.touched.last_name && formik.errors.last_name
-                    }
+
+                    error={formik.touched.lastName && Boolean(formik.errors.lastName)}
+                    helperText={formik.touched.lastName && formik.errors.lastName}
+
                   />
                 </Grid>
                 <Grid item md={6} xs={12}>
@@ -213,15 +208,12 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
                     name='postalCode'
                     required
                     variant='outlined'
-                    value={formik.values.postal_code}
+                    value={formik.values.postalCode}
                     onChange={formik.handleChange}
-                    error={
-                      formik.touched.postal_code &&
-                      Boolean(formik.errors.postal_code)
-                    }
-                    helperText={
-                      formik.touched.postal_code && formik.errors.postal_code
-                    }
+
+                    error={formik.touched.postalCode && Boolean(formik.errors.postalCode)}
+                    helperText={formik.touched.postalCode && formik.errors.postalCode}
+
                   />
                 </Grid>
               </Grid>

@@ -1,7 +1,13 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setBookingDetails } from '../../redux/booking';
 import styles from "./styles/Checkout.module.css";
 
-const Checkout = ({ data, id }) => {
+
+
+const Checkout = ({price, data ,id }) => {
+  const { booking } = useSelector((state) => state.booking);
+  const dispatch = useDispatch()
   useEffect(() => {
     const script = document.createElement("script");
     const attrDataPreference = document.createAttribute("data-preference-id");
@@ -14,7 +20,9 @@ const Checkout = ({ data, id }) => {
     document.getElementById(id).appendChild(script);
   }, [data]);
 
-  return <form className={styles.form} id={id}></form>;
-};
+  return <form className={styles.form} onSubmit={()=>{
+      if(id==="Seguro"){dispatch(setBookingDetails({...booking,price,PremiumSecure:true}))}
+    }} id={id}></form>;
+  }
 
 export default Checkout;

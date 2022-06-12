@@ -34,6 +34,7 @@ const Response = () => {
       locationId: booking.locationId,
       pickUpDate: PickDate,
       dropOffDate: DropDate,
+      PremiumSecure:booking.PremiumSecure
     });
   };
 

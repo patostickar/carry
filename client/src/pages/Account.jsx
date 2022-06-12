@@ -13,7 +13,7 @@ export default function Account() {
     personalInfo: false,
     review: false,
     booking: false,
-    userCard:false,
+    userCard:true,
     
   });
   return (
@@ -24,7 +24,7 @@ export default function Account() {
           setRenderControl={setRenderControl}
           renderControl={renderControl}
         />
-        {renderControl.useCard && (
+        {renderControl.userCard && (
           <UserCard 
           setRenderControl={setRenderControl}
           renderControl={renderControl}/>
