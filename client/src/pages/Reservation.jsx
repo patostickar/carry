@@ -407,7 +407,7 @@ function Reservation() {
                   <div>
                     {" "}
                     <h3>Con seguro</h3>
-                    <Payment price={(booking.carPrice / 100) * 130} />
+                    <Payment id={"Seguro"} price={(booking.carPrice / 100) * 130} />
                   </div>
                 </div>
               ) : !user?.isBanned ? (
@@ -426,7 +426,7 @@ function Reservation() {
                 <div>
                   <div>
                     <h3>Sin seguro</h3>
-                    <Payment price={booking.carPrice} />
+                    <Payment  id={"!seguro"} price={booking.carPrice} />
                   </div>
                 </div>
               ) : !user?.isBanned ? (

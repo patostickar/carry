@@ -37,7 +37,9 @@ router.post('/payment', (req,res, next)=>{
       back_urls: {
         pending: "http://localhost:3000/response",
         success: "http://localhost:3000/response",
-      },"auto_return": "approved",
+      },
+      auto_return: "approved",
+      binary_mode: true
   }
 
  mercadopago.preferences.create(preference)
