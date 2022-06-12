@@ -1,5 +1,3 @@
-
-import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   Box,
@@ -12,82 +10,82 @@ import {
   Typography,
   Avatar,
 } from '@mui/material';
-import { fetchUser, putUser } from '../../redux/user';
+import { putUser } from '../../redux/user';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
 const validationSchema = yup.object({
   firstName: yup
     .string('Ingrese un nombre valido')
-    .min(3,'Minimo 3 caracteres de longitud')
-    .max(15,'Maximo 15 caracteres de longitud')
+    .min(3, 'Minimo 3 caracteres de longitud')
+    .max(15, 'Maximo 15 caracteres de longitud')
     .required('El campo Nombre es requerido'),
-    lastName: yup
+  lastName: yup
     .string('Ingrese un Apellido valido')
-    .min(3,'Minimo 3 caracteres de longitud')
-    .max(15,'Maximo 15 caracteres de longitud')
+    .min(3, 'Minimo 3 caracteres de longitud')
+    .max(15, 'Maximo 15 caracteres de longitud')
     .required('El campo Apellido es requerido'),
-    email: yup
+  email: yup
     .string()
     .email('Ingrese un Email valido')
     .required('El campo Email es requerido'),
-    phone: yup
+  phone: yup
     .string()
-    .min(3,'Minimo 3 caracteres de longitud')
+    .min(3, 'Minimo 3 caracteres de longitud')
     .required('El campo Telefono es requerido'),
-    city: yup
+  city: yup
     .string()
-    .min(3,'Minimo 3 caracteres de longitud')
+    .min(3, 'Minimo 3 caracteres de longitud')
     .required('El campo City es requerido'),
-    street: yup
+  street: yup
     .string()
-    .min(3,'Minimo 3 caracteres de longitud')
+    .min(3, 'Minimo 3 caracteres de longitud')
     .required('El campo Direccion es requerido'),
-    postalCode: yup
+  postalCode: yup
     .string()
-    .min(3,'Minimo 3 caracteres de longitud')
+    .min(3, 'Minimo 3 caracteres de longitud')
     .required('El campo Codigo Postal es requerido'),
 });
 
 export const PersonalInformation = ({ setRenderControl, renderControl }) => {
   const dispatch = useDispatch();
-  const { User } = useSelector((state) => state.user);
-  
-  
+  const {
+    firstName,
+    lastName,
+    email,
+    phone,
+    city,
+    street,
+    postalCode,
+    img,
+    id,
+  } = useSelector((state) => state.user);
 
-  
-  const handleSubmit = (e) => {
-    // setRenderControl({ ...renderControl, personalInfo: !renderControl.personalInfo })
-    
-  };
+  // const handleSubmit = (e) => {
+  //   setRenderControl({ ...renderControl, personalInfo: !renderControl.personalInfo })
+  // };
 
   const formik = useFormik({
     initialValues: {
-    firstName: User.firstName,
-    lastName: User.lastName,
-    email: User.email,
-    phone: User.phone,
-    city: User.city,
-    street: User.street,
-    postalCode: User.postalCode,
-    
+      firstName,
+      lastName,
+      email,
+      phone,
+      city,
+      street,
+      postalCode,
     },
-    validationSchema: validationSchema,
+    validationSchema,
     onSubmit: (values) => {
       // alert(JSON.stringify(values, null, 2));
       console.log('Hola en el Submit');
-      dispatch(putUser(User.id, values));
-      
+      dispatch(putUser(id, values));
     },
   });
-  
-
 
   return (
     <>
-
-
-    <Grid item xs={2}></Grid>
+      <Grid item xs={2}></Grid>
       <Grid
         item
         xs={5}
@@ -97,7 +95,7 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
           style={{ display: 'flex', justifyContent: 'center', padding: '10px' }}
         >
           <Avatar
-            src={User.img}
+            src={img}
             sx={{
               height: 120,
               mb: 2,
@@ -127,9 +125,13 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
                     variant='outlined'
                     value={formik.values.firstName}
                     onChange={formik.handleChange}
-                    error={formik.touched.first_name && Boolean(formik.errors.first_name)}
-                    helperText={formik.touched.first_name && formik.errors.first_name}
-          
+                    error={
+                      formik.touched.first_name &&
+                      Boolean(formik.errors.first_name)
+                    }
+                    helperText={
+                      formik.touched.first_name && formik.errors.first_name
+                    }
                   />
                 </Grid>
                 <Grid item md={6} xs={12}>
@@ -141,8 +143,13 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
                     variant='outlined'
                     value={formik.values.lastName}
                     onChange={formik.handleChange}
-                    error={formik.touched.last_name && Boolean(formik.errors.last_name)}
-                    helperText={formik.touched.last_name && formik.errors.last_name}
+                    error={
+                      formik.touched.last_name &&
+                      Boolean(formik.errors.last_name)
+                    }
+                    helperText={
+                      formik.touched.last_name && formik.errors.last_name
+                    }
                   />
                 </Grid>
                 <Grid item md={6} xs={12}>
@@ -193,7 +200,9 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
                     variant='outlined'
                     value={formik.values.street}
                     onChange={formik.handleChange}
-                    error={formik.touched.street && Boolean(formik.errors.street)}
+                    error={
+                      formik.touched.street && Boolean(formik.errors.street)
+                    }
                     helperText={formik.touched.street && formik.errors.street}
                   />
                 </Grid>
@@ -206,8 +215,13 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
                     variant='outlined'
                     value={formik.values.postal_code}
                     onChange={formik.handleChange}
-                    error={formik.touched.postal_code && Boolean(formik.errors.postal_code)}
-                    helperText={formik.touched.postal_code && formik.errors.postal_code}
+                    error={
+                      formik.touched.postal_code &&
+                      Boolean(formik.errors.postal_code)
+                    }
+                    helperText={
+                      formik.touched.postal_code && formik.errors.postal_code
+                    }
                   />
                 </Grid>
               </Grid>
@@ -230,4 +244,3 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
     </>
   );
 };
-

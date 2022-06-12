@@ -11,18 +11,19 @@ import CssBaseline from '@mui/material/CssBaseline';
 import './index.css';
 
 axios.defaults.baseURL = import.meta.env.VITE_CARRY_API;
+axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  // <React.StrictMode>   !!!!ESTO HACE QUE SE EJECUTEN TODAS LAS FUNCIONES DOS VECES 
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <CssBaseline />
-        <BrowserRouter>
-          <Auth0ProviderWithHistory>
-            <App />
-          </Auth0ProviderWithHistory>
-        </BrowserRouter>
-      </PersistGate>
-    </Provider>
-  // </React.StrictMode> 
+  // <React.StrictMode>   !!!!ESTO HACE QUE SE EJECUTEN TODAS LAS FUNCIONES DOS VECES
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <CssBaseline />
+      <BrowserRouter>
+        <Auth0ProviderWithHistory>
+          <App />
+        </Auth0ProviderWithHistory>
+      </BrowserRouter>
+    </PersistGate>
+  </Provider>
+  // </React.StrictMode>
 );

@@ -1,5 +1,7 @@
 const { Router } = require('express');
 const router = Router();
+const auth = require('../middleware/auth');
+const admin = require('../middleware/admin');
 
 const {
   getAllCars,
@@ -8,11 +10,11 @@ const {
   getCarById,
 } = require('../controllers/cars');
 
-router.get('/', getAllCars);
+router.get('/', [auth, admin], getAllCars);
 router.get('/SearchResults', getAvailableCars);
-router.get('/:id', getCarById);
+router.get('/:id', auth, getCarById);
 
-router.post('/', addCar);
+router.post('/', [auth, admin], addCar);
 
 // router.put("/:id", updateCarDate)
 // router.patch('/:id', updateLocation);

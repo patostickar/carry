@@ -1,20 +1,30 @@
-const jwt = require('express-jwt');
-const jwtAuthz = require('express-jwt-authz');
-const jwksRsa = require('jwks-rsa');
+const jwt = require('jsonwebtoken');
+const { JWT } = process.env;
 
-const checkJwt = jwt({
-  secret: jwksRsa.expressJwtSecret({
-    cache: true,
-    rateLimit: true,
-    jwksRequestsPerMinute: 5,
-    jwksUri: `https://carry-login.us.auth0.com/.well-known/jwks.json`,
-  }),
+module.exports = function (req, res, next) {
+  const authorization = req.get('authorization');
 
-  audience: 'https://carry-login.us.auth0.com/api/v2/',
-  issuer: 'https://carry-login.us.auth0.com/',
-  algorithms: 'RS256',
-});
+  let token = null;
 
-let options = { customScopeKey: 'permissions' }; // This is necessary to support the direct-user permissions
+  if (authorization && authorization.toLowerCase().startsWith('bearer')) {
+    token = authorization.substring(7);
+  }
 
-const checkScopes = jwtAuthz(['read:protected']);
+  try {
+    const decoded = jwt.verify(token, JWT);
+    if (!token || !decoded.id)
+      return res.status(401).send('Access denied. Token missing or invalid');
+    if (decoded.isBanned)
+      return res
+        .status(401)
+        .send('Access denied. You are banned from using Carry');
+
+    req.body.isAdmin = decoded.isAdmin;
+    req.body.id = decoded.id;
+    req.body.isPremium = decoded.isPremium;
+
+    next();
+  } catch (error) {
+    res.status(400).send('Invalid token.');
+  }
+};
