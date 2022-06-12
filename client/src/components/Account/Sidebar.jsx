@@ -10,7 +10,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { putUser } from '../../redux/user';
 
 export const Sidebar = ({ setRenderControl, renderControl }) => {
-  const user = useSelector((state) => state.user.User);
+  const { id } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { logout } = useAuth0();
@@ -26,7 +26,7 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
       confirmButtonText: 'Si',
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch(putUser(user.id, { isBanned: true }));
+        dispatch(putUser(id, { isBanned: true }));
         logout();
       }
     });
@@ -59,12 +59,16 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
             <Typography
               onClick={() => {
                 setRenderControl({
-                  personalInfo: true,
+                  personalInfo: false,
                   review: false,
                   booking: false,
+
+                  userCard: !renderControl.userCard
+
+
                 });
               }}
-              style={{ fontWeight: 'lighter', padding:'0px' }}
+              style={{ fontWeight: 'lighter', padding: '0px' }}
             >
               Informacion Personal
             </Typography>
@@ -86,10 +90,13 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
                 setRenderControl({
                   personalInfo: false,
                   review: false,
-                  booking: true,
+
+                  booking:!renderControl.booking,
+                  useCard: false
+
                 })
               }
-              style={{ fontWeight: 'lighter', padding:'0px' }}
+              style={{ fontWeight: 'lighter', padding: '0px' }}
             >
               Mis Reservas
             </Typography>
@@ -110,10 +117,12 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
                 setRenderControl({
                   personalInfo: false,
                   security: false,
-                  review: true,
+                  review:!renderControl.review,
+                  useCard: false
+
                 })
               }
-              style={{ fontWeight: 'lighter', padding:'0px' }}
+              style={{ fontWeight: 'lighter', padding: '0px' }}
             >
               Mis Review
             </Typography>
@@ -130,7 +139,10 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
             }}
           >
             <DeleteIcon color='primary' />
-            <Typography onClick={handleDeleteAccount} style={{ fontWeight: 'lighter', padding:'0px' }}>
+            <Typography
+              onClick={handleDeleteAccount}
+              style={{ fontWeight: 'lighter', padding: '0px' }}
+            >
               Eliminar Cuenta
             </Typography>
           </Box>
@@ -146,7 +158,12 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
             }}
           >
             <ExitToAppIcon color='primary' />
-            <Typography onClick={() => navigate('/')} style={{ fontWeight: 'lighter', padding:'0px' }}>Salir</Typography>
+            <Typography
+              onClick={() => navigate('/')}
+              style={{ fontWeight: 'lighter', padding: '0px' }}
+            >
+              Salir
+            </Typography>
           </Box>
         </Grid>
       </Grid>

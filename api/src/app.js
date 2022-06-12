@@ -1,12 +1,11 @@
+require('dotenv').config();
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const routes = require('./routes/index.js');
-const dotenv = require('dotenv');
 const server = express();
 
-dotenv.config();
 require('./db.js');
 
 server.name = 'API';
@@ -20,8 +19,9 @@ server.use((req, res, next) => {
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header(
     'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept'
+    'Origin, X-Requested-With, Content-Type, Accept, Authorization '
   );
+  res.header('Access-Control-Expose-Headers', 'Authorization');
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
   next();
 });

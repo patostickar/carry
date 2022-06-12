@@ -1,41 +1,37 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import logError from '../components/GeneralFuntions/logError';
-
 
 const initialState = {
-  User: null,
+  token: null,
+  email: null,
+  firstName: null,
+  lastName: null,
+  street: null,
+  city: null,
+  postalCode: null,
+  phone: null,
+  img: null,
 };
 
-export const User = createSlice({
-  name: 'User',
+export const user = createSlice({
+  name: 'user',
   initialState,
   reducers: {
-    SetUser: (state, action) => {
-      state.User = action.payload;
+    setUser: (state, action) => {
+      return action.payload;
     },
-    ClearUser: (state, action) => {
-      state.User = null;
+    clearUser: (state, action) => {
+      return initialState;
     },
   },
 });
-export const fetchUser = (email) => async (dispatch) => {
-  try {
-    await axios.get(`/customers/${email}`).then((res) => {
-      dispatch(SetUser(res.data));
-    });
-  } catch (error) {
-    logError(error);
-  }
-};
 
 export const putUser = (id, data) => async (dispatch) => {
   try {
     await axios.put(`/customers/${id}`, data).then((res) => {
-      dispatch(SetUser(res.data));
-      Swal.fire('La informacion se ha actualizado correctamente!!')
-    
+      dispatch(setUser(res.data));
+      Swal.fire('La informacion se ha actualizado correctamente!!');
     });
   } catch (error) {
     Swal.fire('Error: ', error.message);
@@ -43,6 +39,6 @@ export const putUser = (id, data) => async (dispatch) => {
   }
 };
 
-export const { SetUser, ClearUser } = User.actions;
+export const { setUser, clearUser } = user.actions;
 
-export default User.reducer;
+export default user.reducer;

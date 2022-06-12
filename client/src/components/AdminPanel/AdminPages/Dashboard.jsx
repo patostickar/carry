@@ -138,7 +138,7 @@ const dispatch = useDispatch()
             </Grid><Grid item xs={12} sm={6} md={3}>
               <AppWidgetSummary title="Modelos de vehiculos disponibles" total={cars} color="error" icon={'clarity:car-solid'} />
             </Grid></><Grid item xs={12} md={6} lg={8}>
-              <AppWebsiteVisits
+              {/* <AppWebsiteVisits
                 title="Visitas a la pagina"
                 subheader="(+33%) mas que el semestre anterior"
                 chartLabels={[
@@ -173,11 +173,11 @@ const dispatch = useDispatch()
                     fill: 'solid',
                     data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
                   },
-                ]} />
+                ]} /> */}
             </Grid></> 
 
           <Grid item xs={12} md={6} lg={4}>
-            <AppCurrentVisits
+            {/* <AppCurrentVisits
               title="Vehiculos rentados historicamente"
               chartData={[
                 { label: 'Small', value: 434 },
@@ -192,7 +192,7 @@ const dispatch = useDispatch()
                 
                 
               ] }
-            />
+            /> */}
           </Grid>
 
           {/* <Grid item xs={12} md={6} lg={8}>
@@ -286,7 +286,7 @@ const dispatch = useDispatch()
             />
           </Grid> */}
 
-          <Grid item xs={12} md={6} lg={8}>
+          {/* <Grid item xs={12} md={6} lg={8}>
             <AppTasks
               title="Tareas importantes"
               list={[
@@ -297,7 +297,7 @@ const dispatch = useDispatch()
                 { id: '5', label: 'Reparar los bugs existentes y agregar nuevos' },
               ]}
             />
-          </Grid>
+          </Grid> */}
         </Grid>
       </Container>
     </div>

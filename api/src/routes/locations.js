@@ -1,6 +1,8 @@
 const { Router } = require('express');
 const router = Router();
 const { validateCreateLocation } = require('../validators/validators');
+const auth = require('../middleware/auth');
+const admin = require('../middleware/admin');
 
 const {
   getAllLocations,
@@ -11,6 +13,6 @@ const {
 router.get('/', getAllLocations);
 router.get('/:id', getLocationById);
 
-router.post('/',validateCreateLocation, createLocation);
+router.post('/', [auth, admin, validateCreateLocation], createLocation);
 
 module.exports = router;

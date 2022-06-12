@@ -1,18 +1,20 @@
+
 import React, { useState } from 'react';
 import { Grid } from '@mui/material';
 import { Sidebar } from '../components/Account/Sidebar';
 import { PersonalInformation } from '../components/Account/PersonalInformation';
 import Review from '../components/Account/Review';
 import { Booking } from '../components/Account/Booking';
-import { Security } from '../components/Account/Security';
+import { UserCard } from '../components/Account/UserCard';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 export default function Account() {
   const [renderControl, setRenderControl] = useState({
     personalInfo: false,
-    security: false,
-    payment: false,
     review: false,
+    booking: false,
+    userCard:true,
+    
   });
   return (
     <>
@@ -22,15 +24,17 @@ export default function Account() {
           setRenderControl={setRenderControl}
           renderControl={renderControl}
         />
-        {renderControl.personalInfo && (
-          <PersonalInformation
-            setRenderControl={setRenderControl}
-            renderControl={renderControl}
-          />
+        {renderControl.userCard && (
+          <UserCard 
+          setRenderControl={setRenderControl}
+          renderControl={renderControl}/>
+          
         )}
+        { renderControl.personalInfo && <PersonalInformation />
+        }
         {renderControl.booking && <Booking />}
-        {renderControl.security && <Security />}
         {renderControl.review && <Review />}
+        
       </Grid>
       <Footer/>
     </>
