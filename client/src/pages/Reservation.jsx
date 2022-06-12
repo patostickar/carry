@@ -417,11 +417,10 @@ function Reservation() {
               <div className={styles.buttons1}>
                 {isAuthenticated && !user?.isBanned ? (
                   <div>
-                    <div>
-                      {" "}
-                      <h3>Con seguro</h3>
-                      <Payment price={(booking.carPrice / 100) * 130} />
-                    </div>
+                    {" "}
+                    <h3>Con seguro</h3>
+                    <Payment id={"Seguro"} price={(booking.carPrice / 100) * 130} />
+
                   </div>
                 ) : !user?.isBanned ? (
                   <button className={styles.button} onClick={loginWithRedirect}>
@@ -437,10 +436,9 @@ function Reservation() {
               <div className={styles.buttons2}>
                 {isAuthenticated && !user?.isBanned ? (
                   <div>
-                    <div>
-                      <h3>Sin seguro</h3>
-                      <Payment price={booking.carPrice} />
-                    </div>
+                    <h3>Sin seguro</h3>
+                    <Payment  id={"!seguro"} price={booking.carPrice} />
+
                   </div>
                 ) : !user?.isBanned ? (
                   <button
