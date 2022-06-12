@@ -2,7 +2,6 @@ import { useSelector } from 'react-redux';
 import { Formik, Form } from 'formik';
 import Alerts from '../GeneralFuntions/Alerts';
 import axios from 'axios';
-import logError from '../GeneralFuntions/logError';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -15,17 +14,17 @@ import 'sweetalert2/dist/sweetalert2.css';
 import { useEffect, useState } from 'react';
 
 export default function Review() {
-  const { User } = useSelector((state) => state.user);
+  const { id } = useSelector((state) => state.user);
   const [reviews, SetReviews] = useState();
   const getReviews = async () => {
-    SetReviews(await axios.get(`/customers/reviews/${User.id}`));
+    SetReviews(await axios.get(`/customers/reviews/${id}`));
   };
 
   async function postreview(values) {
     try {
-      await axios.post(`/customers/reviews/${User.id}`, values);
+      await axios.post(`/customers/reviews/${id}`, values);
     } catch (error) {
-      logError(error);
+      console.log(error);
     }
   }
   useEffect(() => {
