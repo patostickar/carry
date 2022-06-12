@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -11,38 +12,82 @@ import {
   Typography,
   Avatar,
 } from '@mui/material';
-import { putUser } from '../../redux/user';
+import { fetchUser, putUser } from '../../redux/user';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
+
+const validationSchema = yup.object({
+  firstName: yup
+    .string('Ingrese un nombre valido')
+    .min(3,'Minimo 3 caracteres de longitud')
+    .max(15,'Maximo 15 caracteres de longitud')
+    .required('El campo Nombre es requerido'),
+    lastName: yup
+    .string('Ingrese un Apellido valido')
+    .min(3,'Minimo 3 caracteres de longitud')
+    .max(15,'Maximo 15 caracteres de longitud')
+    .required('El campo Apellido es requerido'),
+    email: yup
+    .string()
+    .email('Ingrese un Email valido')
+    .required('El campo Email es requerido'),
+    phone: yup
+    .string()
+    .min(3,'Minimo 3 caracteres de longitud')
+    .required('El campo Telefono es requerido'),
+    city: yup
+    .string()
+    .min(3,'Minimo 3 caracteres de longitud')
+    .required('El campo City es requerido'),
+    street: yup
+    .string()
+    .min(3,'Minimo 3 caracteres de longitud')
+    .required('El campo Direccion es requerido'),
+    postalCode: yup
+    .string()
+    .min(3,'Minimo 3 caracteres de longitud')
+    .required('El campo Codigo Postal es requerido'),
+});
 
 export const PersonalInformation = ({ setRenderControl, renderControl }) => {
   const dispatch = useDispatch();
   const { User } = useSelector((state) => state.user);
+  
+  
 
-  const [values, setValues] = useState({
-    firstName: User?.firstName,
-    lastName: User?.lastName,
-    email: User?.email,
-    phone: User?.phone,
-    city: User?.city,
-    street: User?.street,
-    postalCode: User?.postalCode,
-    avatar: User?.img,
-  });
-
-  const handleChange = (event) => {
-    setValues({
-      ...values,
-      [event.target.name]: event.target.value,
-    });
-  };
-
+  
   const handleSubmit = (e) => {
     // setRenderControl({ ...renderControl, personalInfo: !renderControl.personalInfo })
-    dispatch(putUser(User.id, values));
+    
   };
+
+  const formik = useFormik({
+    initialValues: {
+    firstName: User.firstName,
+    lastName: User.lastName,
+    email: User.email,
+    phone: User.phone,
+    city: User.city,
+    street: User.street,
+    postalCode: User.postalCode,
+    
+    },
+    validationSchema: validationSchema,
+    onSubmit: (values) => {
+      // alert(JSON.stringify(values, null, 2));
+      console.log('Hola en el Submit');
+      dispatch(putUser(User.id, values));
+      
+    },
+  });
+  
+
 
   return (
     <>
-      <Grid item xs={2}></Grid>
+
+
+    <Grid item xs={2}></Grid>
       <Grid
         item
         xs={5}
@@ -52,15 +97,15 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
           style={{ display: 'flex', justifyContent: 'center', padding: '10px' }}
         >
           <Avatar
-            src={values.avatar}
+            src={User.img}
             sx={{
-              height: 64,
+              height: 120,
               mb: 2,
-              width: 64,
+              width: 120,
             }}
           />
         </Box>
-        <form autoComplete='off' noValidate onSubmit={handleSubmit}>
+        <form autoComplete='off' onSubmit={formik.handleSubmit}>
           <Card>
             <CardHeader
               subheader='Actualiza tus datos'
@@ -76,13 +121,15 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
                 <Grid item md={6} xs={12}>
                   <TextField
                     fullWidth
-                    helperText='Please specify the first name'
                     label='First name'
                     name='firstName'
-                    onChange={handleChange}
                     required
-                    value={values.firstName || ''}
                     variant='outlined'
+                    value={formik.values.firstName}
+                    onChange={formik.handleChange}
+                    error={formik.touched.first_name && Boolean(formik.errors.first_name)}
+                    helperText={formik.touched.first_name && formik.errors.first_name}
+          
                   />
                 </Grid>
                 <Grid item md={6} xs={12}>
@@ -90,10 +137,12 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
                     fullWidth
                     label='Last name'
                     name='lastName'
-                    onChange={handleChange}
                     required
-                    value={values.lastName || ''}
                     variant='outlined'
+                    value={formik.values.lastName}
+                    onChange={formik.handleChange}
+                    error={formik.touched.last_name && Boolean(formik.errors.last_name)}
+                    helperText={formik.touched.last_name && formik.errors.last_name}
                   />
                 </Grid>
                 <Grid item md={6} xs={12}>
@@ -101,10 +150,12 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
                     fullWidth
                     label='Email Address'
                     name='email'
-                    onChange={handleChange}
                     required
-                    value={values.email || ''}
                     variant='outlined'
+                    value={formik.values.email}
+                    onChange={formik.handleChange}
+                    error={formik.touched.email && Boolean(formik.errors.email)}
+                    helperText={formik.touched.email && formik.errors.email}
                   />
                 </Grid>
                 <Grid item md={6} xs={12}>
@@ -112,11 +163,12 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
                     fullWidth
                     label='Phone Number'
                     name='phone'
-                    onChange={handleChange}
-                    type='number'
-                    value={values.phone || ''}
-                    variant='outlined'
                     required
+                    variant='outlined'
+                    value={formik.values.phone}
+                    onChange={formik.handleChange}
+                    error={formik.touched.phone && Boolean(formik.errors.phone)}
+                    helperText={formik.touched.phone && formik.errors.phone}
                   />
                 </Grid>
                 <Grid item md={6} xs={12}>
@@ -124,10 +176,12 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
                     fullWidth
                     label='City'
                     name='city'
-                    onChange={handleChange}
                     required
-                    value={values.city || ''}
                     variant='outlined'
+                    value={formik.values.city}
+                    onChange={formik.handleChange}
+                    error={formik.touched.city && Boolean(formik.errors.city)}
+                    helperText={formik.touched.city && formik.errors.city}
                   />
                 </Grid>
                 <Grid item md={6} xs={12}>
@@ -135,10 +189,12 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
                     fullWidth
                     label='Street'
                     name='street'
-                    onChange={handleChange}
                     required
-                    value={values.street || ''}
                     variant='outlined'
+                    value={formik.values.street}
+                    onChange={formik.handleChange}
+                    error={formik.touched.street && Boolean(formik.errors.street)}
+                    helperText={formik.touched.street && formik.errors.street}
                   />
                 </Grid>
                 <Grid item md={6} xs={12}>
@@ -146,10 +202,12 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
                     fullWidth
                     label='Postal Code'
                     name='postalCode'
-                    onChange={handleChange}
                     required
-                    value={values.postalCode || ''}
                     variant='outlined'
+                    value={formik.values.postal_code}
+                    onChange={formik.handleChange}
+                    error={formik.touched.postal_code && Boolean(formik.errors.postal_code)}
+                    helperText={formik.touched.postal_code && formik.errors.postal_code}
                   />
                 </Grid>
               </Grid>
@@ -163,7 +221,7 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
               }}
             >
               <Button color='primary' variant='contained' type='submit'>
-                Save details
+                Guardar Cambios
               </Button>
             </Box>
           </Card>
@@ -172,3 +230,4 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
     </>
   );
 };
+

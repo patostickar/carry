@@ -24,6 +24,7 @@ export const fetchUser = (email) => async (dispatch) => {
   try {
     await axios.get(`/customers/${email}`).then((res) => {
       dispatch(SetUser(res.data));
+      
     });
   } catch (error) {
     logError(error);
@@ -33,7 +34,7 @@ export const fetchUser = (email) => async (dispatch) => {
 export const putUser = (id, data) => async (dispatch) => {
   try {
     await axios.put(`/customers/${id}`, data).then((res) => {
-      dispatch(SetUser(res.data));
+      dispatch(SetUser(res.data.customer));
       Swal.fire('La informacion se ha actualizado correctamente!!')
     
     });
