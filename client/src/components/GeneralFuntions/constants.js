@@ -1,1 +1,1 @@
-export const DAY_MILISECONDS = 76400000;
+export const DAY_MILISECONDS = 86400000;
