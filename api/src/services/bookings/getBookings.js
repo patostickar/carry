@@ -13,5 +13,5 @@ module.exports.getBookings = async (id) => {
 };
 module.exports.getActiveBookings = async () => {
  
-    return await Booking.findAll({where:{status:"activo"},  include: [ Cartype]});
+    return await Booking.findAll({where:{status:"activo"},  include: [ Cartype,Customer]});
 };

@@ -30,7 +30,8 @@ router.post('/payment', (req,res, next)=>{
           excluded_payment_types:[
               {
                   id:'atm'
-              }
+              },
+             {id: "ticket"}
           ],
           installments:1
       },
