@@ -42,7 +42,6 @@ export default function Calendar() {
       </div>
       {openDate && (
         <DateRange
-        startDatePlaceholder={new Date(new Date().getTime()+86400000)}
           className={styles.headerSearchDate}
           editableDateInputs={false}
           onChange={(item) => {
