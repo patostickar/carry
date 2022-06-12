@@ -23,6 +23,6 @@ const Checkout = ({price, data ,id }) => {
   return <form className={styles.form} onSubmit={()=>{
       if(id==="Seguro"){dispatch(setBookingDetails({...booking,price,PremiumSecure:true}))}
     }} id={id}></form>;
-
+  }
 
 export default Checkout;
