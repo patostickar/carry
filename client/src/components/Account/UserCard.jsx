@@ -24,7 +24,7 @@ export const UserCard = ({ setRenderControl, renderControl }) => {
                   personalInfo: true,
                   review: false,
                   booking: false,
-                  useCard:false
+                  userCard:false
      })
     
   };

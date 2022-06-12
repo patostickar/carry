@@ -23,14 +23,15 @@ export const Booking = () => {
 
   const handleCancellBooking = (id) => {
     const data = Userbokings.bookings.filter((el) => el.id === id);
-    const putData = { ...data[0], status: 'inactive' };
+    const putData = { ...data[0], status: 'cancelada' };
     dispatch(putUserBookings(id, putData));
+    
     
   };
 
   useEffect(() => {
     dispatch(fetchUserBokings(User.id));
-  }, [Userbokings]);
+  }, [handleCancellBooking]);
   return (
     <>
       <Grid item xs={0.5}></Grid>
@@ -81,12 +82,18 @@ export const Booking = () => {
                   align='center'
                   style={{ color: '#1565C0', fontWeight: 'bolder' }}
                 >
+                  Seguro
+                </TableCell>
+                <TableCell
+                  align='center'
+                  style={{ color: '#1565C0', fontWeight: 'bolder' }}
+                >
                   Accion
                 </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {Userbokings.bookings?.length &&
+              {Userbokings.bookings?.length ?
                 Userbokings.bookings.map((row) => (
                   <TableRow key={row.id}>
                     {
@@ -109,8 +116,9 @@ export const Booking = () => {
                     <TableCell align='center'>{row.dropOffDate}</TableCell>
                     <TableCell align='center'>{row.reservationTotal}</TableCell>
                     <TableCell align='center'>{row.status}</TableCell>
+                    <TableCell align='center'>{row.PremiumSecure? "si":"no"}</TableCell>
                     <TableCell align='center'>
-                      {row.status === 'active' && (
+                      {row.status === 'activo' && (
                         <CancelIcon
                           color='primary'
                           cursor='pointer'
@@ -119,7 +127,7 @@ export const Booking = () => {
                       )}
                     </TableCell>
                   </TableRow>
-                ))}
+                )):""}
             </TableBody>
           </Table>
         </TableContainer>

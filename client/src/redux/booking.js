@@ -9,6 +9,7 @@ const initialState = {
     locationId: null,
     pickUpDate: null,
     dropOffDate: null,
+    PremiumSecure: false
   },
   Userbokings: [],
 };

@@ -65,7 +65,7 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
                   personalInfo: false,
                   review: false,
                   booking: false,
-                  useCard:true
+                  userCard: !renderControl.userCard
 
                 });
               }}
@@ -91,7 +91,7 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
                 setRenderControl({
                   personalInfo: false,
                   review: false,
-                  booking: true,
+                  booking:!renderControl.booking,
                   useCard: false
                 })
               }
@@ -116,7 +116,7 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
                 setRenderControl({
                   personalInfo: false,
                   security: false,
-                  review: true,
+                  review:!renderControl.review,
                   useCard: false
                 })
               }

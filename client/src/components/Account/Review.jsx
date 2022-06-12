@@ -101,13 +101,13 @@ export default function Review() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {reviews?.data?.length &&
+              {reviews?.data?.length ?
                 reviews?.data.map((row) => (
                   <TableRow key={row.id}>
                     <TableCell align='center'>{row.id}</TableCell>
                     <TableCell align='center'>{row.review}</TableCell>
                   </TableRow>
-                ))}
+                )):""}
             </TableBody>
           </Table>
         </TableContainer>

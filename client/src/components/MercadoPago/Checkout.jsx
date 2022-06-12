@@ -1,6 +1,12 @@
 import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setBookingDetails } from '../../redux/booking';
 
-const Checkout = ({ data ,id }) => {
+const Checkout = ({price, data ,id }) => {
+  const { booking } = useSelector((state) => state.booking);
+
+  const dispatch = useDispatch()
+
   useEffect(() => {
     const script = document.createElement('script');
     const attrDataPreference = document.createAttribute('data-preference-id');
@@ -12,8 +18,9 @@ const Checkout = ({ data ,id }) => {
 
     document.getElementById(id).appendChild(script);
   }, [data]);
-
-  return <form id={id}></form>;
+  return <form onSubmit={()=>{
+      if(id==="Seguro"){dispatch(setBookingDetails({...booking,price,PremiumSecure:true}))}
+    }} id={id}></form>;
 
  
 };

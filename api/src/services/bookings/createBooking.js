@@ -5,7 +5,7 @@ const { sendMAil } = require('../../services/mailer');
 
 
 module.exports.createBooking = async (data) => {
-  const { carTypeId, customerId, locationId, pickUpDate, dropOffDate } = data;
+  const { carTypeId, customerId, locationId, pickUpDate, dropOffDate,PremiumSecure } = data;
 
   const availableCars = await getAvailableCars(
     locationId,
@@ -24,12 +24,20 @@ module.exports.createBooking = async (data) => {
   const { email } = await Customer.findByPk(customerId);
   const dateRange =
     (new Date(dropOffDate) - new Date(pickUpDate)) / DAY_MILISECONDS;
-  const reservationTotal = price * dateRange;
+    let reservationTotal
+    if(PremiumSecure){
+       reservationTotal = ((price * dateRange)/100)*130;
+
+    }else{
+       reservationTotal = price * dateRange;
+
+    } 
 
   const booking = await Booking.create({
     pickUpDate,
     dropOffDate,
     reservationTotal,
+    PremiumSecure
   });
 
   booking.setCustomer(customerId);
