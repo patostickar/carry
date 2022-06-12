@@ -1,7 +1,7 @@
 const { validationResult } = require('express-validator');
 const { Booking } = require('../db');
 const { createBooking } = require('../services/bookings/createBooking');
-const { getBookings } = require('../services/bookings/getBookings');
+const { getBookings, getActiveBookings } = require('../services/bookings/getBookings');
 const { searchBooking } = require('../services/bookings/getCustomerBookings');
 
 const getAllBookings = async (req, res, next) => {
@@ -65,9 +65,13 @@ const editBooking = async (req, res, next) => {
     next(error);
   }
 };
+const GETActiveBooks = async (req, res, next) => {
+  res.send(await getActiveBookings())
+};
 
 module.exports = {
   getAllBookings,
+  GETActiveBooks,
   dbCreateBooking,
   getCustomerBookings,
   editBooking,

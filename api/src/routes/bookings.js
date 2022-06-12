@@ -7,10 +7,12 @@ const {
   getAllBookings,
   getCustomerBookings,
   editBooking,
+  GETActiveBooks,
 } = require('../controllers/bookings');
 
 
 router.get('/', getAllBookings);
+router.get('/Active', GETActiveBooks);
 router.get('/customer/:id', getCustomerBookings);
 router.get('/:id', getAllBookings);
 

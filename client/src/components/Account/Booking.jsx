@@ -22,7 +22,7 @@ export const Booking = () => {
   const dispatch = useDispatch();
 
   const handleCancellBooking = (id) => {
-    const data = Userbokings.bookings.filter((el) => el.id === id);
+    const data = Userbokings.bookings.map((el) => el.id === id);
     const putData = { ...data[0], status: 'cancelada' };
     dispatch(putUserBookings(id, putData));
     
@@ -31,7 +31,7 @@ export const Booking = () => {
 
   useEffect(() => {
     dispatch(fetchUserBokings(User.id));
-  }, [handleCancellBooking]);
+  }, [Userbokings]);
   return (
     <>
       <Grid item xs={0.5}></Grid>
