@@ -1,85 +1,76 @@
 
-import {React,  } from "react";
+import { React, } from "react";
 import { styled } from '@mui/material/styles';
-import { Outlet, Routes, Route } from 'react-router-dom';
- import DashboardApp from "./AdminPages/Dashboard";
+
+import DashboardApp from "./AdminPages/Dashboard";
 import DashboardSidebar from "./AdminPages/AdminComponents/sections/layouts/DashboardSidebar";
- import DashboardNavBar from "./AdminPages/AdminComponents/sections/layouts/DashboardNavBar"
- 
- import CarCreate from "./CreateForms/CarTypeCreate";
-
-
-
- // import AdminPanelSideBar from "./AdminPanelSidebar";
-
 
  
+ // import CarCreate from "./CreateForms/CarTypeCreate";
+
+
+// import CarCreate from "./CreateForms/CarTypeCreate";
+
+
+
+// import AdminPanelSideBar from "./AdminPanelSidebar";
+
+
+
 const APP_BAR_MOBILE = 64;
-const APP_BAR_DESKTOP = 0;
+const APP_BAR_DESKTOP = 115;
 
 const RootStyle = styled('div')({
-    display: 'flex',
-    minHeight: '100%',
-    overflow: 'hidden',
-   
-    
-  });
+  display: 'flex',
+  minHeight: '100%',
+  overflow: 'hidden',
 
-  
 
-  const MainStyle = styled('div')(({ theme }) => ({
-    flexGrow: 1,
-    overflow: 'auto',
-    minHeight: '100%',
-    paddingTop: APP_BAR_MOBILE + 24,
-    paddingBottom: theme.spacing(10),
-    [theme.breakpoints.up('lg')]: {
-      paddingTop: APP_BAR_DESKTOP,
-      paddingLeft: theme.spacing(2),
-      paddingRight: theme.spacing(2)
-    }
-  }));
-  
-  
+});
+
+
+
+const MainStyle = styled('div')(({ theme }) => ({
+  flexGrow: 1,
+  overflow: 'auto',
+  minHeight: '100%',
+  paddingTop: APP_BAR_MOBILE + 24,
+  paddingBottom: theme.spacing(10),
+  [theme.breakpoints.up('lg')]: {
+    paddingTop: APP_BAR_DESKTOP,
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2)
+  }
+}));
 
 
 
 
-export default function AdminCard(){
-
-   
-      
 
 
+export default function AdminCard() {
 
-    return(
-        
 
-            <>
-            <RootStyle>
 
-            
-            <DashboardSidebar />
-            <DashboardNavBar />
-            
-            
-            
 
-         
 
-            <MainStyle>
-         
-            <DashboardApp />
-            <Outlet />
-            </MainStyle>
 
-            </RootStyle>
-            </>
-            
-        
-        
+  return (
 
-        
-      
-    )
+
+    <>
+      <RootStyle>
+
+        <DashboardSidebar />
+
+        <MainStyle>
+
+          <DashboardApp />
+
+        </MainStyle>
+
+      </RootStyle>
+    </>
+
+  )
 }

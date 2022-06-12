@@ -9,12 +9,14 @@ import styles from './styles/About.module.css';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TabTitle from '../components/GeneralFuntions/TabTitle';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 function About() {
   TabTitle('Nosotros - Carry');
 
   return (
-    <div>
+    <><Navbar /><div>
       <h1 className={styles.team}>#TeamCarry</h1>
 
       <div className={styles.main}>
@@ -175,6 +177,7 @@ function About() {
         </div>
       </div>
     </div>
+    <Footer/></>
   );
 }
 

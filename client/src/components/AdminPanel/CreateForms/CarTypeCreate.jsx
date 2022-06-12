@@ -5,6 +5,44 @@ import axios from 'axios';
 import logError from '../../GeneralFuntions/logError';
 import styles from './styles/Formulario.module.css';
 import Error from './Error';
+import { styled } from '@mui/material/styles';
+import DashboardSideBar from "../AdminPages/AdminComponents/sections/layouts/DashboardSidebar"
+import DashboardNavBar from "../AdminPages/AdminComponents/sections/layouts/DashboardNavBar"
+
+
+
+const APP_BAR_MOBILE = 64;
+const APP_BAR_DESKTOP = 75;
+
+const RootStyle = styled('div')({
+    display: 'flex',
+    minHeight: '100%',
+    overflow: 'hidden',
+   
+    
+  });
+
+  
+
+  const MainStyle = styled('div')(({ theme }) => ({
+    flexGrow: 1,
+    overflow: 'auto',
+    minHeight: '100%',
+    marginLeft: "25%",
+    paddingTop: APP_BAR_MOBILE + 24,
+    paddingBottom: theme.spacing(10),
+    [theme.breakpoints.up('lg')]: {
+      paddingTop: APP_BAR_DESKTOP,
+      paddingLeft: theme.spacing(2),
+      paddingRight: theme.spacing(2)
+    }
+  }));
+  
+  
+
+
+
+
 export default function CarCreate() {
   async function postCar(values) {
     try {
@@ -17,19 +55,19 @@ export default function CarCreate() {
   const newCarTypeSchema = Yup.object().shape({
     // Validar Formulario
     make: Yup.string()
-      .matches(/^[A-Z]+$/i, 'El campo solo debe contener letras')
+      .matches(/^[A-Z _]+$/i, 'El campo solo debe contener letras')
       .min(3, 'El nombre de la  marca es muy corto')
       .max(20, 'El nombre de la marca es muy larga')
       .required('La marca es requerida'),
 
     model: Yup.string()
-      .matches(/^[A-Z]+$/i, 'El campo solo debe contener letras')
+      .matches(/^[A-Z _]+$/i, 'El campo solo debe contener letras')
       .min(3, 'El modelo es muy corto')
       .max(20, 'El modelo es muy largo')
       .required('El modelo es requerido'),
 
     className: Yup.string()
-      .matches(/^[A-Z]+$/i, 'El campo solo debe contener letras')
+      .matches(/^[A-Z _]+$/i, 'El campo solo debe contener letras')
       .min(3, 'La clase es muy corta')
       .max(20, 'La clase es muy largo')
       .required('La clase es requerida'),
@@ -64,12 +102,12 @@ export default function CarCreate() {
       .typeError('El Campo no es válido'),
 
     largeSuitcase: Yup.number()
-      .positive('Numero no válido')
+      // .positive('Numero no válido')
       .typeError('El Campo no es válido')
       .required('El campo es obligatorio'),
 
     smallSuitcase: Yup.number()
-      .positive('Numero no válido')
+      // .positive('Numero no válido')
       .typeError('El Campo no es válido')
       .required('El campo es obligatorio'),
 
@@ -90,8 +128,18 @@ export default function CarCreate() {
   const transmicion = ['Seleccione un valor', 'Manual', 'Automatico'];
 
   return (
+
+
+    // <RootStyle>
+   
+    // <MainStyle>
+    <div className={styles.body}>
     <div className={styles.container}>
+      <DashboardSideBar />
+
+       <h1>Crea tu Auto</h1>
       <Formik
+
         initialValues={{
           make: '',
           model: '',
@@ -114,8 +162,12 @@ export default function CarCreate() {
         validationSchema={newCarTypeSchema}
       >
         {({ values, errors, touched, handleSubmit, handleChange }) => (
-          <Form onSubmit={handleSubmit}>
-            <div className={styles.content}>
+          <Form onSubmit={handleSubmit}
+            className={styles.form}
+          >
+        
+              
+            <div className={styles.input_box}>
               <label htmlFor='make' className={styles.label}>
                 Marca
               </label>
@@ -133,7 +185,7 @@ export default function CarCreate() {
               ) : null}
             </div>
 
-            <div className={styles.content}>
+            <div className={styles.input_box}>
               <label htmlFor='model' className={styles.label}>
                 Modelo
               </label>
@@ -150,7 +202,7 @@ export default function CarCreate() {
                 <Error>{errors.model}</Error>
               ) : null}
             </div>
-            <div className={styles.content}>
+            <div className={styles.input_box}>
               <label htmlFor='className' className={styles.label}>
                 Clase
               </label>
@@ -167,7 +219,7 @@ export default function CarCreate() {
               ) : null}
             </div>
 
-            <div className={styles.content}>
+            <div className={styles.input_box}>
               <label htmlFor='transmission' className={styles.label}>
                 Transmision
               </label>
@@ -191,7 +243,7 @@ export default function CarCreate() {
               ) : null}
             </div>
 
-            <div className={styles.content}>
+            <div className={styles.input_box}>
               <label htmlFor='mpg' className={styles.label}>
                 Millas por galon
               </label>
@@ -208,7 +260,7 @@ export default function CarCreate() {
               {touched.mpg && errors.mpg ? <Error>{errors.mpg}</Error> : null}
             </div>
 
-            <div className={styles.content}>
+            <div className={styles.input_box}>
               <label htmlFor='img' className={styles.label}>
                 Imagen
               </label>
@@ -225,7 +277,7 @@ export default function CarCreate() {
               {touched.img && errors.img ? <Error>{errors.img}</Error> : null}
             </div>
 
-            <div className={styles.content}>
+            <div className={styles.input_box}>
               <label htmlFor='doors' className={styles.label}>
                 Cantidad de puertas
               </label>
@@ -248,7 +300,7 @@ export default function CarCreate() {
               ) : null}
             </div>
 
-            <div className={styles.content}>
+            <div className={styles.input_box}>
               <label htmlFor='seats' className={styles.label}>
                 Asientos
               </label>
@@ -271,7 +323,7 @@ export default function CarCreate() {
               ) : null}
             </div>
 
-            <div className={styles.content}>
+            <div className={styles.input_box}>
               <label htmlFor='airConditioning' className={styles.label}>
                 Aire acondicionado
               </label>
@@ -294,9 +346,9 @@ export default function CarCreate() {
               ) : null}
             </div>
 
-            <div className={styles.content}>
+            <div className={styles.input_box}>
               <label htmlFor='largeSuitcase' className={styles.label}>
-                Baul grande
+                 Cantidad maletas grandes
               </label>
 
               <Field
@@ -306,6 +358,8 @@ export default function CarCreate() {
                 className={styles.field}
                 value={values.largeSuitcase}
               >
+                <option value="">Seleccione</option>
+
                 {baul.map((d) => (
                   <option value={d} id={values.d} key={d}>
                     {`${d}`}
@@ -317,9 +371,9 @@ export default function CarCreate() {
               ) : null}
             </div>
 
-            <div className={styles.content}>
+            <div className={styles.input_box}>
               <label htmlFor='smallSuitcase' className={styles.label}>
-                Baul chico
+                Cantidad de maletas chicas
               </label>
 
               <Field
@@ -329,6 +383,7 @@ export default function CarCreate() {
                 className={styles.field}
                 value={values.smallSuitcase}
               >
+                <option value="">Seleccione</option>
                 {baul.map((d) => (
                   <option
                     value={d}
@@ -345,7 +400,7 @@ export default function CarCreate() {
               ) : null}
             </div>
 
-            <div className={styles.content}>
+            <div className={styles.input_box}>
               <label htmlFor='price' className={styles.label}>
                 Precio
               </label>
@@ -362,10 +417,22 @@ export default function CarCreate() {
                 <Error>{errors.price}</Error>
               ) : null}
             </div>
-            <button type='Submit'>Crear</button>
+          
+    
+            <button className={styles.btn} type='Submit'>Crear</button>
+       
           </Form>
+               
         )}
       </Formik>
+
     </div>
+    </div> 
+
+    // </MainStyle>
+    // </RootStyle>
+
+    
+
   );
 }

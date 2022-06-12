@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Checkout from './Checkout';
 
-const Payment = ({ price }) => {
+const Payment = ({ price , id }) => {
   const { booking } = useSelector((state) => state.booking);
   const [datos, setDatos] = useState('');
 
@@ -21,7 +21,7 @@ const Payment = ({ price }) => {
   }, []);
 
   return (
-    <>{!datos ? <p>Aguarde un momento...</p> : <Checkout data={datos} />}</>
+    <>{!datos ? <p>Aguarde un momento...</p> : <Checkout data={datos} id={id} />}</>
   );
 };
 

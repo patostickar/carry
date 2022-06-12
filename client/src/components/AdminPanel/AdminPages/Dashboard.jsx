@@ -3,8 +3,6 @@ import { fetchAllCarTypes } from "../../../redux/carsResults";
 import { fetchAllLocations } from "../../../redux/searchBar";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import CarCreate from "../CreateForms/CarCreate"
-import { Routes, Route } from "react-router-dom";
 
 
 import { faker } from '@faker-js/faker';
@@ -32,10 +30,7 @@ import {
 
 export default function DashboardApp() {
 
-  const [renderControl, setRenderControl] = useState({
-    carCreate: true,
   
-  });
 
 
 
@@ -81,7 +76,7 @@ const dispatch = useDispatch()
         
     }
 
-    console.log(quantityCustomers)
+    
     
 
 
@@ -119,39 +114,29 @@ const dispatch = useDispatch()
       
 
   const theme = useTheme();
-  console.log(theme.palette)
+  
 
   return (
     <div title="Dashboard">
+  
       <Container maxWidth="xl">
         <Typography variant="h4" sx={{ mb: 5 }}>
           Bienvenido al panel de administracion
         </Typography>
 
-        <Routes>
-            <Route
-          path='/carcreate'
-          element={<CarCreate  />}
-        />
-        </Routes>
-
+   
        
-        {renderControl.carCreate && (
-          <CarCreate
-            setRenderControl={setRenderControl}
-            renderControl={renderControl}
-          />
-        )}
+     
 
         <Grid container spacing={3}>
            <><><Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Vehiculos en stock" total={totalStockCars} icon={'ant-design:android-filled'} />
+            <AppWidgetSummary title="Vehiculos en stock" total={totalStockCars} icon={'clarity:car-line'} />
           </Grid><Grid item xs={12} sm={6} md={3}>
-              <AppWidgetSummary title="Usuarios registrados" total={totalCustomers} color="info" icon={'ant-design:apple-filled'} />
+              <AppWidgetSummary title="Usuarios registrados" total={totalCustomers} color="info" icon={'clarity:users-solid'} />
             </Grid><Grid item xs={12} sm={6} md={3}>
-              <AppWidgetSummary title="Agencias disponibles" total={locationAviable} color="warning" icon={'ant-design:windows-filled'} />
+              <AppWidgetSummary title="Agencias disponibles" total={locationAviable} color="warning" icon={'material-symbols:car-rental'} />
             </Grid><Grid item xs={12} sm={6} md={3}>
-              <AppWidgetSummary title="Modelos de vehiculos disponibles" total={cars} color="error" icon={'ant-design:bug-filled'} />
+              <AppWidgetSummary title="Modelos de vehiculos disponibles" total={cars} color="error" icon={'clarity:car-solid'} />
             </Grid></><Grid item xs={12} md={6} lg={8}>
               <AppWebsiteVisits
                 title="Visitas a la pagina"

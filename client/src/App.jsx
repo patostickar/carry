@@ -10,18 +10,18 @@ import axios from 'axios';
 import logError from './components/GeneralFuntions/logError';
 import About from './pages/About';
 import Account from './pages/Account';
-import AdminPanel from './pages/AdminPanel';
+import AdminCard from './components/AdminPanel/AdminPanelCard';
+import CarCreate from './components/AdminPanel/CreateForms/CarCreate';
 import CarTypeCreate from './components/AdminPanel/CreateForms/CarTypeCreate';
-import Footer from './components/Footer';
 import Home from './pages/Home';
 import LocationCreate from './components/AdminPanel/CreateForms/LocationCreate';
-import Navbar from './components/Navbar';
 import NotAllowed from './pages/NotAllowed';
 import NotFound from './pages/NotFound';
 import Reservation from './pages/Reservation';
 import Response from './pages/MPrespose';
 import SearchResults from './pages/SearchResults';
 import TermsAndConditions from './pages/TermsAndConditions/';
+import User from './components/AdminPanel/AdminPages/AdminComponents/sections/User';
 
 function App() {
   const dispatch = useDispatch();
@@ -52,19 +52,10 @@ function App() {
     <>
       <Routes>
         <Route
+          exact
           path='/adminPanel'
-          element={<ProtectedRoute component={AdminPanel} />}
+          element={<ProtectedRoute component={AdminCard} role='admin' />}
         />
-      </Routes>
-
-      <Navbar />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/about' element={<About />} />
-        {/* <Route
-          path='/carcreate'
-          element={<ProtectedRoute component={CarCreate} role='admin' />}
-        /> componenete de adminPanel */}
         <Route
           path='/cartypecreate'
           element={<ProtectedRoute component={CarTypeCreate} role='admin' />}
@@ -75,12 +66,27 @@ function App() {
           element={<ProtectedRoute component={LocationCreate} role='admin' />}
         />{' '}
         {/* componenete de adminPanel */}
+        <Route path='/user' element={<User />} />
+        <Route
+          path='/carcreate'
+          element={<ProtectedRoute component={CarCreate} role='admin' />}
+        />
+      </Routes>
+
+      <Routes>
+        <Route path='/' element={<Home />} />
+
+        <Route path='/about' element={<About />} />
+
         <Route path='/notAllowed' element={<NotAllowed />} />
         <Route
           path='/profile'
           element={<ProtectedRoute component={Account} />}
         />
-        <Route path='/reservation' element={<Reservation />} />
+        <Route
+          path='/reservation'
+          element={<ProtectedRoute component={<Reservation />} />}
+        />
         <Route
           path='/Response'
           element={<ProtectedRoute component={Response} />}
@@ -93,7 +99,6 @@ function App() {
         /> */}
         <Route path='*' element={<NotFound />} />
       </Routes>
-      <Footer />
     </>
   );
 }
