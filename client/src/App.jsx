@@ -83,10 +83,7 @@ function App() {
           path='/profile'
           element={<ProtectedRoute component={Account} />}
         />
-        <Route
-          path='/reservation'
-          element={<ProtectedRoute component={<Reservation />} />}
-        />
+        <Route path='/reservation' element={<Reservation />} />
         <Route
           path='/Response'
           element={<ProtectedRoute component={Response} />}
