@@ -20,20 +20,17 @@ export const Booking = () => {
   const { Userbokings } = useSelector((state) => state.booking);
   const { id } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-
+  
   const handleCancellBooking = (id) => {
     const data = Userbokings.bookings.map((el) => el.id === id);
     const putData = { ...data[0], status: 'cancelada' };
     dispatch(putUserBookings(id, putData));
-
-    
-    
-
   };
-
+  
   useEffect(() => {
+    console.log(Userbokings.bookings);
     dispatch(fetchUserBokings(id));
-  }, []);
+  }, [Userbokings.bookings]);
   return (
     <>
       <Grid item xs={0.5}></Grid>
