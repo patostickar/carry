@@ -33,7 +33,7 @@ function App() {
       async function setCustomer() {
         try {
           const res = await axios.post('/customers', user);
-          sessionStorage.setItem('token', res.headers.authorization);
+          axios.defaults.headers.common.Authorization = `Bearer ${res.headers.authorization}`;
           dispatch(setUser(res.data.customerDetails));
         } catch (error) {
           console.log(error);
