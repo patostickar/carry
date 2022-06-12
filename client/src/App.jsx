@@ -34,6 +34,7 @@ function App() {
         try {
           const res = await axios.post('/customers', user);
           axios.defaults.headers.common.Authorization = `Bearer ${res.headers.authorization}`;
+          console.log(res.headers.authorization);
           dispatch(setUser(res.data.customerDetails));
         } catch (error) {
           console.log(error);

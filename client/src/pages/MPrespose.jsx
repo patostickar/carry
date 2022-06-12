@@ -34,11 +34,10 @@ const Response = () => {
       locationId: booking.locationId,
       pickUpDate: PickDate,
       dropOffDate: DropDate,
-      PremiumSecure:booking.PremiumSecure
+      PremiumSecure: booking.PremiumSecure,
     });
   };
 
-  // console.log(data);
   useEffect(() => {
     if (user) {
       (async () => {

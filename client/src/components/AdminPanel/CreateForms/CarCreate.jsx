@@ -72,7 +72,6 @@ export default function CarTypeCreate() {
               locationId: '',
             }}
             onSubmit={(values) => {
-              console.log(values);
               if (values.carTypeId !== '' && values.locationId !== '') {
                 postCarType(values);
                 Alerts('success', 'Vehiculo creado');
