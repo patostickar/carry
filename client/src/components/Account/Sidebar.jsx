@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Grid, Box, Typography } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
@@ -12,7 +11,6 @@ import { putUser } from '../../redux/user';
 export const Sidebar = ({ setRenderControl, renderControl }) => {
   const { id } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { logout } = useAuth0();
 
   const handleDeleteAccount = () => {
@@ -63,9 +61,7 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
                   review: false,
                   booking: false,
 
-                  userCard: !renderControl.userCard
-
-
+                  userCard: !renderControl.userCard,
                 });
               }}
               style={{ fontWeight: 'lighter', padding: '0px' }}
@@ -91,9 +87,8 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
                   personalInfo: false,
                   review: false,
 
-                  booking:!renderControl.booking,
-                  useCard: false
-
+                  booking: !renderControl.booking,
+                  useCard: false,
                 })
               }
               style={{ fontWeight: 'lighter', padding: '0px' }}
@@ -117,9 +112,8 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
                 setRenderControl({
                   personalInfo: false,
                   security: false,
-                  review:!renderControl.review,
-                  useCard: false
-
+                  review: !renderControl.review,
+                  useCard: false,
                 })
               }
               style={{ fontWeight: 'lighter', padding: '0px' }}
@@ -159,7 +153,9 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
           >
             <ExitToAppIcon color='primary' />
             <Typography
-              onClick={() => navigate('/')}
+              onClick={() => {
+                logout();
+              }}
               style={{ fontWeight: 'lighter', padding: '0px' }}
             >
               Salir
