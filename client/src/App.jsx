@@ -7,7 +7,6 @@ import { Routes, Route } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import { ProtectedRoute } from './protected-route';
 import axios from 'axios';
-import logError from './components/GeneralFuntions/logError';
 import About from './pages/About';
 import Account from './pages/Account';
 import AdminCard from './components/AdminPanel/AdminPanelCard';
@@ -34,9 +33,10 @@ function App() {
       async function setCustomer() {
         try {
           const res = await axios.post('/customers', user);
+          sessionStorage.setItem('token', res.headers.authorization);
           dispatch(setUser(res.data.customerDetails));
         } catch (error) {
-          logError(error);
+          console.log(error);
         }
       }
       setCustomer();
