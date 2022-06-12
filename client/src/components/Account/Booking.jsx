@@ -7,7 +7,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
-import {Typography} from '@mui/material';
+import { Typography } from '@mui/material';
 
 // import Typography from '@mui/material/Typography';
 import { useSelector, useDispatch } from 'react-redux';
@@ -18,15 +18,15 @@ import CancelIcon from '@mui/icons-material/Cancel';
 
 export const Booking = () => {
   const { Userbokings } = useSelector((state) => state.booking);
-  const { User } = useSelector((state) => state.user);
+  const { id } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-
+  
   const handleCancellBooking = (id) => {
-    const data = Userbokings.bookings.filter((el) => el.id === id);
-    const putData = { ...data[0], status: 'inactive' };
+    const data = Userbokings.bookings.map((el) => el.id === id);
+    const putData = { ...data[0], status: 'cancelada' };
     dispatch(putUserBookings(id, putData));
-    
   };
+
 
   if(Userbokings?.bookings?.length === 0) {
     return(
@@ -46,19 +46,17 @@ export const Booking = () => {
     )
   }
 
+
   useEffect(() => {
-    dispatch(fetchUserBokings(User.id));
-  }, [Userbokings]);
+    console.log(Userbokings.bookings);
+    dispatch(fetchUserBokings(id));
+  }, [Userbokings.bookings]);
   return (
     <>
       <Grid item xs={0.5}></Grid>
-     
-      <Grid
-        item
-        xs={8}
-        >
+
+      <Grid item xs={8}>
         <>
-        
         <Typography gutterBottom variant='h4'>
          Mis Reservas
          </Typography>        
@@ -100,19 +98,25 @@ export const Booking = () => {
                   align='center'
                   style={{ color: '#1565C0', fontWeight: 'bolder' }}
                 >
+                  Seguro
+                </TableCell>
+                <TableCell
+                  align='center'
+                  style={{ color: '#1565C0', fontWeight: 'bolder' }}
+                >
                   Accion
                 </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {Userbokings?.bookings?.length &&
+              {Userbokings?.bookings?.length ?
                 Userbokings.bookings.map((row) => (
                   <TableRow key={row.id}>
                     {
                       // <TableCell component="th" scope="row">{row.id}</TableCell>
                     }
                     <TableCell
-                      style={{ display: 'flex', 'align-items': 'center' }}
+                      style={{ display: 'flex', alignItems: 'center' }}
                       align='center'
                     >
                      <div style={{display:'flex', flexDirection:'column', justifyContent:'center', padding:'0px'}}>
@@ -128,8 +132,9 @@ export const Booking = () => {
                     <TableCell align='center'>{row.dropOffDate}</TableCell>
                     <TableCell align='center'>{row.reservationTotal}</TableCell>
                     <TableCell align='center'>{row.status}</TableCell>
+                    <TableCell align='center'>{row.PremiumSecure? "si":"no"}</TableCell>
                     <TableCell align='center'>
-                      {row.status === 'active' && (
+                      {row.status === 'activo' && (
                         <CancelIcon
                           color='primary'
                           cursor='pointer'
@@ -138,10 +143,11 @@ export const Booking = () => {
                       )}
                     </TableCell>
                   </TableRow>
-                ))}
+                )):""}
             </TableBody>
           </Table>
         </TableContainer>
+
         </>
       </Grid>
     </>

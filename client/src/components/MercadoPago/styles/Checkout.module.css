@@ -1,0 +1,11 @@
+.form > button {
+  /* content: " con seguro"; */
+  color: var(--white);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  background-color: #1976d2d1;
+}
+
+.form > button:hover {
+  background-color: #1976d2;
+}

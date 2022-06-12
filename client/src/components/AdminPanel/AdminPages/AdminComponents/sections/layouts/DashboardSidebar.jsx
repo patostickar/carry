@@ -4,12 +4,12 @@ import { Link as RouterLink, useLocation } from 'react-router-dom';
 // material
 import { useSelector } from 'react-redux';
 import { styled } from '@mui/material/styles';
-import { Box, Link,  Drawer, Typography,  Stack, Avatar } from '@mui/material';
+import { Box, Link, Drawer, Typography, Stack, Avatar } from '@mui/material';
 // mock
 // import account from '../../_mock/account';
 // hooks
 
-import logo from"../../../../../../assets/logo.png"
+import logo from '../../../../../../assets/logo.png';
 
 import useResponsive from '../../hooks/useResponsive';
 
@@ -21,9 +21,6 @@ import NavSection from '../../NavSection';
 //
 import navConfig from '../../../AdminComponents/NavConfig';
 
-
-
-
 // ----------------------------------------------------------------------
 
 const DRAWER_WIDTH = 280;
@@ -31,8 +28,7 @@ const DRAWER_WIDTH = 280;
 const RootStyle = styled('div')(({ theme }) => ({
   [theme.breakpoints.up('lg')]: {
     flexShrink: 0,
-    backgroundColor: "rgb(118, 145, 255)",
-    
+    backgroundColor: 'rgb(118, 145, 255)',
 
     width: DRAWER_WIDTH,
   },
@@ -58,39 +54,40 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
 
   const isDesktop = useResponsive('up', 'lg');
 
-  const User = useSelector((state) => state.user.User);
-
-
+  const { firstName, lastName, img } = useSelector((state) => state.user);
 
   useEffect(() => {
     if (isOpenSidebar) {
       onCloseSidebar();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
   const renderContent = (
     <Scrollbar
       sx={{
         height: 1,
-        '& .simplebar-content': { height: 1, display: 'flex', flexDirection: 'column', position: 'fixed' },
+        '& .simplebar-content': {
+          height: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          position: 'fixed',
+        },
       }}
     >
       <Box sx={{ px: 2.5, py: 3, display: 'inline-flex' }}>
-        {"Carry Admin Panel"}
+        {'Carry Admin Panel'}
       </Box>
 
       <Box sx={{ mb: 5, mx: 2.5 }}>
-        <Link underline="none" component={RouterLink} to="#">
+        <Link underline='none' component={RouterLink} to='#'>
           <AccountStyle>
-            <Avatar src={User?.img} alt="userPic" />
+            <Avatar src={img} alt='userPic' />
             <Box sx={{ ml: 2 }}>
-              <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
-                {User?.firstName }
+              <Typography variant='subtitle2' sx={{ color: 'text.primary' }}>
+                {firstName}
               </Typography>
-              <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                {User?.lastName}
-
+              <Typography variant='body2' sx={{ color: 'text.secondary' }}>
+                {lastName}
               </Typography>
             </Box>
           </AccountStyle>
@@ -102,16 +99,16 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
       <Box sx={{ flexGrow: 1 }} />
 
       <Box sx={{ px: 2.5, pb: 3, mt: 10 }}>
-        <Stack alignItems="center" spacing={3} sx={{ pt: 5, borderRadius: 2, position: 'relative' }}>
+        <Stack
+          alignItems='center'
+          spacing={3}
+          sx={{ pt: 5, borderRadius: 2, position: 'relative' }}
+        >
           <Box
-            component="img"
+            component='img'
             src={logo}
             sx={{ width: 100, position: 'absolute', top: -50 }}
           />
-
-         
-
-          
         </Stack>
       </Box>
     </Scrollbar>
@@ -134,7 +131,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
       {isDesktop && (
         <Drawer
           open
-          variant="persistent"
+          variant='persistent'
           PaperProps={{
             sx: {
               width: DRAWER_WIDTH,
