@@ -1,10 +1,10 @@
 const { Router } = require('express');
 const router = Router();
 const mercadopago = require('mercadopago');
+const { APP_USR } = process.env;
 
 mercadopago.configure({
-  access_token:
-    'APP_USR-6360352193747956-060714-aec6bef07e2d00e2e9432a2aec325687-1138471551',
+  access_token: APP_USR,
 });
 
 //  {"id":1138471551,"nickname":"TETE6664362","password":"qatest125","site_status":"active","email":"test_user_58160946@testuser.com"} vendedor
