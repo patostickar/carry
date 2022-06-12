@@ -61,9 +61,11 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
     id,
   } = useSelector((state) => state.user);
 
+
   // const handleSubmit = (e) => {
   //   setRenderControl({ ...renderControl, personalInfo: !renderControl.personalInfo })
   // };
+
 
   const formik = useFormik({
     initialValues: {
@@ -125,7 +127,6 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
                     variant='outlined'
                     value={formik.values.firstName}
                     onChange={formik.handleChange}
-
                     error={formik.touched.firstName && Boolean(formik.errors.firstName)}
                     helperText={formik.touched.firstName && formik.errors.firstName}
           
@@ -141,10 +142,8 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
                     variant='outlined'
                     value={formik.values.lastName}
                     onChange={formik.handleChange}
-
                     error={formik.touched.lastName && Boolean(formik.errors.lastName)}
                     helperText={formik.touched.lastName && formik.errors.lastName}
-
                   />
                 </Grid>
                 <Grid item md={6} xs={12}>
@@ -210,10 +209,8 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
                     variant='outlined'
                     value={formik.values.postalCode}
                     onChange={formik.handleChange}
-
                     error={formik.touched.postalCode && Boolean(formik.errors.postalCode)}
                     helperText={formik.touched.postalCode && formik.errors.postalCode}
-
                   />
                 </Grid>
               </Grid>

@@ -26,7 +26,27 @@ export const Booking = () => {
     const putData = { ...data[0], status: 'cancelada' };
     dispatch(putUserBookings(id, putData));
   };
-  
+
+
+  if(Userbokings?.bookings?.length === 0) {
+    return(
+      <>
+      <Grid item xs={0.5}></Grid>
+     
+      <Grid item xs={8} >
+        
+        <Typography gutterBottom variant='h4'>
+         Mis Reservas
+         </Typography>        
+      <Typography variant="h6" gutterBottom>
+        No tienes reservas
+        </Typography>
+        </Grid>
+        </>
+    )
+  }
+
+
   useEffect(() => {
     console.log(Userbokings.bookings);
     dispatch(fetchUserBokings(id));
@@ -37,7 +57,6 @@ export const Booking = () => {
 
       <Grid item xs={8}>
         <>
-
         <Typography gutterBottom variant='h4'>
          Mis Reservas
          </Typography>        
@@ -90,7 +109,7 @@ export const Booking = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {Userbokings.bookings?.length ?
+              {Userbokings?.bookings?.length ?
                 Userbokings.bookings.map((row) => (
                   <TableRow key={row.id}>
                     {
