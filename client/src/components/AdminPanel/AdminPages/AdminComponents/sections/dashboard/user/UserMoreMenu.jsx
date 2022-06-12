@@ -7,9 +7,11 @@ import Iconify from '../../../Iconify';
 
 // ----------------------------------------------------------------------
 
-export default function UserMoreMenu() {
+export default function UserMoreMenu({handleClickBan, handleClick}) {
   const ref = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
+
+ 
 
   return (
     <>
@@ -18,6 +20,7 @@ export default function UserMoreMenu() {
       </IconButton>
 
       <Menu
+        
         open={isOpen}
         anchorEl={ref.current}
         onClose={() => setIsOpen(false)}
@@ -31,7 +34,7 @@ export default function UserMoreMenu() {
           <ListItemIcon>
             <Iconify icon="eva:trash-2-outline" width={24} height={24} />
           </ListItemIcon>
-          <ListItemText primary="Delete" primaryTypographyProps={{ variant: 'body2' }} />
+          <ListItemText onChange={handleClick} onClick={handleClickBan} primary="Bannear usuario" primaryTypographyProps={{ variant: 'body2' }} />
         </MenuItem>
 
         <MenuItem component={RouterLink} to="#" sx={{ color: 'text.secondary' }}>

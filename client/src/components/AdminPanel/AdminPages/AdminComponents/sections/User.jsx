@@ -28,7 +28,7 @@ import SearchNotFound from '../SearchNotFound';
 import { UserListHead, UserListToolbar, UserMoreMenu } from '../sections/dashboard/user';
 // mock
 // import USERLIST from '../_mock/user';
-import DashboardNavbar from './layouts/DashboardNavBar';
+// import DashboardNavbar from './layouts/DashboardNavBar';
 import DashboardSidebar from './layouts/DashboardSidebar';
 
 
@@ -123,8 +123,8 @@ export default function User() {
     USERLIST = currentCustomers.data;
   }
   
-  console.log(currentCustomers.data)
-  console.log(USERLIST)
+  // console.log(currentCustomers.data)
+  // console.log(USERLIST)
 
 
 
@@ -165,18 +165,18 @@ export default function User() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = USERLIST.map((n) => n.name);
+      const newSelecteds = USERLIST.map((n) => n.id);
       setSelected(newSelecteds);
       return;
     }
     setSelected([]);
   };
 
-  const handleClick = (event, firstName) => {
-    const selectedIndex = selected.indexOf(firstName);
+  const handleClick = (event, id, isBanned) => {
+    const selectedIndex = selected.indexOf(id);
     let newSelected = [];
     if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, firstName);
+      newSelected = newSelected.concat(selected, id, isBanned);
     } else if (selectedIndex === 0) {
       newSelected = newSelected.concat(selected.slice(1));
     } else if (selectedIndex === selected.length - 1) {
@@ -185,7 +185,7 @@ export default function User() {
       newSelected = newSelected.concat(selected.slice(0, selectedIndex), selected.slice(selectedIndex + 1));
     }
     setSelected(newSelected);
-    console.log(newSelected)
+    // console.log(newSelected)
   };
 
   const handleChangePage = (event, newPage) => {
@@ -206,6 +206,47 @@ export default function User() {
   const filteredUsers = applySortFilter(USERLIST, getComparator(order, orderBy), filterName);
 
   const isUserNotFound = filteredUsers.length === 0;
+// ban de usuarios
+ 
+
+
+
+
+  console.log(selected)
+  function banUser(){
+
+    
+    // eslint-disable-next-line prefer-const
+    let id = selected[0]
+    // eslint-disable-next-line prefer-const
+    let isBanned = selected[1]
+    if (!isBanned){
+    const data ={
+      isBanned: true
+    }
+
+    console.log(id)
+
+    axios.put(`./customers/${id}`, data)
+
+
+  } else {
+
+    const dataBanned ={
+      isBanned: false
+    }
+
+    console.log(id)
+
+    axios.put(`./customers/${id}`, dataBanned)
+    
+  }
+
+
+  }
+
+
+
 
   return (
 
@@ -222,8 +263,8 @@ export default function User() {
           <Typography variant="h4" gutterBottom>
             Gestion de usuarios
           </Typography>
-          <Button variant="contained" component={RouterLink} to="#" startIcon={<Iconify icon="eva:plus-fill" />}>
-            New User
+          <Button variant="contained" onClick={banUser} component={RouterLink} to="#" startIcon={<Iconify icon="eva:plus-fill" />}>
+            {(selected[1] === true ? ("Quitar Ban"): ("Bannear") )}
           </Button>
         </Stack>
 
@@ -238,14 +279,14 @@ export default function User() {
                   orderBy={orderBy}
                   headLabel={TABLE_HEAD}
                   rowCount={USERLIST.length}
-                  numSelected={selected.length}
+                  numSelected={1}
                   onRequestSort={handleRequestSort}
-                  onSelectAllClick={handleSelectAllClick}
+                 // onSelectAllClick={handleSelectAllClick}
                 />
                 <TableBody>
                   {filteredUsers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-                    const { id, firstName, email, isBanned, lastName, avatarUrl, isAdmin } = row;
-                    const isItemSelected = selected.indexOf(firstName) !== -1;
+                    const { id, firstName, email, isBanned, lastName, img, isAdmin } = row;
+                    const isItemSelected = selected.indexOf(id) !== -1;
 
                     return (
                       <TableRow
@@ -253,15 +294,15 @@ export default function User() {
                         key={id}
                         tabIndex={-1}
                         role="checkbox"
-                        selected={isItemSelected}
+                        // selected={isItemSelected}
                         aria-checked={isItemSelected}
                       >
                         <TableCell padding="checkbox">
-                          <Checkbox checked={isItemSelected} onChange={(event) => handleClick(event, firstName)} />
+                          <Checkbox checked={isItemSelected} onChange={(event) => handleClick(event, id, isBanned)} />
                         </TableCell>
                         <TableCell component="th" scope="row" padding="none">
                           <Stack direction="row" alignItems="center" spacing={2}>
-                            <Avatar alt={name} src={avatarUrl} />
+                            <Avatar alt={firstName} src={img} />
                             <Typography variant="subtitle2" noWrap>
                               {firstName}
                             </Typography>
