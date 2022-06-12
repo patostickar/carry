@@ -93,7 +93,7 @@ export const Booking = () => {
                       // <TableCell component="th" scope="row">{row.id}</TableCell>
                     }
                     <TableCell
-                      style={{ display: 'flex', 'align-items': 'center' }}
+                      style={{ display: 'flex', alignItems: 'center' }}
                       align='center'
                     >
                      <div style={{display:'flex', flexDirection:'column', justifyContent:'center', padding:'0px'}}>

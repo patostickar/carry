@@ -15,6 +15,13 @@ import DashboardNavbar from "../AdminPages/AdminComponents/sections/layouts/Dash
 import { styled } from "@mui/material/styles";
 
 export default function CarTypeCreate() {
+
+
+
+
+
+
+
   async function postCarType(values) {
     try {
       await axios.post("/cars", values);

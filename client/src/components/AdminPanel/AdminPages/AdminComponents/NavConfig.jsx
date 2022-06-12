@@ -41,6 +41,13 @@ const navConfig = [
     icon: getIcon("eva:car-fill"),
   },
 
+  {
+    title: "Reservas de usuarios",
+    path: "/bookingsadmin",
+
+    icon: getIcon("eva:pie-chart-2-fill"),
+  },
+
   // {
   //   title: 'Not found',
   //   path: '/404',

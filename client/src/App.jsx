@@ -13,7 +13,7 @@ import Account from "./pages/Account";
 import AdminCard from "./components/AdminPanel/AdminPanelCard";
 
 
-
+import BookingsAdmin from "./components/AdminPanel/AdminPages/AdminComponents/sections/layouts/BookingsAdmin";
 import CarCreate from "./components/AdminPanel/CreateForms/CarCreate";
 import CarTypeCreate from "./components/AdminPanel/CreateForms/CarTypeCreate";
 import Footer from "./components/Footer";
@@ -71,6 +71,7 @@ function App() {
         />{" "}
         {/* componenete de adminPanel */}
         <Route path="/user" element={<User />} />
+        <Route path="/bookingsadmin" element={<BookingsAdmin />} />
 
         <Route
           path="/carcreate"
