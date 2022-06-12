@@ -28,6 +28,24 @@ export const Booking = () => {
     
   };
 
+  if(Userbokings?.bookings?.length === 0) {
+    return(
+      <>
+      <Grid item xs={0.5}></Grid>
+     
+      <Grid item xs={8} >
+        
+        <Typography gutterBottom variant='h4'>
+         Mis Reservas
+         </Typography>        
+      <Typography variant="h6" gutterBottom>
+        No tienes reservas
+        </Typography>
+        </Grid>
+        </>
+    )
+  }
+
   useEffect(() => {
     dispatch(fetchUserBokings(User.id));
   }, [Userbokings]);
@@ -40,6 +58,7 @@ export const Booking = () => {
         xs={8}
         >
         <>
+        
         <Typography gutterBottom variant='h4'>
          Mis Reservas
          </Typography>        
@@ -86,7 +105,7 @@ export const Booking = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {Userbokings.bookings?.length &&
+              {Userbokings?.bookings?.length &&
                 Userbokings.bookings.map((row) => (
                   <TableRow key={row.id}>
                     {
