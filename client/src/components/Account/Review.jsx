@@ -2,7 +2,6 @@ import { useSelector } from 'react-redux';
 import { Formik, Form } from 'formik';
 import Alerts from '../GeneralFuntions/Alerts';
 import axios from 'axios';
-import logError from '../GeneralFuntions/logError';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -25,7 +24,7 @@ export default function Review() {
     try {
       await axios.post(`/customers/reviews/${id}`, values);
     } catch (error) {
-      logError(error);
+      console.log(error);
     }
   }
   useEffect(() => {
