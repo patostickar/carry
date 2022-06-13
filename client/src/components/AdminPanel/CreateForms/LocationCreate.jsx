@@ -373,7 +373,7 @@ export default function LocationCreate() {
               </div>
 
               <button className={styles.btn} type='submit'>
-                Crea
+                Crear
               </button>
             </Form>
           )}
