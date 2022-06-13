@@ -4,32 +4,7 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import styles from './styles/Formulario.module.css';
 import Error from './Error';
-// import { styled } from '@mui/material/styles';
 import DashboardSideBar from '../AdminPages/AdminComponents/sections/layouts/DashboardSidebar';
-// import DashboardNavBar from '../AdminPages/AdminComponents/sections/layouts/DashboardNavBar';
-
-// const APP_BAR_MOBILE = 64;
-// const APP_BAR_DESKTOP = 75;
-
-// const RootStyle = styled('div')({
-//   display: 'flex',
-//   minHeight: '100%',
-//   overflow: 'hidden',
-// });
-
-// const MainStyle = styled('div')(({ theme }) => ({
-//   flexGrow: 1,
-//   overflow: 'auto',
-//   minHeight: '100%',
-//   marginLeft: '25%',
-//   paddingTop: APP_BAR_MOBILE + 24,
-//   paddingBottom: theme.spacing(10),
-//   [theme.breakpoints.up('lg')]: {
-//     paddingTop: APP_BAR_DESKTOP,
-//     paddingLeft: theme.spacing(2),
-//     paddingRight: theme.spacing(2),
-//   },
-// }));
 
 export default function CarCreate() {
   async function postCar(values) {
@@ -49,19 +24,17 @@ export default function CarCreate() {
     make: Yup.string()
       .matches(/^[A-Z _]+$/i, 'El campo solo debe contener letras')
       .min(3, 'El nombre de la  marca es muy corto')
-      .max(20, 'El nombre de la marca es muy larga')
+      .max(10, 'El nombre de la marca es muy larga')
       .required('La marca es requerida'),
 
     model: Yup.string()
       .matches(/^[A-Z _]+$/i, 'El campo solo debe contener letras')
       .min(3, 'El modelo es muy corto')
-      .max(20, 'El modelo es muy largo')
+      .max(10, 'El modelo es muy largo')
       .required('El modelo es requerido'),
 
     className: Yup.string()
-      .matches(/^[A-Z _]+$/i, 'El campo solo debe contener letras')
-      .min(3, 'La clase es muy corta')
-      .max(20, 'La clase es muy largo')
+      .max(10, 'Debe seleccionar una clase')
       .required('La clase es requerida'),
 
     transmission: Yup.string()
@@ -117,7 +90,22 @@ export default function CarCreate() {
     { key: 'Si', value: true },
     { key: 'No', value: false },
   ];
-  const transmicion = ['Seleccione un valor', 'Manual', 'Automatico'];
+
+  // function getUniquePropertyValues(array, prop) {
+  //   return [...new Set(array.map((element) => element[prop]))];
+  // }
+
+  const transmission = ['Seleccione un valor', 'Manual', 'Automatico'];
+  const className = [
+    'Seleccione un valor',
+    'Pequeño',
+    'Mediano',
+    'Grande',
+    'Premium',
+    'Convertible',
+    'Minivan',
+    'SUVs',
+  ];
 
   return (
     // <RootStyle>
@@ -138,7 +126,7 @@ export default function CarCreate() {
             img: '',
             doors: 0,
             seats: 0,
-            airConditioning: null,
+            airConditioning: '',
             largeSuitcase: 0,
             smallSuitcase: 0,
             price: 0,
@@ -187,27 +175,31 @@ export default function CarCreate() {
                   <Error>{errors.model}</Error>
                 ) : null}
               </div>
+
               <div className={styles.input_box}>
-                <label htmlFor='className' className={styles.label}>
-                  Clase
-                </label>
+                <label className={styles.label}>Clase</label>
+
                 <Field
-                  type='text'
-                  id='className'
+                  as='select'
                   name='className'
-                  placeholder='Small...'
-                  value={values.className}
+                  id='className'
                   className={styles.field}
-                />
+                  value={values.className}
+                >
+                  {className.map((c) => (
+                    <option value={c} id={values.c} key={c}>
+                      {`${c}`}
+                    </option>
+                  ))}
+                </Field>
+
                 {touched.className && errors.className ? (
                   <Error>{errors.className}</Error>
                 ) : null}
               </div>
 
               <div className={styles.input_box}>
-                <label htmlFor='transmission' className={styles.label}>
-                  Transmision
-                </label>
+                <label className={styles.label}>Transmision</label>
 
                 <Field
                   as='select'
@@ -216,7 +208,7 @@ export default function CarCreate() {
                   className={styles.field}
                   value={values.transmission}
                 >
-                  {transmicion.map((t) => (
+                  {transmission.map((t) => (
                     <option value={t} id={values.t} key={t}>
                       {`${t}`}
                     </option>
@@ -263,9 +255,7 @@ export default function CarCreate() {
               </div>
 
               <div className={styles.input_box}>
-                <label htmlFor='doors' className={styles.label}>
-                  Cantidad de puertas
-                </label>
+                <label className={styles.label}>Cantidad de puertas</label>
 
                 <Field
                   as='select'
@@ -286,9 +276,7 @@ export default function CarCreate() {
               </div>
 
               <div className={styles.input_box}>
-                <label htmlFor='seats' className={styles.label}>
-                  Asientos
-                </label>
+                <label className={styles.label}>Asientos</label>
 
                 <Field
                   as='select'
@@ -309,9 +297,7 @@ export default function CarCreate() {
               </div>
 
               <div className={styles.input_box}>
-                <label htmlFor='airConditioning' className={styles.label}>
-                  Aire acondicionado
-                </label>
+                <label className={styles.label}>Aire acondicionado</label>
 
                 <Field
                   as='select'
@@ -332,9 +318,7 @@ export default function CarCreate() {
               </div>
 
               <div className={styles.input_box}>
-                <label htmlFor='largeSuitcase' className={styles.label}>
-                  Cantidad maletas grandes
-                </label>
+                <label className={styles.label}>Cantidad maletas grandes</label>
 
                 <Field
                   as='select'
@@ -357,7 +341,7 @@ export default function CarCreate() {
               </div>
 
               <div className={styles.input_box}>
-                <label htmlFor='smallSuitcase' className={styles.label}>
+                <label className={styles.label}>
                   Cantidad de maletas chicas
                 </label>
 
