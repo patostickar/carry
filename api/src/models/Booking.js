@@ -26,6 +26,11 @@ module.exports = (sequelize) => {
         allowNull:false,
         defaultValue: false,
       },
+      paymentId:{
+        type: DataTypes.STRING,
+        allowNull:false,
+        unique: true,
+      },
       status: {
         type: DataTypes.STRING,
         defaultValue: 'activo',

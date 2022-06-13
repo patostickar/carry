@@ -18,7 +18,7 @@ const {MAIL_APP_PASS } = process.env;
     to: `${email}`, 
     subject: "Gracias Por confiar en Carry", 
     //  text: "Hello world?", // plain text body
-    html: "<h1> gracias por su compra </h1>", // html body
+    html: "gracias por elegirnos, puede revisar los detalles de su alquiler en su perfil, desde carry esperamos que disfrute de su viaje y esperamos volver a verlo", // html body
   })}
   module.exports={
     sendMAil

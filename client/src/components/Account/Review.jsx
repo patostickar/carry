@@ -16,6 +16,7 @@ import { useEffect, useState } from 'react';
 export default function Review() {
   const { id } = useSelector((state) => state.user);
   const [reviews, SetReviews] = useState();
+  console.log(reviews);
   const getReviews = async () => {
     SetReviews(
       await axios.get(`/customers/reviews/${id}`, {
@@ -99,7 +100,7 @@ export default function Review() {
                   align='center'
                   style={{ color: '#1565C0', fontWeight: 'bolder' }}
                 >
-                  Id
+                  Fecha
                 </TableCell>
                 <TableCell
                   align='center'
@@ -113,7 +114,7 @@ export default function Review() {
               {reviews?.data?.length
                 ? reviews?.data.map((row) => (
                     <TableRow key={row.id}>
-                      <TableCell align='center'>{row.id}</TableCell>
+                      <TableCell align='center'>{row.createdAt.split("T")[0]}</TableCell>
                       <TableCell align='center'>{row.review}</TableCell>
                     </TableRow>
                   ))

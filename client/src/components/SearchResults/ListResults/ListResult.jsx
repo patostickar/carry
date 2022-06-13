@@ -49,7 +49,7 @@ function ListResult({location}) {
       <SortByPrice />
       <AnimatePresence>
         {!carTypes.length ? (
-          <LinearIndeterminate />
+          <LinearIndeterminate cartypes={carTypes.length} />
         ) : (
           carTypes
             .filter((carType) =>

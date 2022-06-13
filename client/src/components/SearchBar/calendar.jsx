@@ -42,7 +42,6 @@ export default function Calendar() {
       </div>
       {openDate && (
         <DateRange
-          startDatePlaceholder={new Date()}
           className={styles.headerSearchDate}
           editableDateInputs={false}
           onChange={(item) => {
@@ -53,7 +52,7 @@ export default function Calendar() {
           }}
           moveRangeOnFirstSelection={false}
           ranges={date}
-          minDate={new Date()}
+          minDate={new Date(new Date().getTime()+86400000)}
         />
       )}
     </div>
