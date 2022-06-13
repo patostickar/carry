@@ -17,12 +17,22 @@ export default function Review() {
   const { id } = useSelector((state) => state.user);
   const [reviews, SetReviews] = useState();
   const getReviews = async () => {
-    SetReviews(await axios.get(`/customers/reviews/${id}`));
+    SetReviews(
+      await axios.get(`/customers/reviews/${id}`, {
+        headers: {
+          Authorization: localStorage.getItem('token'),
+        },
+      })
+    );
   };
 
   async function postreview(values) {
     try {
-      await axios.post(`/customers/reviews/${id}`, values);
+      await axios.post(`/customers/reviews/${id}`, values, {
+        headers: {
+          Authorization: localStorage.getItem('token'),
+        },
+      });
     } catch (error) {
       console.log(error);
     }

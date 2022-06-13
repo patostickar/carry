@@ -110,7 +110,11 @@ export default function User() {
   let USERLIST = [];
 
   const getUsers = async () => {
-    const customers = await axios.get('/customers');
+    const customers = await axios.get('/customers', {
+      headers: {
+        Authorization: localStorage.getItem('token'),
+      },
+    });
     setCurrentCustomers(customers);
   };
 
@@ -203,13 +207,21 @@ export default function User() {
           isBanned: true,
         };
 
-        axios.put(`./customers/${id}`, data);
+        axios.put(`./customers/${id}`, data, {
+          headers: {
+            Authorization: localStorage.getItem('token'),
+          },
+        });
       } else {
         const dataBanned = {
           isBanned: false,
         };
 
-        axios.put(`./customers/${id}`, dataBanned);
+        axios.put(`./customers/${id}`, dataBanned, {
+          headers: {
+            Authorization: localStorage.getItem('token'),
+          },
+        });
       }
     }
 

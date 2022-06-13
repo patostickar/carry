@@ -16,8 +16,8 @@ export default function Calendar() {
   const { pickupDate, dropoffDate } = useSelector((state) => state.searchBar);
   const [date, setDate] = useState([
     {
-      startDate:new Date(new Date().getTime()+86400000),
-      endDate: new Date(new Date().getTime()+86400000),
+      startDate: new Date(new Date().getTime() + 86400000),
+      endDate: new Date(new Date().getTime() + 86400000),
       key: 'selection',
     },
   ]);
@@ -42,7 +42,6 @@ export default function Calendar() {
       </div>
       {openDate && (
         <DateRange
-        startDatePlaceholder={new Date(new Date().getTime()+86400000)}
           className={styles.headerSearchDate}
           editableDateInputs={false}
           onChange={(item) => {
@@ -53,7 +52,7 @@ export default function Calendar() {
           }}
           moveRangeOnFirstSelection={false}
           ranges={date}
-          minDate={new Date(new Date().getTime()+86400000)}
+          minDate={new Date(new Date().getTime() + 86400000)}
         />
       )}
     </div>

@@ -30,10 +30,16 @@ export const user = createSlice({
 
 export const putUser = (id, data) => async (dispatch) => {
   try {
-    await axios.put(`/customers/${id}`, data).then((res) => {
-      dispatch(setUser(res.data.customer));
-      Swal.fire(res.data.msg);
-    });
+    await axios
+      .put(`/customers/${id}`, data, {
+        headers: {
+          Authorization: localStorage.getItem('token'),
+        },
+      })
+      .then((res) => {
+        dispatch(setUser(res.data.customer));
+        Swal.fire(res.data.msg);
+      });
   } catch (error) {
     Swal.fire('Error: ', error.response.data);
     console.log(error);

@@ -8,7 +8,7 @@ const initialState = {
     locationId: null,
     pickUpDate: null,
     dropOffDate: null,
-    PremiumSecure: false
+    PremiumSecure: false,
   },
   Userbokings: [],
 };
@@ -36,7 +36,11 @@ export const booking = createSlice({
 });
 export const fetchUserBokings = (id) => async (dispatch) => {
   try {
-    const res = await axios.get(`/bookings/customer/${id}`);
+    const res = await axios.get(`/bookings/customer/${id}`, {
+      headers: {
+        Authorization: localStorage.getItem('token'),
+      },
+    });
     dispatch(setUserBookings(res.data));
     // .then((res) => dispatch(setCarTypes(res.data)));
   } catch (error) {
@@ -46,7 +50,11 @@ export const fetchUserBokings = (id) => async (dispatch) => {
 
 export const putUserBookings = (id, data) => async (dispatch) => {
   try {
-    const res = await axios.put(`/bookings/${id}`, data);
+    await axios.put(`/bookings/${id}`, data, {
+      headers: {
+        Authorization: localStorage.getItem('token'),
+      },
+    });
     //  dispatch(fetchUserBokings(id));
 
     // dispatch(setBookingDetails(res.data));

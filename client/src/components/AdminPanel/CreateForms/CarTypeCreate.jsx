@@ -34,7 +34,11 @@ import DashboardSideBar from '../AdminPages/AdminComponents/sections/layouts/Das
 export default function CarCreate() {
   async function postCar(values) {
     try {
-      await axios.post('/cartypes', values);
+      await axios.post('/cartypes', values, {
+        headers: {
+          Authorization: localStorage.getItem('token'),
+        },
+      });
     } catch (error) {
       console.log(error);
     }

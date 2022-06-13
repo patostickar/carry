@@ -35,7 +35,11 @@ import DashboardSidebar from '../AdminPages/AdminComponents/sections/layouts/Das
 export default function LocationCreate() {
   async function postLocation(values) {
     try {
-      await axios.post('/locations', values);
+      await axios.post('/locations', values, {
+        headers: {
+          Authorization: localStorage.getItem('token'),
+        },
+      });
     } catch (error) {
       console.log(error);
     }

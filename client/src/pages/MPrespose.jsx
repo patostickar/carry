@@ -21,7 +21,11 @@ const Response = () => {
 
   async function CreateBooking(data) {
     try {
-      await axios.post('/bookings', data);
+      await axios.post('/bookings', data, {
+        headers: {
+          Authorization: localStorage.getItem('token'),
+        },
+      });
     } catch (error) {
       console.log(error);
     }
