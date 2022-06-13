@@ -156,7 +156,8 @@ export default function CarTypeCreate() {
                   </Field>
                 </div>
 
-                <button type='Submit'>Crear</button>
+                <button  className={styles.btn} type='Submit'>Crear</button>
+
               </Form>
             )}
           </Formik>

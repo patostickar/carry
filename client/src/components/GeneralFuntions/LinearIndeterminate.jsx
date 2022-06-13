@@ -7,7 +7,7 @@ export default function LinearIndeterminate({cartypes}) {
       {cartypes !== 0 ? (<>
       <LinearProgress />
       <h1>Buscando los mejores autos para vos... 🚘</h1></>):
-      <div>no tenemos autos disponibles en esta hubicacion</div>}
+      <h1>no tenemos autos disponibles en esta hubicacion</h1>}
      
     </Box>
    
