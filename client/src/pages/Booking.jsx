@@ -19,7 +19,6 @@ import { useSelector } from "react-redux";
 import { DAY_MILISECONDS } from "../components/GeneralFuntions/constants";
 import LinearIndeterminate from "../components/GeneralFuntions/LinearIndeterminate";
 import CheckIcon from "@mui/icons-material/Check";
-// import axios from "axios";
 import Payment from "../components/MercadoPago/Payment";
 import { useAuth0 } from "@auth0/auth0-react";
 import Navbar from "../components/Navbar";
@@ -75,11 +74,11 @@ function Booking() {
   const steps = [
     {
       label: "Lugar de recogida",
-      description: `${location.street}, ${location.city} `,
+      description: `${location?.street}, ${location?.city} `,
     },
     {
       label: "Lugar de devolución",
-      description: `${location.street}, ${location.city}`,
+      description: `${location?.street}, ${location?.city}`,
     },
     // {
     //   label: "Disfrutar",
@@ -115,13 +114,12 @@ function Booking() {
   return (
     <div>
       <Navbar />
-
       <div className={styles.all}>
         <div className={styles.container}>
           <div className={styles.date}>
             <div className={styles.dateItem1}>
-              <span>{location.name}</span>
-              <h3>{booking.pickUpDate}</h3>
+              <span>{location?.name}</span>
+              <h3>{booking?.pickUpDate}</h3>
             </div>
 
             <div className={styles.step}>
@@ -129,8 +127,8 @@ function Booking() {
             </div>
 
             <div className={styles.dateItem2}>
-              <span>{location.name}</span>
-              <h3>{booking.dropOffDate}</h3>
+              <span>{location?.name}</span>
+              <h3>{booking?.dropOffDate}</h3>
             </div>
             <div className={styles.modificar}>
               <button onClick={onClick}>Modificar</button>
@@ -214,15 +212,15 @@ function Booking() {
             <div className={styles.conTenedor}>
               <div>
                 <h2>
-                  Este vehiculo cuesta tan solo ${booking.carPrice} ¡Una
+                  Este vehiculo cuesta tan solo ${booking?.carPrice} ¡Una
                   verdadera ganga!
                 </h2>
               </div>
               <div>
                 <h3>
-                  En esta epoca del año, un coche {booking.carClass} en{" "}
+                  En esta epoca del año, un coche {booking?.carClass} en{" "}
                   {location.city} suele costar ${" "}
-                  {(booking.carPrice / 100) * 150}
+                  {(booking?.carPrice / 100) * 150}
                 </h3>
               </div>
             </div>
@@ -234,7 +232,7 @@ function Booking() {
                 <div className={styles.carCard}>
                   <div className={styles.imageContainer}>
                     <img
-                      src={booking.carImg}
+                      src={booking?.carImg}
                       alt="img"
                       className={styles.siImg}
                     />
@@ -246,39 +244,43 @@ function Booking() {
                     </div>
                     <div className={styles.siTitle}>
                       <h3>
-                        {booking.carType}
-                        <span> o un coche {booking.carClass} similar</span>{" "}
+                        {booking?.carType}
+                        <span>
+                          {" "}
+                          o un coche {booking?.carClass} similar
+                        </span>{" "}
                       </h3>
                     </div>
                     <div className={styles.siCarDesc}>
                       <div>
                         <span className="">
-                          <PersonIcon /> {booking.carSeats} Asientos
+                          <PersonIcon /> {booking?.carSeats} Asientos
                         </span>
                       </div>
                       <div>
                         <span className="">
                           {" "}
-                          <LuggageIcon /> {booking.carLargeSuitcase} Maleta
+                          <LuggageIcon /> {booking?.carLargeSuitcase} Maleta
                           grande
                         </span>
                       </div>
                       <div>
                         <span className="">
                           {" "}
-                          <WorkIcon /> {booking.carSmallSuitcase} Maleta pequeña
+                          <WorkIcon /> {booking?.carSmallSuitcase} Maleta
+                          pequeña
                         </span>
                       </div>
                       <div>
                         <span className="">
-                          <SpeedIcon /> {booking.carMpg} km/l
+                          <SpeedIcon /> {booking?.carMpg} km/l
                         </span>
                       </div>
                     </div>
 
                     <div className={styles.siLocation}>
                       <span className={styles.siFeatures}>
-                        <BuildIcon /> {booking.carTransmission}
+                        <BuildIcon /> {booking?.carTransmission}
                       </span>
                     </div>
                   </div>
@@ -290,7 +292,7 @@ function Booking() {
                         {dateRange === 1 ? "día" : "días"}:{" "}
                       </span>
                       <span className={styles.siprice}>
-                        $ {booking.carPrice}
+                        $ {booking?.carPrice}
                       </span>
                       <span className={styles.siAmendments}>
                         Cancelación gratuita
@@ -344,7 +346,7 @@ function Booking() {
 
                 <div className={styles.cobertura}>
                   <h2>Precio</h2>
-                  <h4>$ {(booking.carPrice / 100) * 30}</h4>
+                  <h4>$ {(booking?.carPrice / 100) * 30}</h4>
                 </div>
               </div>
               <div className={styles.incluye1}>
@@ -394,7 +396,7 @@ function Booking() {
                 <h5>🚘 Auto</h5>
               </div>
               <div className={styles.tabla2}>
-                <h3>${booking.carPrice}</h3>
+                <h3>${booking?.carPrice}</h3>
               </div>
             </div>
             <div className={styles.tabla}>
@@ -402,7 +404,7 @@ function Booking() {
                 <h5>✅ Seguro</h5>
               </div>
               <div className={styles.tabla2}>
-                <h3>${(booking.carPrice / 100) * 30}</h3>
+                <h3>${(booking?.carPrice / 100) * 30}</h3>
               </div>
             </div>
             <div className={styles.tabla}>
@@ -412,7 +414,7 @@ function Booking() {
                 </h5>
               </div>
               <div className={styles.tabla2}>
-                <h3>${(booking.carPrice / 100) * 130}</h3>
+                <h3>${(booking?.carPrice / 100) * 130}</h3>
               </div>
             </div>
             <div className={styles.divButtons}>
@@ -423,7 +425,7 @@ function Booking() {
                     <h3>Con seguro</h3>
                     <Payment
                       id={"Seguro"}
-                      price={(booking.carPrice / 100) * 130}
+                      price={(booking?.carPrice / 100) * 130}
                     />
                   </div>
                 ) : !isBanned ? (
@@ -441,7 +443,7 @@ function Booking() {
                 {isAuthenticated && !isBanned ? (
                   <div>
                     <h3>Sin seguro</h3>
-                    <Payment id={"!seguro"} price={booking.carPrice} />
+                    <Payment id={"!seguro"} price={booking?.carPrice} />
                   </div>
                 ) : !isBanned ? (
                   <button
