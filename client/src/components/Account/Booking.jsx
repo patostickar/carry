@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -20,27 +20,45 @@ export const Booking = () => {
   const { Userbokings } = useSelector((state) => state.booking);
   const { id } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-
+  const [reload, setreload] = useState(false)
+  
   const handleCancellBooking = (id) => {
     const data = Userbokings.bookings.map((el) => el.id === id);
     const putData = { ...data[0], status: 'cancelada' };
     dispatch(putUserBookings(id, putData));
-
-    
-    
-
+    setreload(!reload)
   };
 
+
+  // if(Userbokings?.bookings?.length === 0) {
+  //   return(
+  //     <>
+  //     <Grid item xs={0.5}></Grid>
+     
+  //     <Grid item xs={8} >
+        
+  //       <Typography gutterBottom variant='h4'>
+  //        Mis Reservas
+  //        </Typography>        
+  //     <Typography variant="h6" gutterBottom>
+  //       No tienes reservas
+  //       </Typography>
+  //       </Grid>
+  //       </>
+  //   )
+  // }
+
+
   useEffect(() => {
+    console.log(Userbokings.bookings);
     dispatch(fetchUserBokings(id));
-  }, []);
+  }, [reload]);
   return (
     <>
       <Grid item xs={0.5}></Grid>
 
       <Grid item xs={8}>
         <>
-
         <Typography gutterBottom variant='h4'>
          Mis Reservas
          </Typography>        
@@ -93,14 +111,14 @@ export const Booking = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {Userbokings.bookings?.length ?
+              {Userbokings?.bookings?.length ?
                 Userbokings.bookings.map((row) => (
                   <TableRow key={row.id}>
                     {
                       // <TableCell component="th" scope="row">{row.id}</TableCell>
                     }
                     <TableCell
-                      style={{ display: 'flex', 'align-items': 'center' }}
+                      style={{ display: 'flex', alignItems: 'center' }}
                       align='center'
                     >
                      <div style={{display:'flex', flexDirection:'column', justifyContent:'center', padding:'0px'}}>
@@ -127,7 +145,7 @@ export const Booking = () => {
                       )}
                     </TableCell>
                   </TableRow>
-                )):""}
+                )):"No hay nda que mostrar"}
             </TableBody>
           </Table>
         </TableContainer>

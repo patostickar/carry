@@ -55,9 +55,6 @@ export const putUserBookings = (id, data) => async (dispatch) => {
         Authorization: localStorage.getItem('token'),
       },
     });
-    //  dispatch(fetchUserBokings(id));
-
-    // dispatch(setBookingDetails(res.data));
   } catch (error) {
     console.log(error);
   }

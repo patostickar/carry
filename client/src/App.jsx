@@ -1,3 +1,17 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchAllLocations } from './redux/searchBar';
@@ -21,6 +35,8 @@ import Response from './pages/MPrespose';
 import SearchResults from './pages/SearchResults';
 import TermsAndConditions from './pages/TermsAndConditions/';
 import User from './components/AdminPanel/AdminPages/AdminComponents/sections/User';
+import BookingsAdmin from "./components/AdminPanel/AdminPages/AdminComponents/sections/layouts/BookingsAdmin";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -66,7 +82,10 @@ function App() {
           element={<ProtectedRoute component={LocationCreate} role='admin' />}
         />{' '}
         {/* componenete de adminPanel */}
-        <Route path='/user' element={<User />} />
+
+        <Route path="/user" element={<User />} />
+        <Route path="/bookingsadmin" element={<BookingsAdmin />} />
+
         <Route
           path='/carcreate'
           element={<ProtectedRoute component={CarCreate} role='admin' />}

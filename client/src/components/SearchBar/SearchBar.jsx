@@ -29,6 +29,8 @@ function SearchBar() {
     }
     dispatch(fetchCarTypes(location.id, pickupDate, dropoffDate));
     navigate('/searchResult',{state:location});
+    console.log(pickupDate)
+    console.log(dropoffDate)
   };
 
   return (
