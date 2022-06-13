@@ -1,41 +1,19 @@
 import { Form, Formik, Field } from 'formik';
-
 import Alerts from '../../GeneralFuntions/Alerts';
 import axios from 'axios';
 import * as Yup from 'yup';
 import Error from './Error';
 import styles from './styles/Formulario.module.css';
-// import { styled } from '@mui/material/styles';
 import DashboardSidebar from '../AdminPages/AdminComponents/sections/layouts/DashboardSidebar';
-// import DashboardNavBar from '../AdminPages/AdminComponents/sections/layouts/DashboardNavBar';
-
-// const APP_BAR_MOBILE = 64;
-// const APP_BAR_DESKTOP = 75;
-
-// const RootStyle = styled('div')({
-//   display: 'flex',
-//   minHeight: '100%',
-//   overflow: 'hidden',
-// });
-
-// const MainStyle = styled('div')(({ theme }) => ({
-//   flexGrow: 1,
-//   overflow: 'auto',
-//   minHeight: '100%',
-//   marginLeft: '25%',
-//   paddingTop: APP_BAR_MOBILE + 24,
-//   paddingBottom: theme.spacing(10),
-//   [theme.breakpoints.up('lg')]: {
-//     paddingTop: APP_BAR_DESKTOP,
-//     paddingLeft: theme.spacing(2),
-//     paddingRight: theme.spacing(2),
-//   },
-// }));
 
 export default function LocationCreate() {
   async function postLocation(values) {
     try {
-      await axios.post('/locations', values);
+      await axios.post('/locations', values, {
+        headers: {
+          Authorization: localStorage.getItem('token'),
+        },
+      });
     } catch (error) {
       console.log(error);
     }
@@ -170,7 +148,7 @@ export default function LocationCreate() {
                   type='text'
                   id='name'
                   name='name'
-                  placeholder='nombre'
+                  placeholder='Agencia'
                   value={values.name}
                   className={styles.field}
                 />
@@ -187,7 +165,6 @@ export default function LocationCreate() {
                   type='text'
                   id='street'
                   name='street'
-                  placeholder='dirección'
                   value={values.street}
                   className={styles.field}
                 />
@@ -203,7 +180,6 @@ export default function LocationCreate() {
                   type='text'
                   id='city'
                   name='city'
-                  placeholder='cuidad'
                   value={values.city}
                   className={styles.field}
                 />
@@ -223,7 +199,7 @@ export default function LocationCreate() {
                   value={values.stateName}
                   className={styles.field}
                 >
-                  <option value=''>seleccione</option>
+                  <option value=''>Seleccione</option>
                   {provincias.map((t) => (
                     <option value={t} id={values.t} key={t}>
                       {`${t}`}
@@ -243,7 +219,7 @@ export default function LocationCreate() {
                   type='text'
                   id='lat'
                   name='lat'
-                  placeholder='latitud'
+                  placeholder='-##.####'
                   value={values.lat}
                   className={styles.field}
                 />
@@ -257,7 +233,7 @@ export default function LocationCreate() {
                   type='text'
                   id='lon'
                   name='lon'
-                  placeholder='longitud'
+                  placeholder='-##.####'
                   value={values.lon}
                   className={styles.field}
                 />
@@ -271,7 +247,7 @@ export default function LocationCreate() {
                   type='text'
                   id='postalCode'
                   name='postalCode'
-                  placeholder='código postal'
+                  placeholder='####'
                   value={values.postalCode}
                   className={styles.field}
                 />
@@ -288,7 +264,7 @@ export default function LocationCreate() {
                   type='text'
                   id='phone'
                   name='phone'
-                  placeholder='+5491155254522'
+                  placeholder='+54 111 2345 6789'
                   value={values.phone}
                   className={styles.field}
                 />
@@ -308,7 +284,7 @@ export default function LocationCreate() {
                   value={values.timeOpen}
                   className={styles.field}
                 >
-                  <option value=''>seleccione</option>
+                  <option value=''>Seleccione</option>
 
                   {horarios.map((d) => (
                     <option value={d} id={values.d} key={d}>
@@ -332,7 +308,7 @@ export default function LocationCreate() {
                   value={values.timeClose}
                   className={styles.field}
                 >
-                  <option value=''>seleccione</option>
+                  <option value=''>Seleccione</option>
 
                   {horarios.map((d) => (
                     <option value={d} id={values.d} key={d}>
@@ -348,7 +324,7 @@ export default function LocationCreate() {
               <div className={styles.input_box}>
                 <label htmlFor='airportLocation' className={styles.label}>
                   {' '}
-                  Es aeropuerto?
+                  Ubicada en aeropuerto?
                 </label>
                 <Field
                   as='select'
@@ -369,7 +345,7 @@ export default function LocationCreate() {
               </div>
 
               <button className={styles.btn} type='submit'>
-                Crea
+                Crear
               </button>
             </Form>
           )}

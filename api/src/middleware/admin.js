@@ -1,7 +1,7 @@
 // I would call this middleware after auth middleware, that has already
 // set a user property to the request object
-module.exports = function (req, res, next) {
-  if (!req.body.isAdmin) return res.status(403).send('Access denied');
+module.exports = function (_req, res, next) {
+  if (!res.locals.isAdmin) return res.status(403).send('Access denied');
 
   next();
 };

@@ -1,14 +1,14 @@
-import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { setBookingDetails } from "../../../redux/booking";
-import { DAY_MILISECONDS } from "../../GeneralFuntions/constants";
-import { motion } from "framer-motion";
-import styles from "./styles/carDetail.module.css";
-import PersonIcon from "@mui/icons-material/Person";
-import SpeedIcon from "@mui/icons-material/Speed";
-import LuggageIcon from "@mui/icons-material/Luggage";
-import WorkIcon from "@mui/icons-material/Work";
-import BuildIcon from "@mui/icons-material/Build";
+import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { setBookingDetails } from '../../../redux/booking';
+import { DAY_MILISECONDS } from '../../GeneralFuntions/constants';
+import { motion } from 'framer-motion';
+import styles from './styles/carDetail.module.css';
+import PersonIcon from '@mui/icons-material/Person';
+import SpeedIcon from '@mui/icons-material/Speed';
+import LuggageIcon from '@mui/icons-material/Luggage';
+import WorkIcon from '@mui/icons-material/Work';
+import BuildIcon from '@mui/icons-material/Build';
 
 const variants = {
   hidden: {
@@ -47,7 +47,7 @@ export const carDetailCard = (props) => {
 
   function handleBooking() {
     const booking = {
-      carType: make + " " + model,
+      carType: make + ' ' + model,
       carSeats: seats,
       carTransmission: transmission,
       carMpg: mpg,
@@ -62,51 +62,57 @@ export const carDetailCard = (props) => {
       dropOffDate: new Date(dropoffDate).toUTCString().slice(0, 11),
     };
     dispatch(setBookingDetails(booking));
-    navigate("/reservation");
+    navigate('/reservation');
   }
 
   return (
     <motion.div
-      initial="hidden"
-      animate="visible"
-      exit="hidden"
+      initial='hidden'
+      animate='visible'
+      exit='hidden'
       variants={variants}
       layoutId={id}
     >
       <div className={styles.carCard}>
         <div className={styles.imageContainer}>
-          <img src={img} alt="" className={styles.siImg} />
+          <img src={img} alt='' className={styles.siImg} />
         </div>
 
         <div className={styles.siDesc}>
-          <div className={styles.siRating}>
+          {/* <div className={styles.siRating}>
             <span>Top Pick</span>
-          </div>
+          </div> */}
           <div className={styles.siTitle}>
             <h3>
-              {`${make} ${model}`} <span>o un coche {className} similar</span>{" "}
+              {`${make} ${model}`} <span>o un coche {className} similar</span>{' '}
             </h3>
           </div>
 
           <div className={styles.siCarDesc}>
             <div>
-              <span className="">
-                <PersonIcon /> {seats} Asientos{" "}
+              <span className=''>
+                <PersonIcon /> {seats} Asientos{' '}
               </span>
             </div>
             <div>
-              <span className="">
-                <LuggageIcon /> {largeSuitcase} Maleta grande{" "}
+              <span className=''>
+                <LuggageIcon />
+                {` ${largeSuitcase} ${
+                  largeSuitcase === 1 ? 'Maleta grande' : 'Maletas grandes'
+                }`}
               </span>
             </div>
             <div>
-              <span className="">
-                <WorkIcon /> {smallSuitcase} Maleta pequeña{" "}
+              <span className=''>
+                <WorkIcon />
+                {` ${smallSuitcase} ${
+                  smallSuitcase === 1 ? 'Maleta pequeña' : 'Maletas pequeñas'
+                }`}
               </span>
             </div>
 
             <div>
-              <span className="">
+              <span className=''>
                 <SpeedIcon /> {mpg} km/l
               </span>
             </div>
@@ -121,7 +127,7 @@ export const carDetailCard = (props) => {
         <div className={styles.siDetails}>
           <div className={styles.siDetailTexts}>
             <span className={styles.siDaysxprice}>
-              Precio por {dateRange} {dateRange === 1 ? "día" : "días"}:
+              Precio por {dateRange} {dateRange === 1 ? 'día' : 'días'}:
             </span>
             <span className={styles.siprice}>$ {price}</span>
             <span className={styles.siAmendments}>Cancelación gratuita</span>

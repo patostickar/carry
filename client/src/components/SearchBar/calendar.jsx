@@ -16,8 +16,8 @@ export default function Calendar() {
   const { pickupDate, dropoffDate } = useSelector((state) => state.searchBar);
   const [date, setDate] = useState([
     {
-      startDate:new Date(new Date().getTime()+86400000),
-      endDate: new Date(new Date().getTime()+86400000),
+      startDate: new Date(new Date().getTime() + 86400000),
+      endDate: new Date(new Date().getTime() + 86400000),
       key: 'selection',
     },
   ]);

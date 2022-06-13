@@ -1,143 +1,138 @@
-import {React, useEffect, useState} from "react";
-import { fetchAllCarTypes } from "../../../redux/carsResults";
-import { fetchAllLocations } from "../../../redux/searchBar";
-import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
+import { React, useEffect, useState } from 'react';
+import { fetchAllCarTypes } from '../../../redux/carsResults';
+import { fetchAllLocations } from '../../../redux/searchBar';
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
 
-
-import { faker } from '@faker-js/faker';
+// import { faker } from '@faker-js/faker';
 // @mui
-import { useTheme } from '@mui/material/styles';
+// import { useTheme } from '@mui/material/styles';
 import { Grid, Container, Typography } from '@mui/material';
 // components
 // import Page from '../components/Page';
-import Iconify from './AdminComponents/Iconify';
+// import Iconify from './AdminComponents/Iconify';
 // sections
 import {
-  AppTasks,
-//   AppNewsUpdate,
-//   AppOrderTimeline,
-
-  AppCurrentVisits,
-   AppWebsiteVisits,
-//   AppTrafficBySite,
-   AppWidgetSummary,
-//   AppCurrentSubject,
-//   AppConversionRates,
+  // AppTasks,
+  //   AppNewsUpdate,
+  //   AppOrderTimeline,
+  // AppCurrentVisits,
+  // AppWebsiteVisits,
+  //   AppTrafficBySite,
+  AppWidgetSummary,
+  //   AppCurrentSubject,
+  //   AppConversionRates,
 } from '../AdminPages/AdminComponents/sections/app';
 
 // ----------------------------------------------------------------------
 
 export default function DashboardApp() {
+  const dispatch = useDispatch();
+  const [currentCustomers, setCurrentCustomers] = useState([]);
+  const [carsStock, setCarStocks] = useState([]);
 
-  
+  // eslint-disable-next-line prefer-const
+  let quantityCustomers = currentCustomers.data;
+  let totalCustomers = 0;
 
+  // eslint-disable-next-line prefer-const
+  let stockCars = carsStock.data;
+  let totalStockCars = 0;
 
-
-const dispatch = useDispatch()
-    const [currentCustomers, setCurrentCustomers] = useState([])
-    const [carsStock, setCarStocks] = useState([])
-
-
+  const getUsers = async () => {
     // eslint-disable-next-line prefer-const
-    let quantityCustomers = currentCustomers.data
-    let totalCustomers = 0 
+    let customers = await axios.get('/customers', {
+      headers: {
+        Authorization: localStorage.getItem('token'),
+      },
+    });
+    setCurrentCustomers(customers);
+  };
 
+  useEffect(() => {
+    getUsers();
+  }, []);
+
+  if (quantityCustomers) {
+    totalCustomers = quantityCustomers.length;
+  }
+
+  const getCarsStock = async () => {
     // eslint-disable-next-line prefer-const
-    let stockCars = carsStock.data
-    let totalStockCars = 0 
+    let carsStock = await axios.get('/cars', {
+      headers: {
+        Authorization: localStorage.getItem('token'),
+      },
+    });
+    setCarStocks(carsStock);
+  };
 
-    const getUsers = async () =>{    
-        // eslint-disable-next-line prefer-const
-        let customers = await axios.get('/customers')
-        setCurrentCustomers(customers)      }
+  useEffect(() => {
+    getCarsStock();
+  }, []);
 
-    useEffect(() => {
-        (getUsers());
-      }, []);
+  if (stockCars) {
+    totalStockCars = stockCars.length;
+  }
 
-    if(quantityCustomers){
-        totalCustomers = quantityCustomers.length
-        
-    }
+  useEffect(() => {
+    dispatch(fetchAllCarTypes());
+    dispatch(fetchAllLocations());
+  }, []);
 
-    const getCarsStock = async () =>{    
-        // eslint-disable-next-line prefer-const
-        let carsStock = await axios.get('/cars')
-        setCarStocks(carsStock)      }
+  const { AllcarTypes } = useSelector((state) => state.carsResults);
+  const { locations } = useSelector((state) => state.searchBar);
 
-        
-    useEffect(() => {
-        (getCarsStock());
-      }, []);
+  // eslint-disable-next-line prefer-const
+  let cars = AllcarTypes.length;
+  // eslint-disable-next-line prefer-const
+  let locationAviable = locations.length;
 
-      if(stockCars){
-        totalStockCars = stockCars.length
-        
-    }
-
-    
-    
-
-
-
-  
-
-
-  
-      
-    
-
-
-
-    useEffect(() => {
-        dispatch(fetchAllCarTypes());
-      }, []);
-
-      useEffect(() => {
-        dispatch(fetchAllLocations());
-      }, []);
-
-
-
-      const { AllcarTypes } = useSelector((state) => state.carsResults);
-      const { locations } = useSelector((state) => state.searchBar);
-
-
-    
-
-      // eslint-disable-next-line prefer-const
-      let cars = AllcarTypes.length
-      // eslint-disable-next-line prefer-const
-      let locationAviable = locations.length
-
-      
-
-  const theme = useTheme();
-  
+  // const theme = useTheme();
 
   return (
-    <div title="Dashboard">
-  
-      <Container maxWidth="xl">
-        <Typography variant="h4" sx={{ mb: 5 }}>
+    <div title='Dashboard'>
+      <Container maxWidth='xl'>
+        <Typography variant='h4' sx={{ mb: 5 }}>
           Bienvenido al panel de administracion
         </Typography>
 
-   
-       
-     
-
         <Grid container spacing={3}>
-           <><><Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Vehiculos en stock" total={totalStockCars} icon={'clarity:car-line'} />
-          </Grid><Grid item xs={12} sm={6} md={3}>
-              <AppWidgetSummary title="Usuarios registrados" total={totalCustomers} color="info" icon={'clarity:users-solid'} />
-            </Grid><Grid item xs={12} sm={6} md={3}>
-              <AppWidgetSummary title="Agencias disponibles" total={locationAviable} color="warning" icon={'material-symbols:car-rental'} />
-            </Grid><Grid item xs={12} sm={6} md={3}>
-              <AppWidgetSummary title="Modelos de vehiculos disponibles" total={cars} color="error" icon={'clarity:car-solid'} />
-            </Grid></><Grid item xs={12} md={6} lg={8}>
+          <>
+            <>
+              <Grid item xs={12} sm={6} md={3}>
+                <AppWidgetSummary
+                  title='Vehiculos en stock'
+                  total={totalStockCars}
+                  icon={'clarity:car-line'}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6} md={3}>
+                <AppWidgetSummary
+                  title='Usuarios registrados'
+                  total={totalCustomers}
+                  color='info'
+                  icon={'clarity:users-solid'}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6} md={3}>
+                <AppWidgetSummary
+                  title='Agencias disponibles'
+                  total={locationAviable}
+                  color='warning'
+                  icon={'material-symbols:car-rental'}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6} md={3}>
+                <AppWidgetSummary
+                  title='Modelos de vehiculos disponibles'
+                  total={cars}
+                  color='error'
+                  icon={'clarity:car-solid'}
+                />
+              </Grid>
+            </>
+            <Grid item xs={12} md={6} lg={8}>
               {/* <AppWebsiteVisits
                 title="Visitas a la pagina"
                 subheader="(+33%) mas que el semestre anterior"
@@ -174,7 +169,8 @@ const dispatch = useDispatch()
                     data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
                   },
                 ]} /> */}
-            </Grid></> 
+            </Grid>
+          </>
 
           <Grid item xs={12} md={6} lg={4}>
             {/* <AppCurrentVisits
@@ -226,7 +222,7 @@ const dispatch = useDispatch()
               chartColors={[...Array(6)].map(() => theme.palette.text.secondary)}
             />
           </Grid> */}
-{/* 
+          {/* 
           <Grid item xs={12} md={6} lg={8}>
             <AppNewsUpdate
               title="News Update"
@@ -239,7 +235,7 @@ const dispatch = useDispatch()
               }))}
             />
           </Grid> */}
-{/* 
+          {/* 
           <Grid item xs={12} md={6} lg={4}>
             <AppOrderTimeline
               title="Order Timeline"

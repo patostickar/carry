@@ -19,8 +19,6 @@ router.get('/:id', auth, getAllBookings);
 
 router.post('/', [auth, validateCreateBooking], dbCreateBooking);
 
-
-
 router.put('/:id', auth, editBooking);
 
 module.exports = router;

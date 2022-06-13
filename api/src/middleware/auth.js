@@ -19,9 +19,9 @@ module.exports = function (req, res, next) {
         .status(401)
         .send('Access denied. You are banned from using Carry');
 
-    req.body.isAdmin = decoded.isAdmin;
-    req.body.id = decoded.id;
-    req.body.isPremium = decoded.isPremium;
+    res.locals.isAdmin = decoded.isAdmin;
+    res.locals.id = decoded.id;
+    res.locals.isPremium = decoded.isPremium;
 
     next();
   } catch (error) {

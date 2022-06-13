@@ -21,7 +21,11 @@ const Response = () => {
 
   async function CreateBooking(data) {
     try {
-      await axios.post('/bookings', data);
+      await axios.post('/bookings', data, {
+        headers: {
+          Authorization: localStorage.getItem('token'),
+        },
+      });
     } catch (error) {
       console.log(error);
     }
@@ -34,11 +38,10 @@ const Response = () => {
       locationId: booking.locationId,
       pickUpDate: PickDate,
       dropOffDate: DropDate,
-      PremiumSecure:booking.PremiumSecure
+      PremiumSecure: booking.PremiumSecure,
     });
   };
 
-  // console.log(data);
   useEffect(() => {
     if (user) {
       (async () => {

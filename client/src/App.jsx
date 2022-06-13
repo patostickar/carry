@@ -1,17 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchAllLocations } from './redux/searchBar';
@@ -35,8 +21,7 @@ import Response from './pages/MPrespose';
 import SearchResults from './pages/SearchResults';
 import TermsAndConditions from './pages/TermsAndConditions/';
 import User from './components/AdminPanel/AdminPages/AdminComponents/sections/User';
-import BookingsAdmin from "./components/AdminPanel/AdminPages/AdminComponents/sections/layouts/BookingsAdmin";
-
+import BookingsAdmin from './components/AdminPanel/AdminPages/AdminComponents/sections/layouts/BookingsAdmin';
 
 function App() {
   const dispatch = useDispatch();
@@ -49,7 +34,7 @@ function App() {
       async function setCustomer() {
         try {
           const res = await axios.post('/customers', user);
-          axios.defaults.headers.common.Authorization = `Bearer ${res.headers.authorization}`;
+          localStorage.setItem('token', `Bearer ${res.headers.authorization}`);
           dispatch(setUser(res.data.customerDetails));
         } catch (error) {
           console.log(error);
@@ -65,52 +50,42 @@ function App() {
   }, []);
 
   return (
-    <>
-      <Routes>
-        <Route
-          exact
-          path='/adminPanel'
-          element={<ProtectedRoute component={AdminCard} role={'admin'} />}
-        />
-        <Route
-          path='/cartypecreate'
-          element={<ProtectedRoute component={CarTypeCreate} role='admin' />}
-        />{' '}
-        {/* componenete de adminPanel */}
-        <Route
-          path='/locationcreate'
-          element={<ProtectedRoute component={LocationCreate} role='admin' />}
-        />{' '}
-        {/* componenete de adminPanel */}
+    <Routes>
+      <Route
+        path='/adminPanel'
+        element={<ProtectedRoute component={AdminCard} role='admin' />}
+      />
+      <Route
+        path='/cartypecreate'
+        element={<ProtectedRoute component={CarTypeCreate} role='admin' />}
+      />
+      <Route
+        path='/locationcreate'
+        element={<ProtectedRoute component={LocationCreate} role='admin' />}
+      />
+      <Route
+        path='/user'
+        element={<ProtectedRoute component={User} role='admin' />}
+      />
+      <Route path='/bookingsadmin' element={<BookingsAdmin />} />
 
-        <Route path="/user" element={<User />} />
-        <Route path="/bookingsadmin" element={<BookingsAdmin />} />
-
-        <Route
-          path='/carcreate'
-          element={<ProtectedRoute component={CarCreate} role='admin' />}
-        />
-        <Route path='/' element={<Home />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/notAllowed' element={<NotAllowed />} />
-        <Route
-          path='/profile'
-          element={<ProtectedRoute component={Account} />}
-        />
-        <Route path='/reservation' element={<Reservation />} />
-        <Route
-          path='/Response'
-          element={<ProtectedRoute component={Response} />}
-        />
-        <Route path='/searchResult' element={<SearchResults />} />
-        <Route path='/terminos-condiciones' element={<TermsAndConditions />} />
-        {/* <Route
-          path='/usermanagement'
-          element={<ProtectedRoute component={AdminUsersManagement} />}
-        /> */}
-        <Route path='*' element={<NotFound />} />
-      </Routes>
-    </>
+      <Route
+        path='/carcreate'
+        element={<ProtectedRoute component={CarCreate} role='admin' />}
+      />
+      <Route path='/' element={<Home />} />
+      <Route path='/about' element={<About />} />
+      <Route path='/notAllowed' element={<NotAllowed />} />
+      <Route path='/profile' element={<ProtectedRoute component={Account} />} />
+      <Route path='/reservation' element={<Reservation />} />
+      <Route
+        path='/Response'
+        element={<ProtectedRoute component={Response} />}
+      />
+      <Route path='/searchResult' element={<SearchResults />} />
+      <Route path='/terminos-condiciones' element={<TermsAndConditions />} />
+      <Route path='*' element={<NotFound />} />
+    </Routes>
   );
 }
 

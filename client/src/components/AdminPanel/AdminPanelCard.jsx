@@ -1,21 +1,8 @@
-
-import { React, } from "react";
+import { React } from 'react';
 import { styled } from '@mui/material/styles';
 
-import DashboardApp from "./AdminPages/Dashboard";
-import DashboardSidebar from "./AdminPages/AdminComponents/sections/layouts/DashboardSidebar";
-
- 
- // import CarCreate from "./CreateForms/CarTypeCreate";
-
-
-// import CarCreate from "./CreateForms/CarTypeCreate";
-
-
-
-// import AdminPanelSideBar from "./AdminPanelSidebar";
-
-
+import DashboardApp from './AdminPages/Dashboard';
+import DashboardSidebar from './AdminPages/AdminComponents/sections/layouts/DashboardSidebar';
 
 const APP_BAR_MOBILE = 64;
 const APP_BAR_DESKTOP = 115;
@@ -24,11 +11,7 @@ const RootStyle = styled('div')({
   display: 'flex',
   minHeight: '100%',
   overflow: 'hidden',
-
-
 });
-
-
 
 const MainStyle = styled('div')(({ theme }) => ({
   flexGrow: 1,
@@ -39,38 +22,19 @@ const MainStyle = styled('div')(({ theme }) => ({
   [theme.breakpoints.up('lg')]: {
     paddingTop: APP_BAR_DESKTOP,
     paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(2)
-  }
+    paddingRight: theme.spacing(2),
+  },
 }));
 
-
-
-
-
-
 export default function AdminCard() {
-
-
-
-
-
-
   return (
-
-
     <>
       <RootStyle>
-
         <DashboardSidebar />
-
         <MainStyle>
-
           <DashboardApp />
-
         </MainStyle>
-
       </RootStyle>
     </>
-
-  )
+  );
 }
