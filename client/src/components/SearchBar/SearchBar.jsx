@@ -24,6 +24,9 @@ function SearchBar() {
     if (!location) {
       return Alerts('warning', 'Por favor elija una ubicación');
     }
+  
+   if(new Date(pickupDate).getUTCDate() === new Date().getUTCDate()){
+     return Alerts('info', 'El alquiler mínimo es de 24 hs')}
     if (dropoffDate - pickupDate < DAY_MILISECONDS) {
       return Alerts('info', 'El alquiler mínimo es de 24 hs');
     }

@@ -21,7 +21,8 @@ const Response = () => {
   const user = useSelector((state) => state.user);
   const { pickupDate, dropoffDate } = useSelector((state) => state.searchBar);
   const { booking } = useSelector((state) => state.booking);
-  const paymentId = location.search.split("&")[2].split("=")[1];
+  let paymentId
+  if(location.search.length){paymentId = location.search?.split("&")[2].split("=")[1];}
   const Pdate = new Date(pickupDate);
   const Ddate = new Date(dropoffDate);
   const PickDate =
