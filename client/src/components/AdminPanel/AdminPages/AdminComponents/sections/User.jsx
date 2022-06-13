@@ -154,11 +154,11 @@ export default function User() {
     //   setSelected([]);
     // };
 
-    const handleClick = (event, id, isBanned) => {
+    const handleClick = (event, id, isBanned, isAdmin) => {
       const selectedIndex = selected.indexOf(id);
       let newSelected = [];
       if (selectedIndex === -1) {
-        newSelected = newSelected.concat(selected, id, isBanned);
+        newSelected = newSelected.concat(selected, id, isBanned, isAdmin);
       } else if (selectedIndex === 0) {
         newSelected = newSelected.concat(selected.slice(1));
       } else if (selectedIndex === selected.length - 1) {
@@ -197,6 +197,8 @@ export default function User() {
     const isUserNotFound = filteredUsers.length === 0;
     // ban de usuarios
 
+    console.log(selected)
+
     function banUser() {
       // eslint-disable-next-line prefer-const
       let id = selected[0];
@@ -225,6 +227,36 @@ export default function User() {
       }
     }
 
+    function setAdmin() {
+      // eslint-disable-next-line prefer-const
+      let id = selected[0];
+      // eslint-disable-next-line prefer-const
+      let isAdmin = selected[2];
+      if (!isAdmin) {
+        const data = {
+          isAdmin: true,
+        };
+
+        axios.put(`./customers/${id}`, data, {
+          headers: {
+            Authorization: localStorage.getItem('token'),
+          },
+        });
+      } else {
+        const dataAdmin = {
+          isAdmin: false,
+        };
+
+        axios.put(`./customers/${id}`, dataAdmin, {
+          headers: {
+            Authorization: localStorage.getItem('token'),
+          },
+        });
+      }
+    }
+
+
+
     return (
       <RootStyle>
         <DashboardSidebar />
@@ -250,6 +282,15 @@ export default function User() {
                     startIcon={<Iconify icon='eva:plus-fill' />}
                   >
                     {selected[1] === true ? 'Quitar Ban' : 'Bannear'}
+                  </Button>
+                  <Button
+                    variant='contained'
+                    onClick={setAdmin}
+                    component={RouterLink}
+                    to='#'
+                    startIcon={<Iconify icon='eva:plus-fill' />}
+                  >
+                    {selected[2] === true ? 'Quitar ADMIN' : 'Hacer ADMIN'}
                   </Button>
                 </Stack>
 
@@ -304,7 +345,7 @@ export default function User() {
                                     <Checkbox
                                       checked={isItemSelected}
                                       onChange={(event) =>
-                                        handleClick(event, id, isBanned)
+                                        handleClick(event, id, isBanned, isAdmin)
                                       }
                                     />
                                   </TableCell>
