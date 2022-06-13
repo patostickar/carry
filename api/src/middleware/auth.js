@@ -12,16 +12,20 @@ module.exports = function (req, res, next) {
 
   try {
     const decoded = jwt.verify(token, JWT);
+    console.log(1);
     if (!token || !decoded.id)
       return res.status(401).send('Access denied. Token missing or invalid');
+    console.log(2);
     if (decoded.isBanned)
       return res
         .status(401)
         .send('Access denied. You are banned from using Carry');
+    console.log(3);
 
-    req.body.isAdmin = decoded.isAdmin;
-    req.body.id = decoded.id;
-    req.body.isPremium = decoded.isPremium;
+    res.locals.isAdmin = decoded.isAdmin;
+    res.locals.id = decoded.id;
+    res.locals.isPremium = decoded.isPremium;
+    console.log(4);
 
     next();
   } catch (error) {
