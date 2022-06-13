@@ -52,7 +52,7 @@ export default function Calendar() {
           }}
           moveRangeOnFirstSelection={false}
           ranges={date}
-          minDate={new Date(new Date().getTime()+86400000)}
+          minDate={new Date()}
         />
       )}
     </div>
