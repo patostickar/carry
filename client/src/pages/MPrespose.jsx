@@ -1,4 +1,3 @@
-
 import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,18 +9,19 @@ import styles from "./styles/MPrespose.module.css";
 import { useNavigate } from "react-router";
 import Img from "../assets/check.png";
 import TabTitle from "../components/GeneralFuntions/TabTitle";
+import { useLocation } from "react-router-dom";
 
 const Response = () => {
   TabTitle("Gracias");
   const navigate = useNavigate();
-    const location =  useLocation()
+  const location = useLocation();
 
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.user);
   const { pickupDate, dropoffDate } = useSelector((state) => state.searchBar);
   const { booking } = useSelector((state) => state.booking);
-  const paymentId = location.search.split("&")[2].split("=")[1]
+  const paymentId = location.search.split("&")[2].split("=")[1];
   const Pdate = new Date(pickupDate);
   const Ddate = new Date(dropoffDate);
   const PickDate =
@@ -49,7 +49,7 @@ const Response = () => {
       pickUpDate: PickDate,
       dropOffDate: DropDate,
       PremiumSecure: booking.PremiumSecure,
-      paymentId
+      paymentId,
     });
   };
 
