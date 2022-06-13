@@ -1,37 +1,38 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import PersonIcon from '@mui/icons-material/Person';
-import SpeedIcon from '@mui/icons-material/Speed';
-import LuggageIcon from '@mui/icons-material/Luggage';
-import WorkIcon from '@mui/icons-material/Work';
-import BuildIcon from '@mui/icons-material/Build';
-import styles from './styles/Reservation.module.css';
-import Box from '@mui/material/Box';
-import Stepper from '@mui/material/Stepper';
-import Step from '@mui/material/Step';
-import StepLabel from '@mui/material/StepLabel';
-import StepContent from '@mui/material/StepContent';
-import Button from '@mui/material/Button';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
-import { useSelector } from 'react-redux';
-import { DAY_MILISECONDS } from '../components/GeneralFuntions/constants';
-import LinearIndeterminate from '../components/GeneralFuntions/LinearIndeterminate';
-import CheckIcon from '@mui/icons-material/Check';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import PersonIcon from "@mui/icons-material/Person";
+import SpeedIcon from "@mui/icons-material/Speed";
+import LuggageIcon from "@mui/icons-material/Luggage";
+import WorkIcon from "@mui/icons-material/Work";
+import BuildIcon from "@mui/icons-material/Build";
+import styles from "./styles/Booking.module.css";
+import Box from "@mui/material/Box";
+import Stepper from "@mui/material/Stepper";
+import Step from "@mui/material/Step";
+import StepLabel from "@mui/material/StepLabel";
+import StepContent from "@mui/material/StepContent";
+import Button from "@mui/material/Button";
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
+import { useSelector } from "react-redux";
+import { DAY_MILISECONDS } from "../components/GeneralFuntions/constants";
+import LinearIndeterminate from "../components/GeneralFuntions/LinearIndeterminate";
+import CheckIcon from "@mui/icons-material/Check";
 // import axios from "axios";
-import Payment from '../components/MercadoPago/Payment';
-import { useAuth0 } from '@auth0/auth0-react';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import Payment from "../components/MercadoPago/Payment";
+import { useAuth0 } from "@auth0/auth0-react";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import TabTitle from "../components/GeneralFuntions/TabTitle";
 
 function Steps2() {
-  const steps = ['Elegir un auto', 'Confirmar reserva', 'Disfrutar'];
+  const steps = ["Elegir un auto", "Confirmar reserva", "Disfrutar"];
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: "100%" }}>
       <Stepper activeStep={1} alternativeLabel>
         {steps.map((label) => (
-          <Step style={{ zIndex: '-1' }} key={label}>
+          <Step style={{ zIndex: "-1" }} key={label}>
             <StepLabel>{label}</StepLabel>
           </Step>
         ))}
@@ -40,7 +41,9 @@ function Steps2() {
   );
 }
 
-function Reservation() {
+function Booking() {
+  TabTitle("Reserva");
+
   const { location, pickupDate, dropoffDate } = useSelector(
     (state) => state.searchBar
   );
@@ -71,11 +74,11 @@ function Reservation() {
 
   const steps = [
     {
-      label: 'Lugar de recogida',
+      label: "Lugar de recogida",
       description: `${location.street}, ${location.city} `,
     },
     {
-      label: 'Lugar de devolución',
+      label: "Lugar de devolución",
       description: `${location.street}, ${location.city}`,
     },
     // {
@@ -102,7 +105,7 @@ function Reservation() {
   };
 
   const onClick = () => {
-    navigate('/searchResult');
+    navigate("/searchResult");
   };
 
   // const handleSearch = async () => {
@@ -151,17 +154,17 @@ function Reservation() {
               <Box
                 sx={{
                   maxWidth: 400,
-                  marginLeft: '-10px',
+                  marginLeft: "-10px",
                 }}
               >
                 <h2>Recogida y devolucion</h2>
-                <Stepper activeStep={activeStep} orientation='vertical'>
+                <Stepper activeStep={activeStep} orientation="vertical">
                   {steps.map((step, index) => (
                     <Step key={step.label}>
                       <StepLabel
                         optional={
                           index === 2 ? (
-                            <Typography variant='caption'>{''}</Typography>
+                            <Typography variant="caption">{""}</Typography>
                           ) : null
                         }
                       >
@@ -173,13 +176,13 @@ function Reservation() {
                           <div>
                             {index !== steps.length - 1 ? (
                               <Button
-                                variant='contained'
+                                variant="contained"
                                 onClick={
                                   index !== steps.length - 1 && handleNext
                                 }
                                 sx={{ mt: 1, mr: 1 }}
                               >
-                                {index !== steps.length - 1 && 'Continuar'}
+                                {index !== steps.length - 1 && "Continuar"}
                               </Button>
                             ) : (
                               <div></div>
@@ -217,8 +220,8 @@ function Reservation() {
               </div>
               <div>
                 <h3>
-                  En esta epoca del año, un coche {booking.carClass} en{' '}
-                  {location.city} suele costar ${' '}
+                  En esta epoca del año, un coche {booking.carClass} en{" "}
+                  {location.city} suele costar ${" "}
                   {(booking.carPrice / 100) * 150}
                 </h3>
               </div>
@@ -232,7 +235,7 @@ function Reservation() {
                   <div className={styles.imageContainer}>
                     <img
                       src={booking.carImg}
-                      alt='img'
+                      alt="img"
                       className={styles.siImg}
                     />
                   </div>
@@ -244,30 +247,30 @@ function Reservation() {
                     <div className={styles.siTitle}>
                       <h3>
                         {booking.carType}
-                        <span> o un coche {booking.carClass} similar</span>{' '}
+                        <span> o un coche {booking.carClass} similar</span>{" "}
                       </h3>
                     </div>
                     <div className={styles.siCarDesc}>
                       <div>
-                        <span className=''>
+                        <span className="">
                           <PersonIcon /> {booking.carSeats} Asientos
                         </span>
                       </div>
                       <div>
-                        <span className=''>
-                          {' '}
+                        <span className="">
+                          {" "}
                           <LuggageIcon /> {booking.carLargeSuitcase} Maleta
                           grande
                         </span>
                       </div>
                       <div>
-                        <span className=''>
-                          {' '}
+                        <span className="">
+                          {" "}
                           <WorkIcon /> {booking.carSmallSuitcase} Maleta pequeña
                         </span>
                       </div>
                       <div>
-                        <span className=''>
+                        <span className="">
                           <SpeedIcon /> {booking.carMpg} km/l
                         </span>
                       </div>
@@ -282,9 +285,9 @@ function Reservation() {
                   <div className={styles.siDetails}>
                     <div className={styles.siDetailTexts}>
                       <span className={styles.siDaysxprice}>
-                        {' '}
-                        Precio por {dateRange}{' '}
-                        {dateRange === 1 ? 'día' : 'días'}:{' '}
+                        {" "}
+                        Precio por {dateRange}{" "}
+                        {dateRange === 1 ? "día" : "días"}:{" "}
                       </span>
                       <span className={styles.siprice}>
                         $ {booking.carPrice}
@@ -320,11 +323,11 @@ function Reservation() {
                 ¡Rentalcover.com te lo reembolsará! (El precio que ves incluye
                 todos los impuestos y cargos correspondientes). Sujeto a los
                 Términos y condiciones y a las exclusiones estándar. Lee con
-                atención:{' '}
+                atención:{" "}
                 <a
-                  href='https://www.rentalcover.com/pds/18I0-62XT-INS'
-                  target='_blank'
-                  rel='noreferrer'
+                  href="https://www.rentalcover.com/pds/18I0-62XT-INS"
+                  target="_blank"
+                  rel="noreferrer"
                 >
                   Condiciones de la póliza
                 </a>
@@ -405,7 +408,7 @@ function Reservation() {
             <div className={styles.tabla}>
               <div className={styles.tabla1}>
                 <h5>
-                  📆 {dateRange} {dateRange === 1 ? 'día' : 'días'}:{' '}
+                  📆 {dateRange} {dateRange === 1 ? "día" : "días"}:{" "}
                 </h5>
               </div>
               <div className={styles.tabla2}>
@@ -416,10 +419,10 @@ function Reservation() {
               <div className={styles.buttons1}>
                 {isAuthenticated && !isBanned ? (
                   <div>
-                    {' '}
+                    {" "}
                     <h3>Con seguro</h3>
                     <Payment
-                      id={'Seguro'}
+                      id={"Seguro"}
                       price={(booking.carPrice / 100) * 130}
                     />
                   </div>
@@ -438,7 +441,7 @@ function Reservation() {
                 {isAuthenticated && !isBanned ? (
                   <div>
                     <h3>Sin seguro</h3>
-                    <Payment id={'!seguro'} price={booking.carPrice} />
+                    <Payment id={"!seguro"} price={booking.carPrice} />
                   </div>
                 ) : !isBanned ? (
                   <button
@@ -462,4 +465,4 @@ function Reservation() {
     </div>
   );
 }
-export default Reservation;
+export default Booking;
