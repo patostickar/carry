@@ -1,8 +1,18 @@
 import styles from "./styles/NotFound.module.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { useNavigate } from "react-router";
+import TabTitle from "../components/GeneralFuntions/TabTitle";
 
 export default function NotFound() {
+  TabTitle("404 Not Found");
+
+  const navigate = useNavigate();
+
+  const onClick = () => {
+    navigate(-1);
+  };
+
   return (
     <>
       <Navbar />
@@ -20,9 +30,9 @@ export default function NotFound() {
           </span>
         </section>
         <div className={styles.linkContainer}>
-          <a href="/" className={styles.siCheckButton} rel="noreferrer">
+          <button onClick={onClick} className={styles.siCheckButton}>
             Volver
-          </a>
+          </button>
         </div>{" "}
       </div>
       <Footer />
