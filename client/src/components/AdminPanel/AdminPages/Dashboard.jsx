@@ -6,13 +6,14 @@ import axios from 'axios';
 
 // import { faker } from '@faker-js/faker';
 // @mui
-// import { useTheme } from '@mui/material/styles';
+import { useTheme } from '@mui/material/styles';
 import { Grid, Container, Typography } from '@mui/material';
 // components
 // import Page from '../components/Page';
 // import Iconify from './AdminComponents/Iconify';
 // sections
 import {
+  AppCurrentVisits,
   // AppTasks,
   //   AppNewsUpdate,
   //   AppOrderTimeline,
@@ -30,6 +31,7 @@ export default function DashboardApp() {
   const dispatch = useDispatch();
   const [currentCustomers, setCurrentCustomers] = useState([]);
   const [carsStock, setCarStocks] = useState([]);
+  const [Bookings, setBookings] = useState([]);
 
   // eslint-disable-next-line prefer-const
   let quantityCustomers = currentCustomers.data;
@@ -48,9 +50,19 @@ export default function DashboardApp() {
     });
     setCurrentCustomers(customers);
   };
-
+  const getbookigs = async () => {
+    // eslint-disable-next-line prefer-const
+    let bookings = await axios.get('/bookings/Active/count', {
+      headers: {
+        Authorization: localStorage.getItem('token'),
+      },
+    });
+    setBookings(bookings);
+  };
+// datos?.map((book)=> book ={...book,pickUpDate:book.pickUpDate.split("-")})
   useEffect(() => {
     getUsers();
+    getbookigs()
   }, []);
 
   if (quantityCustomers) {
@@ -82,13 +94,20 @@ export default function DashboardApp() {
 
   const { AllcarTypes } = useSelector((state) => state.carsResults);
   const { locations } = useSelector((state) => state.searchBar);
-
-  // eslint-disable-next-line prefer-const
+const labels = AllcarTypes.map(cartype=>{
+  let values = 0
+  Bookings.data?.map(dato => {if(dato.cartypeId === cartype.id){values = values + dato.count}})
+  
+  return{
+  label: `${cartype.make} ${cartype.model}` , value: values 
+}})
+console.log(labels);
+    // eslint-disable-next-line prefer-const
   let cars = AllcarTypes.length;
   // eslint-disable-next-line prefer-const
   let locationAviable = locations.length;
 
-  // const theme = useTheme();
+  const theme = useTheme();
 
   return (
     <div title='Dashboard'>
@@ -132,55 +151,40 @@ export default function DashboardApp() {
                 />
               </Grid>
             </>
-            <Grid item xs={12} md={6} lg={8}>
-              {/* <AppWebsiteVisits
-                title="Visitas a la pagina"
-                subheader="(+33%) mas que el semestre anterior"
+            {/* <Grid item xs={12} md={6} lg={8}>
+               {/* <AppWebsiteVisits
+                title="alquileres mensuales"
+                // subheader="(+33%) mas que el semestre anterior"
                 chartLabels={[
-                  '01/01/2003',
-                  '02/01/2003',
-                  '03/01/2003',
-                  '04/01/2003',
-                  '05/01/2003',
-                  '06/01/2003',
-                  '07/01/2003',
-                  '08/01/2003',
-                  '09/01/2003',
-                  '10/01/2003',
-                  '11/01/2003',
+                  '01/01',
+                  '02/01',
+                  '03/01',
+                  '04/01',
+                  '05/01',
+                  '06/01',
+                  '07/01',
+                  '08/01',
+                  '09/01',
+                  '10/01',
+                  '11/01',
+                  '12/01',
+                  
                 ]}
                 chartData={[
                   {
                     name: 'Dias de semana',
                     type: 'column',
                     fill: 'solid',
-                    data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30],
-                  },
-                  {
-                    name: 'Fines de semana',
-                    type: 'area',
-                    fill: 'gradient',
-                    data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43],
-                  },
-                  {
-                    name: 'Feriados',
-                    type: 'line',
-                    fill: 'solid',
-                    data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
-                  },
-                ]} /> */}
-            </Grid>
+                    data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30,10],
+                  }
+                ]} /> 
+            </Grid> */}
           </>
 
           <Grid item xs={12} md={6} lg={4}>
-            {/* <AppCurrentVisits
+             <AppCurrentVisits
               title="Vehiculos rentados historicamente"
-              chartData={[
-                { label: 'Small', value: 434 },
-                { label: 'Medium', value: 543 },
-                { label: 'Large', value: 144 },
-                { label: 'Van', value: 444 },
-              ]}
+              chartData={labels}
               chartColors={[
                 theme.palette.primary.main,
                 theme.palette.primary.dark,
@@ -188,7 +192,7 @@ export default function DashboardApp() {
                 
                 
               ] }
-            /> */}
+            /> 
           </Grid>
 
           {/* <Grid item xs={12} md={6} lg={8}>
