@@ -13,6 +13,8 @@ const initialState = {
   postalCode: '',
   phone: '',
   img: '',
+  isAdmin: "",
+  isBanned: ""
 };
 
 export const user = createSlice({
