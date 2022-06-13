@@ -23,7 +23,11 @@ export default function CarTypeCreate() {
 
   async function postCarType(values) {
     try {
-      await axios.post('/cars', values);
+      await axios.post('/cars', values, {
+        headers: {
+          Authorization: localStorage.getItem('token'),
+        },
+      });
     } catch (error) {
       console.log(error);
     }
@@ -79,7 +83,6 @@ export default function CarTypeCreate() {
               locationId: '',
             }}
             onSubmit={(values) => {
-              console.log(values);
               if (values.carTypeId !== '' && values.locationId !== '') {
                 postCarType(values);
                 Alerts('success', 'Vehiculo creado');

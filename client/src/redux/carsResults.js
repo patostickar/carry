@@ -84,7 +84,11 @@ export const fetchCarTypes =
   };
 export const fetchAllCarTypes = () => async (dispatch) => {
   try {
-    const res = await axios.get('/carTypes');
+    const res = await axios.get('/carTypes', {
+      headers: {
+        Authorization: localStorage.getItem('token'),
+      },
+    });
     dispatch(setAllCarTypes(res.data));
     // .then((res) => dispatch(setCarTypes(res.data)));
   } catch (error) {

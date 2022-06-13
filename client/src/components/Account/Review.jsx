@@ -17,12 +17,22 @@ export default function Review() {
   const { id } = useSelector((state) => state.user);
   const [reviews, SetReviews] = useState();
   const getReviews = async () => {
-    SetReviews(await axios.get(`/customers/reviews/${id}`));
+    SetReviews(
+      await axios.get(`/customers/reviews/${id}`, {
+        headers: {
+          Authorization: localStorage.getItem('token'),
+        },
+      })
+    );
   };
 
   async function postreview(values) {
     try {
-      await axios.post(`/customers/reviews/${id}`, values);
+      await axios.post(`/customers/reviews/${id}`, values, {
+        headers: {
+          Authorization: localStorage.getItem('token'),
+        },
+      });
     } catch (error) {
       console.log(error);
     }
@@ -44,7 +54,7 @@ export default function Review() {
 
         <Formik
           initialValues={{
-            review: '',
+            reviews: '',
           }}
           onSubmit={(values) => {
             postreview(values);
@@ -100,13 +110,14 @@ export default function Review() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {reviews?.data?.length ?
-                reviews?.data.map((row) => (
-                  <TableRow key={row.id}>
-                    <TableCell align='center'>{row.id}</TableCell>
-                    <TableCell align='center'>{row.review}</TableCell>
-                  </TableRow>
-                )):""}
+              {reviews?.data?.length
+                ? reviews?.data.map((row) => (
+                    <TableRow key={row.id}>
+                      <TableCell align='center'>{row.id}</TableCell>
+                      <TableCell align='center'>{row.review}</TableCell>
+                    </TableRow>
+                  ))
+                : ''}
             </TableBody>
           </Table>
         </TableContainer>

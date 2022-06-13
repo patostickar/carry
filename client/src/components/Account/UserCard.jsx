@@ -1,31 +1,17 @@
-// import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import {
-  Box,
-  Button,
-  Grid,
-  // TextField,
-  Typography,
-  Avatar,
-} from '@mui/material';
-// import { putUser } from '../../redux/user';
+import { Box, Button, Grid, Typography, Avatar } from '@mui/material';
 
 export const UserCard = ({ setRenderControl, renderControl }) => {
-  // const dispatch = useDispatch();
   const { img, firstName, lastName, email, street, city, phone, postalCode } =
     useSelector((state) => state.user);
 
   const handleEdit = (event) => {
-    console.log('Evento click Editar');
     setRenderControl({
-
-                  personalInfo: true,
-                  review: false,
-                  booking: false,
-                  userCard:false
-     })
-    
-
+      personalInfo: true,
+      review: false,
+      booking: false,
+      userCard: false,
+    });
   };
 
   return (

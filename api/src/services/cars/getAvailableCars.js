@@ -10,7 +10,7 @@ module.exports.getAvailableCars = async (
   });
 
   const bookingsInLocation = await Booking.findAll({
-    where: { locationId },
+    where: { locationId, status: 'activo' },
   });
 
   // A simple condition to find out if two segments [a, b] and [c, d] intersect each other
