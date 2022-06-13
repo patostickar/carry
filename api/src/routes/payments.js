@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const router = Router();
 const mercadopago = require('mercadopago');
-const { APP_USR } = process.env;
+const { APP_USR, BASE_URL } = process.env;
 
 mercadopago.configure({
   access_token: APP_USR,
@@ -34,8 +34,8 @@ router.post('/payment', (req, res, next) => {
       installments: 1,
     },
     back_urls: {
-      pending: 'http://localhost:3000/response',
-      success: 'http://localhost:3000/response',
+      pending: `${BASE_URL}/response`,
+      success: `${BASE_URL}/response`,
     },
     auto_return: 'approved',
     binary_mode: true,
