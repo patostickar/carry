@@ -118,7 +118,7 @@ export default function CarTypeCreate() {
                           onChange={handleChange}
                           onBlur={handleBlur}
                         >
-                          {`${d.make} ${d.model}`}
+                          {`${d.make} ${d.model}, ${d.transmission}, ${d.className}, ${d.airConditioning? "con aire acondicionado":"sin aire acondicionado"} `}
                         </option>
                       ))}
                     </select>

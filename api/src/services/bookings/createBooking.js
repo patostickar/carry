@@ -5,7 +5,7 @@ const { sendMAil } = require('../../services/mailer');
 
 
 module.exports.createBooking = async (data) => {
-  const { carTypeId, customerId, locationId, pickUpDate, dropOffDate,PremiumSecure } = data;
+  const { carTypeId, customerId, locationId, pickUpDate, dropOffDate,PremiumSecure,paymentId } = data;
 
   const availableCars = await getAvailableCars(
     locationId,
@@ -37,7 +37,8 @@ module.exports.createBooking = async (data) => {
     pickUpDate,
     dropOffDate,
     reservationTotal,
-    PremiumSecure
+    PremiumSecure,
+    paymentId
   });
 
   booking.setCustomer(customerId);
