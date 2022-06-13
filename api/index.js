@@ -5,13 +5,13 @@ const { addCar } = require('./src/services/cars/addCar');
 const { PORT } = process.env;
 
 conn
-  .sync({ force: false })
+  .sync({ force: true })
   .then(() => {
     server.listen(PORT, () => {
       console.log(`%s listening at ${PORT}`);
     });
 
-    // createData();
+    createData();
 
     // eslint-disable-next-line
     async function createData() {
@@ -33,16 +33,16 @@ conn
         img: l.img,
       }));
 
-      const customers = data.customers.map((c) => ({
-        email: c.email,
-        firstName: c.first_name,
-        lastName: c.last_name,
-        street: c.street,
-        city: c.city,
-        postalCode: c.postcal_code,
-        phone: c.phone,
-        password: c.password,
-      }));
+      // const customers = data.customers.map((c) => ({
+      //   email: c.email,
+      //   firstName: c.first_name,
+      //   lastName: c.last_name,
+      //   street: c.street,
+      //   city: c.city,
+      //   postalCode: c.postcal_code,
+      //   phone: c.phone,
+      //   password: c.password,
+      // }));
 
       const carTypes = data.car_types.map((c) => ({
         make: c.make,
@@ -64,9 +64,9 @@ conn
         Location.bulkCreate(locations, {
           ignoreDuplicates: true,
         }),
-        Customer.bulkCreate(customers, {
-          ignoreDuplicates: true,
-        }),
+        // Customer.bulkCreate(customers, {
+        //   ignoreDuplicates: true,
+        // }),
 
         Cartype.bulkCreate(carTypes, {
           ignoreDuplicates: true,
@@ -117,61 +117,56 @@ conn
         where: { make: 'Ford', model: 'Edge' },
       });
 
-      await addCar(cordoba.id, cartype1.id);
-      await addCar(cordoba.id, cartype1.id);
-      await addCar(cordoba.id, cartype1.id);
-      await addCar(cordoba.id, cartype2.id);
-      await addCar(cordoba.id, cartype2.id);
-      await addCar(cordoba.id, cartype3.id);
-      await addCar(cordoba.id, cartype4.id);
-      await addCar(cordoba.id, cartype5.id);
-      await addCar(cordoba.id, cartype6.id);
-      await addCar(cordoba.id, cartype7.id);
-      await addCar(cordoba.id, cartype8.id);
-      await addCar(cordoba.id, cartype9.id);
-      await addCar(cordoba.id, cartype10.id);
-
-      await addCar(palermo.id, cartype1.id);
-      await addCar(palermo.id, cartype1.id);
-      await addCar(palermo.id, cartype1.id);
-      await addCar(palermo.id, cartype2.id);
-      await addCar(palermo.id, cartype2.id);
-      await addCar(palermo.id, cartype3.id);
-      await addCar(palermo.id, cartype4.id);
-      await addCar(palermo.id, cartype5.id);
-      await addCar(palermo.id, cartype6.id);
-      await addCar(palermo.id, cartype7.id);
-      await addCar(palermo.id, cartype8.id);
-      await addCar(palermo.id, cartype9.id);
-      await addCar(palermo.id, cartype10.id);
-
-      await addCar(santiago.id, cartype1.id);
-      await addCar(santiago.id, cartype1.id);
-      await addCar(santiago.id, cartype1.id);
-      await addCar(santiago.id, cartype2.id);
-      await addCar(santiago.id, cartype2.id);
-      await addCar(santiago.id, cartype3.id);
-      await addCar(santiago.id, cartype4.id);
-      await addCar(santiago.id, cartype5.id);
-      await addCar(santiago.id, cartype6.id);
-      await addCar(santiago.id, cartype7.id);
-      await addCar(santiago.id, cartype8.id);
-      await addCar(santiago.id, cartype9.id);
-      await addCar(santiago.id, cartype10.id);
-
-      await addCar(corrientes.id, cartype1.id);
-      await addCar(corrientes.id, cartype1.id);
-      await addCar(corrientes.id, cartype1.id);
-      await addCar(corrientes.id, cartype2.id);
-      await addCar(corrientes.id, cartype2.id);
-      await addCar(corrientes.id, cartype3.id);
-      await addCar(corrientes.id, cartype4.id);
-      await addCar(corrientes.id, cartype5.id);
-      await addCar(corrientes.id, cartype6.id);
-      await addCar(corrientes.id, cartype7.id);
-      await addCar(corrientes.id, cartype8.id);
-      await addCar(corrientes.id, cartype9.id);
-      await addCar(corrientes.id, cartype10.id);
+      await Promise.all([
+        addCar(cordoba.id, cartype1.id),
+        addCar(cordoba.id, cartype1.id),
+        addCar(cordoba.id, cartype2.id),
+        addCar(cordoba.id, cartype2.id),
+        addCar(cordoba.id, cartype3.id),
+        addCar(cordoba.id, cartype4.id),
+        addCar(cordoba.id, cartype5.id),
+        addCar(cordoba.id, cartype6.id),
+        addCar(cordoba.id, cartype7.id),
+        addCar(cordoba.id, cartype8.id),
+        addCar(cordoba.id, cartype9.id),
+        addCar(cordoba.id, cartype10.id),
+        addCar(palermo.id, cartype1.id),
+        addCar(palermo.id, cartype1.id),
+        addCar(palermo.id, cartype2.id),
+        addCar(palermo.id, cartype2.id),
+        addCar(palermo.id, cartype3.id),
+        addCar(palermo.id, cartype4.id),
+        addCar(palermo.id, cartype5.id),
+        addCar(palermo.id, cartype6.id),
+        addCar(palermo.id, cartype7.id),
+        addCar(palermo.id, cartype8.id),
+        addCar(palermo.id, cartype9.id),
+        addCar(palermo.id, cartype10.id),
+        addCar(santiago.id, cartype1.id),
+        addCar(santiago.id, cartype1.id),
+        addCar(santiago.id, cartype2.id),
+        addCar(santiago.id, cartype2.id),
+        addCar(santiago.id, cartype3.id),
+        addCar(santiago.id, cartype4.id),
+        addCar(santiago.id, cartype5.id),
+        addCar(santiago.id, cartype6.id),
+        addCar(santiago.id, cartype7.id),
+        addCar(santiago.id, cartype8.id),
+        addCar(santiago.id, cartype9.id),
+        addCar(santiago.id, cartype10.id),
+        addCar(corrientes.id, cartype1.id),
+        addCar(corrientes.id, cartype1.id),
+        addCar(corrientes.id, cartype2.id),
+        addCar(corrientes.id, cartype2.id),
+        addCar(corrientes.id, cartype3.id),
+        addCar(corrientes.id, cartype4.id),
+        addCar(corrientes.id, cartype5.id),
+        addCar(corrientes.id, cartype6.id),
+        addCar(corrientes.id, cartype7.id),
+        addCar(corrientes.id, cartype8.id),
+        addCar(corrientes.id, cartype9.id),
+        addCar(corrientes.id, cartype10.id),
+      ]);
 
       console.log('Locations, Customers, Cartypes and Cars created');
     }
