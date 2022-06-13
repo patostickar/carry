@@ -4,20 +4,20 @@ import { fetchAllLocations } from '../../../redux/searchBar';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 
-import { faker } from '@faker-js/faker';
+// import { faker } from '@faker-js/faker';
 // @mui
-import { useTheme } from '@mui/material/styles';
+// import { useTheme } from '@mui/material/styles';
 import { Grid, Container, Typography } from '@mui/material';
 // components
 // import Page from '../components/Page';
-import Iconify from './AdminComponents/Iconify';
+// import Iconify from './AdminComponents/Iconify';
 // sections
 import {
-  AppTasks,
+  // AppTasks,
   //   AppNewsUpdate,
   //   AppOrderTimeline,
-  AppCurrentVisits,
-  AppWebsiteVisits,
+  // AppCurrentVisits,
+  // AppWebsiteVisits,
   //   AppTrafficBySite,
   AppWidgetSummary,
   //   AppCurrentSubject,
@@ -77,9 +77,6 @@ export default function DashboardApp() {
 
   useEffect(() => {
     dispatch(fetchAllCarTypes());
-  }, []);
-
-  useEffect(() => {
     dispatch(fetchAllLocations());
   }, []);
 
@@ -91,7 +88,7 @@ export default function DashboardApp() {
   // eslint-disable-next-line prefer-const
   let locationAviable = locations.length;
 
-  const theme = useTheme();
+  // const theme = useTheme();
 
   return (
     <div title='Dashboard'>
