@@ -34,7 +34,7 @@ export default function CarCreate() {
       .required('El modelo es requerido'),
 
     className: Yup.string()
-      .max(10, 'Debe seleccionar una clase')
+     
       .required('La clase es requerida'),
 
     transmission: Yup.string()
