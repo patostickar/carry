@@ -1,19 +1,6 @@
-/* *{
-    box-sizing:border-box;
-  }
-  body{
-  background: #ffffff;
-  background: linear-gradient(to bottom, #ffffff 0%,#e1e8ed 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e1e8ed',GradientType=0 );
-      height: 100%;
-          margin: 0;
-          background-repeat: no-repeat;
-          background-attachment: fixed;
-    
-  } */
-
 .content {
-  padding-bottom: 15rem;
+  padding-bottom: 16rem;
+  padding-top: 5rem;
 }
 
 .wrapper1 {
@@ -21,6 +8,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+  border-radius: 1rem;
 }
 .wrapper2 {
   padding: 30px;
@@ -28,7 +16,6 @@
 }
 
 .wrapper2 h1 {
-  font-family: "Kaushan Script";
   font-size: 4em;
   letter-spacing: 3px;
   color: #5892ff;
@@ -38,8 +25,7 @@
 .wrapper2 p {
   margin: 0;
   font-size: 1.3em;
-  color: #aaa;
-  font-family: "Source Sans Pro", sans-serif;
+  color: rgba(0, 0, 0, 0.538);
   letter-spacing: 1px;
 }
 
@@ -59,7 +45,7 @@
   cursor: pointer;
   background-color: #1976d2d1;
   margin-bottom: 12rem;
-  box-shadow: 0 10px 16px 1px rgba(174, 199, 251, 1);
+  box-shadow: 6px 5px 3px 6px hsla(var(--second-hue), 48%, 8%, 0.04);
 }
 
 .goHome:hover {
@@ -71,12 +57,12 @@
   background: #d7e6fe;
   padding: 6px;
   text-align: center;
+  border-radius: 0rem 0rem 1rem 1rem;
 }
 .footerLike p {
   margin: 0;
   padding: 4px;
   color: #5892ff;
-  font-family: "Source Sans Pro", sans-serif;
   letter-spacing: 1px;
 }
 .footerLike p a {
@@ -101,6 +87,6 @@
     max-width: 620px;
     margin: 0 auto;
     margin-top: 50px;
-    box-shadow: 4px 8px 40px 8px rgba(88, 146, 255, 0.2);
+    box-shadow: 6px 5px 3px 6px hsla(var(--second-hue), 48%, 8%, 0.04);
   }
 }

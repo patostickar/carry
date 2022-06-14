@@ -20,7 +20,23 @@ function About() {
       <Navbar />
       <div>
         <h1 className={styles.team}>#TeamCarry</h1>
+     <div>
+      <Navbar />
+      <div className={styles.container}>
+        <ul className={styles.list}>
+          <li className={styles.text}>#</li>
+          <li>T</li>
+          <li>E</li>
+          <li>A</li>
+          <li>M</li>
+          <li>C</li>
+          <li>A</li>
+          <li>R</li>
+          <li>R</li>
+          <li>Y</li>
 
+          <div style={{ clear: "both" }}></div>
+        </ul>
         <div className={styles.main}>
           <div className={styles.profile_card}>
             <div className={styles.img}>
