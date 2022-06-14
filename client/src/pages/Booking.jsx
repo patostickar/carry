@@ -142,7 +142,7 @@ function Booking() {
             <Steps2 />
           </div>
 
-          <div className={styles.title}>
+          <div className={styles.titless}>
             <h1>Tu Oferta</h1>
           </div>
         </div>
@@ -223,8 +223,7 @@ function Booking() {
               <div>
                 <h3>
                   En esta epoca del año, un coche {booking?.carClass} en{' '}
-                  {location.city} suele costar {(booking?.carPrice / 100) * 150}{' '}
-                  AR$
+                  {location.city} suele costar {(booking?.carPrice / 100) * 150}{' '} AR$
                 </h3>
               </div>
             </div>

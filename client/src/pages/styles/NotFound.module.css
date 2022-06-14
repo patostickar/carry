@@ -1,25 +1,48 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700');
-@import url('https://fonts.googleapis.com/css?family=Catamaran:400,800');
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,600,700");
+@import url("https://fonts.googleapis.com/css?family=Catamaran:400,800");
+
+/* demo stuff */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body {
+  background-color: #fdfaf5;
+  margin-bottom: 50px;
+}
+html,
+button,
+input,
+select,
+textarea {
+  font-family: "Montserrat", Helvetica, sans-serif;
+  color: #bbb;
+}
+h1 {
+  text-align: center;
+  margin: 30px 15px;
+}
 
 .letras {
   font-size: 5rem;
   display: flex;
   justify-content: center;
-  font-family: 'Montserrat', Helvetica, sans-serif;
+  font-family: "Montserrat", Helvetica, sans-serif;
   font-weight: 800;
   color: #1976d2;
-  margin-top: 1.5rem;
   box-shadow: 6px 5px 3px 6px hsla(var(--second-hue), 48%, 8%, 0.05);
   margin-left: auto;
   margin-right: auto;
   width: 45%;
   border-radius: 1rem;
+  margin-top: 2rem;
 }
 
 .errorContainer {
   text-align: center;
   font-size: 106px;
-  font-family: 'Catamaran', sans-serif;
+  font-family: "Catamaran", sans-serif;
   font-weight: 800;
   margin: 70px 15px;
 }
@@ -51,7 +74,7 @@
 }
 .errorContainer > span.four:before,
 .errorContainer > span.four:after {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   border-radius: 999px;
@@ -117,7 +140,7 @@
   animation: bgshadow 5s infinite;
 }
 .errorContainer > span.zero:before {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   transform: rotate(45deg);
@@ -145,7 +168,7 @@
     );
 }
 .errorContainer > span.zero:after {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   border-radius: 999px;
@@ -178,28 +201,6 @@
   }
 }
 
-/* demo stuff */
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-body {
-  background-color: #fdfaf5;
-  margin-bottom: 50px;
-}
-html,
-button,
-input,
-select,
-textarea {
-  font-family: 'Montserrat', Helvetica, sans-serif;
-  color: #bbb;
-}
-h1 {
-  text-align: center;
-  margin: 30px 15px;
-}
 .zoomArea {
   max-width: 490px;
   margin: 30px auto 30px;

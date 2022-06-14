@@ -7,6 +7,7 @@ const {
 const { searchBooking } = require('../services/bookings/getCustomerBookings');
 const { randomReviews } = require('../services/bookings/randomReviews');
 const { userReviewsDetail } = require('../services/bookings/userReviews');
+const { DAY_MILISECONDS } = require('../constants');
 
 const getAllBookings = async (req, res, next) => {
   const { id } = req.params;
@@ -36,11 +37,11 @@ const getCustomerBookings = async (req, res, next) => {
 const dbCreateBooking = async (req, res, next) => {
   const { pickUpDate, dropOffDate } = req.body;
 
-  if (new Date(dropOffDate) <= new Date(pickUpDate)) {
+  if (new Date(dropOffDate) - new Date(pickUpDate) <= DAY_MILISECONDS) {
     return res.status(400).send('La reserva mínima es de 24hs');
   }
 
-  if (new Date(pickUpDate) < new Date()) {
+  if (new Date(pickUpDate) - new Date() < -DAY_MILISECONDS) {
     return res
       .status(400)
       .send(`Fecha de retiro no puede ser anterior a ${new Date().toString()}`);
