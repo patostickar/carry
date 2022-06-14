@@ -52,10 +52,8 @@ export default function Navbar() {
       color="transparent"
       sx={{
         height: 80,
-        position: "flex",
+        position: "relative",
         "z-index": "1",
-        width: "100%",
-        backgroundColor: "#fff",
       }}
     >
       <Toolbar>

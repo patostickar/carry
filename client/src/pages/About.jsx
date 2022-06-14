@@ -16,25 +16,25 @@ function About() {
   TabTitle("Nosotros");
 
   return (
-    <div >
+    <div>
       <Navbar />
-      <div className={styles.container} >
+      <div className={styles.container}>
         {/* <h1 className={styles.team}>#TeamCarry</h1> */}
-       
+
         <ul className={styles.list}>
-        <li className={styles.text}>#</li>
-        <li>T</li>
-        <li>E</li>
-        <li>A</li>
-        <li>M</li>
-        <li>C</li>
-        <li>A</li>
-        <li>R</li>
-        <li>R</li>
-        <li>Y</li>
-     
-        <div style={{clear:"both"}} ></div>
-    </ul>
+          <li className={styles.text}>#</li>
+          <li>T</li>
+          <li>E</li>
+          <li>A</li>
+          <li>M</li>
+          <li>C</li>
+          <li>A</li>
+          <li>R</li>
+          <li>R</li>
+          <li>Y</li>
+
+          <div style={{ clear: "both" }}></div>
+        </ul>
 
         <div className={styles.main}>
           <div className={styles.profile_card}>
@@ -43,7 +43,7 @@ function About() {
             </div>
             <div className={styles.caption}>
               <h3>Byron Correa</h3>
-              <p>Frontend Developer</p>
+              <p>Full Stack Web Developer</p>
               <div className={styles.social_links}>
                 <a
                   href="https://www.linkedin.com/in/byroncorrea/"
@@ -69,7 +69,7 @@ function About() {
             </div>
             <div className={styles.caption}>
               <h3>Patricio Stickar</h3>
-              <p>Frontend Developer</p>
+              <p>Full Stack Web Developer</p>
               <div className={styles.social_links}>
                 <a
                   href="https://www.linkedin.com/in/pstickar/"
@@ -95,7 +95,7 @@ function About() {
             </div>
             <div className={styles.caption}>
               <h3>Cesar Galeano</h3>
-              <p>Frontend Developer</p>
+              <p>Full Stack Web Developer</p>
               <div className={styles.social_links}>
                 <a
                   href="https://www.linkedin.com/in/cesargaleanotorres/"
@@ -121,7 +121,7 @@ function About() {
             </div>
             <div className={styles.caption}>
               <h3>Franco Garcia</h3>
-              <p>Frontend Developer</p>
+              <p>Full Stack Web Developer</p>
               <div className={styles.social_links}>
                 <a
                   href="https://www.linkedin.com/in/franco-garc%C3%ADa-040320199/"
@@ -147,7 +147,7 @@ function About() {
             </div>
             <div className={styles.caption}>
               <h3>Luis Leonel</h3>
-              <p>Frontend Developer</p>
+              <p>Full Stack Web Developer</p>
               <div className={styles.social_links}>
                 <a
                   href="https://www.linkedin.com/in/luis-leonel-hernandez-contreras-8b0974148/"
@@ -173,7 +173,7 @@ function About() {
             </div>
             <div className={styles.caption}>
               <h3>Samuel Centeno</h3>
-              <p>Frontend Developer</p>
+              <p>Full Stack Web Developer</p>
               <div className={styles.social_links}>
                 <a
                   href="https://www.linkedin.com/in/samuel-ricardo-centeno-21a4aa214"

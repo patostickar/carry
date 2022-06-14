@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=Roboto:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=Roboto:wght@700&display=swap");
 
 @font-face {
   font-family: Exo;
   src: url(./fonts/Exo2.0-Medium.otf);
 }
 
-.container{
-    
+.container {
+  margin-top: 2rem;
 }
 
 .main {
@@ -15,7 +15,8 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin-bottom: 3rem;
+  margin-bottom: -5rem;
+  margin-top: -13rem;
 }
 
 .profile_card {
@@ -33,7 +34,7 @@
 .profile_card:hover {
   border-radius: 10px;
   height: 260px;
-  background: linear-gradient(to right, #6190e8, #a7bfe8)
+  background: linear-gradient(to right, #6190e8, #a7bfe8);
 }
 .profile_card .img {
   position: relative;
@@ -54,7 +55,6 @@
 }
 .profile_card:hover img {
   border-radius: 10px;
-
 }
 .caption {
   text-align: center;
@@ -64,7 +64,6 @@
 }
 .profile_card:hover .caption {
   opacity: 1;
-
 }
 .caption h3 {
   font-size: 1.2rem;
@@ -92,9 +91,8 @@
   font-size: 5rem;
   text-align: center;
   margin-top: 3rem;
-  color:  rgb(0, 132, 255);
+  color: rgb(0, 132, 255);
 }
-
 
 .list {
   padding: 50px;
@@ -105,27 +103,33 @@
   top: 5rem;
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
-
 }
 .list li {
   list-style: none;
-  color:  #71b7e6;
+  color: #71b7e6;
   border-radius: 10rem;
   float: left;
   font-size: 5em;
-  font-family: 'Roboto', sans-serif;
-  transition: .9s;
+  font-family: "Roboto", sans-serif;
+  transition: 0.9s;
   margin-top: 2rem;
 }
 
-.list:hover li{transform: rotateY(360deg);}
-.list:hover li:nth-child(1){transition-delay: .8s;}
-.list:hover li:nth-child(2){transition-delay: .6s;}
-.list:hover li:nth-child(3){transition-delay: .3s;}
+.list:hover li {
+  transform: rotateY(360deg);
+}
+.list:hover li:nth-child(1) {
+  transition-delay: 0.8s;
+}
+.list:hover li:nth-child(2) {
+  transition-delay: 0.6s;
+}
+.list:hover li:nth-child(3) {
+  transition-delay: 0.3s;
+}
 
-
-@media(max-width:768px){
-  .list li{
-   font-size: 3rem;
+@media (max-width: 768px) {
+  .list li {
+    font-size: 3rem;
   }
 }
