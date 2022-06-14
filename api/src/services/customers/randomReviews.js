@@ -1,4 +1,4 @@
-const { Review, Customer } = require('../../db');
+const { Review, Customer, Booking } = require('../../db');
 
 module.exports.randomReviews = async () => {
   const count = await Review.count();
@@ -12,9 +12,33 @@ module.exports.randomReviews = async () => {
 
   const idArray = Array.from(uniqueIds);
 
-  let r1 = Review.findByPk(idArray[0], { include: [Customer] });
-  let r2 = Review.findByPk(idArray[1], { include: [Customer] });
-  let r3 = Review.findByPk(idArray[2], { include: [Customer] });
+  let r1 = Review.findByPk(idArray[0], {
+    include: [{ model: Booking, include: [Customer] }],
+  });
+  let r2 = Review.findByPk(idArray[1], {
+    include: [{ model: Booking, include: [Customer] }],
+  });
+  let r3 = Review.findByPk(idArray[2], {
+    include: [{ model: Booking, include: [Customer] }],
+  });
 
-  return ([r1, r2, r3] = await Promise.all([r1, r2, r3]));
+  [r1, r2, r3] = await Promise.all([r1, r2, r3]);
+
+  function formatReviewReponse(r) {
+    r = r?.dataValues;
+    return {
+      review: r?.review,
+      customer: {
+        firstName: r?.booking?.customer.firstName,
+        lastName: r?.booking?.customer.lastName,
+        img: r?.booking?.customer.img,
+      },
+    };
+  }
+
+  return [
+    formatReviewReponse(r1),
+    formatReviewReponse(r2),
+    formatReviewReponse(r3),
+  ];
 };
