@@ -21,8 +21,8 @@ function About() {
       <div className={styles.container} >
         {/* <h1 className={styles.team}>#TeamCarry</h1> */}
        
-        <ul>
-        <li>#</li>
+        <ul className={styles.list}>
+        <li className={styles.text}>#</li>
         <li>T</li>
         <li>E</li>
         <li>A</li>

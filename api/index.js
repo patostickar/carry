@@ -85,6 +85,24 @@ conn
       const corrientes = await Location.findOne({
         where: { name: 'Corrientes Cars' },
       });
+      const Ministro = await Location.findOne({
+        where: { name: 'Ministro Pistarini International Airport' },
+      });
+      const aeroparque = await Location.findOne({
+        where: { name: 'Aeroparque Internacional Jorge Newbery' },
+      });
+      const Mendoza = await Location.findOne({
+        where: { name: 'Aeropuerto Internacional El Plumerillo - Mendoza' },
+      });
+      const SantaFe = await Location.findOne({
+        where: { name: 'Santa Fe Cars' },
+      });
+      const Bariloche = await Location.findOne({
+        where: { name: 'Aeropuerto Internacional de Bariloche Tte. Luis Candelaria' },
+      });
+    
+
+
 
       const cartype1 = await Cartype.findOne({
         where: { make: 'Ford', model: 'Fiesta' },
@@ -119,8 +137,6 @@ conn
 
       await Promise.all([
         addCar(cordoba.id, cartype1.id),
-        addCar(cordoba.id, cartype1.id),
-        addCar(cordoba.id, cartype2.id),
         addCar(cordoba.id, cartype2.id),
         addCar(cordoba.id, cartype3.id),
         addCar(cordoba.id, cartype4.id),
@@ -131,8 +147,6 @@ conn
         addCar(cordoba.id, cartype9.id),
         addCar(cordoba.id, cartype10.id),
         addCar(palermo.id, cartype1.id),
-        addCar(palermo.id, cartype1.id),
-        addCar(palermo.id, cartype2.id),
         addCar(palermo.id, cartype2.id),
         addCar(palermo.id, cartype3.id),
         addCar(palermo.id, cartype4.id),
@@ -143,8 +157,6 @@ conn
         addCar(palermo.id, cartype9.id),
         addCar(palermo.id, cartype10.id),
         addCar(santiago.id, cartype1.id),
-        addCar(santiago.id, cartype1.id),
-        addCar(santiago.id, cartype2.id),
         addCar(santiago.id, cartype2.id),
         addCar(santiago.id, cartype3.id),
         addCar(santiago.id, cartype4.id),
@@ -155,8 +167,6 @@ conn
         addCar(santiago.id, cartype9.id),
         addCar(santiago.id, cartype10.id),
         addCar(corrientes.id, cartype1.id),
-        addCar(corrientes.id, cartype1.id),
-        addCar(corrientes.id, cartype2.id),
         addCar(corrientes.id, cartype2.id),
         addCar(corrientes.id, cartype3.id),
         addCar(corrientes.id, cartype4.id),
@@ -166,6 +176,56 @@ conn
         addCar(corrientes.id, cartype8.id),
         addCar(corrientes.id, cartype9.id),
         addCar(corrientes.id, cartype10.id),
+        addCar(Ministro.id, cartype1.id),
+        addCar(Ministro.id, cartype2.id),
+        addCar(Ministro.id, cartype3.id),
+        addCar(Ministro.id, cartype4.id),
+        addCar(Ministro.id, cartype5.id),
+        addCar(Ministro.id, cartype6.id),
+        addCar(Ministro.id, cartype7.id),
+        addCar(Ministro.id, cartype8.id),
+        addCar(Ministro.id, cartype9.id),
+        addCar(Ministro.id, cartype10.id),
+        addCar(aeroparque.id, cartype1.id),
+        addCar(aeroparque.id, cartype2.id),
+        addCar(aeroparque.id, cartype3.id),
+        addCar(aeroparque.id, cartype4.id),
+        addCar(aeroparque.id, cartype5.id),
+        addCar(aeroparque.id, cartype6.id),
+        addCar(aeroparque.id, cartype7.id),
+        addCar(aeroparque.id, cartype8.id),
+        addCar(aeroparque.id, cartype9.id),
+        addCar(aeroparque.id, cartype10.id),
+        addCar(Mendoza.id, cartype1.id),
+        addCar(Mendoza.id, cartype2.id),
+        addCar(Mendoza.id, cartype3.id),
+        addCar(Mendoza.id, cartype4.id),
+        addCar(Mendoza.id, cartype5.id),
+        addCar(Mendoza.id, cartype6.id),
+        addCar(Mendoza.id, cartype7.id),
+        addCar(Mendoza.id, cartype8.id),
+        addCar(Mendoza.id, cartype9.id),
+        addCar(Mendoza.id, cartype10.id),
+        addCar(SantaFe.id, cartype1.id),
+        addCar(SantaFe.id, cartype2.id),
+        addCar(SantaFe.id, cartype3.id),
+        addCar(SantaFe.id, cartype4.id),
+        addCar(SantaFe.id, cartype5.id),
+        addCar(SantaFe.id, cartype6.id),
+        addCar(SantaFe.id, cartype7.id),
+        addCar(SantaFe.id, cartype8.id),
+        addCar(SantaFe.id, cartype9.id),
+        addCar(SantaFe.id, cartype10.id),
+        addCar(Bariloche.id, cartype1.id),
+        addCar(Bariloche.id, cartype2.id),
+        addCar(Bariloche.id, cartype3.id),
+        addCar(Bariloche.id, cartype4.id),
+        addCar(Bariloche.id, cartype5.id),
+        addCar(Bariloche.id, cartype6.id),
+        addCar(Bariloche.id, cartype7.id),
+        addCar(Bariloche.id, cartype8.id),
+        addCar(Bariloche.id, cartype9.id),
+        addCar(Bariloche.id, cartype10.id),
       ]);
 
       console.log('Locations, Customers, Cartypes and Cars created');

@@ -19,6 +19,10 @@ function SearchBar() {
     if (!location) {
       return Alerts('warning', 'Por favor elija una ubicación');
     }
+
+    if (new Date(pickupDate).getUTCDate() === new Date().getUTCDate()) {
+      return Alerts('info', 'El alquiler mínimo es de 24 hs');
+    }
     if (dropoffDate - pickupDate <= 0) {
       return Alerts('info', 'El alquiler mínimo es de 24 hs');
     }
@@ -32,7 +36,11 @@ function SearchBar() {
         <div className={styles.headerSearchItem}>
           <Location type='Ubicación' popLocation={popLocation} />
         </div>
-        <Calendar />
+        <div className={styles.calendar}>
+          {' '}
+          <Calendar />
+        </div>
+
         <div className={styles.headerSearchItem}>
           <button className={styles.siCheckButton} onClick={handleSearch}>
             Buscar
