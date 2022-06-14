@@ -16,10 +16,25 @@ function About() {
   TabTitle("Nosotros");
 
   return (
-    <>
+    <div >
       <Navbar />
-      <div>
-        <h1 className={styles.team}>#TeamCarry</h1>
+      <div className={styles.container} >
+        {/* <h1 className={styles.team}>#TeamCarry</h1> */}
+       
+        <ul>
+        <li>#</li>
+        <li>T</li>
+        <li>E</li>
+        <li>A</li>
+        <li>M</li>
+        <li>C</li>
+        <li>A</li>
+        <li>R</li>
+        <li>R</li>
+        <li>Y</li>
+     
+        <div style={{clear:"both"}} ></div>
+    </ul>
 
         <div className={styles.main}>
           <div className={styles.profile_card}>
@@ -135,7 +150,7 @@ function About() {
               <p>Frontend Developer</p>
               <div className={styles.social_links}>
                 <a
-                  href="https://www.linkedin.com/in/byroncorrea/"
+                  href="https://www.linkedin.com/in/luis-leonel-hernandez-contreras-8b0974148/"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -180,7 +195,7 @@ function About() {
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 }
 
