@@ -74,8 +74,8 @@ const { Car, Booking, Cartype, Customer, Location, Review } = sequelize.models;
 Customer.hasMany(Booking);
 Booking.belongsTo(Customer);
 
-Customer.hasMany(Review);
-Review.belongsTo(Customer);
+Review.hasOne(Booking);
+Booking.belongsTo(Review);
 
 Location.hasMany(Booking);
 Booking.belongsTo(Location);

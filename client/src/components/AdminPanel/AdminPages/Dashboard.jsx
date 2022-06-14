@@ -52,17 +52,17 @@ export default function DashboardApp() {
   };
   const getbookigs = async () => {
     // eslint-disable-next-line prefer-const
-    let bookings = await axios.get('/bookings/Active/count', {
+    let bookings = await axios.get('/bookings/active/count', {
       headers: {
         Authorization: localStorage.getItem('token'),
       },
     });
     setBookings(bookings);
   };
-// datos?.map((book)=> book ={...book,pickUpDate:book.pickUpDate.split("-")})
+  // datos?.map((book)=> book ={...book,pickUpDate:book.pickUpDate.split("-")})
   useEffect(() => {
     getUsers();
-    getbookigs()
+    getbookigs();
   }, []);
 
   if (quantityCustomers) {
@@ -94,15 +94,21 @@ export default function DashboardApp() {
 
   const { AllcarTypes } = useSelector((state) => state.carsResults);
   const { locations } = useSelector((state) => state.searchBar);
-const labels = AllcarTypes.map(cartype=>{
-  let values = 0
-  Bookings.data?.map(dato => {if(dato.cartypeId === cartype.id){values = values + dato.count}})
-  
-  return{
-  label: `${cartype.make} ${cartype.model}` , value: values 
-}})
-console.log(labels);
-    // eslint-disable-next-line prefer-const
+  const labels = AllcarTypes.map((cartype) => {
+    let values = 0;
+    Bookings.data?.map((dato) => {
+      if (dato.cartypeId === cartype.id) {
+        values = values + dato.count;
+      }
+    });
+
+    return {
+      label: `${cartype.make} ${cartype.model}`,
+      value: values,
+    };
+  });
+  console.log(labels);
+  // eslint-disable-next-line prefer-const
   let cars = AllcarTypes.length;
   // eslint-disable-next-line prefer-const
   let locationAviable = locations.length;
@@ -182,17 +188,15 @@ console.log(labels);
           </>
 
           <Grid item xs={12} md={6} lg={4}>
-             <AppCurrentVisits
-              title="Vehiculos rentados historicamente"
+            <AppCurrentVisits
+              title='Vehiculos rentados historicamente'
               chartData={labels}
               chartColors={[
                 theme.palette.primary.main,
                 theme.palette.primary.dark,
-                theme.palette.primary.light
-                
-                
-              ] }
-            /> 
+                theme.palette.primary.light,
+              ]}
+            />
           </Grid>
 
           {/* <Grid item xs={12} md={6} lg={8}>
