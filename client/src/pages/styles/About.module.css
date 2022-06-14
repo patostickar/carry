@@ -5,18 +5,14 @@
   src: url(./fonts/Exo2.0-Medium.otf);
 }
 
-.container {
-  margin-top: 2rem;
-}
-
 .main {
   display: flex;
   padding: 7em;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin-bottom: -5rem;
-  margin-top: -13rem;
+  margin-bottom: -6rem;
+  margin-top: -15rem;
 }
 
 .profile_card {
