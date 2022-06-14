@@ -68,7 +68,11 @@ const editBooking = async (req, res, next) => {
 };
 
 const getActiveBooks = async (req, res, next) => {
-  res.send(await getActiveBookings());
+  try {
+    res.send(await getActiveBookings());
+  } catch (error) {
+    next(error);
+  }
 };
 
 const getActiveBooksCount = async (req, res, next) => {
