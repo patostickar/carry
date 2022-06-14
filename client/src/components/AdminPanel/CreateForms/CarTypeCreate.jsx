@@ -138,7 +138,7 @@ export default function CarCreate() {
           }}
           validationSchema={newCarTypeSchema}
         >
-          {({ values, errors, touched, handleSubmit, handleChange }) => (
+          {({ values, errors, touched, handleSubmit }) => (
             <Form onSubmit={handleSubmit} className={styles.form}>
               <div className={styles.input_box}>
                 <label htmlFor='make' className={styles.label}>
@@ -358,7 +358,7 @@ export default function CarCreate() {
                       value={d}
                       id={values.d}
                       key={d}
-                      onChange={handleChange}
+                     
                     >
                       {`${d}`}
                     </option>

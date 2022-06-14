@@ -11,40 +11,46 @@ import {
   Avatar,
 } from '@mui/material';
 import { putUser } from '../../redux/user';
-import { useFormik } from 'formik';
-import * as yup from 'yup';
+import { Formik,Form,Field } from 'formik';
+import * as Yup from 'yup';
+import Error from '../AdminPanel/CreateForms/Error';
 
-const validationSchema = yup.object({
-  firstName: yup
-    .string('Ingrese un nombre valido')
+const validateForm = Yup.object().shape({
+  firstName: Yup
+    .string().matches(/^[A-Z _]+$/i, 'El campo solo debe contener letras')
     .min(3, 'Minimo 3 caracteres de longitud')
     .max(15, 'Maximo 15 caracteres de longitud')
     .required('El campo Nombre es requerido'),
-  lastName: yup
-    .string('Ingrese un Apellido valido')
+  lastName: Yup
+    .string().matches(/^[A-Z _]+$/i, 'El campo solo debe contener letras')
     .min(3, 'Minimo 3 caracteres de longitud')
     .max(15, 'Maximo 15 caracteres de longitud')
     .required('El campo Apellido es requerido'),
-  email: yup
+  email: Yup
     .string()
     .email('Ingrese un Email valido')
     .required('El campo Email es requerido'),
-  phone: yup
-    .string()
-    .min(3, 'Minimo 3 caracteres de longitud')
+  phone: Yup
+    .string() .matches(
+      // eslint-disable-next-line
+      /^(\(\+?\d{2,3}\)[\*|\s|\-|\.]?(([\d][\*|\s|\-|\.]?){6})(([\d][\s|\-|\.]?){2})?|(\+?[\d][\s|\-|\.]?){8}(([\d][\s|\-|\.]?){2}(([\d][\s|\-|\.]?){2})?)?)$/,
+      'Teléfono no válido'
+    )
     .required('El campo Telefono es requerido'),
-  city: yup
+  city: Yup
     .string()
     .min(3, 'Minimo 3 caracteres de longitud')
     .required('El campo City es requerido'),
-  street: yup
+  street: Yup
     .string()
     .min(3, 'Minimo 3 caracteres de longitud')
     .required('El campo Direccion es requerido'),
-  postalCode: yup
-    .string()
-    .min(3, 'Minimo 3 caracteres de longitud')
-    .required('El campo Codigo Postal es requerido'),
+  postalCode: Yup
+  .number('Código no válido')
+  .moreThan(1000, 'El código debe tener 4 digitos')
+  .lessThan(10000, 'El código debe tener 4 digitos')
+  .typeError('El Campo no es válido')
+  .required('El campo es obligatorio'),
 });
 
 export const PersonalInformation = ({ setRenderControl, renderControl }) => {
@@ -65,24 +71,25 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
   //   setRenderControl({ ...renderControl, personalInfo: !renderControl.personalInfo })
   // };
 
-  const formik = useFormik({
-    initialValues: {
-      firstName,
-      lastName,
-      email,
-      phone,
-      city,
-      street,
-      postalCode,
-    },
-    validationSchema,
-    onSubmit: (values) => {
-      dispatch(putUser(id, values));
-    },
-  });
+  // const formik = useFormik({
+  //   initialValues: {
+  //     firstName,
+  //     lastName,
+  //     email,
+  //     phone,
+  //     city,
+  //     street,
+  //     postalCode,
+  //   },
+  //   validationSchema,
+  //   onSubmit: (values) => {
+  //     dispatch(putUser(id, values));
+  //   },
+  // });
 
   return (
     <>
+
       <Grid item xs={2}></Grid>
       <Grid
         item
@@ -101,7 +108,25 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
             }}
           />
         </Box>
-        <form autoComplete='off' onSubmit={formik.handleSubmit}>
+        <Formik
+         initialValues={{
+    firstName,
+      lastName,
+      email,
+      phone,
+      city,
+      street,
+      postalCode,
+         }}
+
+         onSubmit={(values)=>{
+          dispatch(putUser(id, values));
+
+         }}
+         validationSchema={validateForm}  
+        >
+        {({values,errors,touched,handleSubmit,handleChange})=>(
+        <Form  autoComplete='off' onSubmit={handleSubmit}>
           <Card>
             <CardHeader
               subheader='Actualiza tus datos'
@@ -111,115 +136,119 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
                 </Typography>
               }
             />
-
             <CardContent>
               <Grid container spacing={3}>
                 <Grid item md={6} xs={12}>
-                  <TextField
+                  <Field
+                    type='text'
+                    as={TextField}
                     fullWidth
                     label='First name'
                     name='firstName'
                     required
                     variant='outlined'
-                    value={formik.values.firstName}
-                    onChange={formik.handleChange}
-                    error={
-                      formik.touched.firstName &&
-                      Boolean(formik.errors.firstName)
-                    }
-                    helperText={
-                      formik.touched.firstName && formik.errors.firstName
-                    }
+                    value={values.firstName}
+                    onChange={handleChange}
                   />
+                  {touched.firstName && errors.firstName ? (
+                    <Error>{errors.firstName}</Error>
+                  ):null}
                 </Grid>
                 <Grid item md={6} xs={12}>
-                  <TextField
+                  <Field
+                    type='text'
+                    as={TextField}
                     fullWidth
                     label='Last name'
                     name='lastName'
                     required
                     variant='outlined'
-                    value={formik.values.lastName}
-                    onChange={formik.handleChange}
-                    error={
-                      formik.touched.lastName && Boolean(formik.errors.lastName)
-                    }
-                    helperText={
-                      formik.touched.lastName && formik.errors.lastName
-                    }
+                    value={values.lastName}
+                    onChange={handleChange}
                   />
+                   {touched.lastName && errors.lastName ? (
+                    <Error>{errors.lastName}</Error>
+                  ):null}
                 </Grid>
                 <Grid item md={6} xs={12}>
-                  <TextField
+                  <Field
+                    as={TextField}
+                    type='email'
                     fullWidth
                     label='Email Address'
                     name='email'
                     required
                     variant='outlined'
-                    value={formik.values.email}
-                    onChange={formik.handleChange}
-                    error={formik.touched.email && Boolean(formik.errors.email)}
-                    helperText={formik.touched.email && formik.errors.email}
+                    value={values.email}
+                    onChange={handleChange}
                   />
+                     {touched.email && errors.email ? (
+                    <Error>{errors.email}</Error>
+                  ):null}
                 </Grid>
                 <Grid item md={6} xs={12}>
-                  <TextField
+                  <Field
+                    as={TextField}
+                    type='number'
                     fullWidth
                     label='Phone Number'
                     name='phone'
                     required
                     variant='outlined'
-                    value={formik.values.phone}
-                    onChange={formik.handleChange}
-                    error={formik.touched.phone && Boolean(formik.errors.phone)}
-                    helperText={formik.touched.phone && formik.errors.phone}
+                    value={values.phone}
+                    onChange={handleChange}
                   />
+                   {touched.phone && errors.phone ? (
+                    <Error>{errors.phone}</Error>
+                  ):null}
                 </Grid>
                 <Grid item md={6} xs={12}>
-                  <TextField
+                  <Field
+                    as={TextField}
+                    type='text'
                     fullWidth
                     label='City'
                     name='city'
                     required
                     variant='outlined'
-                    value={formik.values.city}
-                    onChange={formik.handleChange}
-                    error={formik.touched.city && Boolean(formik.errors.city)}
-                    helperText={formik.touched.city && formik.errors.city}
+                    value={values.city}
+                    onChange={handleChange}
                   />
+                     {touched.city && errors.city ? (
+                    <Error>{errors.city}</Error>
+                  ):null}
                 </Grid>
                 <Grid item md={6} xs={12}>
-                  <TextField
+                  <Field
+                    type='text'
+                    as={TextField}
                     fullWidth
                     label='Street'
                     name='street'
                     required
                     variant='outlined'
-                    value={formik.values.street}
-                    onChange={formik.handleChange}
-                    error={
-                      formik.touched.street && Boolean(formik.errors.street)
-                    }
-                    helperText={formik.touched.street && formik.errors.street}
+                    value={values.street}
+                    onChange={handleChange}
                   />
+                   {touched.street && errors.street ? (
+                    <Error>{errors.street}</Error>
+                  ):null}
                 </Grid>
                 <Grid item md={6} xs={12}>
-                  <TextField
+                  <Field
+                    type='number'
+                    as={TextField}
                     fullWidth
                     label='Postal Code'
                     name='postalCode'
                     required
                     variant='outlined'
-                    value={formik.values.postalCode}
-                    onChange={formik.handleChange}
-                    error={
-                      formik.touched.postalCode &&
-                      Boolean(formik.errors.postalCode)
-                    }
-                    helperText={
-                      formik.touched.postalCode && formik.errors.postalCode
-                    }
+                    value={values.postalCode}
+                    onChange={handleChange}
                   />
+                    {touched.postalCode && errors.postalCode ? (
+                    <Error>{errors.postalCode}</Error>
+                  ):null}
                 </Grid>
               </Grid>
             </CardContent>
@@ -236,7 +265,10 @@ export const PersonalInformation = ({ setRenderControl, renderControl }) => {
               </Button>
             </Box>
           </Card>
-        </form>
+        </Form>
+       
+           )}
+            </Formik>
       </Grid>
     </>
   );
