@@ -216,15 +216,15 @@ function Booking() {
             <div className={styles.conTenedor}>
               <div>
                 <h2>
-                  Este vehiculo cuesta tan solo ${booking?.carPrice} ¡Una
+                  Este vehiculo cuesta tan solo {booking?.carPrice} AR$ ¡Una
                   verdadera ganga!
                 </h2>
               </div>
               <div>
                 <h3>
                   En esta epoca del año, un coche {booking?.carClass} en{' '}
-                  {location.city} suele costar ${' '}
-                  {(booking?.carPrice / 100) * 150}
+                  {location.city} suele costar {(booking?.carPrice / 100) * 150}{' '}
+                  AR$
                 </h3>
               </div>
             </div>
@@ -296,7 +296,7 @@ function Booking() {
                         {dateRange === 1 ? 'día' : 'días'}:{' '}
                       </span>
                       <span className={styles.siprice}>
-                        $ {booking?.carPrice}
+                        {booking?.carPrice} AR$
                       </span>
                       <span className={styles.siAmendments}>
                         Cancelación gratuita
@@ -350,7 +350,7 @@ function Booking() {
 
                 <div className={styles.cobertura}>
                   <h2>Precio</h2>
-                  <h4>$ {(booking?.carPrice / 100) * 30}</h4>
+                  <h4>{(booking?.carPrice / 100) * 30} AR$</h4>
                 </div>
               </div>
               <div className={styles.incluye1}>
@@ -400,7 +400,7 @@ function Booking() {
                 <h5>🚘 Auto</h5>
               </div>
               <div className={styles.tabla2}>
-                <h3>${booking?.carPrice}</h3>
+                <h3>{booking?.carPrice} AR$</h3>
               </div>
             </div>
             <div className={styles.tabla}>
@@ -408,7 +408,7 @@ function Booking() {
                 <h5>✅ Seguro</h5>
               </div>
               <div className={styles.tabla2}>
-                <h3>${(booking?.carPrice / 100) * 30}</h3>
+                <h3>{(booking?.carPrice / 100) * 30} AR$</h3>
               </div>
             </div>
             <div className={styles.tabla}>
@@ -418,7 +418,7 @@ function Booking() {
                 </h5>
               </div>
               <div className={styles.tabla2}>
-                <h3>${(booking?.carPrice / 100) * 130}</h3>
+                <h3>{(booking?.carPrice / 100) * 130} AR$</h3>
               </div>
             </div>
             <div className={styles.divButtons}>
