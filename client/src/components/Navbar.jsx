@@ -50,13 +50,19 @@ export default function Navbar() {
   return (
     <AppBar
       color="transparent"
-      sx={{ height: 80, position: "relative", "z-index": "1" }}
+      sx={{
+        height: 80,
+        position: "flex",
+        "z-index": "1",
+        width: "100%",
+        backgroundColor: "#fff",
+      }}
     >
       <Toolbar>
         <Link to="/">
           <Box
             component="img"
-            sx={{ height: 80, width: 90, marginRight: "1.5rem" }}
+            sx={{ height: 80, width: 90, marginRight: "0.5rem" }}
             alt="Your logo."
             src={logo}
           />
