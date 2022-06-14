@@ -8,6 +8,7 @@ import { UserCard } from "../components/Account/UserCard";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import TabTitle from "../components/GeneralFuntions/TabTitle";
+import styles from "./styles/Account.module.css";
 
 export default function Account() {
   TabTitle("Perfil");
@@ -19,24 +20,26 @@ export default function Account() {
     userCard: true,
   });
   return (
-    <>
-      <Navbar />
-      <Grid container my={4}>
-        <Sidebar
-          setRenderControl={setRenderControl}
-          renderControl={renderControl}
-        />
-        {renderControl.userCard && (
-          <UserCard
+    <div>
+      <div className={styles.all}>
+        <Navbar />
+        <Grid container my={4}>
+          <Sidebar
             setRenderControl={setRenderControl}
             renderControl={renderControl}
           />
-        )}
-        {renderControl.personalInfo && <PersonalInformation />}
-        {renderControl.booking && <Booking />}
-        {renderControl.review && <Review />}
-      </Grid>
+          {renderControl.userCard && (
+            <UserCard
+              setRenderControl={setRenderControl}
+              renderControl={renderControl}
+            />
+          )}
+          {renderControl.personalInfo && <PersonalInformation />}
+          {renderControl.booking && <Booking />}
+          {renderControl.review && <Review />}
+        </Grid>
+      </div>
       <Footer />
-    </>
+    </div>
   );
 }
