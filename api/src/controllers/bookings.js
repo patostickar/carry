@@ -66,8 +66,23 @@ const editBooking = async (req, res, next) => {
     next(error);
   }
 };
-const GETActiveBooks = async (req, res, next) => {
+
+const getActiveBooks = async (req, res, next) => {
   res.send(await getActiveBookings());
+};
+
+const getActiveBooksCount = async (req, res, next) => {
+  try {
+    const data = await Booking.count({
+      attributes: ['cartypeId'],
+      where: { status: 'activo' },
+      include: ['cartype'],
+      group: 'cartypeId',
+    });
+    res.send(data);
+  } catch (error) {
+    next(error);
+  }
 };
 
 const getReviews = async (_req, res, next) => {
@@ -114,7 +129,8 @@ const postReview = async (req, res, next) => {
 
 module.exports = {
   getAllBookings,
-  GETActiveBooks,
+  getActiveBooks,
+  getActiveBooksCount,
   dbCreateBooking,
   getCustomerBookings,
   editBooking,
