@@ -267,7 +267,7 @@
       "air_conditioned": false,
       "largeSuitcase": "1",
       "smallSuitcase": "1",
-      "price": 100
+      "price":5499
     },
     {
       "make": "Kia",
@@ -282,7 +282,7 @@
       "air_conditioned": false,
       "largeSuitcase": "1",
       "smallSuitcase": "1",
-      "price": 110
+      "price": 4800
     },
     {
       "make": "Toyota",
@@ -297,7 +297,7 @@
       "air_conditioned": true,
       "largeSuitcase": "1",
       "smallSuitcase": "2",
-      "price": 120
+      "price": 7560
     },
     {
       "make": "Volkswagen",
@@ -312,7 +312,7 @@
       "air_conditioned": false,
       "largeSuitcase": "1",
       "smallSuitcase": "2",
-      "price": 130
+      "price": 6970
     },
     {
       "make": "Toyota",
@@ -327,7 +327,7 @@
       "air_conditioned": false,
       "largeSuitcase": "2",
       "smallSuitcase": "2",
-      "price": 140
+      "price": 8230
     },
     {
       "make": "Volkswagen",
@@ -342,7 +342,7 @@
       "air_conditioned": true,
       "largeSuitcase": "2",
       "smallSuitcase": "2",
-      "price": 150
+      "price": 8490
     },
     {
       "make": "Chrysler",
@@ -357,7 +357,7 @@
       "air_conditioned": true,
       "largeSuitcase": "2",
       "smallSuitcase": "2",
-      "price": 160
+      "price": 10260
     },
     {
       "make": "Ford",
@@ -372,7 +372,7 @@
       "air_conditioned": true,
       "largeSuitcase": "1",
       "smallSuitcase": "1",
-      "price": 170
+      "price": 20250
     },
     {
       "make": "Chrysler",
@@ -387,7 +387,7 @@
       "air_conditioned": true,
       "largeSuitcase": "3",
       "smallSuitcase": "2",
-      "price": 180
+      "price": 16520
     },
     {
       "make": "Ford",
@@ -402,7 +402,7 @@
       "air_conditioned": true,
       "largeSuitcase": "2",
       "smallSuitcase": "2",
-      "price": 190
+      "price": 18450
     }
   ],
   "car": [
