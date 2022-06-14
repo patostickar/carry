@@ -88,7 +88,7 @@ export const Booking = () => {
                   align='center'
                   style={{ color: '#1565C0', fontWeight: 'bolder' }}
                 >
-                  Costo Total (USD)
+                  Costo Total (AR$)
                 </TableCell>
                 <TableCell
                   align='center'

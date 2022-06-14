@@ -1,7 +1,6 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import searchBarReducer from './searchBar';
 import carsResultsReducer from './carsResults';
-import testimonialsReducer from './testimonials';
 import bookingReducer from './booking';
 import userReducer from './user';
 
@@ -44,8 +43,7 @@ const bookingPersistConfig = {
 const rootReducer = combineReducers({
   searchBar: persistReducer(searchBarPersistConfig, searchBarReducer),
   carsResults: persistReducer(carsResultsPersistConfig, carsResultsReducer),
-  booking: persistReducer(bookingPersistConfig,bookingReducer),
-  testimonials: testimonialsReducer,
+  booking: persistReducer(bookingPersistConfig, bookingReducer),
   user: userReducer,
 });
 
