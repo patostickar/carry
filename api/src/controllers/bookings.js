@@ -5,7 +5,8 @@ const {
   getActiveBookings,
 } = require('../services/bookings/getBookings');
 const { searchBooking } = require('../services/bookings/getCustomerBookings');
-const { randomReviews } = require('../services/customers/randomReviews');
+const { randomReviews } = require('../services/bookings/randomReviews');
+const { userReviewsDetail } = require('../services/bookings/userReviews');
 
 const getAllBookings = async (req, res, next) => {
   const { id } = req.params;
@@ -101,9 +102,8 @@ const getUserReviews = async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    res.send(
-      await Booking.findAll({ where: { customerId: id }, include: [Review] })
-    );
+    const userReview = await userReviewsDetail(id);
+    res.send(userReview);
   } catch (error) {
     next(error);
   }
