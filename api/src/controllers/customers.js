@@ -46,27 +46,14 @@ const postCustomer = async (req, res, next) => {
       },
     });
 
-    const customerDetails = {
-      id: customer.id,
-      email: customer.email,
-      firstName: customer.firstName,
-      lastName: customer.lastName,
-      street: customer.street,
-      city: customer.city,
-      postalCode: customer.postalCode,
-      phone: customer.phone,
-      img: customer.img,
-      isAdmin: customer.isAdmin,
-    };
-
     created
       ? res.header('Authorization', customer.token).status(201).send({
           msg: 'Cliente registrado satisfactoriamente',
-          customerDetails,
+          customer,
         })
       : res
           .header('Authorization', customer.token)
-          .send({ msg: 'Bienvenido de vuelta a Carry', customerDetails });
+          .send({ msg: 'Bienvenido de vuelta a Carry', customer });
   } catch (error) {
     next(error);
   }

@@ -13,13 +13,13 @@ export const ProtectedRoute = ({ component, role }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-      if (role === 'admin' && !user.isAdmin) {
-        navigate('/notAllowed');
-      }
-      if (user?.isBanned) {
-        navigate('/notAllowed');
-      }
-  });
+    if (role === 'admin' && !user?.isAdmin) {
+      navigate('/notAllowed');
+    }
+    if (user?.isBanned) {
+      navigate('/notAllowed');
+    }
+  }, []);
 
   return <Component />;
 };

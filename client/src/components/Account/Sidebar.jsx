@@ -66,7 +66,7 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
               }}
               style={{ fontWeight: 'lighter', padding: '0px' }}
             >
-              Informacion Personal
+              Perfil
             </Typography>
           </Box>
 
@@ -93,7 +93,7 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
               }
               style={{ fontWeight: 'lighter', padding: '0px' }}
             >
-              Mis Reservas
+              Reservas
             </Typography>
           </Box>
           <Box
@@ -118,7 +118,7 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
               }
               style={{ fontWeight: 'lighter', padding: '0px' }}
             >
-              Mis Review
+              Reseñas
             </Typography>
           </Box>
 
