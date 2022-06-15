@@ -1,11 +1,10 @@
-import { Grid, Box, Container, Link, Typography } from "@mui/material";
+import { Grid, Box, Link, Typography } from "@mui/material";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import PhoneIphoneOutlinedIcon from "@mui/icons-material/PhoneIphoneOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import { Link as Link1 } from "react-router-dom";
 import styles from "./styles/Footer.module.css";
 
 export default function Footer() {
@@ -19,11 +18,7 @@ export default function Footer() {
       }}
       style={{ backgroundColor: "#1976d2" }}
     >
-      <Grid
-        item
-        xs={4}
-        style={{ padding: "20px", borderRight: "solid 1px white" }}
-      >
+      <Grid item xs={4} style={{ padding: "30px" }}>
         <Typography
           variant="body2"
           style={{ textAlign: "center", fontWeight: "bolder" }}
@@ -44,8 +39,8 @@ export default function Footer() {
         item
         xs={4}
         style={{
-          padding: "20px",
-          borderRight: "solid 1px white",
+          padding: "30px",
+
           textAlign: "center",
         }}
       >
@@ -77,7 +72,7 @@ export default function Footer() {
           Terminos y Condiciones <br />
         </Link>
       </Grid>
-      <Grid item xs={4} style={{ padding: "20px" }}>
+      <Grid item xs={4} style={{ padding: "30px" }}>
         <Typography
           variant="body2"
           style={{ textAlign: "center", fontWeight: "bolder" }}

@@ -478,10 +478,10 @@ container {
 
   .imageContainer {
     position: absolute;
-    width: 120px;
-    height: 60px;
+    width: 140px;
+    height: 70px;
     margin-top: 2rem;
-    margin-left: 13rem;
+    margin-left: 12rem;
   }
 
   .siCarDesc {
@@ -527,9 +527,9 @@ container {
     margin-left: -1.5rem;
   }
   .imageContainer {
-    width: 100px;
-    height: 50px;
-    margin-left: 14rem;
+    width: 120px;
+    height: 60px;
+    margin-left: 13rem;
   }
 
   .date {
@@ -651,8 +651,8 @@ container {
 
 @media screen and (max-width: 500px) {
   .imageContainer {
-    width: 150px;
-    height: 75px;
-    margin-left: 45%;
+    width: 130px;
+    height: 65px;
+    margin-left: 47%;
   }
 }

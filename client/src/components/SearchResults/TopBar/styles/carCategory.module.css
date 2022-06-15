@@ -13,3 +13,9 @@
 .categoryMiniCard > img {
   width: 80px;
 }
+
+@media screen and (max-width: 800px) {
+  .categoryMiniCard {
+    display: none;
+  }
+}
