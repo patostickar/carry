@@ -93,16 +93,23 @@ function applySortFilter(array, comparator, query) {
   const stabilizedThis = array.map((el, index) => [el, index]);
   stabilizedThis.sort((a, b) => {
     const order = comparator(a[0], b[0]);
+    console.log(order)
     if (order !== 0) return order;
     return a[1] - b[1];
   });
   if (query) {
+    // if(query > 0){
+    
     return filter(
       array,
-      (_user) => _user.name.toLowerCase().indexOf(query.toLowerCase()) !== -1
-    );
-  }
+      
+      (_user) => _user.firstName.toLowerCase().indexOf(query.toLowerCase()) !== -1
+      
+    ); 
+  // }
+} console.log(stabilizedThis.map((el) => el[0]))
   return stabilizedThis.map((el) => el[0]);
+
 }
 
 export default function User() {
@@ -197,7 +204,7 @@ export default function User() {
     const isUserNotFound = filteredUsers.length === 0;
     // ban de usuarios
 
-    console.log(selected)
+    // console.log(selected)
 
     function banUser() {
       // eslint-disable-next-line prefer-const
@@ -330,7 +337,7 @@ export default function User() {
                                 isAdmin,
                               } = row;
                               const isItemSelected =
-                                selected.indexOf(id) !== -1;
+                                selected.indexOf(firstName) !== -1;
 
                               return (
                                 <TableRow
@@ -367,6 +374,8 @@ export default function User() {
                                   </TableCell>
                                   <TableCell align='left'>{lastName}</TableCell>
                                   <TableCell align='left'>{email}</TableCell>
+                             
+                                  
                                   <TableCell align='left'>
                                     {isAdmin ? 'Si' : 'No'}
                                   </TableCell>
