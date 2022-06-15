@@ -94,118 +94,127 @@ export default function Review() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {bookingsReviews?.length &&
-                bookingsReviews
-                  .filter((b) => {
-                    const dropOffDate = new Date(b.dropOffDate).getTime();
-                    const today = new Date().getTime();
-                    return dropOffDate < today;
-                  })
-                  .map((row, i) => (
-                    <>
-                      <TableRow key={i}>
-                        <TableCell
-                          style={{ display: 'flex', justifyContent: 'center' }}
-                          align='center'
-                        >
-                          <div
+              {bookingsReviews?.length
+                ? bookingsReviews
+                    .filter((b) => {
+                      const dropOffDate = new Date(b.dropOffDate).getTime();
+                      const today = new Date().getTime();
+                      return dropOffDate < today;
+                    })
+                    .map((row, i) => (
+                      <>
+                        <TableRow key={i}>
+                          <TableCell
                             style={{
                               display: 'flex',
-                              flexDirection: 'column',
                               justifyContent: 'center',
-                              padding: '0px',
                             }}
+                            align='center'
                           >
-                            <img
-                              src={row.cartype.img}
-                              alt=''
-                              style={{ height: 60, width: 110 }}
-                            />
-                            <label>
-                              {row.cartype.make} {row.cartype.model}{' '}
-                            </label>
-                          </div>
-                        </TableCell>
-                        <TableCell align='center'>{row.pickUpDate}</TableCell>
-                        <TableCell align='center'>{row.dropOffDate}</TableCell>
-                      </TableRow>
-                      <TableRow key={row.id}>
-                        <TableCell
-                          align='center'
-                          style={{
-                            color: '#00000099',
-                            fontWeight: 'bolder',
-                          }}
-                        >
-                          Reseña
-                        </TableCell>
-                        <TableCell colSpan='2' style={{ textAlign: 'center' }}>
-                          {row.review ? (
-                            row.review
-                          ) : (
-                            <Formik
-                              initialValues={{
-                                review: '',
-                              }}
-                              validationSchema={ReviewSchema}
-                              onSubmit={(values) => {
-                                postreview(values, row.bookingId);
-                                Alerts(
-                                  'success',
-                                  'Gracias por su compartir su opinión'
-                                );
+                            <div
+                              style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                justifyContent: 'center',
+                                padding: '0px',
                               }}
                             >
-                              {({
-                                values,
-                                handleSubmit,
-                                handleChange,
-                                handleBlur,
-                                errors,
-                                touched,
-                              }) => (
-                                <>
-                                  <Form
-                                    className='PostReview'
-                                    onSubmit={handleSubmit}
-                                    style={{
-                                      display: 'flex',
-                                      alignItems: 'center',
-                                      alignContent: 'center',
-                                      flexDirection: 'row',
-                                      columnGap: '1em',
-                                    }}
-                                  >
-                                    <TextField
-                                      fullWidth
-                                      inputProps={{ maxLength: 255 }}
-                                      label='Reseña'
-                                      name='review'
-                                      onChange={handleChange}
-                                      onBlur={handleBlur}
-                                      value={values.review || ''}
-                                      multiline
-                                      variant='outlined'
-                                    />
-                                    <Button
-                                      color='primary'
-                                      variant='contained'
-                                      type='submit'
+                              <img
+                                src={row.cartype.img}
+                                alt=''
+                                style={{ height: 60, width: 110 }}
+                              />
+                              <label>
+                                {row.cartype.make} {row.cartype.model}{' '}
+                              </label>
+                            </div>
+                          </TableCell>
+                          <TableCell align='center'>{row.pickUpDate}</TableCell>
+                          <TableCell align='center'>
+                            {row.dropOffDate}
+                          </TableCell>
+                        </TableRow>
+                        <TableRow key={row.id}>
+                          <TableCell
+                            align='center'
+                            style={{
+                              color: '#00000099',
+                              fontWeight: 'bolder',
+                            }}
+                          >
+                            Reseña
+                          </TableCell>
+                          <TableCell
+                            colSpan='2'
+                            style={{ textAlign: 'center' }}
+                          >
+                            {row.review ? (
+                              row.review
+                            ) : (
+                              <Formik
+                                initialValues={{
+                                  review: '',
+                                }}
+                                validationSchema={ReviewSchema}
+                                onSubmit={(values) => {
+                                  postreview(values, row.bookingId);
+                                  Alerts(
+                                    'success',
+                                    'Gracias por su compartir su opinión'
+                                  );
+                                }}
+                              >
+                                {({
+                                  values,
+                                  handleSubmit,
+                                  handleChange,
+                                  handleBlur,
+                                  errors,
+                                  touched,
+                                }) => (
+                                  <>
+                                    <Form
+                                      className='PostReview'
+                                      onSubmit={handleSubmit}
+                                      style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        alignContent: 'center',
+                                        flexDirection: 'row',
+                                        columnGap: '1em',
+                                      }}
                                     >
-                                      Crear
-                                    </Button>
-                                  </Form>
-                                  {errors.review && touched.review ? (
-                                    <div>{errors.review}</div>
-                                  ) : null}
-                                </>
-                              )}
-                            </Formik>
-                          )}
-                        </TableCell>
-                      </TableRow>
-                    </>
-                  ))}
+                                      <TextField
+                                        fullWidth
+                                        inputProps={{ maxLength: 255 }}
+                                        label='Reseña'
+                                        name='review'
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={values.review || ''}
+                                        multiline
+                                        variant='outlined'
+                                      />
+                                      <Button
+                                        color='primary'
+                                        variant='contained'
+                                        type='submit'
+                                      >
+                                        Crear
+                                      </Button>
+                                    </Form>
+                                    {errors.review && touched.review ? (
+                                      <div>{errors.review}</div>
+                                    ) : null}
+                                  </>
+                                )}
+                              </Formik>
+                            )}
+                          </TableCell>
+                        </TableRow>
+                      </>
+                    ))
+                : null}
             </TableBody>
           </Table>
         </TableContainer>
