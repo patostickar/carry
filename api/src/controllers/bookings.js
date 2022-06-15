@@ -37,7 +37,7 @@ const getCustomerBookings = async (req, res, next) => {
 const dbCreateBooking = async (req, res, next) => {
   const { pickUpDate, dropOffDate } = req.body;
 
-  if (new Date(dropOffDate) - new Date(pickUpDate) <= DAY_MILISECONDS) {
+  if (new Date(dropOffDate) - new Date(pickUpDate) <= 0) {
     return res.status(400).send('La reserva mínima es de 24hs');
   }
 
