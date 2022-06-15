@@ -50,13 +50,13 @@ export const UserCard = ({ setRenderControl, renderControl }) => {
 
           {email && (
             <Typography align='center' style={{ fontSize: '18px' }}>
-              <strong>Email: </strong> {email}
+              <strong>E-mail: </strong> {email}
             </Typography>
           )}
 
           {street && (
             <Typography align='center' style={{ fontSize: '18px' }}>
-              <strong>Direccion: </strong> {street}
+              <strong>Dirección: </strong> {street}
             </Typography>
           )}
 
@@ -68,12 +68,12 @@ export const UserCard = ({ setRenderControl, renderControl }) => {
 
           {phone && (
             <Typography align='center' style={{ fontSize: '18px' }}>
-              <strong>Telefono: </strong> {phone}
+              <strong>Teléfono: </strong> {phone}
             </Typography>
           )}
           {postalCode && (
             <Typography align='center' style={{ fontSize: '18px' }}>
-              <strong>Codigo Postal: </strong> {postalCode}
+              <strong>Código Postal: </strong> {postalCode}
             </Typography>
           )}
         </Box>

@@ -83,7 +83,7 @@ export default function Review() {
                   align='center'
                   style={{ color: '#1565C0', fontWeight: 'bolder' }}
                 >
-                  Fecha Recogida
+                  Fecha Retiro
                 </TableCell>
                 <TableCell
                   align='center'

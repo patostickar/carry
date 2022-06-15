@@ -77,7 +77,7 @@ export const Booking = () => {
                     align='center'
                     style={{ color: '#1565C0', fontWeight: 'bolder' }}
                   >
-                    Fecha Recogida
+                    Fecha Retiro
                   </TableCell>
                   <TableCell
                     align='center'
@@ -107,7 +107,7 @@ export const Booking = () => {
                     align='center'
                     style={{ color: '#1565C0', fontWeight: 'bolder' }}
                   >
-                    Accion
+                    Cancelar
                   </TableCell>
                 </TableRow>
               </TableHead>
