@@ -337,7 +337,7 @@ export default function User() {
                                 isAdmin,
                               } = row;
                               const isItemSelected =
-                                selected.indexOf(firstName) !== -1;
+                                selected.indexOf(id) !== -1;
 
                               return (
                                 <TableRow
