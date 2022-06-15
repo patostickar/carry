@@ -1,6 +1,6 @@
-import { useSelector } from 'react-redux';
-import CarCategory from './carCategory';
-import styles from './styles/CarCategoryTopBar.module.css';
+import { useSelector } from "react-redux";
+import CarCategory from "./carCategory";
+import styles from "./styles/CarCategoryTopBar.module.css";
 
 export default function TopBar() {
   const { carTypes } = useSelector((state) => state.carsResults);

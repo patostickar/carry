@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import { Link, useNavigate } from "react-router-dom";
 
 import {
   AppBar,
@@ -16,12 +16,13 @@ import {
   MenuItem,
   Divider,
   ListItemIcon,
-} from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import Logout from '@mui/icons-material/Logout';
-import logo from '../assets/logo.png';
-import SettingsIcon from '@mui/icons-material/Settings';
-import { useSelector } from 'react-redux';
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import Logout from "@mui/icons-material/Logout";
+import logo from "../assets/logo.png";
+import SettingsIcon from "@mui/icons-material/Settings";
+import { useSelector } from "react-redux";
+import styles from "./styles/Navbar.module.css";
 
 export default function Navbar() {
   const { img, firstName, lastName, isAdmin } = useSelector(
@@ -41,7 +42,7 @@ export default function Navbar() {
     setAnchorEl(null);
   };
   const GoToAdmin = () => {
-    navigate('/AdminPanel');
+    navigate("/AdminPanel");
   };
   const handleChange = (event, newValue) => {
     setSelectedItem(newValue);
@@ -49,7 +50,7 @@ export default function Navbar() {
 
   return (
     <AppBar
-      color='transparent'
+      color="transparent"
       sx={{
         height: 80,
         position: "relative",
@@ -57,11 +58,11 @@ export default function Navbar() {
       }}
     >
       <Toolbar>
-        <Link to='/'>
+        <Link to="/">
           <Box
-            component='img'
-            sx={{ height: 80, width: 90, marginRight: '0.5rem' }}
-            alt='Your logo.'
+            component="img"
+            sx={{ height: 80, width: 90, marginRight: "0.5rem" }}
+            alt="Your logo."
             src={logo}
           />
         </Link>
@@ -69,14 +70,14 @@ export default function Navbar() {
         <Tabs
           value={selectedItem}
           onChange={handleChange}
-          aria-label='wrapped label tabs example'
+          aria-label="wrapped label tabs example"
         >
-          <Tab value={0} label='INICIO' to='/' component={Link} />
-          <Tab value={1} label='NOSOTROS' to='/about' component={Link} />
+          <Tab value={0} label="INICIO" to="/" component={Link} />
+          <Tab value={1} label="NOSOTROS" to="/about" component={Link} />
         </Tabs>
         {!isAuthenticated && !isLoading ? (
           <Grid
-            sx={{ marginLeft: 'auto' }}
+            sx={{ marginLeft: "auto" }}
             onClick={() =>
               loginWithRedirect({
                 appState: {
@@ -84,28 +85,30 @@ export default function Navbar() {
                 },
               })
             }
-            variant='contained'
+            variant="contained"
           >
-            <Button variant='contained'>REGISTRO / INGRESAR</Button>
+            <div className={styles.ingresar}>
+              <Button variant="contained">INGRESAR</Button>
+            </div>
           </Grid>
         ) : (
           <>
             <Avatar
-              alt='Remy Sharp'
-              sx={{ marginLeft: 'auto' }}
+              alt="Remy Sharp"
+              sx={{ marginLeft: "auto" }}
               src={img}
-              to='/profile'
+              to="/profile"
               component={Link}
             />
 
-            <Tooltip title='Account settings'>
+            <Tooltip title="Account settings">
               <MenuIcon
                 onClick={handleClick}
-                fontSize='large'
-                sx={{ marginLeft: '10px' }}
-                aria-controls={open ? 'account-menu' : undefined}
-                aria-haspopup='true'
-                aria-expanded={open ? 'true' : undefined}
+                fontSize="large"
+                sx={{ marginLeft: "10px" }}
+                aria-controls={open ? "account-menu" : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? "true" : undefined}
               />
             </Tooltip>
           </>
@@ -113,40 +116,40 @@ export default function Navbar() {
 
         <Menu
           anchorEl={anchorEl}
-          id='account-menu'
+          id="account-menu"
           open={open}
           onClose={handleClose}
           onClick={handleClose}
           PaperProps={{
             elevation: 0,
             sx: {
-              overflow: 'visible',
-              filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+              overflow: "visible",
+              filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
               mt: 1.5,
-              '& .MuiAvatar-root': {
+              "& .MuiAvatar-root": {
                 width: 32,
                 height: 32,
                 ml: -0.5,
                 mr: 1,
               },
-              '&:before': {
+              "&:before": {
                 content: '""',
-                display: 'block',
-                position: 'absolute',
+                display: "block",
+                position: "absolute",
                 top: 0,
                 right: 14,
                 width: 10,
                 height: 10,
-                bgcolor: 'background.paper',
-                transform: 'translateY(-50%) rotate(45deg)',
+                bgcolor: "background.paper",
+                transform: "translateY(-50%) rotate(45deg)",
                 zIndex: 0,
               },
             },
           }}
-          transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-          anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+          transformOrigin={{ horizontal: "right", vertical: "top" }}
+          anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
         >
-          <MenuItem to='/profile' component={Link}>
+          <MenuItem to="/profile" component={Link}>
             <Avatar src={img} /> {firstName} {lastName}
           </MenuItem>
           {isAdmin && (
@@ -160,7 +163,7 @@ export default function Navbar() {
           <Divider />
           <MenuItem onClick={logout}>
             <ListItemIcon>
-              <Logout fontSize='small' />
+              <Logout fontSize="small" />
             </ListItemIcon>
             Salir
           </MenuItem>

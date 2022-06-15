@@ -116,12 +116,11 @@ export const carDetailCard = (props) => {
                 <SpeedIcon /> {mpg} km/l
               </span>
             </div>
-          </div>
-
-          <div className={styles.siLocation}>
-            <span className={styles.siFeatures}>
-              <BuildIcon /> {transmission}
-            </span>
+            <div className={styles.siLocation}>
+              <span className={styles.siFeatures}>
+                <BuildIcon /> {transmission}
+              </span>
+            </div>
           </div>
         </div>
         <div className={styles.siDetails}>
