@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=Roboto:wght@700&display=swap");
+
+@font-face {
+  font-family: Exo;
+  src: url(./fonts/Exo2.0-Medium.otf);
+}
+
+.main {
+  display: flex;
+  padding: 7em;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  margin-top: -15rem;
+}
+
+.profile_card {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 50%;
+  box-shadow: 0 0 22px #3336;
+  transition: 0.6s;
+  margin: 2rem;
+  cursor: pointer;
+}
+.profile_card:hover {
+  border-radius: 10px;
+  height: 260px;
+  background: linear-gradient(to right, #6190e8, #a7bfe8);
+}
+.profile_card .img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: 0.6s;
+  z-index: 99;
+}
+.profile_card:hover .img {
+  transform: translateY(-60px);
+}
+.img img {
+  width: 100%;
+  border-radius: 50%;
+  box-shadow: 0 0 22px #3336;
+  transition: 0.6s;
+  background-color: rgba(0, 0, 0, 0.893);
+}
+.profile_card:hover img {
+  border-radius: 10px;
+}
+.caption {
+  text-align: center;
+  transform: translateY(-80px);
+  opacity: 0;
+  transition: 0.6s;
+}
+.profile_card:hover .caption {
+  opacity: 1;
+}
+.caption h3 {
+  font-size: 1.2rem;
+}
+.caption p {
+  font-size: 16px;
+  color: white;
+  margin: 2px 0 9px 0;
+  background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+  border-radius: 10rem;
+  padding: 0.4rem;
+}
+
+.caption .social_links a {
+  color: rgba(0, 0, 0, 0.779);
+  margin-right: 8px;
+  font-size: 21px;
+  transition: 0.6s;
+}
+.social_links a:hover {
+  color: rgb(0, 132, 255);
+}
+
+.team {
+  font-size: 5rem;
+  text-align: center;
+  margin-top: 3rem;
+  color: rgb(0, 132, 255);
+}
+
+.list {
+  padding: 50px;
+  margin: 0;
+  border: 10px solid #fff;
+  display: inline-block;
+  position: relative;
+  top: 5rem;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+}
+.list li {
+  list-style: none;
+  color: #71b7e6;
+  border-radius: 10rem;
+  float: left;
+  font-size: 5em;
+  font-family: "Roboto", sans-serif;
+  transition: 0.9s;
+  margin-top: 2rem;
+}
+
+.list:hover li {
+  transform: rotateY(360deg);
+}
+.list:hover li:nth-child(1) {
+  transition-delay: 0.8s;
+}
+.list:hover li:nth-child(2) {
+  transition-delay: 0.6s;
+}
+.list:hover li:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+@media (max-width: 768px) {
+  .list li {
+    font-size: 3rem;
+  }
+}

@@ -1,5 +1,4 @@
-const { Customer, Review } = require('../db');
-const { randomReviews } = require('../services/customers/randomReviews');
+const { Customer } = require('../db');
 
 const getCustomers = async (_req, res, next) => {
   try {
@@ -48,10 +47,13 @@ const postCustomer = async (req, res, next) => {
     });
 
     created
-      ? res
-          .status(201)
-          .send({ msg: 'Cliente registrado satisfactoriamente', customer })
-      : res.send({ msg: 'Ya existe un cliente con este correo', customer });
+      ? res.header('Authorization', customer.token).status(201).send({
+          msg: 'Cliente registrado satisfactoriamente',
+          customer,
+        })
+      : res
+          .header('Authorization', customer.token)
+          .send({ msg: 'Bienvenido de vuelta a Carry', customer });
   } catch (error) {
     next(error);
   }
@@ -87,39 +89,10 @@ const putCustomer = async (req, res, next) => {
   }
 };
 
-const getReviews = async (_req, res, next) => {
-  try {
-    res.send(await randomReviews());
-  } catch (error) {
-    next(error);
-  }
-};
-
-const postReview = async (req, res, next) => {
-  const { id } = req.params;
-  const { review } = req.body;
-
-  if (!id || !review.length)
-    return res.status(400).send('El testimonio no puede estar vacío');
-
-  try {
-    const customer = await Customer.findByPk(id);
-    const newReview = await Review.create({ review });
-    newReview.setCustomer(customer);
-    res
-      .status(201)
-      .send({ msg: 'Gracias por compartir tu testimonio!', review });
-  } catch (error) {
-    next(error);
-  }
-};
-
 module.exports = {
   getCustomers,
   getCustomerByemail,
-  getReviews,
   postCustomer,
-  postReview,
   putCustomer,
 };
 

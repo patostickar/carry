@@ -1,18 +1,21 @@
 const { Router } = require('express');
+const router = Router();
+const { validateCreateCarType } = require('../validators/validators');
 const {
   getCarType,
   getCarTypeCount,
   createCartype,
 } = require('../controllers/cartypes');
-const router = Router();
+const auth = require('../middleware/auth');
+const admin = require('../middleware/admin');
 
 router.get('/', getCarType);
 router.get('/:id', getCarType);
-router.get('/count/:locationId', getCarTypeCount);
+router.get('/count/:locationId', [auth, admin], getCarTypeCount);
 
-router.post('/', createCartype);
+router.post('/', [auth, admin, validateCreateCarType], createCartype);
 
-router.put('/:id');
-router.patch('/:id');
+// router.put('/:id');
+// router.patch('/:id');
 
 module.exports = router;

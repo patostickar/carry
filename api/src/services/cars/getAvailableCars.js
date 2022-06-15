@@ -10,7 +10,7 @@ module.exports.getAvailableCars = async (
   });
 
   const bookingsInLocation = await Booking.findAll({
-    where: { locationId },
+    where: { locationId, status: 'activo' },
   });
 
   // A simple condition to find out if two segments [a, b] and [c, d] intersect each other
@@ -42,7 +42,7 @@ module.exports.getAvailableCars = async (
 
   // console.log('Cars in location: ', carsInLocation.length);
   // console.log('Unavailable cars: ', unavailableCarsId.length);
-  console.log('Unavailable cars id: ', unavailableCarsId);
+  // console.log('Unavailable cars id: ', unavailableCarsId);
   // console.log('Available cars: ', availableCars.length);
   // console.log('Available cars id: ', availableCarsId);
 

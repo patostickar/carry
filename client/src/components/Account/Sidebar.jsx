@@ -1,13 +1,35 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { Grid, Button, Box, Typography } from '@mui/material';
+import { useSelector, useDispatch } from 'react-redux';
+import { Grid, Box, Typography } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
-import SecurityIcon from '@mui/icons-material/Security';
-import PaymentIcon from '@mui/icons-material/Payment';
 import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
+import DeleteIcon from '@mui/icons-material/Delete';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import Swal from 'sweetalert2';
+import { useAuth0 } from '@auth0/auth0-react';
+import { putUser } from '../../redux/user';
 
 export const Sidebar = ({ setRenderControl, renderControl }) => {
-  const navigate = useNavigate();
+  const { id } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const { logout } = useAuth0();
+
+  const handleDeleteAccount = () => {
+    Swal.fire({
+      title: 'Esta seguro de Eliminar su cuenta?',
+      text: 'Usted no podra revertir esta Accion!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(putUser(id, { isBanned: true }));
+        logout();
+      }
+    });
+  };
+
   return (
     <>
       <Grid item xs={0.5}></Grid>
@@ -33,56 +55,18 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
           >
             <PersonIcon color='primary' />
             <Typography
-              onClick={() =>{
-                (!renderControl.security&&
-                !renderControl.payment&&
-                !renderControl.booking)&&
-                setRenderControl({ ...renderControl, personalInfo: !renderControl.personalInfo })
-                }}
-              style={{ fontWeight: 'lighter' }}
-            >
-              Informacion Personal
-            </Typography>
-          </Box>
+              onClick={() => {
+                setRenderControl({
+                  personalInfo: false,
+                  review: false,
+                  booking: false,
 
-          <Box
-            p={2}
-            style={{
-              cursor: 'pointer',
-              display: 'flex',
-              flexDirection: 'row',
-              alignItems: 'center',
-              gap: '5px',
-            }}
-          >
-            <SecurityIcon color='primary' />
-            <Typography
-              onClick={() =>
-                
-                setRenderControl({ ...renderControl, security: !renderControl.security })
-              }
+                  userCard: true,
+                });
+              }}
+              style={{ fontWeight: 'lighter', padding: '0px' }}
             >
-              Seguridad
-            </Typography>
-          </Box>
-
-          <Box
-            p={2}
-            style={{
-              cursor: 'pointer',
-              display: 'flex',
-              flexDirection: 'row',
-              alignItems: 'center',
-              gap: '5px',
-            }}
-          >
-            <PaymentIcon color='primary' />
-            <Typography
-              onClick={() =>
-                setRenderControl({ ...renderControl, payment:!renderControl.payment })
-              }
-            >
-              Pagos
+              Perfil
             </Typography>
           </Box>
 
@@ -99,13 +83,19 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
             <BookmarkAddIcon color='primary' />
             <Typography
               onClick={() =>
-                setRenderControl({ ...renderControl, booking: !renderControl.booking })
+                setRenderControl({
+                  personalInfo: false,
+                  review: false,
+
+                  booking: true,
+                  useCard: false,
+                })
               }
+              style={{ fontWeight: 'lighter', padding: '0px' }}
             >
               Reservas
             </Typography>
           </Box>
-
           <Box
             p={2}
             style={{
@@ -117,7 +107,36 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
             }}
           >
             <BookmarkAddIcon color='primary' />
-            <Typography onClick={() => navigate('/')}>
+            <Typography
+              onClick={() =>
+                setRenderControl({
+                  personalInfo: false,
+                  security: false,
+                  review: true,
+                  useCard: false,
+                })
+              }
+              style={{ fontWeight: 'lighter', padding: '0px' }}
+            >
+              Reseñas
+            </Typography>
+          </Box>
+
+          <Box
+            p={2}
+            style={{
+              cursor: 'pointer',
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: '5px',
+            }}
+          >
+            <DeleteIcon color='primary' />
+            <Typography
+              onClick={handleDeleteAccount}
+              style={{ fontWeight: 'lighter', padding: '0px' }}
+            >
               Eliminar Cuenta
             </Typography>
           </Box>
@@ -132,8 +151,15 @@ export const Sidebar = ({ setRenderControl, renderControl }) => {
               gap: '5px',
             }}
           >
-            <BookmarkAddIcon color='primary' />
-            <Typography onClick={() => navigate('/')}>Salir</Typography>
+            <ExitToAppIcon color='primary' />
+            <Typography
+              onClick={() => {
+                logout();
+              }}
+              style={{ fontWeight: 'lighter', padding: '0px' }}
+            >
+              Salir
+            </Typography>
           </Box>
         </Grid>
       </Grid>

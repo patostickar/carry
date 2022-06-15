@@ -1,17 +1,12 @@
-const { Booking, Customer, Cartype } = require('../../db');
+const { Booking, Cartype, Location } = require('../../db');
 
 const searchBooking = async (id) => {
   const data = await Booking.findAll({
-    where: {customerId: id},
-    include: [ Cartype],
+    where: { customerId: id },
+    include: [Cartype, Location],
   });
-  if (data.length > 0) {
-    return { bookings: data };
-  } else {
-    return { bookings: data };
-  }
+
+  return { bookings: data };
 };
 
-    module.exports={searchBooking}
-
-    
+module.exports = { searchBooking };

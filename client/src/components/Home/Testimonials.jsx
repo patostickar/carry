@@ -1,18 +1,26 @@
+import { useState, useEffect } from 'react';
 import { Pagination, Navigation } from 'swiper';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
-import Testimonial1 from '../../assets/testimonial1.png';
-// import Testimonial2 from "../../assets/testimonial2.png";
-// import Testimonial3 from "../../assets/testimonial3.png";
+import axios from 'axios';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import './styles/Testimonials.css';
 
-import { useSelector } from 'react-redux';
-import { useEffect } from 'react';
-
 function Testimonials() {
-  const { testimonials } = useSelector((state) => state.testimonials);
+  const [testimonials, setTestimonials] = useState();
+
+  const fetchTestimonials = async () => {
+    try {
+      const res = await axios.get(`/bookings/reviews/`);
+      setTestimonials(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchTestimonials();
+  }, []);
 
   return (
     <section className='testimonial section'>
@@ -40,61 +48,33 @@ function Testimonials() {
           modules={[Pagination, Navigation]}
           className='mySwiper'
         >
-          {testimonials?.map((testimonial, i) => (
-            <SwiperSlide key={i}>
-              <div className='testimonial__card'>
-                <img
-                  src={testimonial?.customer?.img}
-                  alt='img'
-                  className='testimonial__img'
-                />
+          {testimonials?.map(
+            (testimonial, i) =>
+              testimonial?.review && (
+                <SwiperSlide key={i}>
+                  <div className='testimonial__card'>
+                    {!testimonial?.customer?.firstName ||
+                    !testimonial?.customer?.lastName ? null : (
+                      <img
+                        src={testimonial?.customer?.img}
+                        alt='img'
+                        className='testimonial__img'
+                      />
+                    )}
 
-                <h3 className='testimonial__name'>
-                  {testimonial?.customer?.firstName +
-                    ' ' +
-                    testimonial?.customer?.lastName}
-                </h3>
-                <p className='testimonial__description'>
-                  {testimonial?.review}
-                </p>
-              </div>
-            </SwiperSlide>
-          ))}
-          {/* <SwiperSlide>
-            <div className="testimonial__card">
-              <img src={Testimonial1} alt="img" className="testimonial__img" />
-
-              <h3 className="testimonial__name">Santiago Rossi</h3>
-              <p className="testimonial__description">
-                Trabajamos con Carry hace un año, nos sentimos satisfechos con
-                su servicio además cuentan con vehiculos de alta gama.
-              </p>
-            </div>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <div className="testimonial__card">
-              <img src={Testimonial2} alt="img" className="testimonial__img" />
-
-              <h3 className="testimonial__name">Paula Green</h3>
-              <p className="testimonial__description">
-                Alquilamos un Spark GT para visitar Córdoba y todo fue
-                espectacular. Hasta pudimos dejar el auto en el aeropuerto.
-              </p>
-            </div>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <div className="testimonial__card">
-              <img src={Testimonial3} alt="img" className="testimonial__img" />
-
-              <h3 className="testimonial__name">Sara Morelli</h3>
-              <p className="testimonial__description">
-                Empresa recomenda al 100% la transaccion fue rapida y sin
-                contratiempos, el vehiculo en excelentes condiciones.
-              </p>
-            </div>
-          </SwiperSlide> */}
+                    <h3 className='testimonial__name'>
+                      {' '}
+                      {testimonial?.customer?.firstName
+                        ? `${testimonial?.customer?.firstName} ${testimonial?.customer?.lastName}`
+                        : 'Anonimo'}
+                    </h3>
+                    <p className='testimonial__description'>
+                      {testimonial?.review}
+                    </p>
+                  </div>
+                </SwiperSlide>
+              )
+          )}
         </Swiper>
       </div>
     </section>

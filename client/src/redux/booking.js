@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import logError from '../components/GeneralFuntions/logError';
 
 const initialState = {
   booking: {
@@ -9,6 +8,7 @@ const initialState = {
     locationId: null,
     pickUpDate: null,
     dropOffDate: null,
+    PremiumSecure: false,
   },
   Userbokings: [],
 };
@@ -23,22 +23,48 @@ export const booking = createSlice({
     setUserBookings: (state, action) => {
       state.Userbokings = action.payload;
     },
+    // updateUserBookings: (state, action) => {
+    //  state.Userbokings = initialState;
+    // },
     clearBookingDetails: (state, action) => {
       state = initialState;
+    },
+    ClearBookingState: (state, action) => {
+      state.booking = initialState.booking;
     },
   },
 });
 export const fetchUserBokings = (id) => async (dispatch) => {
   try {
-    const res = await axios.get(`/bookings/customer/${id}`);
+    const res = await axios.get(`/bookings/customer/${id}`, {
+      headers: {
+        Authorization: localStorage.getItem('token'),
+      },
+    });
     dispatch(setUserBookings(res.data));
     // .then((res) => dispatch(setCarTypes(res.data)));
   } catch (error) {
-    logError(error);
+    console.log(error);
   }
 };
 
-export const { setBookingDetails, clearBookingDetails, setUserBookings } =
-  booking.actions;
+export const putUserBookings = (id, data) => async (dispatch) => {
+  try {
+    await axios.put(`/bookings/${id}`, data, {
+      headers: {
+        Authorization: localStorage.getItem('token'),
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const {
+  setBookingDetails,
+  clearBookingDetails,
+  setUserBookings,
+  ClearBookingState,
+} = booking.actions;
 
 export default booking.reducer;

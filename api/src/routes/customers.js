@@ -1,24 +1,22 @@
 const { Router } = require('express');
 const router = Router();
-
 const {
   getCustomers,
-  getCustomerByemail,
-  getReviews,
+  // getCustomerByemail,
   postCustomer,
-  postReview,
   putCustomer,
   // getCustomerById,
 } = require('../controllers/customers');
+const auth = require('../middleware/auth');
+const admin = require('../middleware/admin');
 
-router.get('/', getCustomers);
-router.get('/reviews', getReviews);
-router.get('/:email', getCustomerByemail);
+router.get('/', [auth, admin], getCustomers);
+
+// router.get('/:email', getCustomerByemail);
 
 router.post('/', postCustomer);
-router.post('/reviews/:id', postReview);
 
-router.put('/:id', putCustomer);
+router.put('/:id', auth, putCustomer);
 
 // router.get('/:id', getCustomerById);
 

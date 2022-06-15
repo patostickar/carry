@@ -1,6 +1,6 @@
-import { useDispatch } from 'react-redux';
-import { setOneCarCategory } from '../../../redux/carsResults';
-import styles from './styles/carCategory.module.css';
+import { useDispatch } from "react-redux";
+import { setOneCarCategory } from "../../../redux/carsResults";
+import styles from "./styles/carCategory.module.css";
 
 export default function carCategory({ category, img }) {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ export default function carCategory({ category, img }) {
         onClick={handleClick}
         name={category}
       >
-        <img src={img} alt='' />
+        <img src={img} alt="" />
         <span>{category}</span>
       </button>
     </li>

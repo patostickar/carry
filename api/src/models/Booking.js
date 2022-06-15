@@ -18,8 +18,18 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       reservationTotal: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false,
+      },
+      PremiumSecure: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+      },
+      paymentId: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
       },
       status: {
         type: DataTypes.STRING,

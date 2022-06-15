@@ -8,7 +8,7 @@ import CarDetailCard from './carDetailCard';
 import LinearIndeterminate from '../../GeneralFuntions/LinearIndeterminate';
 import styles from './styles/ListResult.module.css';
 
-function ListResult() {
+function ListResult({location}) {
   const {
     carTypes,
     sort,
@@ -21,9 +21,7 @@ function ListResult() {
     },
   } = useSelector((state) => state.carsResults);
 
-  console.log(carTypes);
-
-  const { location } = useSelector((state) => state.searchBar);
+  // const { location } = useSelector((state) => state.searchBar);
 
   const categories = [];
   for (const category in carCategory) {
@@ -51,7 +49,7 @@ function ListResult() {
       <SortByPrice />
       <AnimatePresence>
         {!carTypes.length ? (
-          <LinearIndeterminate />
+          <LinearIndeterminate cartypes={carTypes.length} />
         ) : (
           carTypes
             .filter((carType) =>

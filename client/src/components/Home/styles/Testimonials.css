@@ -45,6 +45,7 @@
 }
 
 .testimonial__description {
+  overflow-wrap: break-word;
   font-size: var(--small-font-size);
 }
 
@@ -54,13 +55,13 @@
     margin-right: auto;
   }
 
-  .section {
+  /* .section {
     padding: 6.5rem 0 1rem;
-  }
+  } */
 
-  .section__title {
+  /* .section__title {
     margin-bottom: 3.5rem;
-  }
+  } */
 
   .testimonial__container {
     width: 750px;

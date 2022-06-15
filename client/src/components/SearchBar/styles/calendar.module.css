@@ -9,6 +9,9 @@
   align-content: center;
   color: #333333;
   cursor: pointer;
+  border: 2px solid #febb02;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
 }
 
 .headerSearchDate {
@@ -16,4 +19,12 @@
   top: 4em;
   left: -6em;
   z-index: 2;
+  border: 1px solid #febb0275;
+}
+
+@media screen and (max-width: 700px) {
+  .headerSearchItem {
+    justify-content: flex-end;
+    grid-row: 3;
+  }
 }

@@ -1,64 +1,55 @@
 const { Router } = require('express');
 const router = Router();
-const {Booking, Customer}=require('../db')
-const mercadopago=require('mercadopago')
+const mercadopago = require('mercadopago');
+const { APP_USR, BASE_URL } = process.env;
 
 mercadopago.configure({
-  access_token:process.env.ACCESS_TOKEN
-})
+  access_token: APP_USR,
+});
 
+//  {"id":1138471551,"nickname":"TETE6664362","password":"qatest125","site_status":"active","email":"test_user_58160946@testuser.com"} vendedor
+//  {"id":1138475272,"nickname":"TESTBKYLW8EZ","password":"qatest9287","site_status":"active","email":"test_user_45836003@testuser.com"}comprador
 
+router.post('/payment', (req, res, next) => {
+  const { total, id } = req.body;
 
+  const items = [
+    {
+      title: 'reserva Carry',
+      unit_price: parseInt(total),
+      quantity: 1,
+    },
+  ];
 
+  const preference = {
+    items,
+    external_reference: `${id}`,
+    payment_methods: {
+      excluded_payment_types: [
+        {
+          id: 'atm',
+        },
+        { id: 'ticket' },
+      ],
+      installments: 1,
+    },
+    back_urls: {
+      pending: `${BASE_URL}/response`,
+      success: `${BASE_URL}/response`,
+    },
+    auto_return: 'approved',
+    binary_mode: true,
+  };
 
-router.get('/payment', (req,res, next)=>{
-   const idOrder=1
-
-  const carrito=[
-      {title:'Reserva 1', quantity:10, price:100},
-      {title:'Reserva 2', quantity:20, price:250},
-      {title:'Reserva 3', quantity:11, price:500},
-  ]
-
-  const itemsB=carrito.map((b)=>({
-      title:b.title,
-      unit_price:b.price,
-      quantity:b.quantity
-  }))
-
-  const preference={
-      items:itemsB,
-      external_reference:`${idOrder}`,
-      payment_methods:{
-          excluded_payment_types:[
-              {
-                  id:'atm'
-              }
-          ],
-          installments:3
-      },
-      back_urls: {
-        failure: "/failure",
-        pending: "/pending",
-        success: "/success",
-      },
-  }
-
- mercadopago.preferences.create(preference)
- .then(function(response){
-     console.info('respondio')
-     global.id=response.body.id
-     console.log(response.body,'body')
-     res.json({id:global.id})
- })
- .catch(function(error){
-     console.log(error)
- })
-  
-
-
-
-})
-
+  mercadopago.preferences
+    .create(preference)
+    .then(function (response) {
+      global.id = response.body.id;
+      res.json({ id: global.id });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+});
 
 module.exports = router;

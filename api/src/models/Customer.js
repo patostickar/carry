@@ -1,4 +1,6 @@
 const { DataTypes } = require('sequelize');
+const jwt = require('jsonwebtoken');
+const { JWT } = process.env;
 
 module.exports = (sequelize) => {
   sequelize.define(
@@ -42,13 +44,23 @@ module.exports = (sequelize) => {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
       },
-      isPremium: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false,
-      },
       isBanned: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
+      },
+      token: {
+        type: DataTypes.VIRTUAL,
+        get() {
+          return jwt.sign(
+            {
+              id: this.id,
+              isAdmin: this.isAdmin,
+              isPremium: this.isPremium,
+              isBanned: this.isBanned,
+            },
+            JWT
+          );
+        },
       },
     },
     { timestamps: false }

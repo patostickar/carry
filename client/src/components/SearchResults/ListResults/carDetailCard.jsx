@@ -62,7 +62,7 @@ export const carDetailCard = (props) => {
       dropOffDate: new Date(dropoffDate).toUTCString().slice(0, 11),
     };
     dispatch(setBookingDetails(booking));
-    navigate('/reservation');
+    navigate('/booking');
   }
 
   return (
@@ -79,9 +79,9 @@ export const carDetailCard = (props) => {
         </div>
 
         <div className={styles.siDesc}>
-          <div className={styles.siRating}>
+          {/* <div className={styles.siRating}>
             <span>Top Pick</span>
-          </div>
+          </div> */}
           <div className={styles.siTitle}>
             <h3>
               {`${make} ${model}`} <span>o un coche {className} similar</span>{' '}
@@ -96,12 +96,18 @@ export const carDetailCard = (props) => {
             </div>
             <div>
               <span className=''>
-                <LuggageIcon /> {largeSuitcase} Maleta grande{' '}
+                <LuggageIcon />
+                {` ${largeSuitcase} ${
+                  largeSuitcase === 1 ? 'Maleta grande' : 'Maletas grandes'
+                }`}
               </span>
             </div>
             <div>
               <span className=''>
-                <WorkIcon /> {smallSuitcase} Maleta pequeña{' '}
+                <WorkIcon />
+                {` ${smallSuitcase} ${
+                  smallSuitcase === 1 ? 'Maleta pequeña' : 'Maletas pequeñas'
+                }`}
               </span>
             </div>
 
@@ -110,12 +116,11 @@ export const carDetailCard = (props) => {
                 <SpeedIcon /> {mpg} km/l
               </span>
             </div>
-          </div>
-
-          <div className={styles.siLocation}>
-            <span className={styles.siFeatures}>
-              <BuildIcon /> {transmission}
-            </span>
+            <div className={styles.siLocation}>
+              <span className={styles.siFeatures}>
+                <BuildIcon /> {transmission}
+              </span>
+            </div>
           </div>
         </div>
         <div className={styles.siDetails}>
@@ -123,7 +128,7 @@ export const carDetailCard = (props) => {
             <span className={styles.siDaysxprice}>
               Precio por {dateRange} {dateRange === 1 ? 'día' : 'días'}:
             </span>
-            <span className={styles.siprice}>$ {price}</span>
+            <span className={styles.siprice}>{price} AR$</span>
             <span className={styles.siAmendments}>Cancelación gratuita</span>
 
             <button className={styles.siCheckButton} onClick={handleBooking}>
