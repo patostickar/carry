@@ -34,7 +34,7 @@ function App() {
         try {
           const res = await axios.post('/customers', user);
           localStorage.setItem('token', `Bearer ${res.headers.authorization}`);
-          dispatch(setUser(res.data.customerDetails));
+          dispatch(setUser(res.data.customer));
         } catch (error) {
           console.log(error);
         }
