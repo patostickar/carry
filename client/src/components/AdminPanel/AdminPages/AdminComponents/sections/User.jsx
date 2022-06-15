@@ -97,13 +97,13 @@ function applySortFilter(array, comparator, query) {
     if (order !== 0) return order;
     return a[1] - b[1];
   });
-  if (query) {
+  if ( query ) {
     // if(query > 0){
     
     return filter(
       array,
       
-      (_user) => _user.firstName.toLowerCase().indexOf(query.toLowerCase()) !== -1
+      (_user) => _user.firstName?.toLowerCase().indexOf(query?.toLowerCase()) !== -1
       
     ); 
   // }
@@ -384,7 +384,7 @@ export default function User() {
                                   </TableCell>
 
                                   <TableCell align='right'>
-                                    <UserMoreMenu />
+                                    
                                   </TableCell>
                                 </TableRow>
                               );
