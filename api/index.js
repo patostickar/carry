@@ -1,17 +1,19 @@
 const server = require('./src/app.js');
 const fs = require('fs');
-const { conn, Location, Customer, Cartype } = require('./src/db.js');
+const cron = require('node-cron');
+const { Op } = require('sequelize');
+const { conn, Location, Customer, Cartype, Booking } = require('./src/db.js');
 const { addCar } = require('./src/services/cars/addCar');
 const { PORT } = process.env;
 
 conn
-  .sync({ force: true })
+  .sync({ force: false })
   .then(() => {
     server.listen(PORT, () => {
       console.log(`%s listening at ${PORT}`);
     });
 
-    createData();
+    // createData();
 
     // eslint-disable-next-line
     async function createData() {
@@ -98,11 +100,10 @@ conn
         where: { name: 'Santa Fe Cars' },
       });
       const Bariloche = await Location.findOne({
-        where: { name: 'Aeropuerto Internacional de Bariloche Tte. Luis Candelaria' },
+        where: {
+          name: 'Aeropuerto Internacional de Bariloche Tte. Luis Candelaria',
+        },
       });
-    
-
-
 
       const cartype1 = await Cartype.findOne({
         where: { make: 'Ford', model: 'Fiesta' },
@@ -232,3 +233,10 @@ conn
     }
   })
   .catch((err) => console.log(err));
+
+cron.schedule('0 0 * * 0-7', async () => {
+  await Booking.update(
+    { status: 'finalizado' },
+    { where: { dropOffDate: { [Op.lt]: new Date() }, status: 'activo' } }
+  );
+});
