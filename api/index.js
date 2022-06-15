@@ -2,7 +2,7 @@ const server = require('./src/app.js');
 const fs = require('fs');
 const cron = require('node-cron');
 const { Op } = require('sequelize');
-const { conn, Location, Customer, Cartype, Booking } = require('./src/db.js');
+const { conn, Location, Cartype, Booking } = require('./src/db.js');
 const { addCar } = require('./src/services/cars/addCar');
 const { PORT } = process.env;
 
@@ -13,7 +13,7 @@ conn
       console.log(`%s listening at ${PORT}`);
     });
 
-    // createData();
+    createData();
 
     // eslint-disable-next-line
     async function createData() {
