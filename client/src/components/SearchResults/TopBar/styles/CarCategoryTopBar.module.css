@@ -6,3 +6,12 @@
   padding: 1em 0em;
   justify-content: flex-start;
 }
+
+/* @media screen and (max-width: 800px) {
+  .CarCategoryTopBar > ul {
+    width: 90%;
+    justify-content: center;
+    display: flexbox;
+    position: absolute;
+  }
+} */
