@@ -52,7 +52,7 @@ export default function DashboardApp() {
   };
   const getbookigs = async () => {
     // eslint-disable-next-line prefer-const
-    let bookings = await axios.get('/bookings/active/count', {
+    let bookings = await axios.get('/bookings', {
       headers: {
         Authorization: localStorage.getItem('token'),
       },
@@ -98,7 +98,7 @@ export default function DashboardApp() {
     let values = 0;
     Bookings.data?.map((dato) => {
       if (dato.cartypeId === cartype.id) {
-        values = values + dato.count;
+        values++;
       }
     });
 
