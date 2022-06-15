@@ -1,42 +1,24 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,600,700");
 @import url("https://fonts.googleapis.com/css?family=Catamaran:400,800");
 
-/* demo stuff */
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-body {
-  background-color: #fdfaf5;
-  margin-bottom: 50px;
-}
-html,
-button,
-input,
-select,
-textarea {
-  font-family: "Montserrat", Helvetica, sans-serif;
-  color: #bbb;
-}
 h1 {
   text-align: center;
-  margin: 30px 15px;
 }
 
 .letras {
-  font-size: 5rem;
+  font-size: 4rem;
   display: flex;
   justify-content: center;
-  font-family: "Montserrat", Helvetica, sans-serif;
+  /* font-family: "Montserrat", Helvetica, sans-serif; */
   font-weight: 800;
   color: #1976d2;
   box-shadow: 6px 5px 3px 6px hsla(var(--second-hue), 48%, 8%, 0.05);
   margin-left: auto;
   margin-right: auto;
-  width: 45%;
+  width: 100%;
   border-radius: 1rem;
   margin-top: 2rem;
+  text-align: center;
 }
 
 .errorContainer {
