@@ -48,7 +48,6 @@ export const Booking = () => {
   // }
 
   useEffect(() => {
-    console.log(Userbokings.bookings);
     dispatch(fetchUserBokings(id));
   }, [reload]);
   return (
@@ -72,6 +71,12 @@ export const Booking = () => {
                     style={{ color: '#1565C0', fontWeight: 'bolder' }}
                   >
                     Auto
+                  </TableCell>
+                  <TableCell
+                    align='center'
+                    style={{ color: '#1565C0', fontWeight: 'bolder' }}
+                  >
+                    Agencia
                   </TableCell>
                   <TableCell
                     align='center'
@@ -115,9 +120,6 @@ export const Booking = () => {
                 {Userbokings?.bookings?.length
                   ? Userbokings.bookings.map((row) => (
                       <TableRow key={row.id}>
-                        {
-                          // <TableCell component="th" scope="row">{row.id}</TableCell>
-                        }
                         <TableCell
                           style={{ display: 'flex', alignItems: 'center' }}
                           align='center'
@@ -139,6 +141,9 @@ export const Booking = () => {
                               {row.cartype.make} {row.cartype.model}{' '}
                             </label>
                           </div>
+                        </TableCell>
+                        <TableCell align='center'>
+                          {row.location.name}
                         </TableCell>
                         <TableCell align='center'>{row.pickUpDate}</TableCell>
                         <TableCell align='center'>{row.dropOffDate}</TableCell>
