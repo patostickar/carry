@@ -96,11 +96,7 @@ export default function Review() {
             <TableBody>
               {bookingsReviews?.length
                 ? bookingsReviews
-                    .filter((b) => {
-                      const dropOffDate = new Date(b.dropOffDate).getTime();
-                      const today = new Date().getTime();
-                      return dropOffDate < today;
-                    })
+                    .filter((b) => b.status === 'finalizado')
                     .map((row, i) => (
                       <>
                         <TableRow key={i}>
