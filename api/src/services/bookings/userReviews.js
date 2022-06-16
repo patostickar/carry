@@ -11,6 +11,7 @@ async function userReviewsDetail(id) {
     r = r?.dataValues;
     return {
       bookingId: r?.id,
+      status: r?.status,
       pickUpDate: r?.pickUpDate,
       dropOffDate: r?.dropOffDate,
       review: r?.review?.review || null,
