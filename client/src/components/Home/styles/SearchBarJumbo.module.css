@@ -37,9 +37,17 @@
   transform: translateY(50%) translateX(-50%);
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 575px) {
   .searchBarJumbo {
     margin-left: 1.3rem;
     margin-right: 1.3rem;
+  }
+
+  .headerContainer h1 {
+    font-size: 1.2rem;
+  }
+
+  .headerContainer p {
+    font-size: 0.7rem;
   }
 }

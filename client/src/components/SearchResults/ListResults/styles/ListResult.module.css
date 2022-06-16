@@ -6,3 +6,9 @@
 .listResult {
   margin-bottom: 3rem;
 }
+
+@media screen and (max-width: 575px) {
+  .listTitle h1 {
+    font-size: 1.2rem;
+  }
+}

@@ -445,6 +445,12 @@ container {
 }
 
 @media screen and (max-width: 1200px) {
+  .Detalles h1,
+  .titless h1,
+  .derecha h2 {
+    font-size: 1.5rem;
+  }
+
   .subTitle {
     margin-left: -0.5%;
   }
@@ -646,6 +652,26 @@ container {
 
   .segundo {
     height: 23rem;
+  }
+
+  .title h2 {
+    font-size: 17px;
+  }
+
+  .subTitle h2 {
+    font-size: 17px;
+  }
+
+  .conditions p {
+    font-size: 10px;
+  }
+
+  .conTenedor h2 {
+    font-size: 15px;
+  }
+
+  .conTenedor h3 {
+    font-size: 12px;
   }
 }
 

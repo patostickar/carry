@@ -59,6 +59,11 @@
     margin-left: 5rem;
     margin-right: 5rem;
   }
+
+  .section__title h2 {
+    font-size: 1.2rem;
+    margin-top: 3rem;
+  }
 }
 
 @media screen and (max-width: 450px) {
