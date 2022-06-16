@@ -8,6 +8,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import { Typography } from '@mui/material';
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 
 // import Typography from '@mui/material/Typography';
 import { useSelector, useDispatch } from 'react-redux';
@@ -29,23 +30,54 @@ export const Booking = () => {
     setreload(!reload);
   };
 
-  // if(Userbokings?.bookings?.length === 0) {
-  //   return(
-  //     <>
-  //     <Grid item xs={0.5}></Grid>
+  const handlePdfBooking = (id) => {
+    const data = Userbokings.bookings.find((el) => el.id === id);
+    console.log(data);
+     
+   var doc = new jsPDF();
+   doc.setDrawColor(0);
+   doc.setFillColor(255, 255, 255);
+   doc.setDrawColor(0,0,0);
+   doc.roundedRect(10, 10, 190, 80, 2, 2, 'FD');
+   
+   doc.addImage(logo, "PNG", 10, 2, 45, 45);
 
-  //     <Grid item xs={8} >
+   doc.setFontSize(16);
+   doc.setFont("helvetica", "bold");
+   doc.setTextColor(0,0,0);
+   doc.text(60, 20, 'COMPROBANTE DE RESERVA CARRY');
+   
+   doc.setFontSize(11);
+   doc.text(60, 30, 'Id: ' );
+   doc.text(60, 35, 'Ubicacion: ');
+   doc.setFontSize(11);
+   doc.setFont("helvetica", "light");
+   doc.text(83, 30, data.id);  
+   doc.text(83, 35, locations.find(el=>el.id===data.locationId).name);
 
-  //       <Typography gutterBottom variant='h4'>
-  //        Mis Reservas
-  //        </Typography>
-  //     <Typography variant="h6" gutterBottom>
-  //       No tienes reservas
-  //       </Typography>
-  //       </Grid>
-  //       </>
-  //   )
-  // }
+   
+   doc.setFontSize(11);
+   doc.setFont("helvetica", "bold");
+   doc.text(25, 47, 'Auto');
+   doc.text(52, 47, 'Fecha Entrega');
+   doc.text(82, 47, 'Fecha Devolucion');
+   doc.text(120, 47, 'Costo Total');
+   doc.text(150, 47, 'Seguro');
+   doc.text(180, 47, 'Estado');
+      
+  doc.setFontSize(10);
+  doc.setTextColor(0,0,0);
+  doc.setFont("helvetica", "light");
+   doc.text(13, 55, `${data.cartype.make} ${data.cartype.model}` );
+   doc.text(55, 55, data.pickUpDate);
+   doc.text(85, 55, data.dropOffDate);
+   doc.text(120, 55, `${String(data.reservationTotal)} AR`);
+   doc.text(155, 55, data.PremiumSecure?'Si':'No');
+   doc.text(180, 55, data.status);
+   doc.save('Test.pdf');
+ 
+  };
+  
 
   useEffect(() => {
     dispatch(fetchUserBokings(id));
@@ -114,6 +146,12 @@ export const Booking = () => {
                   >
                     Cancelar
                   </TableCell>
+                  <TableCell
+                  align='center'
+                  style={{ color: '#1565C0', fontWeight: 'bolder' }}
+                >
+                  Pdf
+                </TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -163,6 +201,15 @@ export const Booking = () => {
                             />
                           )}
                         </TableCell>
+                        <TableCell align='center'>
+                      {row.status === 'activo' && (
+                        <PictureAsPdfIcon
+                          color='primary'
+                          cursor='pointer'
+                          onClick={() => handlePdfBooking(row.id)}
+                        />
+                      )}
+                    </TableCell>
                       </TableRow>
                     ))
                   : null}
