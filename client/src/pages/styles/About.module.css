@@ -7,12 +7,13 @@
 
 .main {
   display: flex;
-  padding: 7em;
+  /* padding: 7em; */
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   margin-bottom: 2rem;
-  margin-top: -15rem;
+  /* margin-top: 1rem; */
+  margin-bottom: 13rem;
 }
 
 .profile_card {
@@ -91,12 +92,11 @@
 }
 
 .list {
-  padding: 50px;
   margin: 0;
   border: 10px solid #fff;
   display: inline-block;
   position: relative;
-  top: 5rem;
+  top: 2rem;
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
 }
@@ -127,5 +127,33 @@
 @media (max-width: 768px) {
   .list li {
     font-size: 3rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .profile_card {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 5rem;
+  }
+
+  .list li {
+    font-size: 2rem;
+  }
+  .container {
+    margin-top: -1rem;
+    margin-bottom: -10rem;
+  }
+
+  .profile_card:hover {
+    height: 150px;
+  }
+
+  .caption p {
+    font-size: 10px;
+  }
+
+  .caption {
+    margin-top: 1rem;
   }
 }
