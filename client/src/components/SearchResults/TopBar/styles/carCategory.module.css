@@ -18,4 +18,8 @@
   .categoryMiniCard {
     display: none;
   }
+
+  .all {
+    margin-top: -3rem;
+  }
 }
