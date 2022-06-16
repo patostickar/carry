@@ -33,14 +33,6 @@ export default function DashboardApp() {
   const [carsStock, setCarStocks] = useState([]);
   const [Bookings, setBookings] = useState([]);
 
-  // eslint-disable-next-line prefer-const
-  let quantityCustomers = currentCustomers.data;
-  let totalCustomers = 0;
-
-  // eslint-disable-next-line prefer-const
-  let stockCars = carsStock.data;
-  let totalStockCars = 0;
-
   const getUsers = async () => {
     // eslint-disable-next-line prefer-const
     let customers = await axios.get('/customers', {
@@ -50,7 +42,8 @@ export default function DashboardApp() {
     });
     setCurrentCustomers(customers);
   };
-  const getbookigs = async () => {
+
+  const getBookings = async () => {
     // eslint-disable-next-line prefer-const
     let bookings = await axios.get('/bookings', {
       headers: {
@@ -59,15 +52,6 @@ export default function DashboardApp() {
     });
     setBookings(bookings);
   };
-  // datos?.map((book)=> book ={...book,pickUpDate:book.pickUpDate.split("-")})
-  useEffect(() => {
-    getUsers();
-    getbookigs();
-  }, []);
-
-  if (quantityCustomers) {
-    totalCustomers = quantityCustomers.length;
-  }
 
   const getCarsStock = async () => {
     // eslint-disable-next-line prefer-const
@@ -80,23 +64,19 @@ export default function DashboardApp() {
   };
 
   useEffect(() => {
+    getUsers();
+    getBookings();
     getCarsStock();
-  }, []);
-
-  if (stockCars) {
-    totalStockCars = stockCars.length;
-  }
-
-  useEffect(() => {
     dispatch(fetchAllCarTypes());
     dispatch(fetchAllLocations());
   }, []);
 
   const { AllcarTypes } = useSelector((state) => state.carsResults);
   const { locations } = useSelector((state) => state.searchBar);
-  const labels = AllcarTypes.map((cartype) => {
+
+  const carTypesChartData = AllcarTypes.map((cartype) => {
     let values = 0;
-    Bookings.data?.map((dato) => {
+    Bookings.data?.forEach((dato) => {
       if (dato.cartypeId === cartype.id) {
         values++;
       }
@@ -107,11 +87,6 @@ export default function DashboardApp() {
       value: values,
     };
   });
-  console.log(labels);
-  // eslint-disable-next-line prefer-const
-  let cars = AllcarTypes.length;
-  // eslint-disable-next-line prefer-const
-  let locationAviable = locations.length;
 
   const theme = useTheme();
 
@@ -128,14 +103,14 @@ export default function DashboardApp() {
               <Grid item xs={12} sm={6} md={3}>
                 <AppWidgetSummary
                   title='Vehiculos en stock'
-                  total={totalStockCars}
+                  total={carsStock?.data?.length}
                   icon={'clarity:car-line'}
                 />
               </Grid>
               <Grid item xs={12} sm={6} md={3}>
                 <AppWidgetSummary
                   title='Usuarios registrados'
-                  total={totalCustomers}
+                  total={currentCustomers?.data?.length}
                   color='info'
                   icon={'clarity:users-solid'}
                 />
@@ -143,7 +118,7 @@ export default function DashboardApp() {
               <Grid item xs={12} sm={6} md={3}>
                 <AppWidgetSummary
                   title='Agencias disponibles'
-                  total={locationAviable}
+                  total={locations?.length}
                   color='warning'
                   icon={'material-symbols:car-rental'}
                 />
@@ -151,7 +126,7 @@ export default function DashboardApp() {
               <Grid item xs={12} sm={6} md={3}>
                 <AppWidgetSummary
                   title='Modelos de vehiculos disponibles'
-                  total={cars}
+                  total={AllcarTypes?.length}
                   color='error'
                   icon={'clarity:car-solid'}
                 />
@@ -187,14 +162,21 @@ export default function DashboardApp() {
             </Grid> */}
           </>
 
-          <Grid item xs={12} md={6} lg={4}>
+          <Grid item xs={12} md={6} lg={6}>
             <AppCurrentVisits
               title='Vehiculos rentados historicamente'
-              chartData={labels}
+              chartData={carTypesChartData}
               chartColors={[
                 theme.palette.primary.main,
-                theme.palette.primary.dark,
+                theme.palette.secondary.main,
+                theme.palette.error.main,
+                theme.palette.warning.main,
+                theme.palette.info.main,
+                theme.palette.success.main,
                 theme.palette.primary.light,
+                theme.palette.secondary.light,
+                theme.palette.error.light,
+                theme.palette.warning.light,
               ]}
             />
           </Grid>
