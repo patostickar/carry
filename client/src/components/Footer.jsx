@@ -18,7 +18,7 @@ export default function Footer() {
       }}
       style={{ backgroundColor: "#1976d2" }}
     >
-      <Grid item xs={4} style={{ padding: "30px" }}>
+      <Grid item xs={12} sm={6} md={4} style={{ padding: "30px" }}>
         <Typography
           variant="body2"
           style={{ textAlign: "center", fontWeight: "bolder" }}
@@ -37,7 +37,7 @@ export default function Footer() {
       </Grid>
       <Grid
         item
-        xs={4}
+        xs={12} sm={6} md={4}
         style={{
           padding: "30px",
 
@@ -72,7 +72,7 @@ export default function Footer() {
           Terminos y Condiciones <br />
         </Link>
       </Grid>
-      <Grid item xs={4} style={{ padding: "30px" }}>
+      <Grid item xs={12} sm={6} md={4} style={{ padding: "30px" }}>
         <Typography
           variant="body2"
           style={{ textAlign: "center", fontWeight: "bolder" }}
