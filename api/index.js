@@ -13,7 +13,7 @@ conn
       console.log(`%s listening at ${PORT}`);
     });
 
-    // createData();
+    createData();
 
     // eslint-disable-next-line
     async function createData() {
